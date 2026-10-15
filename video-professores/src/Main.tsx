@@ -1,7 +1,15 @@
 import type { Caption } from "@remotion/captions";
 import { Audio } from "@remotion/media";
 import React, { useMemo } from "react";
-import { AbsoluteFill, staticFile, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  Easing,
+  Freeze,
+  interpolate,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { Captions } from "./components/Captions";
 import type { FacePoint } from "./components/TrackedVideo";
 import { TrackedVideo } from "./components/TrackedVideo";
@@ -36,18 +44,38 @@ const useMusicVolume = (durationInFrames: number, fps: number) => {
 };
 
 export const DiaDosProfessores: React.FC = () => {
+  const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const musicVolume = useMusicVolume(durationInFrames, fps);
 
+  // Depois do último quadro gravado, a imagem congela com uma leve aproximação
+  // e escurece até o fim, enquanto a trilha termina o fade
+  const lastSourceFrame = Math.round(meta.durationInSeconds * fps) - 1;
+  const holdZoom = interpolate(frame, [lastSourceFrame, durationInFrames - 1], [1, 1.04], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.bezier(0.33, 0, 0.67, 1),
+  });
+  const fadeOut = interpolate(
+    frame,
+    [durationInFrames - Math.round(0.9 * fps), durationInFrames - 1],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <TrackedVideo
-        src={meta.src}
-        sourceWidth={meta.width}
-        sourceHeight={meta.height}
-        track={faceTrack}
-        punchIns={PUNCH_INS}
-      />
+      <AbsoluteFill style={{ scale: holdZoom }}>
+        <Freeze frame={lastSourceFrame} active={frame > lastSourceFrame}>
+          <TrackedVideo
+            src={meta.src}
+            sourceWidth={meta.width}
+            sourceHeight={meta.height}
+            track={faceTrack}
+            punchIns={PUNCH_INS}
+          />
+        </Freeze>
+      </AbsoluteFill>
 
       <Audio
         name="Trilha Dia dos Professores"
@@ -65,6 +93,8 @@ export const DiaDosProfessores: React.FC = () => {
       />
 
       <Overlays />
+
+      <AbsoluteFill style={{ backgroundColor: "#000", opacity: fadeOut }} />
     </AbsoluteFill>
   );
 };

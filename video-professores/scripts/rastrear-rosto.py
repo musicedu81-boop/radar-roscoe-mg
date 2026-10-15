@@ -88,7 +88,7 @@ def main(video, models):
         sx = smooth(list(gx), deadzone=0.035, alpha=0.18)
         sy = smooth(list(gy), deadzone=0.035, alpha=0.18)
         track = [{"t": round(float(t), 3), "x": round(float(x), 4), "y": round(float(y), 4)} for t, x, y in zip(grid, sx, sy)]
-        print(f"Rosto detectado em {len(times)} de {i // step} amostras")
+        print(f"Rosto detectado em {len(times)} de {len(range(0, i, step))} amostras")
 
     with open("src/data/face-track.json", "w") as f:
         json.dump(track, f)

@@ -19,7 +19,10 @@ type Props = {
 };
 
 // Palavras que ganham destaque extra quando faladas
-const KEYWORDS = /professor|professora|professores|educa|escola|ensin|aprend|obrigad|gratid|futuro|aluno|sala|parab|respeito|valoriz|amor|dedica/i;
+const KEYWORDS = /professor|professora|professores|educa|escola|ensin|aprend|obrigad|gratid|futuro|aluno|sala|parab|respeito|valoriz|amor|dedica|estudante|mestre|saudade|juntos/i;
+
+// Pontuação no fim da palavra não aparece na legenda em caixa alta
+const TRAILING_PUNCTUATION = /[.,!;:]+$/u;
 
 export const Captions: React.FC<Props> = ({ captions, hiddenRanges, centerY }) => {
   const frame = useCurrentFrame();
@@ -65,7 +68,7 @@ export const Captions: React.FC<Props> = ({ captions, hiddenRanges, centerY }) =
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "center",
-          columnGap: 22,
+          columnGap: 34,
           rowGap: 6,
           scale: interpolate(pageFrame, [0, 7], [0.82, 1], {
             extrapolateLeft: "clamp",
@@ -83,6 +86,9 @@ export const Captions: React.FC<Props> = ({ captions, hiddenRanges, centerY }) =
           const spoken = nowMs >= token.fromMs;
           const isKey = KEYWORDS.test(token.text);
           const tokenFrame = frame - (token.fromMs / 1000) * fps;
+          // O "pop" da palavra falada é proporcional ao tamanho dela, para
+          // palavras longas não invadirem o espaço da vizinha
+          const grow = 5 / Math.max(5, token.text.trim().length);
           return (
             <span
               key={`${page.startMs}-${i}`}
@@ -99,7 +105,7 @@ export const Captions: React.FC<Props> = ({ captions, hiddenRanges, centerY }) =
                 textShadow: "0 8px 24px rgba(0,0,0,0.55)",
                 display: "inline-block",
                 scale: active
-                  ? interpolate(tokenFrame, [0, 4, 9], [1, 1.14, 1.06], {
+                  ? interpolate(tokenFrame, [0, 4, 9], [1, 1 + 0.14 * grow, 1 + 0.06 * grow], {
                       extrapolateLeft: "clamp",
                       extrapolateRight: "clamp",
                     })
@@ -107,7 +113,7 @@ export const Captions: React.FC<Props> = ({ captions, hiddenRanges, centerY }) =
                 translate: active ? "0px -4px" : "0px 0px",
               }}
             >
-              {token.text.trim()}
+              {token.text.trim().replace(TRAILING_PUNCTUATION, "")}
             </span>
           );
         })}

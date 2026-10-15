@@ -1,4 +1,17 @@
-# Remotion video
+# Vídeo Dia dos Professores
+
+## Fluxo de edição
+
+1. Dependências: `pip install -r scripts/requirements.txt`, `npm ci` e `scripts/baixar-modelos.sh <dir_modelos>`.
+2. Vídeo enviado em partes: `python3 scripts/juntar-partes.py <parte1> <parte2> [...] <video.mp4>`.
+   Com ~1 s repetido entre as partes, o alinhamento é feito pelo áudio.
+3. `scripts/preparar.sh <video> <dir_modelos>`: normaliza (corta a tela preta final do CapCut),
+   transcreve, rastreia o rosto e gera trilha e efeitos.
+4. Revise `scripts/out/transcricao.txt`, corrija `src/data/captions.json` e ajuste `src/Overlays.tsx`
+   (título, zooms de ênfase e ícones, cada um no instante da palavra-chave).
+5. `scripts/finalizar.sh`: renderiza e masteriza o MP4 em `out/`.
+
+## Remotion
 
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">
