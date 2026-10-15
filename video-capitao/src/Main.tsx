@@ -43,7 +43,7 @@ const useMusicVolume = (durationInFrames: number, fps: number) => {
   }, [durationInFrames, fps]);
 };
 
-export const DiaDosProfessores: React.FC = () => {
+export const VideoCapitao: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const musicVolume = useMusicVolume(durationInFrames, fps);

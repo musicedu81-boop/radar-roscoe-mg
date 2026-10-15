@@ -1,4 +1,8 @@
-# Vídeo Dia dos Professores
+# Vídeos do Capitão Vítor
+
+Modelo de edição dos vídeos do Prefeito Capitão Vítor Prado para Reels, Stories e WhatsApp.
+O passo a passo completo, com regras de estilo e armadilhas, está na skill
+`.claude/skills/video-capitao-vitor/SKILL.md`. Os assets da marca ficam em `public/brand/`.
 
 ## Fluxo de edição
 
@@ -9,7 +13,7 @@
    transcreve, rastreia o rosto e gera trilha e efeitos.
 4. Revise `scripts/out/transcricao.txt`, corrija `src/data/captions.json` e ajuste `src/Overlays.tsx`
    (título, zooms de ênfase e ícones, cada um no instante da palavra-chave).
-5. `scripts/finalizar.sh`: renderiza e masteriza o MP4 em `out/`.
+5. `scripts/finalizar.sh out/<data>-<tema>.mp4`: renderiza e masteriza o MP4.
 
 ## Remotion
 

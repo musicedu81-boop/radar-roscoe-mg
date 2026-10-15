@@ -1,4 +1,4 @@
-import { Apple, BookOpen, GraduationCap, Pencil } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import React from "react";
 import {
   AbsoluteFill,
@@ -11,7 +11,20 @@ import { COLORS, FONT } from "../theme";
 
 type Props = {
   centerY: number;
+  // Linha de cima, menor (ex.: "DIA DOS")
+  kicker: string;
+  // Linha principal, em dourado (ex.: "PROFESSORES")
+  title: string;
+  // Selo abaixo do cartão (ex.: "15 DE OUTUBRO")
+  badge?: string;
+  // Ícones que flutuam nos quatro cantos do cartão
+  icons: [LucideIcon, LucideIcon, LucideIcon, LucideIcon];
 };
+
+// Largura útil do texto dentro do cartão; a fonte diminui para textos longos
+const TEXT_WIDTH = 900;
+const fitFont = (text: string, max: number, emPerChar: number) =>
+  Math.min(max, TEXT_WIDTH / (Math.max(1, text.length) * emPerChar));
 
 const clamp = {
   extrapolateLeft: "clamp",
@@ -86,7 +99,13 @@ const FloatingIcon: React.FC<{
   );
 };
 
-export const TitleMotion: React.FC<Props> = ({ centerY }) => {
+export const TitleMotion: React.FC<Props> = ({
+  centerY,
+  kicker,
+  title,
+  badge,
+  icons,
+}) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const exitStart = durationInFrames - 12;
@@ -96,11 +115,14 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
     easing: Easing.bezier(0.55, 0, 1, 0.45),
   });
 
-  const top = "DIA DOS";
-  const main = "PROFESSORES";
+  const [IconA, IconB, IconC, IconD] = icons;
+  const kickerSize = fitFont(kicker, 78, 0.78);
+  const titleSize = fitFont(title, 116, 0.7);
 
   return (
-    <AbsoluteFill style={{ opacity: exit, scale: interpolate(exit, [0, 1], [0.9, 1]) }}>
+    <AbsoluteFill
+      style={{ opacity: exit, scale: interpolate(exit, [0, 1], [0.9, 1]) }}
+    >
       {/* Raios dourados de explosão na entrada */}
       <div
         style={{
@@ -112,7 +134,8 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
           borderRadius: 999,
           background: `repeating-conic-gradient(rgba(255,201,60,0.28) 0deg 6deg, rgba(255,201,60,0) 6deg 18deg)`,
           maskImage: "radial-gradient(circle, black 20%, transparent 65%)",
-          WebkitMaskImage: "radial-gradient(circle, black 20%, transparent 65%)",
+          WebkitMaskImage:
+            "radial-gradient(circle, black 20%, transparent 65%)",
           scale: interpolate(frame, [0, 18], [0.2, 1], {
             ...clamp,
             easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -129,10 +152,12 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
           left: 70,
           right: 70,
           top: centerY,
-          translate: `0px ${interpolate(frame, [0, 16], [220, 0], {
-            ...clamp,
-            easing: Easing.spring({ damping: 13 }),
-          }) - 0}px`,
+          translate: `0px ${
+            interpolate(frame, [0, 16], [220, 0], {
+              ...clamp,
+              easing: Easing.spring({ damping: 13 }),
+            }) - 0
+          }px`,
           marginTop: -200,
           height: 400,
           borderRadius: 48,
@@ -152,22 +177,32 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
         }}
       >
         <div style={{ display: "flex", gap: 4 }}>
-          {top.split("").map((ch, i) => (
+          {kicker.split("").map((ch, i) => (
             <span
               key={`t${i}`}
               style={{
                 fontFamily: FONT,
                 fontWeight: 800,
-                fontSize: 78,
+                fontSize: kickerSize,
                 color: COLORS.white,
                 letterSpacing: 6,
                 whiteSpace: "pre",
                 display: "inline-block",
-                translate: `0px ${interpolate(frame, [6 + i * 1.5, 18 + i * 1.5], [50, 0], {
-                  ...clamp,
-                  easing: Easing.spring({ damping: 12 }),
-                })}px`,
-                opacity: interpolate(frame, [6 + i * 1.5, 12 + i * 1.5], [0, 1], clamp),
+                translate: `0px ${interpolate(
+                  frame,
+                  [6 + i * 1.5, 18 + i * 1.5],
+                  [50, 0],
+                  {
+                    ...clamp,
+                    easing: Easing.spring({ damping: 12 }),
+                  },
+                )}px`,
+                opacity: interpolate(
+                  frame,
+                  [6 + i * 1.5, 12 + i * 1.5],
+                  [0, 1],
+                  clamp,
+                ),
               }}
             >
               {ch}
@@ -175,27 +210,42 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
           ))}
         </div>
         <div style={{ display: "flex", marginTop: -6 }}>
-          {main.split("").map((ch, i) => (
+          {title.split("").map((ch, i) => (
             <span
               key={`m${i}`}
               style={{
                 fontFamily: FONT,
                 fontWeight: 900,
-                fontSize: 116,
+                fontSize: titleSize,
                 lineHeight: 1.05,
                 letterSpacing: -2,
                 color: COLORS.gold,
                 display: "inline-block",
                 textShadow: "0 6px 0 rgba(0,0,0,0.25)",
-                translate: `0px ${interpolate(frame, [12 + i * 1.6, 26 + i * 1.6], [90, 0], {
-                  ...clamp,
-                  easing: Easing.spring({ damping: 10 }),
-                })}px`,
-                scale: interpolate(frame, [12 + i * 1.6, 26 + i * 1.6], [0.4, 1], {
-                  ...clamp,
-                  easing: Easing.spring({ damping: 10 }),
-                }),
-                opacity: interpolate(frame, [12 + i * 1.6, 17 + i * 1.6], [0, 1], clamp),
+                translate: `0px ${interpolate(
+                  frame,
+                  [12 + i * 1.6, 26 + i * 1.6],
+                  [90, 0],
+                  {
+                    ...clamp,
+                    easing: Easing.spring({ damping: 10 }),
+                  },
+                )}px`,
+                scale: interpolate(
+                  frame,
+                  [12 + i * 1.6, 26 + i * 1.6],
+                  [0.4, 1],
+                  {
+                    ...clamp,
+                    easing: Easing.spring({ damping: 10 }),
+                  },
+                ),
+                opacity: interpolate(
+                  frame,
+                  [12 + i * 1.6, 17 + i * 1.6],
+                  [0, 1],
+                  clamp,
+                ),
               }}
             >
               {ch}
@@ -203,7 +253,12 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
           ))}
         </div>
         {/* Sublinhado em giz desenhado à mão */}
-        <svg width={760} height={46} viewBox="0 0 760 46" style={{ marginTop: 2 }}>
+        <svg
+          width={760}
+          height={46}
+          viewBox="0 0 760 46"
+          style={{ marginTop: 2 }}
+        >
           <path
             d="M10 30 C 140 12, 300 40, 420 22 S 650 14, 750 26"
             fill="none"
@@ -219,50 +274,52 @@ export const TitleMotion: React.FC<Props> = ({ centerY }) => {
         </svg>
       </div>
 
-      {/* Selo com a data */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: centerY + 225,
-          display: "flex",
-          justifyContent: "center",
-          opacity: interpolate(frame, [40, 50], [0, 1], clamp),
-          translate: `0px ${interpolate(frame, [40, 54], [30, 0], {
-            ...clamp,
-            easing: Easing.spring({ damping: 12 }),
-          })}px`,
-        }}
-      >
+      {/* Selo abaixo do cartão */}
+      {badge ? (
         <div
           style={{
-            fontFamily: FONT,
-            fontWeight: 800,
-            fontSize: 46,
-            letterSpacing: 4,
-            color: COLORS.navy,
-            background: COLORS.white,
-            padding: "14px 40px",
-            borderRadius: 999,
-            boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: centerY + 225,
+            display: "flex",
+            justifyContent: "center",
+            opacity: interpolate(frame, [40, 50], [0, 1], clamp),
+            translate: `0px ${interpolate(frame, [40, 54], [30, 0], {
+              ...clamp,
+              easing: Easing.spring({ damping: 12 }),
+            })}px`,
           }}
         >
-          15 DE OUTUBRO
+          <div
+            style={{
+              fontFamily: FONT,
+              fontWeight: 800,
+              fontSize: 46,
+              letterSpacing: 4,
+              color: COLORS.navy,
+              background: COLORS.white,
+              padding: "14px 40px",
+              borderRadius: 999,
+              boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+            }}
+          >
+            {badge}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <FloatingIcon x={130} y={centerY - 230} delay={20} tilt={-12}>
-        <GraduationCap size={78} color={COLORS.navy} strokeWidth={2.4} />
+        <IconA size={78} color={COLORS.navy} strokeWidth={2.4} />
       </FloatingIcon>
       <FloatingIcon x={950} y={centerY - 220} delay={26} tilt={10}>
-        <Apple size={74} color={COLORS.navy} strokeWidth={2.4} />
+        <IconB size={74} color={COLORS.navy} strokeWidth={2.4} />
       </FloatingIcon>
       <FloatingIcon x={120} y={centerY + 210} delay={32} tilt={8}>
-        <BookOpen size={74} color={COLORS.navy} strokeWidth={2.4} />
+        <IconC size={74} color={COLORS.navy} strokeWidth={2.4} />
       </FloatingIcon>
       <FloatingIcon x={960} y={centerY + 200} delay={38} tilt={-8}>
-        <Pencil size={70} color={COLORS.navy} strokeWidth={2.4} />
+        <IconD size={70} color={COLORS.navy} strokeWidth={2.4} />
       </FloatingIcon>
 
       <Star x={260} y={centerY - 260} size={46} delay={22} />

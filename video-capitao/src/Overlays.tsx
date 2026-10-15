@@ -1,14 +1,17 @@
 import { Audio } from "@remotion/media";
 import type { LucideIcon } from "lucide-react";
 import {
+  Apple,
   Award,
   Backpack,
+  BookOpen,
   BookOpenText,
   BriefcaseBusiness,
   GraduationCap,
   Heart,
   HeartHandshake,
   PartyPopper,
+  Pencil,
   School,
   Sprout,
   Star,
@@ -19,8 +22,21 @@ import { Sequence, staticFile, useVideoConfig } from "remotion";
 import { IconBadge } from "./components/IconBadge";
 import { TitleMotion } from "./components/TitleMotion";
 
-// Momento em que ele fala "Dia do professor, da professora" (segundos no vídeo original)
-export const TITLE = { at: 1.4, duration: 3.7 };
+// Motion do título: entra no instante da frase-tema (segundos no vídeo original).
+// Aqui, quando ele fala "Dia do professor, da professora".
+export const TITLE = {
+  at: 1.4,
+  duration: 3.7,
+  kicker: "DIA DOS",
+  title: "PROFESSORES",
+  badge: "15 DE OUTUBRO",
+  icons: [GraduationCap, Apple, BookOpen, Pencil] as [
+    LucideIcon,
+    LucideIcon,
+    LucideIcon,
+    LucideIcon,
+  ],
+};
 
 // Zooms de ênfase, sincronizados com as falas fortes
 export const PUNCH_INS = [
@@ -56,13 +72,25 @@ const ICONS: IconCue[] = [
   // "preparando o nosso futuro"
   { at: 24.7, icon: Sprout, label: "NOSSO FUTURO", side: "right" },
   // "o nome de todos os meus mestres"
-  { at: 31.5, duration: 2.4, icon: GraduationCap, label: "MESTRES", side: "left" },
+  {
+    at: 31.5,
+    duration: 2.4,
+    icon: GraduationCap,
+    label: "MESTRES",
+    side: "left",
+  },
   // "com muita saudade"
   { at: 34.0, icon: Heart, label: "SAUDADE", side: "right" },
   // "me ensinou a ler, a escrever"
   { at: 41.6, icon: BookOpenText, label: "LER E ESCREVER", side: "left" },
   // "você que é estudante"
-  { at: 48.3, duration: 1.9, icon: Backpack, label: "ESTUDANTE", side: "right" },
+  {
+    at: 48.3,
+    duration: 1.9,
+    icon: Backpack,
+    label: "ESTUDANTE",
+    side: "right",
+  },
   // "valorize o seu professor"
   { at: 50.3, icon: Award, label: "VALORIZE", side: "left" },
   // "você que é pai, você que é mãe"
@@ -82,10 +110,26 @@ export const Overlays: React.FC = () => {
         durationInFrames={Math.round(TITLE.duration * fps)}
         premountFor={fps}
       >
-        <TitleMotion centerY={1300} />
-        <Audio name="SFX whoosh título" src={staticFile("sfx-whoosh.wav")} volume={0.5} premountFor={fps} />
+        <TitleMotion
+          centerY={1300}
+          kicker={TITLE.kicker}
+          title={TITLE.title}
+          badge={TITLE.badge}
+          icons={TITLE.icons}
+        />
+        <Audio
+          name="SFX whoosh título"
+          src={staticFile("sfx-whoosh.wav")}
+          volume={0.5}
+          premountFor={fps}
+        />
         <Sequence from={14} premountFor={fps}>
-          <Audio name="SFX brilho título" src={staticFile("sfx-brilho.wav")} volume={0.35} premountFor={fps} />
+          <Audio
+            name="SFX brilho título"
+            src={staticFile("sfx-brilho.wav")}
+            volume={0.35}
+            premountFor={fps}
+          />
         </Sequence>
       </Sequence>
 
@@ -97,8 +141,18 @@ export const Overlays: React.FC = () => {
           durationInFrames={Math.round((cue.duration ?? ICON_DURATION) * fps)}
           premountFor={fps}
         >
-          <IconBadge icon={cue.icon} label={cue.label} side={cue.side} y={560} />
-          <Audio name={`SFX pop ${cue.label}`} src={staticFile("sfx-pop.wav")} volume={0.4} premountFor={fps} />
+          <IconBadge
+            icon={cue.icon}
+            label={cue.label}
+            side={cue.side}
+            y={560}
+          />
+          <Audio
+            name={`SFX pop ${cue.label}`}
+            src={staticFile("sfx-pop.wav")}
+            volume={0.4}
+            premountFor={fps}
+          />
         </Sequence>
       ))}
     </>
