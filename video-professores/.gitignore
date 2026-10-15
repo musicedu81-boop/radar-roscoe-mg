@@ -10,3 +10,6 @@ out
 public/video-original.mp4
 public/trilha.wav
 scripts/out
+
+# Cache do Python
+__pycache__/
