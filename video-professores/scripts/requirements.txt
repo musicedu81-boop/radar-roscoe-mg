@@ -1,0 +1,6 @@
+numpy
+scipy
+soundfile
+sherpa-onnx
+# OpenCV 5 removeu readNetFromCaffe, usado pelo detector res10
+opencv-python-headless<5
