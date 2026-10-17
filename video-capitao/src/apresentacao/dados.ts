@@ -25,6 +25,7 @@ export const NUMEROS = {
 
 // Aba Metas e Diagnóstico: ritmo de crescimento (seguidores por dia)
 export const RITMO = {
+  serie: { inicio: "28/07", fim: "16/10" }, // período da série do Metricool
   seguidores2807: 24708,
   seguidores1610: 25850,
   ganho11Semanas: 1142,
