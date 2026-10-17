@@ -29,7 +29,7 @@ for parte in $PARTES; do
   if [ ! -s "$arq" ]; then
     echo "Renderizando quadros ${parte}..."
     npx remotion render src/index.ts "$COMP" "$arq.tmp.mp4" --frames="$parte" --muted \
-      --codec=h264 --crf=16 --gl=swangle --concurrency="$CONC" --log=error \
+      --codec=h264 --crf=16 --x264-preset=slow --gl=swangle --concurrency="$CONC" --log=error \
       ${BROWSER[@]+"${BROWSER[@]}"}
     mv "$arq.tmp.mp4" "$arq"
   fi

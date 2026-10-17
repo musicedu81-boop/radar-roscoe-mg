@@ -1,6 +1,6 @@
 ---
 name: video-capitao-vitor
-description: Edição completa de vídeos do Prefeito Capitão Vítor Prado (Timóteo/MG) para Reels, Stories e WhatsApp. Recebe o vídeo bruto (upload no chat, Google Drive ou em partes), junta as partes, centraliza o rosto, gera legenda sincronizada revisada palavra por palavra, motion de título no instante da frase-tema, ícones que ilustram as falas, trilha própria com ducking, final com fade e master pronto para as redes, com a identidade visual do Capitão. Use sempre que chegar um vídeo do Capitão ou do prefeito para editar, ou quando pedirem "edita o vídeo do Capitão", "monta o Reels do prefeito", "legenda esse vídeo", "vídeo do Vítor", "coloca legenda e ícones". Use também para guardar ou atualizar os assets da marca (logo, cores, fontes).
+description: Edição completa de vídeos do Prefeito Capitão Vítor Prado (Timóteo/MG) para Reels, Stories e WhatsApp. Recebe o vídeo bruto (upload no chat, Google Drive ou em partes), junta as partes, centraliza o rosto, gera legenda sincronizada revisada palavra por palavra, motion de título no instante da frase-tema, ícones que ilustram as falas, trilha própria com ducking, final com fade e master pronto para as redes, com a identidade visual do Capitão. Use sempre que chegar um vídeo do Capitão ou do prefeito para editar, ou quando pedirem "edita o vídeo do Capitão", "monta o Reels do prefeito", "legenda esse vídeo", "vídeo do Vítor", "coloca legenda e ícones". Use também para apresentações em motion narradas (planejamento, relatório, prestação de contas) com a identidade do Capitão, e para guardar ou atualizar os assets da marca (logo, cores, fontes).
 ---
 
 # Vídeo do Capitão Vítor
@@ -126,6 +126,48 @@ python3 -c "import json;[print(i,w['text'],w['startMs']) for i,w in enumerate(js
 3. Liste as pendências que o usuário precisa confirmar: nomes próprios e rótulos trocados.
 4. Ofereça a legenda do post no formato Reels, pela skill `capitao-vitor-instagram`.
 5. Faça um commit com a mensagem `Vídeo: <tema>`. Os dados do vídeo ficam versionados.
+
+## Apresentação em motion (planejamentos e relatórios)
+
+Padrão validado no Planejamento Estratégico de redes (17/10/2026): composição `ApresentacaoPlano`,
+vertical 1080x1920, 192 s, narrada em português, com trilha, efeitos, gráficos, 3D e transições glitch.
+
+| O quê | Onde |
+|---|---|
+| Composição (cenas, transições, trilha com ducking, efeitos) | `video-capitao/src/apresentacao/Apresentacao.tsx` |
+| Guia de arte e especificação de cada cena | `video-capitao/src/apresentacao/GUIA.md` |
+| Marca: cores, fontes, zonas da tela, ritmo | `video-capitao/src/apresentacao/marca.ts` |
+| Dados do plano (nunca inventar) | `video-capitao/src/apresentacao/dados.ts` |
+| Roteiro da narração | `video-capitao/src/apresentacao/narracao-roteiro.json` |
+| Cenas e componentes | `src/apresentacao/cenas/` e `src/apresentacao/ui/` |
+
+### Fluxo
+
+1. **Dados:** extraia tudo do documento ou artefato para `dados.ts`.
+2. **Roteiro:** uma fala por cena em `narracao-roteiro.json`. Frases curtas, português do Brasil.
+3. **Narração:** `python3 scripts/gerar-narracao.py <kokoro-multi-lang-v1_0> <modelos>`. Voz Kokoro
+   pt-br 42 (Dora); 43 (Alex) é a alternativa masculina. O Parakeet alinha cada palavra. Saem os
+   wavs, o `narracao.json` (compassos de cada cena e tempo de cada palavra) e o mapa da trilha.
+4. **Trilha e efeitos:** `scripts/gerar-trilha-motion.py <mapa> public/apresentacao/trilha.wav` e
+   `scripts/gerar-sfx-motion.py`. 120 BPM: todo corte cai na cabeça de um compasso.
+5. **Cenas:** cada elemento entra quando a locutora fala dele (`momentoDaPalavra`). Construa cada
+   cena na prévia isolada (`preview.tsx`), sem depender das outras.
+6. **Revisão:** sequência de quadros a cada 20 (`--sequence --every-nth-frame=20`), folha de
+   contato por cena e os quadros mais densos em tamanho real.
+7. **Render e master:** `PARTES="0-2393 2394-5759" CONC=4 scripts/finalizar-apresentacao.sh
+   out/<nome>.mp4`. Partes já renderizadas são reaproveitadas; apague só a que mudou.
+
+Tempo de referência (4 CPUs, WebGL por software): cerca de 0,65 s por quadro, perto de 1 hora
+para 192 s de vídeo.
+
+### Armadilhas da apresentação
+
+- **WebGL** só funciona com `--gl=swangle` (já está no `remotion.config.ts`).
+- **Filtro SVG** (`feTurbulence`, `feDisplacementMap`) em tela cheia custa cerca de 3 s por quadro.
+  Fica só na transição glitch; o grão é uma textura pré-calculada.
+- **Títulos:** a máscara do `Titulo` precisa de folga no alto, senão corta o acento de Ê e É.
+- **Subagentes:** construtores em paralelo esgotam o limite da sessão. No máximo dois, com
+  prompts enxutos, e cada cena commitada assim que fica pronta.
 
 ## Regras de estilo
 
