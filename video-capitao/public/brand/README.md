@@ -1,26 +1,42 @@
 # Marca: Capitão Vítor Prado
 
-Inventário dos assets usados nos vídeos. Cada item recebido entra aqui, com o
-nome do arquivo e onde ele aparece no vídeo.
+Inventário dos assets usados nos vídeos e nas apresentações. Fonte: artifact
+"Planejamento Estratégico Capitão" (Talentos Business, aba Identidade), outubro de 2026.
 
-| Item | Arquivo | Status | Onde entra no vídeo |
+| Item | Arquivo | Status | Onde entra |
 |---|---|---|---|
-| Logo principal (PNG transparente, 2000 px ou mais, ou SVG) | `logo.png` ou `logo.svg` | aguardando | selo discreto no canto e cartão final |
-| Símbolo ou ícone quadrado | `simbolo.png` | aguardando | selo de canto |
-| Paleta oficial (hex) | anotar abaixo | aguardando | `src/theme.ts` (COLORS) |
-| Fontes oficiais | `public/fonts/` | aguardando (hoje: Montserrat) | `src/theme.ts` (loadFont) |
-| Assinatura ou slogan | anotar abaixo | aguardando | cartão final |
-| Vinheta de abertura ou encerramento | `vinheta.mp4` | opcional | início ou fim |
-| Foto oficial | `foto.jpg` | opcional | cartão final |
+| Logo, texto branco (fundos azuis) | `logo-branco.png` (560x324, PNG transparente) | ok, baixa resolução | abertura, HUD, encerramento |
+| Logo, texto azul (fundo branco) | `logo-azul.png` (560x324, PNG transparente) | ok, baixa resolução | slides em inversão |
+| Logo em alta (2000 px ou SVG) | | aguardando | substituir os dois acima |
+| Paleta oficial | abaixo | ok | `src/apresentacao/marca.ts` (COR) |
+| Fontes | `public/fonts/anton-*.woff2`, `montserrat-*.woff2` | ok | títulos Anton, textos Montserrat |
+| Assinatura | "O prefeito do povo!" (na logo) | ok | logo |
+| Foto oficial recortada | | aguardando | capas e cartão final |
 
-## Paleta em uso (provisória, até chegar a oficial)
+A logo: "CAPITÃO VITOR · O PREFEITO DO POVO!" com o laço verde e a bandeira do Brasil.
+A versão atual foi extraída do plano (560 px de largura). Para uso grande em 1080p, peça o PNG
+ou SVG original.
+
+## Paleta oficial
 
 | Nome | Hex | Uso |
 |---|---|---|
-| navy | `#0A2A66` | cartões, texto sobre dourado |
-| blue | `#1E5BD8` | degradê dos cartões e selos |
-| gold | `#FFC93C` | destaque da legenda, bordas, rótulos |
-| goldDeep | `#F2A900` | degradê dourado |
+| Azul-noite | `#023564` | fundos, títulos na inversão, borda dos cards de números |
+| Azul de fundo | `#054B87` | degradês de fundo |
+| Azul-vivo | `#005CDB` | etiquetas de assunto, destaques |
+| Verde-neon | `#01ED43` | linha de assinatura, etiquetas de lugar |
+| Verde | `#16A442` | pill "Arraste e confira →", cabeçalho dos cards de números |
+| Amarelo | `#FFCD0E` | palavra-chave do título (itálico), bordas |
+| Branco | `#FFFFFF` | inversão para slides de dados |
+
+## Regras de arte (do plano)
+
+- Fundo azul em degradê, com o símbolo "+" em baixa opacidade nos temas de saúde.
+- Título em caixa alta, condensada ultrabold (Anton), branco sobre azul, com uma palavra-chave em
+  amarelo itálico. Na inversão, título azul-noite sobre branco.
+- Etiquetas inclinadas: azul (assunto) e verde (lugar).
+- Cards de números: branco, borda azul-noite, cabeçalho verde e número grande.
+- Logo centralizada embaixo, ou no canto quando há foto do Capitão.
 
 ## Voz e textos
 
