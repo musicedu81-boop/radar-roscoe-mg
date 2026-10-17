@@ -1,0 +1,122 @@
+{
+  "voz": { "modelo": "kokoro-multi-lang-v1_0", "falante": 42, "nome": "Dora (pt-BR)", "velocidade": 1.0 },
+  "cenas": [
+    {
+      "id": "abertura",
+      "minCompassos": 5,
+      "entradaSegundos": 2.6,
+      "frases": [
+        { "fala": "Planejamento estratégico do Capitão Vítor Prado.", "legenda": "Planejamento estratégico do Capitão Vítor Prado." },
+        { "fala": "De vinte e seis de outubro a trinta e um de dezembro.", "legenda": "De 26/10 a 31/12." },
+        { "fala": "Gestão que entrega, prefeito que aparece.", "legenda": "Gestão que entrega, prefeito que aparece." }
+      ]
+    },
+    {
+      "id": "numeros",
+      "minCompassos": 4,
+      "frases": [
+        { "fala": "O perfil começa com vinte e cinco mil, oitocentos e cinquenta seguidores.", "legenda": "O perfil começa com 25.850 seguidores." },
+        { "fala": "A meta realista é chegar a vinte e sete mil até o fim do ano.", "legenda": "A meta realista é chegar a 27 mil até o fim do ano." },
+        { "fala": "O desafio é vinte e oito mil.", "legenda": "O desafio é 28 mil." },
+        { "fala": "E a proposta é levar a mediana de views por Reel de três vírgula seis mil para cinco mil.", "legenda": "E a proposta é levar a mediana de views por Reel de 3,6 mil para 5 mil." }
+      ]
+    },
+    {
+      "id": "ritmo",
+      "minCompassos": 5,
+      "frases": [
+        { "fala": "Hoje o perfil ganha cerca de seis seguidores por dia.", "legenda": "Hoje o perfil ganha cerca de 6 seguidores por dia." },
+        { "fala": "Setenta e seis por cento do ganho veio num único pico, entre catorze de setembro e cinco de outubro.", "legenda": "76% do ganho veio num único pico, entre 14/09 e 05/10." },
+        { "fala": "Para chegar a trinta e dois mil, seriam oitenta e um por dia. Essa meta não fecha.", "legenda": "Para chegar a 32 mil, seriam 81 por dia. Essa meta não fecha." },
+        { "fala": "A meta realista pede quinze por dia.", "legenda": "A meta realista pede 15 por dia." }
+      ]
+    },
+    {
+      "id": "reels",
+      "minCompassos": 5,
+      "frases": [
+        { "fala": "O que funcionou no último mês?", "legenda": "O que funcionou no último mês?" },
+        { "fala": "O Reel do temporal, com a resposta da prefeitura, chegou a cento e cinco mil views.", "legenda": "O Reel do temporal, com a resposta da prefeitura, chegou a 105 mil views." },
+        { "fala": "Utilidade na hora crítica, orgulho da cidade e gente de verdade, com nome e rosto.", "legenda": "Utilidade na hora crítica, orgulho da cidade e gente de verdade, com nome e rosto." }
+      ]
+    },
+    {
+      "id": "pilares",
+      "minCompassos": 4,
+      "frases": [
+        { "fala": "Daí saem os três pilares do plano.", "legenda": "Daí saem os três pilares do plano." },
+        { "fala": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente.", "legenda": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente." },
+        { "fala": "O gesto vem antes do discurso, e o morador é o protagonista.", "legenda": "O gesto vem antes do discurso, e o morador é o protagonista." }
+      ]
+    },
+    {
+      "id": "estrategia",
+      "minCompassos": 3,
+      "frases": [
+        { "fala": "A estratégia central são quadros fixos.", "legenda": "A estratégia central são quadros fixos." },
+        { "fala": "Cada um com uma função e um dia.", "legenda": "Cada um com uma função e um dia." },
+        { "fala": "O algoritmo reconhece série, não post avulso.", "legenda": "O algoritmo reconhece série, não post avulso." }
+      ]
+    },
+    {
+      "id": "semana",
+      "minCompassos": 8,
+      "frases": [
+        { "fala": "Segunda, Radar do Capitão: o que todas as secretarias estão fazendo.", "legenda": "Segunda, Radar do Capitão: o que todas as secretarias estão fazendo." },
+        { "fala": "Terça, A Saúde Tem Nome: um paciente, uma UBS, um nome.", "legenda": "Terça, A Saúde Tem Nome: um paciente, uma UBS, um nome." },
+        { "fala": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena.", "legenda": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena." },
+        { "fala": "Quinta, Vale a Pena Ver de Novo, o TBT das obras.", "legenda": "Quinta, Vale a Pena Ver de Novo, o TBT das obras." },
+        { "fala": "Sexta, E o Povo Aprova, com os comentários dos moradores.", "legenda": "Sexta, E o Povo Aprova, com os comentários dos moradores." },
+        { "fala": "Sábado é lo-fi: o Capitão pessoa.", "legenda": "Sábado é lo-fi: o Capitão pessoa." },
+        { "fala": "E domingo, o Radar Resumo da semana.", "legenda": "E domingo, o Radar Resumo da semana." }
+      ]
+    },
+    {
+      "id": "janela",
+      "minCompassos": 4,
+      "frases": [
+        { "fala": "Os quadros saem às dez da manhã, no pico de audiência de segunda a sexta.", "legenda": "Os quadros saem às 10h, no pico de audiência de segunda a sexta." },
+        { "fala": "O segundo pico é às dezoito horas, a hora dos carrosséis extras.", "legenda": "O segundo pico é às 18h, a hora dos carrosséis extras." },
+        { "fala": "No fim de semana, o alcance cai para cerca da metade.", "legenda": "No fim de semana, o alcance cai para cerca da metade." }
+      ]
+    },
+    {
+      "id": "calendario",
+      "minCompassos": 5,
+      "frases": [
+        { "fala": "São dez semanas, cada uma com um eixo temático.", "legenda": "São 10 semanas, cada uma com um eixo temático." },
+        { "fala": "Saúde, obras, educação, gestão e cuidado com gente se revezam.", "legenda": "Saúde, obras, educação, gestão e cuidado com gente se revezam." },
+        { "fala": "Os Números Mostram o Avanço sai em quatro de novembro e dois de dezembro.", "legenda": "Os Números Mostram o Avanço sai em 04/11 e 02/12." },
+        { "fala": "E o ano fecha com o Balanço dois mil e vinte e seis.", "legenda": "E o ano fecha com o Balanço 2026." }
+      ]
+    },
+    {
+      "id": "metas",
+      "minCompassos": 5,
+      "frases": [
+        { "fala": "As metas: vinte e seis mil e quatrocentos seguidores em trinta de novembro.", "legenda": "As metas: 26.400 seguidores em 30/11." },
+        { "fala": "Vinte e sete mil em trinta e um de dezembro.", "legenda": "27 mil em 31/12." },
+        { "fala": "E os indicadores que vamos acompanhar: views por Reel, seguidores por semana, horário e dia fixo de cada quadro.", "legenda": "E os indicadores que vamos acompanhar: views por Reel, seguidores por semana, horário e dia fixo de cada quadro." }
+      ]
+    },
+    {
+      "id": "crise",
+      "minCompassos": 4,
+      "frases": [
+        { "fala": "E se vier uma crise, o protocolo já está pronto.", "legenda": "E se vier uma crise, o protocolo já está pronto." },
+        { "fala": "Comunicado em até duas horas, com uma única fonte oficial.", "legenda": "Comunicado em até 2 horas, com uma única fonte oficial." },
+        { "fala": "Utilidade primeiro, atualização em horário fixo, e em setenta e duas horas os quadros voltam.", "legenda": "Utilidade primeiro, atualização em horário fixo, e em 72 horas os quadros voltam." },
+        { "fala": "Regra de ouro: nunca mentir, ajustar o enquadramento.", "legenda": "Regra de ouro: nunca mentir, ajustar o enquadramento." }
+      ]
+    },
+    {
+      "id": "encerramento",
+      "minCompassos": 4,
+      "entradaSegundos": 0.9,
+      "frases": [
+        { "fala": "O plano entra no ar em vinte e seis de outubro.", "legenda": "O plano entra no ar em 26/10." },
+        { "fala": "Capitão Vítor, o prefeito do povo.", "legenda": "Capitão Vítor, o prefeito do povo." }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,20 @@
 import React from "react";
-import { Img, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { clamp, COR, EASE, FONTE_TEXTO, FONTE_TITULO, formatarNumero, LOGO } from "../marca";
+import {
+  Img,
+  interpolate,
+  spring,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
+import {
+  clamp,
+  COR,
+  EASE,
+  FONTE_TEXTO,
+  FONTE_TITULO,
+  formatarNumero,
+  LOGO,
+} from "../marca";
 import { GlitchTexto } from "./Glitch";
 
 // Etiqueta inclinada da marca (como no Radar: lugar em verde, assunto em azul)
@@ -13,9 +27,17 @@ export const Etiqueta: React.FC<{
 }> = ({ children, cor = "azul", tamanho = 30, inicio = 0, style }) => {
   const frame = useCurrentFrame();
   const f = frame - inicio;
-  const fundo = { azul: COR.vivo, verde: COR.neon, amarelo: COR.amarelo, noite: COR.noite }[cor];
+  const fundo = {
+    azul: COR.vivo,
+    verde: COR.neon,
+    amarelo: COR.amarelo,
+    noite: COR.noite,
+  }[cor];
   const texto = cor === "azul" || cor === "noite" ? COR.branco : COR.noite;
-  const abre = interpolate(f, [0, 10], [0, 1], { ...clamp, easing: EASE.entrada });
+  const abre = interpolate(f, [0, 10], [0, 1], {
+    ...clamp,
+    easing: EASE.entrada,
+  });
   return (
     <div
       style={{
@@ -33,17 +55,19 @@ export const Etiqueta: React.FC<{
         ...style,
       }}
     >
-      <span style={{ display: "inline-block", transform: "skewX(8deg)" }}>{children}</span>
+      <span style={{ display: "inline-block", transform: "skewX(8deg)" }}>
+        {children}
+      </span>
     </div>
   );
 };
 
 // Pill verde de chamada ("Arraste e confira →")
-export const Pill: React.FC<{ children: React.ReactNode; tamanho?: number; style?: React.CSSProperties }> = ({
-  children,
-  tamanho = 22,
-  style,
-}) => (
+export const Pill: React.FC<{
+  children: React.ReactNode;
+  tamanho?: number;
+  style?: React.CSSProperties;
+}> = ({ children, tamanho = 22, style }) => (
   <div
     style={{
       display: "inline-block",
@@ -73,16 +97,30 @@ export const Titulo: React.FC<{
   corChave?: string;
   alinhamento?: "left" | "center";
   style?: React.CSSProperties;
-}> = ({ linhas, inicio = 0, tamanho = 120, cor = COR.branco, corChave = COR.amarelo, alinhamento = "left", style }) => {
+}> = ({
+  linhas,
+  inicio = 0,
+  tamanho = 120,
+  cor = COR.branco,
+  corChave = COR.amarelo,
+  alinhamento = "left",
+  style,
+}) => {
   const frame = useCurrentFrame();
   return (
     <div style={{ textAlign: alinhamento, ...style }}>
       {linhas.map((linha, i) => {
         const f = frame - inicio - i * 5;
-        const sobe = interpolate(f, [0, 16], [110, 0], { ...clamp, easing: EASE.entrada });
+        const sobe = interpolate(f, [0, 16], [110, 0], {
+          ...clamp,
+          easing: EASE.entrada,
+        });
         const partes = linha.split("*");
         return (
-          <div key={i} style={{ overflow: "hidden", paddingBottom: tamanho * 0.04 }}>
+          <div
+            key={i}
+            style={{ overflow: "hidden", paddingBottom: tamanho * 0.04 }}
+          >
             <div
               style={{
                 fontFamily: FONTE_TITULO,
@@ -97,7 +135,15 @@ export const Titulo: React.FC<{
               {partes.map((p, k) =>
                 k % 2 === 1 ? (
                   <GlitchTexto key={k} inicio={inicio + i * 5 + 8}>
-                    <em style={{ color: corChave, fontStyle: "italic", paddingRight: "0.06em" }}>{p}</em>
+                    <em
+                      style={{
+                        color: corChave,
+                        fontStyle: "italic",
+                        paddingRight: "0.06em",
+                      }}
+                    >
+                      {p}
+                    </em>
                   </GlitchTexto>
                 ) : (
                   <span key={k}>{p}</span>
@@ -119,7 +165,14 @@ export const Texto: React.FC<{
   cor?: string;
   peso?: number;
   style?: React.CSSProperties;
-}> = ({ children, inicio = 0, tamanho = 34, cor = COR.tintaClara, peso = 500, style }) => {
+}> = ({
+  children,
+  inicio = 0,
+  tamanho = 34,
+  cor = COR.tintaClara,
+  peso = 500,
+  style,
+}) => {
   const frame = useCurrentFrame();
   const f = frame - inicio;
   return (
@@ -141,15 +194,27 @@ export const Texto: React.FC<{
 };
 
 // Linha de assinatura verde-neon que se desenha
-export const LinhaNeon: React.FC<{ inicio?: number; largura?: number; espessura?: number; cor?: string }> = ({
-  inicio = 0,
-  largura = 240,
-  espessura = 6,
-  cor = COR.neon,
-}) => {
+export const LinhaNeon: React.FC<{
+  inicio?: number;
+  largura?: number;
+  espessura?: number;
+  cor?: string;
+}> = ({ inicio = 0, largura = 240, espessura = 6, cor = COR.neon }) => {
   const frame = useCurrentFrame();
-  const w = interpolate(frame - inicio, [0, 14], [0, largura], { ...clamp, easing: EASE.entrada });
-  return <div style={{ width: w, height: espessura, background: cor, boxShadow: `0 0 18px ${cor}` }} />;
+  const w = interpolate(frame - inicio, [0, 14], [0, largura], {
+    ...clamp,
+    easing: EASE.entrada,
+  });
+  return (
+    <div
+      style={{
+        width: w,
+        height: espessura,
+        background: cor,
+        boxShadow: `0 0 18px ${cor}`,
+      }}
+    />
+  );
 };
 
 // Número que conta até o valor final, no formato brasileiro (25.850; 3,6)
@@ -161,9 +226,20 @@ export const Contador: React.FC<{
   prefixo?: string;
   sufixo?: string;
   style?: React.CSSProperties;
-}> = ({ valor, inicio = 0, duracao = 40, casas = 0, prefixo = "", sufixo = "", style }) => {
+}> = ({
+  valor,
+  inicio = 0,
+  duracao = 40,
+  casas = 0,
+  prefixo = "",
+  sufixo = "",
+  style,
+}) => {
   const frame = useCurrentFrame();
-  const t = interpolate(frame - inicio, [0, duracao], [0, 1], { ...clamp, easing: EASE.entrada });
+  const t = interpolate(frame - inicio, [0, duracao], [0, 1], {
+    ...clamp,
+    easing: EASE.entrada,
+  });
   const v = valor * t;
   return (
     <span style={{ fontVariantNumeric: "tabular-nums", ...style }}>
@@ -175,14 +251,19 @@ export const Contador: React.FC<{
 };
 
 // Logo do Capitão. `variante` branco para fundos azuis, azul para fundo branco.
-export const Logo: React.FC<{ largura: number; variante?: "branco" | "azul"; style?: React.CSSProperties }> = ({
-  largura,
-  variante = "branco",
-  style,
-}) => (
+export const Logo: React.FC<{
+  largura: number;
+  variante?: "branco" | "azul";
+  style?: React.CSSProperties;
+}> = ({ largura, variante = "branco", style }) => (
   <Img
     src={variante === "branco" ? LOGO.branco : LOGO.azul}
-    style={{ width: largura, height: largura / LOGO.proporcao, display: "block", ...style }}
+    style={{
+      width: largura,
+      height: largura / LOGO.proporcao,
+      display: "block",
+      ...style,
+    }}
   />
 );
 
@@ -195,9 +276,14 @@ export const Cartao3D: React.FC<{
 }> = ({ inicio, children, de = "baixo", style }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - inicio, fps, config: { damping: 16, stiffness: 120, mass: 0.9 } });
+  const s = spring({
+    frame: frame - inicio,
+    fps,
+    config: { damping: 16, stiffness: 120, mass: 0.9 },
+  });
   const rotX = de === "baixo" ? (1 - s) * 70 : 0;
-  const rotY = de === "esquerda" ? (1 - s) * -70 : de === "direita" ? (1 - s) * 70 : 0;
+  const rotY =
+    de === "esquerda" ? (1 - s) * -70 : de === "direita" ? (1 - s) * 70 : 0;
   const brilho = interpolate(frame - inicio, [8, 34], [-30, 130], clamp);
   return (
     <div style={{ perspective: 1400, ...style }}>

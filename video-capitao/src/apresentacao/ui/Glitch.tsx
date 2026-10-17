@@ -8,17 +8,24 @@ import { clamp, COR } from "../marca";
 
 // Filtro SVG de glitch: fatias horizontais deslocadas (turbulência quantizada) e
 // separação RGB. `forca` vai de 0 (limpo) a 1 (máximo). `semente` muda a cada quadro.
-export const FiltroGlitch: React.FC<{ id: string; forca: number; semente: number }> = ({
-  id,
-  forca,
-  semente,
-}) => {
+export const FiltroGlitch: React.FC<{
+  id: string;
+  forca: number;
+  semente: number;
+}> = ({ id, forca, semente }) => {
   const deslocamento = 180 * forca;
   const rgb = 26 * forca;
   return (
     <svg width={0} height={0} style={{ position: "absolute" }} aria-hidden>
       <defs>
-        <filter id={id} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+        <filter
+          id={id}
+          x="-10%"
+          y="-10%"
+          width="120%"
+          height="120%"
+          colorInterpolationFilters="sRGB"
+        >
           {/* Mapa de fatias: ruído quase constante no eixo x, quantizado em degraus */}
           <feTurbulence
             type="fractalNoise"
@@ -28,7 +35,10 @@ export const FiltroGlitch: React.FC<{ id: string; forca: number; semente: number
             result="ruido"
           />
           <feComponentTransfer in="ruido" result="degraus">
-            <feFuncR type="discrete" tableValues="0.5 0.5 0.15 0.5 0.85 0.5 0.5 0.3 0.7 0.5" />
+            <feFuncR
+              type="discrete"
+              tableValues="0.5 0.5 0.15 0.5 0.85 0.5 0.5 0.3 0.7 0.5"
+            />
             <feFuncG type="discrete" tableValues="0.5" />
           </feComponentTransfer>
           <feDisplacementMap
@@ -40,10 +50,25 @@ export const FiltroGlitch: React.FC<{ id: string; forca: number; semente: number
             result="fatiado"
           />
           {/* Separação RGB */}
-          <feColorMatrix in="fatiado" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r" />
+          <feColorMatrix
+            in="fatiado"
+            type="matrix"
+            values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"
+            result="r"
+          />
           <feOffset in="r" dx={rgb} dy={0} result="r2" />
-          <feColorMatrix in="fatiado" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g" />
-          <feColorMatrix in="fatiado" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b" />
+          <feColorMatrix
+            in="fatiado"
+            type="matrix"
+            values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"
+            result="g"
+          />
+          <feColorMatrix
+            in="fatiado"
+            type="matrix"
+            values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"
+            result="b"
+          />
           <feOffset in="b" dx={-rgb} dy={0} result="b2" />
           <feBlend in="r2" in2="g" mode="screen" result="rg" />
           <feBlend in="rg" in2="b2" mode="screen" />
@@ -54,7 +79,10 @@ export const FiltroGlitch: React.FC<{ id: string; forca: number; semente: number
 };
 
 // Sobreposição de glitch: linhas de varredura, blocos de cor da marca e uma barra de rasgo
-export const RuidoGlitch: React.FC<{ forca: number; semente: number }> = ({ forca, semente }) => {
+export const RuidoGlitch: React.FC<{ forca: number; semente: number }> = ({
+  forca,
+  semente,
+}) => {
   if (forca <= 0.01) {
     return null;
   }
@@ -111,11 +139,9 @@ type GlitchProps = Record<string, never>;
 
 // Transição de glitch: a cena que sai se desfaz em fatias e RGB até o meio da transição,
 // o corte acontece no pico, e a cena que entra se recompõe. O pico cai no compasso.
-const GlitchPresentation: React.FC<TransitionPresentationComponentProps<GlitchProps>> = ({
-  children,
-  presentationDirection,
-  presentationProgress,
-}) => {
+const GlitchPresentation: React.FC<
+  TransitionPresentationComponentProps<GlitchProps>
+> = ({ children, presentationDirection, presentationProgress }) => {
   const frame = useCurrentFrame();
   const id = useId().replace(/:/g, "");
   const p = presentationProgress;
@@ -178,7 +204,9 @@ export const GlitchTexto: React.FC<{
         textShadow: forca
           ? `${10 * forca}px 0 rgba(1,237,67,0.9), ${-10 * forca}px 0 rgba(0,92,219,0.95)`
           : undefined,
-        clipPath: fatia ? `inset(${corte * 60}% 0 ${(1 - corte) * 25}% 0)` : undefined,
+        clipPath: fatia
+          ? `inset(${corte * 60}% 0 ${(1 - corte) * 25}% 0)`
+          : undefined,
         ...style,
       }}
     >

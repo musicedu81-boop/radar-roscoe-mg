@@ -34,10 +34,30 @@ const LATIN =
 const LATIN_EXT =
   "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF";
 
-loadFont({ family: FONTE_TITULO, url: staticFile("fonts/anton-latin.woff2"), weight: "400", unicodeRange: LATIN });
-loadFont({ family: FONTE_TITULO, url: staticFile("fonts/anton-latin-ext.woff2"), weight: "400", unicodeRange: LATIN_EXT });
-loadFont({ family: FONTE_TEXTO, url: staticFile("fonts/montserrat-latin.woff2"), weight: "100 900", unicodeRange: LATIN });
-loadFont({ family: FONTE_TEXTO, url: staticFile("fonts/montserrat-latin-ext.woff2"), weight: "100 900", unicodeRange: LATIN_EXT });
+loadFont({
+  family: FONTE_TITULO,
+  url: staticFile("fonts/anton-latin.woff2"),
+  weight: "400",
+  unicodeRange: LATIN,
+});
+loadFont({
+  family: FONTE_TITULO,
+  url: staticFile("fonts/anton-latin-ext.woff2"),
+  weight: "400",
+  unicodeRange: LATIN_EXT,
+});
+loadFont({
+  family: FONTE_TEXTO,
+  url: staticFile("fonts/montserrat-latin.woff2"),
+  weight: "100 900",
+  unicodeRange: LATIN,
+});
+loadFont({
+  family: FONTE_TEXTO,
+  url: staticFile("fonts/montserrat-latin-ext.woff2"),
+  weight: "100 900",
+  unicodeRange: LATIN_EXT,
+});
 
 export const LOGO = {
   // Texto branco: para fundos azuis
@@ -48,10 +68,19 @@ export const LOGO = {
   proporcao: 560 / 324,
 };
 
-// Tela 16:9 e margem de segurança
-export const LARGURA = 1920;
-export const ALTURA = 1080;
-export const MARGEM = 120;
+// Tela vertical 9:16 e margem de segurança lateral
+export const LARGURA = 1080;
+export const ALTURA = 1920;
+export const MARGEM = 80;
+
+// Faixas da tela vertical: HUD no topo, área de conteúdo, legenda da narração e HUD da base
+export const ZONA = {
+  hudTopo: 200, // o HUD do topo ocupa de 0 a 200
+  conteudoTopo: 230, // conteúdo das cenas entre conteudoTopo e conteudoBase
+  conteudoBase: 1450,
+  legendaCentro: 1590, // centro vertical da legenda da narração (faixa de 1480 a 1700)
+  hudBase: 1730, // o HUD da base ocupa de 1730 até o fim
+};
 
 // Ritmo da trilha: 120 BPM. Um tempo = 15 quadros, um compasso = 60 quadros (2 s)
 export const FPS = 30;
@@ -65,8 +94,14 @@ export const EASE = {
   suave: Easing.bezier(0.65, 0, 0.35, 1), // in-out
 };
 
-export const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+export const clamp = {
+  extrapolateLeft: "clamp",
+  extrapolateRight: "clamp",
+} as const;
 
 // Números no padrão brasileiro: 25.850 e 3,6
 export const formatarNumero = (n: number, casas = 0) =>
-  n.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas });
+  n.toLocaleString("pt-BR", {
+    minimumFractionDigits: casas,
+    maximumFractionDigits: casas,
+  });

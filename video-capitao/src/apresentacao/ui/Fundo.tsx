@@ -3,24 +3,54 @@ import { AbsoluteFill, interpolate, random, useCurrentFrame } from "remotion";
 import { clamp, COR } from "../marca";
 
 // Símbolo "+" da marca (usado em baixa opacidade nos fundos, como nos posts de saúde)
-export const SimboloMais: React.FC<{ tamanho: number; cor?: string; style?: React.CSSProperties }> = ({
-  tamanho,
-  cor = COR.branco,
-  style,
-}) => (
-  <div style={{ position: "absolute", width: tamanho, height: tamanho, ...style }}>
-    <div style={{ position: "absolute", left: 0, right: 0, top: "37%", height: "26%", background: cor }} />
-    <div style={{ position: "absolute", top: 0, bottom: 0, left: "37%", width: "26%", background: cor }} />
+export const SimboloMais: React.FC<{
+  tamanho: number;
+  cor?: string;
+  style?: React.CSSProperties;
+}> = ({ tamanho, cor = COR.branco, style }) => (
+  <div
+    style={{ position: "absolute", width: tamanho, height: tamanho, ...style }}
+  >
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: "37%",
+        height: "26%",
+        background: cor,
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: "37%",
+        width: "26%",
+        background: cor,
+      }}
+    />
   </div>
 );
 
 // Piso de grade em perspectiva que corre em direção à câmera
-const Grade: React.FC<{ cor: string; opacidade: number; velocidade: number }> = ({ cor, opacidade, velocidade }) => {
+const Grade: React.FC<{
+  cor: string;
+  opacidade: number;
+  velocidade: number;
+}> = ({ cor, opacidade, velocidade }) => {
   const frame = useCurrentFrame();
   const passo = 90;
   const desloca = (frame * velocidade) % passo;
   return (
-    <AbsoluteFill style={{ perspective: 900, perspectiveOrigin: "50% 30%", overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{
+        perspective: 900,
+        perspectiveOrigin: "50% 30%",
+        overflow: "hidden",
+      }}
+    >
       <div
         style={{
           position: "absolute",
@@ -34,8 +64,10 @@ const Grade: React.FC<{ cor: string; opacidade: number; velocidade: number }> = 
           backgroundSize: `${passo}px ${passo}px`,
           backgroundPosition: `0px ${desloca}px`,
           opacity: opacidade,
-          maskImage: "linear-gradient(180deg, transparent 0%, black 25%, black 60%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 25%, black 60%, transparent 100%)",
+          maskImage:
+            "linear-gradient(180deg, transparent 0%, black 25%, black 60%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(180deg, transparent 0%, black 25%, black 60%, transparent 100%)",
         }}
       />
     </AbsoluteFill>
@@ -43,13 +75,27 @@ const Grade: React.FC<{ cor: string; opacidade: number; velocidade: number }> = 
 };
 
 // Grão de filme leve: ruído que muda a cada quadro
-export const Grao: React.FC<{ opacidade?: number }> = ({ opacidade = 0.07 }) => {
+export const Grao: React.FC<{ opacidade?: number }> = ({
+  opacidade = 0.07,
+}) => {
   const frame = useCurrentFrame();
   return (
-    <AbsoluteFill style={{ opacity: opacidade, mixBlendMode: "overlay", pointerEvents: "none" }}>
+    <AbsoluteFill
+      style={{
+        opacity: opacidade,
+        mixBlendMode: "overlay",
+        pointerEvents: "none",
+      }}
+    >
       <svg width="100%" height="100%">
         <filter id="grao-fundo">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={frame % 30} stitchTiles="stitch" />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves={2}
+            seed={frame % 30}
+            stitchTiles="stitch"
+          />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#grao-fundo)" />
@@ -62,11 +108,11 @@ type Variante = "azul" | "noite" | "branco";
 
 // Fundo padrão das cenas: degradê azul da marca, grade em perspectiva, símbolos "+",
 // faixa de luz, vinheta e grão. `branco` é a inversão usada em slides de dados.
-export const Fundo: React.FC<{ variante?: Variante; grade?: boolean; simbolos?: boolean }> = ({
-  variante = "azul",
-  grade = true,
-  simbolos = true,
-}) => {
+export const Fundo: React.FC<{
+  variante?: Variante;
+  grade?: boolean;
+  simbolos?: boolean;
+}> = ({ variante = "azul", grade = true, simbolos = true }) => {
   const frame = useCurrentFrame();
   const branco = variante === "branco";
   const degrade =
@@ -92,7 +138,11 @@ export const Fundo: React.FC<{ variante?: Variante; grade?: boolean; simbolos?: 
             const r = (k: string) => random(`mais-${i}-${k}`);
             const tam = 60 + r("t") * 180;
             // Sobe devagar e reaparece embaixo
-            const y = ((((r("y") * 1300 - frame * (0.3 + r("v") * 0.6)) % 1300) + 1300) % 1300) - 150;
+            const y =
+              ((((r("y") * 1300 - frame * (0.3 + r("v") * 0.6)) % 1300) +
+                1300) %
+                1300) -
+              150;
             return (
               <SimboloMais
                 key={i}
