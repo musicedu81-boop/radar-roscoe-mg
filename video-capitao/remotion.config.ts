@@ -16,3 +16,6 @@ Config.setDefaultPremountInSeconds(2);
 if (process.env.REMOTION_BROWSER) {
   Config.setBrowserExecutable(process.env.REMOTION_BROWSER);
 }
+
+// WebGL por software (SwiftShader): necessário para as cenas em 3D (three.js)
+Config.setChromiumOpenGlRenderer("swangle");

@@ -13,3 +13,7 @@ scripts/out
 
 # Cache do Python
 __pycache__/
+
+# Entradas de prévia dos construtores de cena
+src/apresentacao/cenas/_entrada-*.tsx
+public/apresentacao/trilha.wav
