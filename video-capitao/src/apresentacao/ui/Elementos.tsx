@@ -117,9 +117,15 @@ export const Titulo: React.FC<{
         });
         const partes = linha.split("*");
         return (
+          // A máscara tem folga no alto para não cortar acentos de maiúsculas (Ê, É, Ã)
           <div
             key={i}
-            style={{ overflow: "hidden", paddingBottom: tamanho * 0.04 }}
+            style={{
+              overflow: "hidden",
+              paddingTop: tamanho * 0.18,
+              marginTop: -tamanho * 0.18,
+              paddingBottom: tamanho * 0.04,
+            }}
           >
             <div
               style={{
@@ -129,7 +135,7 @@ export const Titulo: React.FC<{
                 textTransform: "uppercase",
                 letterSpacing: "0.01em",
                 color: cor,
-                translate: `0px ${sobe}%`,
+                translate: `0px ${sobe * 1.2}%`,
               }}
             >
               {partes.map((p, k) =>

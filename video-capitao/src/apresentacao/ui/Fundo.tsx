@@ -1,5 +1,12 @@
 import React from "react";
-import { AbsoluteFill, interpolate, random, useCurrentFrame } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  interpolate,
+  random,
+  staticFile,
+  useCurrentFrame,
+} from "remotion";
 import { clamp, COR } from "../marca";
 
 // Símbolo "+" da marca (usado em baixa opacidade nos fundos, como nos posts de saúde)
@@ -74,32 +81,43 @@ const Grade: React.FC<{
   );
 };
 
-// Grão de filme leve: ruído que muda a cada quadro
+// Grão de filme leve: textura de ruído pré-calculada (public/apresentacao/grao.png),
+// ladrilhada e deslocada para uma posição aleatória a cada quadro. Bem mais barata que
+// feTurbulence ao vivo. <Img> garante que a textura carregou antes da captura.
+const LADRILHO = 512;
 export const Grao: React.FC<{ opacidade?: number }> = ({
   opacidade = 0.07,
 }) => {
   const frame = useCurrentFrame();
+  const x = Math.floor(random(`grao-x-${frame}`) * LADRILHO);
+  const y = Math.floor(random(`grao-y-${frame}`) * LADRILHO);
   return (
     <AbsoluteFill
       style={{
         opacity: opacidade,
         mixBlendMode: "overlay",
         pointerEvents: "none",
+        overflow: "hidden",
       }}
     >
-      <svg width="100%" height="100%">
-        <filter id="grao-fundo">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.9"
-            numOctaves={2}
-            seed={frame % 30}
-            stitchTiles="stitch"
+      <div
+        style={{
+          position: "absolute",
+          left: -x,
+          top: -y,
+          width: LADRILHO * 3,
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {Array.from({ length: 15 }, (_, i) => (
+          <Img
+            key={i}
+            src={staticFile("apresentacao/grao.png")}
+            style={{ width: LADRILHO, height: LADRILHO, display: "block" }}
           />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#grao-fundo)" />
-      </svg>
+        ))}
+      </div>
     </AbsoluteFill>
   );
 };
