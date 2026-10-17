@@ -1,10 +1,7 @@
 {
   "voz": {
-    "motor": "gemini",
-    "modelo": "gemini-2.5-pro-preview-tts",
-    "vozGemini": "Puck",
-    "nome": "Puck (Gemini TTS, pt-BR)",
-    "direcao": "# PERFIL DE ÁUDIO\nLocutor comercial brasileiro, voz masculina adulta, timbre quente e encorpado, confiante e simpático.\n\n## CENA\nLocução de um vídeo premium que apresenta o planejamento estratégico das redes de um prefeito.\n\n## NOTAS DE DIREÇÃO\nEstilo: comercial de TV de alto padrão, energia alta e sorriso na voz, sem exagero.\nRitmo: ágil e envolvente, pausas curtas entre as frases, ênfase nos números e nas palavras-chave.\nSotaque: português do Brasil neutro, dicção clara.\nPronúncia: \"Timótêo\" com o e fechado e pronunciado, ti-MÓ-tê-o, nunca \"Timótio\". \"Kést\" com é aberto.\nLeia exatamente a transcrição, sem acrescentar nem omitir palavras."
+    "motor": "kokoro", "modelo": "kokoro-multi-lang-v1_0", "falante": 43, "nome": "Alex (pt-BR)",
+    "velocidade": 1.15, "pausaVirgula": 0.22, "pausaPonto": 0.34, "tratamento": "locutor"
   },
   "cenas": [
     {
