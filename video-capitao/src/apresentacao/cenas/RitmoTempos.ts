@@ -19,7 +19,7 @@ export const T = {
   anel: p("76%") - 6,
   anelTexto: p("ganho") - 6,
   pico: p("14/09") - 6,
-  picoTotal: 285, // não é falado: tempo musical depois da frase
+  picoTotal: frasesDaCena(INDICE_RITMO)[1].fim + 6, // não é falado: logo depois da frase
   slot32: p("32") - 6, // "Para chegar a 32 mil"
   dispara: p("seriam") - 6, // "seriam 81 por dia": a barra dispara
   naoFecha: p("não") - 6, // "Essa meta não fecha"
@@ -30,7 +30,8 @@ export const T = {
 
 // Datas do pico: vêm da própria fala (narracao.json), para a tela dizer exatamente o que a
 // locutora diz. Pedido feito para entrarem em dados.ts (RITMO.pico).
-const datasDoPico = frasesDaCena(INDICE_RITMO)[1].legenda.match(/\d{2}\/\d{2}/g);
+const datasDoPico =
+  frasesDaCena(INDICE_RITMO)[1].legenda.match(/\d{2}\/\d{2}/g);
 if (!datasDoPico || datasDoPico.length < 2) {
   throw new Error("Datas do pico não encontradas na narração da cena ritmo");
 }

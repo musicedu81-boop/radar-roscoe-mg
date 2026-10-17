@@ -32,13 +32,15 @@ const M = {
     meta: p("27") - 12,
     chipMeta: p("27") - 2,
     dataMeta: p("31/12") - 4,
-    // O desafio não é falado: entra nos tempos musicais depois do 31/12
-    desafio: 210,
-    chipDesafio: 225,
+    // O desafio não é falado: entra logo depois do 31/12, antes dos indicadores
+    desafio: p("31/12") + 12,
+    chipDesafio: p("31/12") + 26,
   },
-  encolhe: p("indicadores") - 12,
-  etiqueta: p("indicadores") - 4,
-  vagas: p("indicadores") + 14,
+  // O painel encolhe na virada para os indicadores; a etiqueta e as vagas só entram depois
+  // que ele terminou de subir, para não cobrir o gráfico
+  encolhe: p("indicadores") - 20,
+  etiqueta: p("indicadores") + 10,
+  vagas: p("indicadores") + 16,
   kpis: [
     p("views") - 6,
     p("seguidores", 1) - 6,

@@ -38,18 +38,18 @@ Cada construtor de cena edita **somente** o seu arquivo em `cenas/` e pode criar
 
 | # | Cena | id | Compassos | Quadros | Início global | Trilha | Frases da narração (f) |
 |---|---|---|---|---|---|---|---|
-| 1 | Abertura | abertura | 7 | 420 | 0 | intro, último compasso sobe | 78 Planejamento estratégico do Capitão Vítor Prado · 179 De 26/10 a 31/12 · 280 Gestão que entrega, prefeito que aparece |
-| 2 | Ponto de partida | numeros | 9 | 540 | 420 | alta (impacto no corte) | 10 O perfil começa com 25.850 seguidores · 150 meta realista 27 mil · 264 desafio 28 mil · 336 mediana de views por Reel de 3,6 mil para 5 mil |
-| 3 | Diagnóstico | ritmo | 10 | 600 | 960 | média | 10 ganha cerca de 6 por dia · 115 76% do ganho num único pico, 14/09 a 05/10 · 292 32 mil seriam 81 por dia, não fecha · 455 meta realista pede 15 por dia |
-| 4 | O que funcionou | reels | 7 | 420 | 1560 | alta | 10 O que funcionou no último mês? · 81 Reel do temporal chegou a 105 mil views · 229 utilidade, orgulho e gente de verdade |
-| 5 | Três pilares | pilares | 7 | 420 | 1980 | média | 10 os três pilares · 87 Utilidade... Orgulho... Cuidado... · 264 o gesto vem antes do discurso |
-| 6 | Estratégia central | estrategia | 5 | 300 | 2400 | pausa, último compasso sobe | 10 quadros fixos · 97 uma função e um dia · 166 o algoritmo reconhece série |
-| 7 | Grade semanal | semana | 14 | 840 | 2700 | alta (impacto no corte) | 10 Segunda · 138 Terça · 251 Quarta · 386 Quinta · 493 Sexta · 604 Sábado · 677 Domingo |
-| 8 | Janela de publicação | janela | 7 | 420 | 3540 | média | 10 às 10h, segunda a sexta · 144 segundo pico às 18h · 267 fim de semana cai para cerca da metade |
-| 9 | Calendário | calendario | 9 | 540 | 3960 | alta | 10 10 semanas · 107 eixos se revezam · 242 Os Números em 04/11 e 02/12 · 383 Balanço 2026 |
-| 10 | Metas e KPIs | metas | 8 | 480 | 4500 | alta | 10 26.400 em 30/11 · 154 27 mil em 31/12 · 243 os indicadores |
-| 11 | Contingência | crise | 9 | 540 | 4980 | média, último compasso sobe | 10 protocolo pronto · 109 comunicado em até 2 horas · 224 utilidade, horário fixo, 72 horas · 397 regra de ouro |
-| 12 | Encerramento | encerramento | 4 | 240 | 5520 | final: impacto e acorde | 27 O plano entra no ar em 26/10 · 124 Capitão Vítor, o prefeito do povo |
+| 1 | Abertura | abertura | 7 | 420 | 0 | intro, último compasso sobe | 78 Planejamento estratégico do Capitão Vítor Prado · 171 De 26/10 a 31/12 · 266 Gestão que entrega, prefeito que aparece |
+| 2 | Ponto de partida | numeros | 9 | 540 | 420 | alta (impacto no corte) | 10 O perfil começa com 25.850 seguidores · 142 meta realista 27 mil · 244 desafio 28 mil · 309 mediana de views por Reel de 3,6 mil para 5 mil |
+| 3 | Diagnóstico | ritmo | 10 | 600 | 960 | média | 10 ganha cerca de 6 por dia · 109 76% do ganho num único pico, 14/09 a 05/10 · 281 32 mil seriam 81 por dia, não fecha · 433 meta realista pede 15 por dia |
+| 4 | O que funcionou | reels | 7 | 420 | 1560 | alta | 10 O que funcionou no último mês? · 75 Reel do temporal chegou a 105 mil views · 212 utilidade, orgulho e gente de verdade |
+| 5 | Três pilares | pilares | 7 | 420 | 1980 | média | 10 os três pilares · 80 Utilidade... Orgulho... Cuidado... · 246 o gesto vem antes do discurso |
+| 6 | Estratégia central | estrategia | 5 | 300 | 2400 | pausa, último compasso sobe | 10 quadros fixos · 88 uma função e um dia · 151 o algoritmo reconhece série |
+| 7 | Grade semanal | semana | 14 | 840 | 2700 | alta (impacto no corte) | 10 Segunda · 135 Terça · 238 Quarta · 364 Quinta · 462 Sexta · 562 Sábado · 626 Domingo |
+| 8 | Janela de publicação | janela | 7 | 420 | 3540 | média | 10 às 10h, segunda a sexta · 138 segundo pico às 18h · 253 fim de semana cai para cerca da metade |
+| 9 | Calendário | calendario | 9 | 540 | 3960 | alta | 10 10 semanas · 99 eixos se revezam · 220 Os Números em 04/11 e 02/12 · 353 Balanço 2026 |
+| 10 | Metas e KPIs | metas | 8 | 480 | 4500 | alta | 10 26.400 em 30/11 · 145 27 mil em 31/12 · 226 os indicadores |
+| 11 | Contingência | crise | 9 | 540 | 4980 | média, último compasso sobe | 10 protocolo pronto · 100 comunicado em até 2 horas · 204 utilidade, horário fixo, 72 horas · 365 regra de ouro |
+| 12 | Encerramento | encerramento | 4 | 240 | 5520 | final: impacto e acorde | 27 O plano entra no ar em 26/10 · 116 Capitão Vítor, o prefeito do povo |
 
 Quadro global de um momento: `global = inicioDaCena(i) + f` (coluna "Início global" + f).
 

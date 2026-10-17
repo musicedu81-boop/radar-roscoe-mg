@@ -18,6 +18,7 @@ import json
 import math
 import os
 import re
+import subprocess
 import sys
 
 import numpy as np
@@ -77,6 +78,22 @@ def aparar(x, sr):
     a = max(0, voz[0] * j - int(0.03 * sr))
     b = min(len(x), (voz[-1] + 1) * j + int(0.06 * sr))
     return x[a:b]
+
+
+def locutor(x, sr):
+    """Tratamento de locutor: corta graves, dá presença e brilho e comprime de leve.
+    Filtros IIR e compressor sem antecipação: não atrasam a voz (a legenda segue em sincronia)."""
+    cadeia = (
+        "highpass=f=90,equalizer=f=3200:t=q:w=1.0:g=3,treble=g=2:f=9000,"
+        "acompressor=threshold=-20dB:ratio=3:attack=5:release=90"
+    )
+    r = subprocess.run(
+        ["ffmpeg", "-v", "error", "-f", "f32le", "-ar", str(sr), "-ac", "1", "-i", "-",
+         "-af", cadeia, "-f", "f32le", "-"],
+        input=x.astype(np.float32).tobytes(), capture_output=True, check=True,
+    )
+    y = np.frombuffer(r.stdout, dtype=np.float32)
+    return y[: len(x)] if len(y) >= len(x) else np.pad(y, (0, len(x) - len(y)))
 
 
 def nivelar(x):
@@ -146,7 +163,10 @@ def main(dir_tts, dir_asr):
         for k, fr in enumerate(cena["frases"]):
             g = tts.generate(fr["fala"], sid=voz["falante"], speed=voz["velocidade"])
             sr = g.sample_rate
-            x = nivelar(aparar(np.array(g.samples, dtype=np.float32), sr))
+            x = aparar(np.array(g.samples, dtype=np.float32), sr)
+            if voz.get("tratamento") == "locutor":
+                x = locutor(x, sr)
+            x = nivelar(x)
             dur = len(x) / sr
             # Tempos das palavras: transcreve a própria voz em 16 kHz
             x16 = signal.resample_poly(x, 2, 3).astype(np.float32) if sr == 24000 else x
@@ -168,7 +188,8 @@ def main(dir_tts, dir_asr):
             pedacos.append((t, x))
             t += dur
             if k < len(cena["frases"]) - 1:
-                t += PAUSA_PONTO if fr["fala"].rstrip()[-1] in ".?:!" else PAUSA_VIRGULA
+                ponto = fr["fala"].rstrip()[-1] in ".?:!"
+                t += voz.get("pausaPonto", PAUSA_PONTO) if ponto else voz.get("pausaVirgula", PAUSA_VIRGULA)
 
         compassos = max(cena["minCompassos"], math.ceil((t + CAUDA_MIN) / COMPASSO_S))
         audio = np.zeros(int(t * sr) + int(0.2 * sr), dtype=np.float32)
