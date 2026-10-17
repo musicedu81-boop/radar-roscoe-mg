@@ -43,8 +43,9 @@ if [ ! -s out/partes/audio.wav ]; then
   mv out/partes/audio.tmp.wav out/partes/audio.wav
 fi
 
-# Ganho para -14,5 LUFS integrado e limitador em -1,5 dB com compensação de atraso
-# (latency=1: a voz não sai de sincronia com a legenda)
+# Ganho para -14,5 LUFS integrado e limitador com compensação de atraso (latency=1: a voz não
+# sai de sincronia com a legenda). O limitador trabalha em 4x a taxa de amostragem para segurar
+# também os picos entre amostras (sibilantes da voz com brilho): pico real fica abaixo de -1 dBFS.
 I=$(ffmpeg -hide_banner -nostats -i out/partes/audio.wav -af ebur128 -f null - 2>&1 |
   awk '/Integrated loudness:/{getline; print $2}' | tail -1)
 GANHO=$(python3 -c "print(round(-14.5 - ($I), 2))")
@@ -53,6 +54,6 @@ echo "Loudness bruto: $I LUFS, ganho: $GANHO dB"
 ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i out/partes/lista.txt \
   -i out/partes/audio.wav -map 0:v -map 1:a \
   -c:v libx264 -preset "$PRESET" -crf 19 -profile:v high -pix_fmt yuv420p \
-  -af "volume=${GANHO}dB,alimiter=limit=0.84:attack=5:release=50:level=false:latency=1" \
+  -af "volume=${GANHO}dB,aresample=192000,alimiter=limit=0.80:attack=5:release=50:level=false:latency=1,aresample=48000" \
   -c:a aac -b:a 192k -ar 48000 -shortest -movflags +faststart "$OUT"
 echo "Pronto: $OUT"
