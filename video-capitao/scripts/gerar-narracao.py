@@ -6,12 +6,19 @@ Saídas:
   src/apresentacao/narracao.json             compassos por cena, tempos das frases e legendas
                                              palavra por palavra (formato Caption do Remotion)
 
-Voz: Kokoro multi-lang v1.0 (sherpa-onnx), falante pt-BR. Os tempos das palavras saem da
-transcrição da própria voz com o Parakeet, alinhada ao texto da legenda.
+Voz ("motor" em voz, no roteiro):
+  gemini  Gemini TTS da API do Google AI Studio, uma chamada por cena (fala corrida, com direção
+          de locução comercial). Chave em GEMINI_API_KEY (ou GOOGLE_API_KEY).
+  kokoro  Kokoro multi-lang v1.0 (sherpa-onnx) local, frase por frase.
+Os tempos das palavras saem da transcrição da própria voz com o Parakeet, alinhada ao texto da
+legenda. A "fala" pode trazer grafia de pronúncia (ex.: "Timótêo", "Kést"); a legenda mostra a
+grafia certa.
 
 Uso: python3 scripts/gerar-narracao.py <dir_modelos_tts> <dir_modelos_asr>
+     (com o motor gemini, <dir_modelos_tts> não é usado: passe -)
 """
 
+import base64
 import difflib
 import importlib.util
 import json
@@ -20,6 +27,9 @@ import os
 import re
 import subprocess
 import sys
+import time
+import urllib.error
+import urllib.request
 
 import numpy as np
 import sherpa_onnx
@@ -67,6 +77,44 @@ def carregar_tts(d, voz):
     )
     return sherpa_onnx.OfflineTts(cfg)
 
+
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent"
+
+
+def falar_gemini(texto, voz):
+    """Sintetiza `texto` com o Gemini TTS. Devolve (amostras float32 mono, taxa)."""
+    chave = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    cabecalhos = {"Content-Type": "application/json"}
+    if chave:
+        cabecalhos["x-goog-api-key"] = chave
+    corpo = {
+        "contents": [{"parts": [{"text": f"{voz['direcao']}\n\n## TRANSCRIÇÃO\n{texto}"}]}],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voz["vozGemini"]}}},
+        },
+    }
+    pedido = urllib.request.Request(
+        GEMINI_URL.format(modelo=voz["modelo"]),
+        data=json.dumps(corpo).encode("utf-8"),
+        headers=cabecalhos,
+    )
+    for tentativa in range(8):
+        try:
+            with urllib.request.urlopen(pedido, timeout=300) as r:
+                dados = json.load(r)
+            break
+        except urllib.error.HTTPError as e:
+            erro = e.read().decode("utf-8", "replace")
+            if e.code in (429, 500, 502, 503, 504) and tentativa < 7:
+                espera = re.search(r'"retryDelay":\s*"(\d+)s"', erro)
+                time.sleep(int(espera.group(1)) + 1 if espera else 5 * 2**tentativa)
+                continue
+            sys.exit(f"Gemini TTS respondeu {e.code}: {erro[:400]}")
+    parte = dados["candidates"][0]["content"]["parts"][0]["inlineData"]
+    taxa = re.search(r"rate=(\d+)", parte.get("mimeType", ""))
+    pcm = np.frombuffer(base64.b64decode(parte["data"]), dtype="<i2")
+    return pcm.astype(np.float32) / 32768.0, int(taxa.group(1)) if taxa else 24000
 
 def aparar(x, sr):
     """Tira o silêncio do começo e do fim (janelas de 10 ms abaixo de -42 dBFS)."""
@@ -142,14 +190,39 @@ def alinhar(legenda, palavras_asr, ini_s, fim_s):
     return list(zip(alvo, tempos))
 
 
+def preparar(x, sr, voz):
+    x = aparar(x, sr)
+    if voz.get("tratamento") == "locutor":
+        x = locutor(x, sr)
+    return nivelar(x)
+
+
+def legenda(palavra, a, b):
+    """Uma palavra no formato Caption do Remotion (a e b em segundos, a partir do corte)."""
+    return {
+        "text": " " + palavra,
+        "startMs": round(a * 1000),
+        "endMs": round(b * 1000),
+        "timestampMs": round((a + b) / 2 * 1000),
+        "confidence": None,
+    }
+
+
 def main(dir_tts, dir_asr):
     roteiro = json.load(open("src/apresentacao/narracao-roteiro.json", encoding="utf-8"))
     voz = roteiro["voz"]
-    tts = carregar_tts(dir_tts, voz)
+    gemini = voz.get("motor") == "gemini"
+    tts = None if gemini else carregar_tts(dir_tts, voz)
     spec = importlib.util.spec_from_file_location("transcrever", "scripts/transcrever.py")
     tr = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(tr)
     parakeet, _ = tr.load_models(dir_asr)
+
+    def ouvir(x, sr, dur):
+        """Palavras reconhecidas na própria voz (Parakeet em 16 kHz), com início e fim."""
+        x16 = signal.resample_poly(x, 2, 3).astype(np.float32) if sr == 24000 else x
+        res = tr.decode(parakeet, x16)
+        return tr.words_from_tokens(res.tokens, res.timestamps, 0.0, dur)
 
     os.makedirs("public/apresentacao/narracao", exist_ok=True)
     saida = {"voz": voz["nome"], "fps": FPS, "cenas": []}
@@ -160,36 +233,42 @@ def main(dir_tts, dir_asr):
         pedacos, frases, legendas = [], [], []
         t = entrada
         sr = None
-        for k, fr in enumerate(cena["frases"]):
-            g = tts.generate(fr["fala"], sid=voz["falante"], speed=voz["velocidade"])
-            sr = g.sample_rate
-            x = aparar(np.array(g.samples, dtype=np.float32), sr)
-            if voz.get("tratamento") == "locutor":
-                x = locutor(x, sr)
-            x = nivelar(x)
+        if gemini:
+            # A cena inteira numa chamada: a fala corre como num comercial, e o início e o fim de
+            # cada frase saem dos tempos das palavras
+            x, sr = falar_gemini(" ".join(fr["fala"] for fr in cena["frases"]), voz)
+            x = preparar(x, sr, voz)
             dur = len(x) / sr
-            # Tempos das palavras: transcreve a própria voz em 16 kHz
-            x16 = signal.resample_poly(x, 2, 3).astype(np.float32) if sr == 24000 else x
-            res = tr.decode(parakeet, x16)
-            palavras = tr.words_from_tokens(res.tokens, res.timestamps, 0.0, dur)
-            for palavra, (a, b) in alinhar(fr["legenda"], palavras, 0.0, dur):
-                legendas.append({
-                    "text": " " + palavra,
-                    "startMs": round((t + a) * 1000),
-                    "endMs": round((t + b) * 1000),
-                    "timestampMs": round((t + (a + b) / 2) * 1000),
-                    "confidence": None,
+            alinhadas = alinhar(" ".join(fr["legenda"] for fr in cena["frases"]), ouvir(x, sr, dur), 0.0, dur)
+            for fr in cena["frases"]:
+                n = len(fr["legenda"].split())
+                trecho, alinhadas = alinhadas[:n], alinhadas[n:]
+                legendas += [legenda(palavra, t + a, t + b) for palavra, (a, b) in trecho]
+                frases.append({
+                    "legenda": fr["legenda"],
+                    "inicio": round((t + trecho[0][1][0]) * FPS),
+                    "fim": round((t + trecho[-1][1][1]) * FPS),
                 })
-            frases.append({
-                "legenda": fr["legenda"],
-                "inicio": round(t * FPS),
-                "fim": round((t + dur) * FPS),
-            })
             pedacos.append((t, x))
             t += dur
-            if k < len(cena["frases"]) - 1:
-                ponto = fr["fala"].rstrip()[-1] in ".?:!"
-                t += voz.get("pausaPonto", PAUSA_PONTO) if ponto else voz.get("pausaVirgula", PAUSA_VIRGULA)
+        else:
+            for k, fr in enumerate(cena["frases"]):
+                g = tts.generate(fr["fala"], sid=voz["falante"], speed=voz["velocidade"])
+                sr = g.sample_rate
+                x = preparar(np.array(g.samples, dtype=np.float32), sr, voz)
+                dur = len(x) / sr
+                for palavra, (a, b) in alinhar(fr["legenda"], ouvir(x, sr, dur), 0.0, dur):
+                    legendas.append(legenda(palavra, t + a, t + b))
+                frases.append({
+                    "legenda": fr["legenda"],
+                    "inicio": round(t * FPS),
+                    "fim": round((t + dur) * FPS),
+                })
+                pedacos.append((t, x))
+                t += dur
+                if k < len(cena["frases"]) - 1:
+                    ponto = fr["fala"].rstrip()[-1] in ".?:!"
+                    t += voz.get("pausaPonto", PAUSA_PONTO) if ponto else voz.get("pausaVirgula", PAUSA_VIRGULA)
 
         compassos = max(cena["minCompassos"], math.ceil((t + CAUDA_MIN) / COMPASSO_S))
         audio = np.zeros(int(t * sr) + int(0.2 * sr), dtype=np.float32)

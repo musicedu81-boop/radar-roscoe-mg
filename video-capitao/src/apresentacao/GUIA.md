@@ -184,8 +184,15 @@ Estratégico 2026". Últimos 30 quadros: escurece para preto.
 
 ## Regenerar narração e trilha
 
-1. Edite `narracao-roteiro.json` (fala por extenso para a voz, legenda com algarismos).
-2. `python3 scripts/gerar-narracao.py <modelos_tts>/kokoro-multi-lang-v1_0 <modelos_asr>`
+1. Edite `narracao-roteiro.json` (fala por extenso para a voz, legenda com algarismos). A fala
+   pode levar grafia de pronúncia: "Timótêo" (e fechado, nunca "Timótio") e "Kést" (Cast).
+2. Voz Gemini (padrão, locução comercial): chave da API do Google AI Studio em `GEMINI_API_KEY`.
+   Escolha o locutor com `python3 scripts/amostras-voz-gemini.py Puck Fenrir Orus Sadachbia`
+   (amostras em `out/amostras-voz/`), ponha o nome em `voz.vozGemini` e rode
+   `python3 scripts/gerar-narracao.py - <modelos_asr>`.
+   Voz Kokoro (local, sem chave): `"motor": "kokoro"` em `voz` e
+   `python3 scripts/gerar-narracao.py <modelos_tts>/kokoro-multi-lang-v1_0 <modelos_asr>`
    (Kokoro baixado de github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models).
+   O `minCompassos` de cada cena trava a duração: a voz nova não mexe no visual.
 3. `python3 scripts/gerar-trilha-motion.py "<mapaTrilha do narracao.json>" public/apresentacao/trilha.wav`
    e `python3 scripts/gerar-sfx-motion.py`.

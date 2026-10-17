@@ -1,7 +1,10 @@
 {
   "voz": {
-    "modelo": "kokoro-multi-lang-v1_0", "falante": 43, "nome": "Alex (pt-BR)", "velocidade": 1.15,
-    "pausaVirgula": 0.22, "pausaPonto": 0.34, "tratamento": "locutor"
+    "motor": "gemini",
+    "modelo": "gemini-2.5-pro-preview-tts",
+    "vozGemini": "Puck",
+    "nome": "Puck (Gemini TTS, pt-BR)",
+    "direcao": "# PERFIL DE ÁUDIO\nLocutor comercial brasileiro, voz masculina adulta, timbre quente e encorpado, confiante e simpático.\n\n## CENA\nLocução de um vídeo premium que apresenta o planejamento estratégico das redes de um prefeito.\n\n## NOTAS DE DIREÇÃO\nEstilo: comercial de TV de alto padrão, energia alta e sorriso na voz, sem exagero.\nRitmo: ágil e envolvente, pausas curtas entre as frases, ênfase nos números e nas palavras-chave.\nSotaque: português do Brasil neutro, dicção clara.\nPronúncia: \"Timótêo\" com o e fechado e pronunciado, ti-MÓ-tê-o, nunca \"Timótio\". \"Kést\" com é aberto.\nLeia exatamente a transcrição, sem acrescentar nem omitir palavras."
   },
   "cenas": [
     {
@@ -48,7 +51,7 @@
       "minCompassos": 7,
       "frases": [
         { "fala": "Daí saem os três pilares do plano.", "legenda": "Daí saem os três pilares do plano." },
-        { "fala": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente.", "legenda": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente." },
+        { "fala": "Utilidade no momento crítico. Orgulho de Timótêo. Cuidado com gente.", "legenda": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente." },
         { "fala": "O gesto vem antes do discurso, e o morador é o protagonista.", "legenda": "O gesto vem antes do discurso, e o morador é o protagonista." }
       ]
     },
@@ -67,7 +70,7 @@
       "frases": [
         { "fala": "Segunda, Radar do Capitão: o que todas as secretarias estão fazendo.", "legenda": "Segunda, Radar do Capitão: o que todas as secretarias estão fazendo." },
         { "fala": "Terça, A Saúde Tem Nome: um paciente, uma UBS, um nome.", "legenda": "Terça, A Saúde Tem Nome: um paciente, uma UBS, um nome." },
-        { "fala": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena.", "legenda": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena." },
+        { "fala": "Quarta, Prefeito Kést ou Prefeito no Bairro, alternando a cada quinzena.", "legenda": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena." },
         { "fala": "Quinta, Vale a Pena Ver de Novo, o TBT das obras.", "legenda": "Quinta, Vale a Pena Ver de Novo, o TBT das obras." },
         { "fala": "Sexta, E o Povo Aprova, com os comentários dos moradores.", "legenda": "Sexta, E o Povo Aprova, com os comentários dos moradores." },
         { "fala": "Sábado é lo-fi: o Capitão pessoa.", "legenda": "Sábado é lo-fi: o Capitão pessoa." },

@@ -145,12 +145,16 @@ vertical 1080x1920, 192 s, narrada em português, com trilha, efeitos, gráficos
 
 1. **Dados:** extraia tudo do documento ou artefato para `dados.ts`.
 2. **Roteiro:** uma fala por cena em `narracao-roteiro.json`. Frases curtas, português do Brasil.
-3. **Narração:** `python3 scripts/gerar-narracao.py <kokoro-multi-lang-v1_0> <modelos>`. Voz
-   padrão (aprovada): Kokoro pt-br 43 (Alex), velocidade 1,15, pausas curtas e tratamento de
-   locutor, tudo em `voz` no `narracao-roteiro.json`. 42 (Dora) é a alternativa feminina. O
-   Parakeet alinha cada palavra. Saem os wavs, o `narracao.json` (compassos de cada cena e tempo
-   de cada palavra) e o mapa da trilha. Para trocar só a voz sem mexer no visual, trave o
-   `minCompassos` de cada cena nos compassos atuais.
+3. **Narração:** voz padrão é o **Gemini TTS** da API do Google AI Studio do usuário, com
+   direção de locução comercial (`voz` no `narracao-roteiro.json`). A chave fica no ambiente
+   em `GEMINI_API_KEY`, nunca no chat; sem ela, peça para adicionar nas configurações do ambiente.
+   Primeiro mande amostras para o usuário escolher o locutor
+   (`python3 scripts/amostras-voz-gemini.py Puck Fenrir Orus Sadachbia`), depois
+   `python3 scripts/gerar-narracao.py - <modelos>`. Pronúncias na fala: "Timótêo" (e fechado,
+   nunca "Timótio") e "Kést" para Cast; a legenda mantém a grafia certa. Alternativa local sem
+   chave: Kokoro (`"motor": "kokoro"`, falante 43 Alex ou 42 Dora). O Parakeet alinha cada
+   palavra. Saem os wavs, o `narracao.json` (compassos e tempo de cada palavra) e o mapa da
+   trilha. Para trocar só a voz sem mexer no visual, trave o `minCompassos` de cada cena.
 4. **Trilha e efeitos:** `scripts/gerar-trilha-motion.py <mapa> public/apresentacao/trilha.wav` e
    `scripts/gerar-sfx-motion.py`. 120 BPM: todo corte cai na cabeça de um compasso.
 5. **Cenas:** cada elemento entra quando a locutora fala dele (`momentoDaPalavra`). Construa cada
