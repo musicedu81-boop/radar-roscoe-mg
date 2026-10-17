@@ -78,7 +78,15 @@ def carregar_tts(d, voz):
     return sherpa_onnx.OfflineTts(cfg)
 
 
-GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent"
+GEMINI_API = "https://generativelanguage.googleapis.com/v1beta/models"
+
+
+def modelos_tts(cabecalhos):
+    """Modelos de TTS que a chave enxerga, do pro para o flash (o nome do modelo muda com o tempo)."""
+    pedido = urllib.request.Request(f"{GEMINI_API}?pageSize=1000", headers=cabecalhos)
+    with urllib.request.urlopen(pedido, timeout=60) as r:
+        nomes = [m["name"].split("/")[-1] for m in json.load(r).get("models", []) if "tts" in m["name"]]
+    return sorted(nomes, key=lambda n: ("pro" not in n, "preview" in n, n))
 
 
 def falar_gemini(texto, voz):
@@ -94,18 +102,26 @@ def falar_gemini(texto, voz):
             "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voz["vozGemini"]}}},
         },
     }
-    pedido = urllib.request.Request(
-        GEMINI_URL.format(modelo=voz["modelo"]),
-        data=json.dumps(corpo).encode("utf-8"),
-        headers=cabecalhos,
-    )
     for tentativa in range(8):
+        pedido = urllib.request.Request(
+            f"{GEMINI_API}/{voz['modelo']}:generateContent",
+            data=json.dumps(corpo).encode("utf-8"),
+            headers=cabecalhos,
+        )
         try:
             with urllib.request.urlopen(pedido, timeout=300) as r:
                 dados = json.load(r)
             break
         except urllib.error.HTTPError as e:
             erro = e.read().decode("utf-8", "replace")
+            if e.code == 404 and tentativa < 7:
+                # Modelo do roteiro saiu de linha: usa o melhor modelo de TTS disponível
+                disponiveis = modelos_tts(cabecalhos)
+                if not disponiveis:
+                    sys.exit("Nenhum modelo de TTS disponível para esta chave do Gemini.")
+                print(f"Modelo {voz['modelo']} indisponível; usando {disponiveis[0]}")
+                voz["modelo"] = disponiveis[0]
+                continue
             if e.code in (429, 500, 502, 503, 504) and tentativa < 7:
                 espera = re.search(r'"retryDelay":\s*"(\d+)s"', erro)
                 time.sleep(int(espera.group(1)) + 1 if espera else 5 * 2**tentativa)

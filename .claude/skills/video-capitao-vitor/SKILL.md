@@ -148,9 +148,10 @@ vertical 1080x1920, 192 s, narrada em português, com trilha, efeitos, gráficos
 3. **Narração:** voz padrão é o **Gemini TTS** da API do Google AI Studio do usuário, com
    direção de locução comercial (`voz` no `narracao-roteiro.json`). A chave fica no ambiente
    em `GEMINI_API_KEY`, nunca no chat; sem ela, peça para adicionar nas configurações do ambiente.
-   Primeiro mande amostras para o usuário escolher o locutor
-   (`python3 scripts/amostras-voz-gemini.py Puck Fenrir Orus Sadachbia`), depois
-   `python3 scripts/gerar-narracao.py - <modelos>`. Pronúncias na fala: "Timótêo" (e fechado,
+   Locutor escolhido: **Puck** (masculino, animado, comercial); o usuário delegou a escolha,
+   então gere direto com `python3 scripts/gerar-narracao.py - <modelos>`. Para outro locutor,
+   mande amostras (`python3 scripts/amostras-voz-gemini.py Puck Fenrir Orus Sadachbia`) e troque
+   `voz.vozGemini`. Pronúncias na fala: "Timótêo" (e fechado,
    nunca "Timótio") e "Kést" para Cast; a legenda mantém a grafia certa. Alternativa local sem
    chave: Kokoro (`"motor": "kokoro"`, falante 43 Alex ou 42 Dora). O Parakeet alinha cada
    palavra. Saem os wavs, o `narracao.json` (compassos e tempo de cada palavra) e o mapa da
