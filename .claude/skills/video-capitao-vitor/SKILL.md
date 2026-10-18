@@ -145,15 +145,18 @@ vertical 1080x1920, 192 s, narrada em português, com trilha, efeitos, gráficos
 
 1. **Dados:** extraia tudo do documento ou artefato para `dados.ts`.
 2. **Roteiro:** uma fala por cena em `narracao-roteiro.json`. Frases curtas, português do Brasil.
-3. **Narração:** `python3 scripts/gerar-narracao.py <kokoro-multi-lang-v1_0> <modelos>`. Voz
-   aprovada: Kokoro pt-br 43 (Alex), velocidade 1,15, pausas curtas e tratamento de locutor, tudo
-   em `voz` no `narracao-roteiro.json`. 42 (Dora) é a alternativa feminina. Opcional: Gemini TTS
-   da API do Google AI Studio (`"motor": "gemini"`, locutor sugerido Puck, chave em
-   `GEMINI_API_KEY` no ambiente, nunca no chat; amostras com `scripts/amostras-voz-gemini.py`).
-   Pronúncias na fala: "Timótêo" (e fechado, nunca "Timótio") e "Kést" para Cast; a legenda
-   mantém a grafia certa. O Parakeet alinha cada palavra. Saem os wavs, o `narracao.json`
-   (compassos e tempo de cada palavra) e o mapa da trilha. Para trocar só a voz sem mexer no
-   visual, trave o `minCompassos` de cada cena.
+3. **Narração:** voz aprovada é o **Gemini TTS** da API do Google AI Studio do usuário: locutor
+   **Puck**, modelo `gemini-2.5-flash-preview-tts`, direção de locutor comercial e andamento 1,06x
+   (`voz` no `narracao-roteiro.json`). A chave fica no ambiente em `GEMINI_API_KEY`; se o usuário
+   colar a chave no chat, use só por variável de ambiente, nunca em arquivo do repositório, e
+   recomende gerar outra depois. Rode `python3 scripts/gerar-narracao.py - <modelos>`: a narração
+   inteira sai num único pedido (a cota gratuita é curta), é cortada por cena pela transcrição,
+   conferida (instrução lida em voz alta, começo ou fim faltando, fala inflada) e acelerada sem
+   mudar o tom só onde precisa caber na cena. O áudio recebido fica em cache (`out/cache-tts`):
+   rodar de novo não gasta cota. Pronúncias na fala: "Timótêo" (e fechado, nunca "Timótio") e
+   "Kést" para Cast; a legenda mantém a grafia certa. Alternativa local sem chave: Kokoro
+   (`"motor": "kokoro"`, falante 43 Alex). O `minCompassos` de cada cena trava a duração: trocar
+   a voz não mexe no visual.
 4. **Trilha e efeitos:** `scripts/gerar-trilha-motion.py <mapa> public/apresentacao/trilha.wav` e
    `scripts/gerar-sfx-motion.py`. 120 BPM: todo corte cai na cabeça de um compasso.
 5. **Cenas:** cada elemento entra quando a locutora fala dele (`momentoDaPalavra`). Construa cada
@@ -174,6 +177,11 @@ para 192 s de vídeo.
 - **Títulos:** a máscara do `Titulo` precisa de folga no alto, senão corta o acento de Ê e É.
 - **Subagentes:** construtores em paralelo esgotam o limite da sessão. No máximo dois, com
   prompts enxutos, e cada cena commitada assim que fica pronta.
+- **Gemini TTS:** o `gemini-3.8-flash-tts` leu a instrução de estilo em voz alta e esgotou a cota
+  rápido; o `gemini-2.5-flash-preview-tts` respeita a instrução. Erros 429 são limite de cota:
+  espere, não repita pedidos em sequência.
+- **Conferência por transcrição:** o Parakeet escreve "2" para "Segunda" e cola palavras ("post
+  avulso" vira "postiavulso"); por isso a conferência usa palavras significativas e tolerância.
 
 ## Regras de estilo
 
