@@ -6,7 +6,8 @@
     "render:2d": "remotion render Vinheta2D out/vinheta-cris-santos-2d.mp4 --codec=h264 --crf=16",
     "render:3d": "remotion render Vinheta3D out/vinheta-cris-santos-3d.mp4 --codec=h264 --crf=16 --concurrency=3 --timeout=120000",
     "fontes": "node scripts/gerar-typeface.mjs",
-    "rosto": "python3 scripts/preparar-rosto.py"
+    "rosto": "python3 scripts/preparar-rosto.py",
+    "trilha": "bash scripts/masterizar-trilha.sh"
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.3.0",
@@ -17,6 +18,7 @@
     "@remotion/effects": "4.0.536",
     "@remotion/fonts": "^4.0.536",
     "@remotion/layout-utils": "4.0.536",
+    "@remotion/media": "4.0.536",
     "@remotion/three": "4.0.536",
     "postprocessing": "^6.36.4",
     "react": "18.3.1",

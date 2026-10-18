@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {AbsoluteFill, Easing, Img, Sequence, continueRender, delayRender, interpolate, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Audio} from '@remotion/media';
 import {measureText} from '@remotion/layout-utils';
 import {Butterfly} from './Butterfly';
 import {FAMILIA, fonteCarregada} from './fonte';
@@ -190,8 +191,9 @@ export const Vinheta2D: React.FC = () => {
             overflow: 'hidden',
             padding: '24px 0',
             margin: '-24px 0',
-            WebkitMaskImage: `linear-gradient(90deg, #000 calc(100% - ${m.fs * 0.45}px), transparent)`,
-            maskImage: `linear-gradient(90deg, #000 calc(100% - ${m.fs * 0.45}px), transparent)`,
+            // Borda suave só enquanto escreve; some quando o nome fica completo
+            WebkitMaskImage: `linear-gradient(90deg, #000 calc(100% - ${m.fs * 0.45 * (1 - g.prog)}px), transparent)`,
+            maskImage: `linear-gradient(90deg, #000 calc(100% - ${m.fs * 0.45 * (1 - g.prog)}px), transparent)`,
           }}
         >
           <span style={textoStyle(m.fs)}>{MEIO}</span>
@@ -232,6 +234,7 @@ export const Vinheta2D: React.FC = () => {
       <Sequence from={T.rise - 8} durationInFrames={T.merge - T.rise + 30} layout="none">
         <LuzVazada seed={4} intensidade={0.3} />
       </Sequence>
+      <Audio src={staticFile('trilha.wav')} />
     </AbsoluteFill>
   );
 };

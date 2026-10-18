@@ -1,3 +1,4 @@
+import {Audio} from '@remotion/media';
 import {ThreeCanvas} from '@remotion/three';
 import {useEffect, useState} from 'react';
 import {AbsoluteFill, Sequence, cancelRender, continueRender, delayRender, staticFile, useVideoConfig} from 'remotion';
@@ -54,6 +55,7 @@ export const Vinheta3D: React.FC = () => {
       <Sequence from={T.rise - 8} durationInFrames={T.merge - T.rise + 30} layout="none">
         <LuzVazada seed={7} intensidade={0.28} />
       </Sequence>
+      <Audio src={staticFile('trilha.wav')} />
     </AbsoluteFill>
   );
 };
