@@ -1,7 +1,7 @@
 {
   "voz": {
     "motor": "gemini",
-    "modelo": "gemini-3.8-flash-tts",
+    "modelo": "gemini-2.5-flash-preview-tts",
     "vozGemini": "Puck",
     "nome": "Puck (Gemini TTS, pt-BR)",
     "andamento": 1.06,

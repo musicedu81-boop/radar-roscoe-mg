@@ -28,6 +28,7 @@ import re
 import subprocess
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.request
 
@@ -114,8 +115,10 @@ def falar_gemini(texto, voz):
             with urllib.request.urlopen(pedido, timeout=120) as r:
                 dados = json.load(r)
             break
-        except TimeoutError:
-            print("  Gemini demorou demais; tentando de novo", flush=True)
+        except (TimeoutError, urllib.error.URLError) as e:
+            if isinstance(e, urllib.error.HTTPError):
+                raise
+            print(f"  Gemini sem resposta ({e}); tentando de novo", flush=True)
             continue
         except urllib.error.HTTPError as e:
             erro = e.read().decode("utf-8", "replace")
@@ -129,7 +132,10 @@ def falar_gemini(texto, voz):
                 continue
             if e.code in (429, 500, 502, 503, 504) and tentativa < 7:
                 espera = re.search(r'"retryDelay":\s*"(\d+)s"', erro)
-                time.sleep(int(espera.group(1)) + 1 if espera else 5 * 2**tentativa)
+                segundos = min(int(espera.group(1)) + 1 if espera else 5 * 2**tentativa, 120)
+                motivo = re.search(r'"message":\s*"([^"]{0,160})', erro)
+                print(f"  Gemini respondeu {e.code} ({motivo.group(1) if motivo else ''}); nova tentativa em {segundos}s", flush=True)
+                time.sleep(segundos)
                 continue
             sys.exit(f"Gemini TTS respondeu {e.code}: {erro[:400]}")
     parte = dados["candidates"][0]["content"]["parts"][0]["inlineData"]
@@ -178,13 +184,25 @@ def acelerar(x, sr, fator):
     return np.frombuffer(r.stdout, dtype=np.float32).copy()
 
 
-def confere(palavras_asr, texto):
-    """A voz leu o texto pedido? Compara o que o Parakeet ouviu com as palavras da legenda.
-    Pega instrução lida em voz alta, frase pulada ou repetida."""
-    a = [normalizar(w) for w in texto.split()]
-    b = [normalizar(w["text"]) for w in palavras_asr]
-    semelhanca = difflib.SequenceMatcher(a=a, b=b, autojunk=False).ratio()
-    return semelhanca >= 0.8 and len(b) <= 1.2 * len(a), semelhanca
+def confere(palavras_asr, texto, direcao):
+    """A voz leu só o texto pedido? O Parakeet escreve números e datas do jeito dele ("26 de
+    outubro" para "26/10"), então a conferência mira nos erros reais do TTS: instrução de estilo
+    lida em voz alta, começo ou fim faltando e fala inflada (trecho repetido)."""
+    def chave(w):
+        w = unicodedata.normalize("NFD", w.lower())
+        return re.sub(r"[^a-z0-9]", "", "".join(c for c in w if unicodedata.category(c) != "Mn"))
+    alvo = [k for k in map(chave, texto.split()) if k]
+    ouvido = [k for k in (chave(w["text"]) for w in palavras_asr) if k]
+    instrucao = {k for k in map(chave, direcao.split()) if len(k) > 5} - set(alvo)
+    lida = sorted(instrucao & set(ouvido))
+    ok = (
+        bool(ouvido)
+        and ouvido[0] == alvo[0]
+        and ouvido[-1] == alvo[-1]
+        and len(ouvido) <= 1.6 * len(alvo)
+        and len(lida) < 2
+    )
+    return ok, f"{len(ouvido)}/{len(alvo)} palavras" + (f", leu a instrução: {lida}" if lida else "")
 
 def nivelar(x):
     """RMS da fala em -19 dBFS, pico limitado a -1 dBFS."""
@@ -291,13 +309,13 @@ def main(dir_tts, dir_asr):
                 x = preparar(acelerar(x, sr, fator), sr, voz)
                 dur = len(x) / sr
                 palavras = ouvir(x, sr, dur)
-                ok, semelhanca = confere(palavras, texto_legenda)
+                ok, conferencia = confere(palavras, texto_legenda, voz["direcao"])
                 if ok:
                     break
-                print(f"  {cena['id']}: a voz saiu do texto (semelhança {semelhanca:.2f}), gerando de novo", flush=True)
+                print(f"  {cena['id']}: a voz saiu do texto ({conferencia}), gerando de novo", flush=True)
             else:
                 sys.exit(f"Gemini não leu o texto da cena {cena['id']} depois de 5 tentativas.")
-            print(f"  {cena['id']}: andamento {fator:.2f}x, semelhança {semelhanca:.2f}", flush=True)
+            print(f"  {cena['id']}: andamento {fator:.2f}x, {conferencia}", flush=True)
             alinhadas = alinhar(texto_legenda, palavras, 0.0, dur)
             for fr in cena["frases"]:
                 n = len(fr["legenda"].split())
