@@ -117,11 +117,6 @@ def falar_gemini(texto, voz):
             with urllib.request.urlopen(pedido, timeout=120) as r:
                 dados = json.load(r)
             break
-        except (TimeoutError, urllib.error.URLError) as e:
-            if isinstance(e, urllib.error.HTTPError):
-                raise
-            print(f"  Gemini sem resposta ({e}); tentando de novo", flush=True)
-            continue
         except urllib.error.HTTPError as e:
             erro = e.read().decode("utf-8", "replace")
             if e.code == 404 and tentativa < 7:
@@ -140,6 +135,11 @@ def falar_gemini(texto, voz):
                 time.sleep(segundos)
                 continue
             sys.exit(f"Gemini TTS respondeu {e.code}: {erro[:400]}")
+        except (TimeoutError, urllib.error.URLError) as e:
+            print(f"  Gemini sem resposta ({e}); tentando de novo", flush=True)
+            continue
+    else:
+        sys.exit("Gemini TTS não respondeu depois de 8 tentativas.")
     parte = dados["candidates"][0]["content"]["parts"][0]["inlineData"]
     taxa = re.search(r"rate=(\d+)", parte.get("mimeType", ""))
     pcm = np.frombuffer(base64.b64decode(parte["data"]), dtype="<i2")
@@ -238,10 +238,12 @@ def confere(palavras_asr, texto, direcao):
         # Aceita grafia próxima e palavra colada a outra ("post avulso" ouvido como "postiavulso")
         return any(palavra in w or difflib.SequenceMatcher(a=palavra, b=w).ratio() >= 0.75 for w in trecho)
 
+    # Começo e fim: basta uma das duas primeiras (e das duas últimas) palavras significativas,
+    # porque o reconhecimento às vezes erra uma delas ("avulso" ouvido como "a bolso")
     ok = (
         bool(ouvido)
-        and presente(significativas[0], ouvido[:4])
-        and presente(significativas[-1], ouvido[-4:])
+        and any(presente(w, ouvido[:5]) for w in significativas[:2])
+        and any(presente(w, ouvido[-5:]) for w in significativas[-2:])
         and len(ouvido) <= 1.6 * len(alvo)
         and len(lida) < 2
     )
