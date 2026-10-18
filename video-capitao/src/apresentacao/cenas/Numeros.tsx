@@ -41,7 +41,7 @@ const M = {
   desafio: p("desafio") - 6,
   desafioConta: p("desafio") - 2,
   desafioPouso: p("28") + 8,
-  desafioNota: 315, // não é falado: entra no tempo musical seguinte
+  desafioNota: p("28") + 24, // não é falado: entra logo depois de "28 mil"
   views: p("mediana") - 6,
   viewsConta: p("mediana"),
   viewsPouso: p("3,6") + 6,
@@ -71,10 +71,15 @@ const [ESTREIA_ANTES] = PLANO.estreia.split(PLANO.periodo.inicio);
 // Foco: o cartão narrado fica pleno; quando a fala passa para o próximo, ele recua um pouco.
 // No selo final, todos voltam ao pleno para o quadro de resumo.
 const foco = (f: number, proximo: number) =>
-  interpolate(f, [proximo, proximo + 12, M.selo - 8, M.selo + 8], [1, 0, 0, 1], {
-    ...clamp,
-    easing: EASE.suave,
-  });
+  interpolate(
+    f,
+    [proximo, proximo + 12, M.selo - 8, M.selo + 8],
+    [1, 0, 0, 1],
+    {
+      ...clamp,
+      easing: EASE.suave,
+    },
+  );
 
 // Marca-texto animado (fundo que se desenha da esquerda para a direita)
 const MarcaTexto: React.FC<{
@@ -303,7 +308,12 @@ export const CenaNumeros: React.FC = () => {
               fontSize: 26,
               lineHeight: 1.3,
               color: "rgba(2,53,100,0.62)",
-              opacity: interpolate(f, [M.hojeConta + 24, M.hojeConta + 36], [0, 1], clamp),
+              opacity: interpolate(
+                f,
+                [M.hojeConta + 24, M.hojeConta + 36],
+                [0, 1],
+                clamp,
+              ),
             }}
           >
             Fonte:
@@ -350,7 +360,12 @@ export const CenaNumeros: React.FC = () => {
               borderRadius: 8,
               background: COR.neon,
               color: COR.noite,
-              opacity: interpolate(f, [M.metaDelta, M.metaDelta + 6], [0, 1], clamp),
+              opacity: interpolate(
+                f,
+                [M.metaDelta, M.metaDelta + 6],
+                [0, 1],
+                clamp,
+              ),
               translate: `0px ${interpolate(f, [M.metaDelta, M.metaDelta + 12], [16, 0], { ...clamp, easing: EASE.entrada })}px`,
             }}
           >
@@ -365,7 +380,12 @@ export const CenaNumeros: React.FC = () => {
               fontWeight: 700,
               fontSize: 30,
               color: COR.noite,
-              opacity: interpolate(f, [M.realista, M.realista + 6], [0, 1], clamp),
+              opacity: interpolate(
+                f,
+                [M.realista, M.realista + 6],
+                [0, 1],
+                clamp,
+              ),
             }}
           >
             <MarcaTexto inicio={q(M.realista)} cor="rgba(1,237,67,0.55)">
@@ -411,7 +431,12 @@ export const CenaNumeros: React.FC = () => {
               fontSize: 28,
               lineHeight: 1.25,
               color: COR.noite,
-              opacity: interpolate(f, [M.desafioNota, M.desafioNota + 6], [0, 1], clamp),
+              opacity: interpolate(
+                f,
+                [M.desafioNota, M.desafioNota + 6],
+                [0, 1],
+                clamp,
+              ),
             }}
           >
             <MarcaTexto inicio={q(M.desafioNota)} cor="rgba(255,205,14,0.75)">
@@ -493,7 +518,12 @@ export const CenaNumeros: React.FC = () => {
               borderRadius: 999,
               background: "rgba(2,53,100,0.12)",
               overflow: "hidden",
-              opacity: interpolate(f, [M.viewsConta - 6, M.viewsConta], [0, 1], clamp),
+              opacity: interpolate(
+                f,
+                [M.viewsConta - 6, M.viewsConta],
+                [0, 1],
+                clamp,
+              ),
             }}
           >
             <div
@@ -539,7 +569,12 @@ export const CenaNumeros: React.FC = () => {
                 position: "absolute",
                 right: `${(1 - fracaoHoje) * 100}%`,
                 color: "rgba(2,53,100,0.6)",
-                opacity: interpolate(f, [M.viewsPouso - 8, M.viewsPouso], [0, 1], clamp),
+                opacity: interpolate(
+                  f,
+                  [M.viewsPouso - 8, M.viewsPouso],
+                  [0, 1],
+                  clamp,
+                ),
               }}
             >
               Hoje
@@ -549,7 +584,12 @@ export const CenaNumeros: React.FC = () => {
                 position: "absolute",
                 right: 0,
                 color: COR.verde,
-                opacity: interpolate(f, [M.viewsMeta + 14, M.viewsMeta + 22], [0, 1], clamp),
+                opacity: interpolate(
+                  f,
+                  [M.viewsMeta + 14, M.viewsMeta + 22],
+                  [0, 1],
+                  clamp,
+                ),
               }}
             >
               Proposta

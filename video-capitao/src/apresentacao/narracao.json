@@ -1,139 +1,139 @@
 {
- "voz": "Alex (pt-BR)",
+ "voz": "Puck (Gemini TTS, pt-BR)",
  "fps": 30,
  "cenas": [
   {
    "id": "abertura",
    "compassos": 7,
-   "fimNarracao": 335,
+   "fimNarracao": 310,
    "frases": [
     {
      "legenda": "Planejamento estratégico do Capitão Vítor Prado.",
      "inicio": 78,
-     "fim": 161
+     "fim": 162
     },
     {
      "legenda": "De 26/10 a 31/12.",
-     "inicio": 171,
-     "fim": 255
+     "inicio": 162,
+     "fim": 244
     },
     {
      "legenda": "Gestão que entrega, prefeito que aparece.",
-     "inicio": 266,
-     "fim": 335
+     "inicio": 244,
+     "fim": 310
     }
    ],
    "legendas": [
     {
      "text": " Planejamento",
-     "startMs": 2680,
-     "endMs": 3400,
-     "timestampMs": 3040,
+     "startMs": 2600,
+     "endMs": 3320,
+     "timestampMs": 2960,
      "confidence": null
     },
     {
      "text": " estratégico",
-     "startMs": 3400,
-     "endMs": 3960,
-     "timestampMs": 3680,
+     "startMs": 3320,
+     "endMs": 3880,
+     "timestampMs": 3600,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 3960,
-     "endMs": 4120,
-     "timestampMs": 4040,
+     "startMs": 3880,
+     "endMs": 3960,
+     "timestampMs": 3920,
      "confidence": null
     },
     {
      "text": " Capitão",
-     "startMs": 4120,
-     "endMs": 4520,
-     "timestampMs": 4320,
+     "startMs": 3960,
+     "endMs": 4427,
+     "timestampMs": 4193,
      "confidence": null
     },
     {
      "text": " Vítor",
-     "startMs": 4520,
-     "endMs": 4920,
-     "timestampMs": 4720,
+     "startMs": 4427,
+     "endMs": 4760,
+     "timestampMs": 4593,
      "confidence": null
     },
     {
      "text": " Prado.",
-     "startMs": 4920,
-     "endMs": 5354,
-     "timestampMs": 5137,
+     "startMs": 4760,
+     "endMs": 5400,
+     "timestampMs": 5080,
      "confidence": null
     },
     {
      "text": " De",
-     "startMs": 5694,
-     "endMs": 5934,
-     "timestampMs": 5814,
+     "startMs": 5400,
+     "endMs": 5560,
+     "timestampMs": 5480,
      "confidence": null
     },
     {
      "text": " 26/10",
-     "startMs": 5934,
-     "endMs": 7214,
-     "timestampMs": 6574,
+     "startMs": 5560,
+     "endMs": 6680,
+     "timestampMs": 6120,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 7214,
-     "endMs": 7374,
-     "timestampMs": 7294,
+     "startMs": 6680,
+     "endMs": 6840,
+     "timestampMs": 6760,
      "confidence": null
     },
     {
      "text": " 31/12.",
-     "startMs": 7374,
-     "endMs": 8512,
-     "timestampMs": 7943,
+     "startMs": 6840,
+     "endMs": 8120,
+     "timestampMs": 7480,
      "confidence": null
     },
     {
      "text": " Gestão",
-     "startMs": 8852,
-     "endMs": 9332,
-     "timestampMs": 9092,
+     "startMs": 8120,
+     "endMs": 8600,
+     "timestampMs": 8360,
      "confidence": null
     },
     {
      "text": " que",
-     "startMs": 9332,
-     "endMs": 9492,
-     "timestampMs": 9412,
+     "startMs": 8600,
+     "endMs": 8760,
+     "timestampMs": 8680,
      "confidence": null
     },
     {
      "text": " entrega,",
-     "startMs": 9492,
-     "endMs": 9972,
-     "timestampMs": 9732,
+     "startMs": 8760,
+     "endMs": 9240,
+     "timestampMs": 9000,
      "confidence": null
     },
     {
      "text": " prefeito",
-     "startMs": 9972,
-     "endMs": 10452,
-     "timestampMs": 10212,
+     "startMs": 9240,
+     "endMs": 9720,
+     "timestampMs": 9480,
      "confidence": null
     },
     {
      "text": " que",
-     "startMs": 10452,
-     "endMs": 10612,
-     "timestampMs": 10532,
+     "startMs": 9720,
+     "endMs": 9880,
+     "timestampMs": 9800,
      "confidence": null
     },
     {
      "text": " aparece.",
-     "startMs": 10612,
-     "endMs": 11162,
-     "timestampMs": 10887,
+     "startMs": 9880,
+     "endMs": 10345,
+     "timestampMs": 10113,
      "confidence": null
     }
    ]
@@ -141,27 +141,27 @@
   {
    "id": "numeros",
    "compassos": 9,
-   "fimNarracao": 445,
+   "fimNarracao": 401,
    "frases": [
     {
      "legenda": "O perfil começa com 25.850 seguidores.",
      "inicio": 10,
-     "fim": 132
+     "fim": 114
     },
     {
      "legenda": "A meta realista é chegar a 27 mil até o fim do ano.",
-     "inicio": 142,
-     "fim": 234
+     "inicio": 114,
+     "fim": 212
     },
     {
      "legenda": "O desafio é 28 mil.",
-     "inicio": 244,
-     "fim": 298
+     "inicio": 212,
+     "fim": 267
     },
     {
      "legenda": "E a proposta é levar a mediana de views por Reel de 3,6 mil para 5 mil.",
-     "inicio": 309,
-     "fim": 445
+     "inicio": 267,
+     "fim": 401
     }
    ],
    "legendas": [
@@ -175,281 +175,281 @@
     {
      "text": " perfil",
      "startMs": 510,
-     "endMs": 910,
-     "timestampMs": 710,
+     "endMs": 830,
+     "timestampMs": 670,
      "confidence": null
     },
     {
      "text": " começa",
-     "startMs": 910,
-     "endMs": 1310,
-     "timestampMs": 1110,
+     "startMs": 830,
+     "endMs": 1150,
+     "timestampMs": 990,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 1310,
-     "endMs": 1470,
-     "timestampMs": 1390,
+     "startMs": 1150,
+     "endMs": 1310,
+     "timestampMs": 1230,
      "confidence": null
     },
     {
      "text": " 25.850",
-     "startMs": 1470,
-     "endMs": 2370,
-     "timestampMs": 1920,
+     "startMs": 1310,
+     "endMs": 2210,
+     "timestampMs": 1760,
      "confidence": null
     },
     {
      "text": " seguidores.",
-     "startMs": 3710,
-     "endMs": 4410,
-     "timestampMs": 4060,
+     "startMs": 2990,
+     "endMs": 3790,
+     "timestampMs": 3390,
      "confidence": null
     },
     {
      "text": " A",
-     "startMs": 4750,
-     "endMs": 4830,
-     "timestampMs": 4790,
+     "startMs": 3790,
+     "endMs": 3950,
+     "timestampMs": 3870,
      "confidence": null
     },
     {
      "text": " meta",
+     "startMs": 3950,
+     "endMs": 4270,
+     "timestampMs": 4110,
+     "confidence": null
+    },
+    {
+     "text": " realista",
+     "startMs": 4270,
+     "endMs": 4670,
+     "timestampMs": 4470,
+     "confidence": null
+    },
+    {
+     "text": " é",
+     "startMs": 4670,
+     "endMs": 4830,
+     "timestampMs": 4750,
+     "confidence": null
+    },
+    {
+     "text": " chegar",
      "startMs": 4830,
      "endMs": 5150,
      "timestampMs": 4990,
      "confidence": null
     },
     {
-     "text": " realista",
-     "startMs": 5150,
-     "endMs": 5630,
-     "timestampMs": 5390,
-     "confidence": null
-    },
-    {
-     "text": " é",
-     "startMs": 5630,
-     "endMs": 5790,
-     "timestampMs": 5710,
-     "confidence": null
-    },
-    {
-     "text": " chegar",
-     "startMs": 5790,
-     "endMs": 6030,
-     "timestampMs": 5910,
-     "confidence": null
-    },
-    {
      "text": " a",
-     "startMs": 6030,
-     "endMs": 6190,
-     "timestampMs": 6110,
+     "startMs": 5150,
+     "endMs": 5230,
+     "timestampMs": 5190,
      "confidence": null
     },
     {
      "text": " 27",
-     "startMs": 6190,
-     "endMs": 6750,
-     "timestampMs": 6470,
+     "startMs": 5230,
+     "endMs": 5710,
+     "timestampMs": 5470,
      "confidence": null
     },
     {
      "text": " mil",
-     "startMs": 6750,
-     "endMs": 7070,
-     "timestampMs": 6910,
+     "startMs": 5710,
+     "endMs": 5950,
+     "timestampMs": 5830,
      "confidence": null
     },
     {
      "text": " até",
+     "startMs": 5950,
+     "endMs": 6190,
+     "timestampMs": 6070,
+     "confidence": null
+    },
+    {
+     "text": " o",
+     "startMs": 6190,
+     "endMs": 6270,
+     "timestampMs": 6230,
+     "confidence": null
+    },
+    {
+     "text": " fim",
+     "startMs": 6270,
+     "endMs": 6430,
+     "timestampMs": 6350,
+     "confidence": null
+    },
+    {
+     "text": " do",
+     "startMs": 6430,
+     "endMs": 6590,
+     "timestampMs": 6510,
+     "confidence": null
+    },
+    {
+     "text": " ano.",
+     "startMs": 6590,
+     "endMs": 7070,
+     "timestampMs": 6830,
+     "confidence": null
+    },
+    {
+     "text": " O",
      "startMs": 7070,
      "endMs": 7230,
      "timestampMs": 7150,
      "confidence": null
     },
     {
-     "text": " o",
-     "startMs": 7230,
-     "endMs": 7310,
-     "timestampMs": 7270,
-     "confidence": null
-    },
-    {
-     "text": " fim",
-     "startMs": 7310,
-     "endMs": 7470,
-     "timestampMs": 7390,
-     "confidence": null
-    },
-    {
-     "text": " do",
-     "startMs": 7470,
-     "endMs": 7550,
-     "timestampMs": 7510,
-     "confidence": null
-    },
-    {
-     "text": " ano.",
-     "startMs": 7550,
-     "endMs": 7795,
-     "timestampMs": 7673,
-     "confidence": null
-    },
-    {
-     "text": " O",
-     "startMs": 8135,
-     "endMs": 8295,
-     "timestampMs": 8215,
-     "confidence": null
-    },
-    {
      "text": " desafio",
-     "startMs": 8295,
-     "endMs": 8695,
-     "timestampMs": 8495,
+     "startMs": 7230,
+     "endMs": 7710,
+     "timestampMs": 7470,
      "confidence": null
     },
     {
      "text": " é",
-     "startMs": 8695,
-     "endMs": 8855,
-     "timestampMs": 8775,
+     "startMs": 7710,
+     "endMs": 7870,
+     "timestampMs": 7790,
      "confidence": null
     },
     {
      "text": " 28",
-     "startMs": 8855,
-     "endMs": 9575,
-     "timestampMs": 9215,
+     "startMs": 7870,
+     "endMs": 8430,
+     "timestampMs": 8150,
      "confidence": null
     },
     {
      "text": " mil.",
-     "startMs": 9575,
-     "endMs": 9945,
-     "timestampMs": 9760,
+     "startMs": 8430,
+     "endMs": 8910,
+     "timestampMs": 8670,
      "confidence": null
     },
     {
      "text": " E",
-     "startMs": 10285,
-     "endMs": 10445,
-     "timestampMs": 10365,
+     "startMs": 8910,
+     "endMs": 9070,
+     "timestampMs": 8990,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 10445,
-     "endMs": 10525,
-     "timestampMs": 10485,
+     "startMs": 9070,
+     "endMs": 9150,
+     "timestampMs": 9110,
      "confidence": null
     },
     {
      "text": " proposta",
-     "startMs": 10525,
-     "endMs": 10845,
-     "timestampMs": 10685,
+     "startMs": 9150,
+     "endMs": 9550,
+     "timestampMs": 9350,
      "confidence": null
     },
     {
      "text": " é",
-     "startMs": 10845,
-     "endMs": 11005,
-     "timestampMs": 10925,
+     "startMs": 9550,
+     "endMs": 9790,
+     "timestampMs": 9670,
      "confidence": null
     },
     {
      "text": " levar",
-     "startMs": 11005,
-     "endMs": 11325,
-     "timestampMs": 11165,
+     "startMs": 9790,
+     "endMs": 10030,
+     "timestampMs": 9910,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 11325,
-     "endMs": 11405,
-     "timestampMs": 11365,
+     "startMs": 10030,
+     "endMs": 10110,
+     "timestampMs": 10070,
      "confidence": null
     },
     {
      "text": " mediana",
-     "startMs": 11405,
-     "endMs": 11805,
-     "timestampMs": 11605,
+     "startMs": 10110,
+     "endMs": 10510,
+     "timestampMs": 10310,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 11805,
-     "endMs": 11965,
-     "timestampMs": 11885,
+     "startMs": 10510,
+     "endMs": 10590,
+     "timestampMs": 10550,
      "confidence": null
     },
     {
      "text": " views",
-     "startMs": 11965,
-     "endMs": 12445,
-     "timestampMs": 12205,
+     "startMs": 10590,
+     "endMs": 10910,
+     "timestampMs": 10750,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 12445,
-     "endMs": 12605,
-     "timestampMs": 12525,
+     "startMs": 10910,
+     "endMs": 11070,
+     "timestampMs": 10990,
      "confidence": null
     },
     {
      "text": " Reel",
-     "startMs": 12605,
-     "endMs": 12925,
-     "timestampMs": 12765,
+     "startMs": 11070,
+     "endMs": 11390,
+     "timestampMs": 11230,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 12925,
-     "endMs": 13085,
-     "timestampMs": 13005,
+     "startMs": 11390,
+     "endMs": 11550,
+     "timestampMs": 11470,
      "confidence": null
     },
     {
      "text": " 3,6",
-     "startMs": 13085,
-     "endMs": 13885,
-     "timestampMs": 13485,
+     "startMs": 11550,
+     "endMs": 12350,
+     "timestampMs": 11950,
      "confidence": null
     },
     {
      "text": " mil",
-     "startMs": 13885,
-     "endMs": 14205,
-     "timestampMs": 14045,
+     "startMs": 12350,
+     "endMs": 12670,
+     "timestampMs": 12510,
      "confidence": null
     },
     {
      "text": " para",
-     "startMs": 14205,
-     "endMs": 14365,
-     "timestampMs": 14285,
+     "startMs": 12670,
+     "endMs": 12830,
+     "timestampMs": 12750,
      "confidence": null
     },
     {
      "text": " 5",
-     "startMs": 14365,
-     "endMs": 14525,
-     "timestampMs": 14445,
+     "startMs": 12830,
+     "endMs": 13070,
+     "timestampMs": 12950,
      "confidence": null
     },
     {
      "text": " mil.",
-     "startMs": 14525,
-     "endMs": 14845,
-     "timestampMs": 14685,
+     "startMs": 13070,
+     "endMs": 13359,
+     "timestampMs": 13215,
      "confidence": null
     }
    ]
@@ -457,27 +457,27 @@
   {
    "id": "ritmo",
    "compassos": 10,
-   "fimNarracao": 501,
+   "fimNarracao": 452,
    "frases": [
     {
      "legenda": "Hoje o perfil ganha cerca de 6 seguidores por dia.",
      "inicio": 10,
-     "fim": 99
+     "fim": 92
     },
     {
      "legenda": "76% do ganho veio num único pico, entre 14/09 e 05/10.",
-     "inicio": 109,
-     "fim": 271
+     "inicio": 92,
+     "fim": 255
     },
     {
      "legenda": "Para chegar a 32 mil, seriam 81 por dia. Essa meta não fecha.",
-     "inicio": 281,
-     "fim": 423
+     "inicio": 255,
+     "fim": 390
     },
     {
      "legenda": "A meta realista pede 15 por dia.",
-     "inicio": 433,
-     "fim": 501
+     "inicio": 390,
+     "fim": 452
     }
    ],
    "legendas": [
@@ -498,274 +498,274 @@
     {
      "text": " perfil",
      "startMs": 670,
-     "endMs": 1150,
-     "timestampMs": 910,
+     "endMs": 990,
+     "timestampMs": 830,
      "confidence": null
     },
     {
      "text": " ganha",
-     "startMs": 1150,
-     "endMs": 1470,
-     "timestampMs": 1310,
+     "startMs": 990,
+     "endMs": 1310,
+     "timestampMs": 1150,
      "confidence": null
     },
     {
      "text": " cerca",
-     "startMs": 1470,
-     "endMs": 1710,
-     "timestampMs": 1590,
+     "startMs": 1310,
+     "endMs": 1550,
+     "timestampMs": 1430,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 1710,
-     "endMs": 1870,
-     "timestampMs": 1790,
+     "startMs": 1550,
+     "endMs": 1630,
+     "timestampMs": 1590,
      "confidence": null
     },
     {
      "text": " 6",
-     "startMs": 1870,
-     "endMs": 2190,
-     "timestampMs": 2030,
+     "startMs": 1630,
+     "endMs": 1870,
+     "timestampMs": 1750,
      "confidence": null
     },
     {
      "text": " seguidores",
-     "startMs": 2190,
-     "endMs": 2750,
-     "timestampMs": 2470,
+     "startMs": 1870,
+     "endMs": 2350,
+     "timestampMs": 2110,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 2750,
-     "endMs": 2910,
-     "timestampMs": 2830,
+     "startMs": 2350,
+     "endMs": 2510,
+     "timestampMs": 2430,
      "confidence": null
     },
     {
      "text": " dia.",
-     "startMs": 2910,
-     "endMs": 3290,
-     "timestampMs": 3100,
+     "startMs": 2510,
+     "endMs": 3070,
+     "timestampMs": 2790,
      "confidence": null
     },
     {
      "text": " 76%",
-     "startMs": 3630,
-     "endMs": 4750,
-     "timestampMs": 4190,
+     "startMs": 3070,
+     "endMs": 3970,
+     "timestampMs": 3520,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 4750,
-     "endMs": 4910,
-     "timestampMs": 4830,
+     "startMs": 4110,
+     "endMs": 4270,
+     "timestampMs": 4190,
      "confidence": null
     },
     {
      "text": " ganho",
-     "startMs": 4910,
-     "endMs": 5230,
-     "timestampMs": 5070,
+     "startMs": 4270,
+     "endMs": 4590,
+     "timestampMs": 4430,
      "confidence": null
     },
     {
      "text": " veio",
-     "startMs": 5230,
-     "endMs": 5550,
-     "timestampMs": 5390,
+     "startMs": 4590,
+     "endMs": 4910,
+     "timestampMs": 4750,
      "confidence": null
     },
     {
      "text": " num",
-     "startMs": 5550,
-     "endMs": 5790,
-     "timestampMs": 5670,
+     "startMs": 4910,
+     "endMs": 5150,
+     "timestampMs": 5030,
      "confidence": null
     },
     {
      "text": " único",
-     "startMs": 5790,
-     "endMs": 6110,
-     "timestampMs": 5950,
+     "startMs": 5150,
+     "endMs": 5390,
+     "timestampMs": 5270,
      "confidence": null
     },
     {
      "text": " pico,",
-     "startMs": 6110,
-     "endMs": 6590,
-     "timestampMs": 6350,
+     "startMs": 5390,
+     "endMs": 5870,
+     "timestampMs": 5630,
      "confidence": null
     },
     {
      "text": " entre",
-     "startMs": 6590,
-     "endMs": 6910,
-     "timestampMs": 6750,
+     "startMs": 5870,
+     "endMs": 6190,
+     "timestampMs": 6030,
      "confidence": null
     },
     {
      "text": " 14/09",
-     "startMs": 6910,
-     "endMs": 7950,
-     "timestampMs": 7430,
+     "startMs": 6190,
+     "endMs": 7150,
+     "timestampMs": 6670,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 7950,
-     "endMs": 8110,
-     "timestampMs": 8030,
+     "startMs": 7150,
+     "endMs": 7310,
+     "timestampMs": 7230,
      "confidence": null
     },
     {
      "text": " 05/10.",
-     "startMs": 8110,
-     "endMs": 9020,
-     "timestampMs": 8565,
+     "startMs": 7310,
+     "endMs": 8510,
+     "timestampMs": 7910,
      "confidence": null
     },
     {
      "text": " Para",
-     "startMs": 9360,
-     "endMs": 9600,
-     "timestampMs": 9480,
+     "startMs": 8510,
+     "endMs": 8750,
+     "timestampMs": 8630,
      "confidence": null
     },
     {
      "text": " chegar",
-     "startMs": 9600,
-     "endMs": 9840,
-     "timestampMs": 9720,
+     "startMs": 8750,
+     "endMs": 9070,
+     "timestampMs": 8910,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 9840,
-     "endMs": 10000,
-     "timestampMs": 9920,
+     "startMs": 9070,
+     "endMs": 9230,
+     "timestampMs": 9150,
      "confidence": null
     },
     {
      "text": " 32",
-     "startMs": 10000,
-     "endMs": 10560,
-     "timestampMs": 10280,
+     "startMs": 9230,
+     "endMs": 9630,
+     "timestampMs": 9430,
      "confidence": null
     },
     {
      "text": " mil,",
-     "startMs": 10560,
-     "endMs": 10960,
-     "timestampMs": 10760,
+     "startMs": 9630,
+     "endMs": 10030,
+     "timestampMs": 9830,
      "confidence": null
     },
     {
      "text": " seriam",
-     "startMs": 10960,
-     "endMs": 11360,
-     "timestampMs": 11160,
+     "startMs": 10030,
+     "endMs": 10350,
+     "timestampMs": 10190,
      "confidence": null
     },
     {
      "text": " 81",
-     "startMs": 11360,
-     "endMs": 12160,
-     "timestampMs": 11760,
+     "startMs": 10350,
+     "endMs": 10990,
+     "timestampMs": 10670,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 12160,
-     "endMs": 12320,
-     "timestampMs": 12240,
+     "startMs": 10990,
+     "endMs": 11150,
+     "timestampMs": 11070,
      "confidence": null
     },
     {
      "text": " dia.",
-     "startMs": 12320,
-     "endMs": 12720,
-     "timestampMs": 12520,
+     "startMs": 11150,
+     "endMs": 11630,
+     "timestampMs": 11390,
      "confidence": null
     },
     {
      "text": " Essa",
-     "startMs": 12720,
-     "endMs": 12960,
-     "timestampMs": 12840,
+     "startMs": 11630,
+     "endMs": 11870,
+     "timestampMs": 11750,
      "confidence": null
     },
     {
      "text": " meta",
-     "startMs": 12960,
-     "endMs": 13280,
-     "timestampMs": 13120,
+     "startMs": 11870,
+     "endMs": 12110,
+     "timestampMs": 11990,
      "confidence": null
     },
     {
      "text": " não",
-     "startMs": 13280,
-     "endMs": 13440,
-     "timestampMs": 13360,
+     "startMs": 12110,
+     "endMs": 12270,
+     "timestampMs": 12190,
      "confidence": null
     },
     {
      "text": " fecha.",
-     "startMs": 13440,
-     "endMs": 14090,
-     "timestampMs": 13765,
+     "startMs": 12270,
+     "endMs": 12990,
+     "timestampMs": 12630,
      "confidence": null
     },
     {
      "text": " A",
-     "startMs": 14430,
-     "endMs": 14590,
-     "timestampMs": 14510,
+     "startMs": 12990,
+     "endMs": 13150,
+     "timestampMs": 13070,
      "confidence": null
     },
     {
      "text": " meta",
-     "startMs": 14590,
-     "endMs": 14910,
-     "timestampMs": 14750,
+     "startMs": 13150,
+     "endMs": 13390,
+     "timestampMs": 13270,
      "confidence": null
     },
     {
      "text": " realista",
-     "startMs": 14910,
-     "endMs": 15390,
-     "timestampMs": 15150,
+     "startMs": 13390,
+     "endMs": 13870,
+     "timestampMs": 13630,
      "confidence": null
     },
     {
      "text": " pede",
-     "startMs": 15390,
-     "endMs": 15870,
-     "timestampMs": 15630,
+     "startMs": 13870,
+     "endMs": 14270,
+     "timestampMs": 14070,
      "confidence": null
     },
     {
      "text": " 15",
-     "startMs": 15870,
-     "endMs": 16190,
-     "timestampMs": 16030,
+     "startMs": 14270,
+     "endMs": 14670,
+     "timestampMs": 14470,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 16190,
-     "endMs": 16350,
-     "timestampMs": 16270,
+     "startMs": 14670,
+     "endMs": 14750,
+     "timestampMs": 14710,
      "confidence": null
     },
     {
      "text": " dia.",
-     "startMs": 16350,
-     "endMs": 16700,
-     "timestampMs": 16525,
+     "startMs": 14750,
+     "endMs": 15058,
+     "timestampMs": 14904,
      "confidence": null
     }
    ]
@@ -773,22 +773,22 @@
   {
    "id": "reels",
    "compassos": 7,
-   "fimNarracao": 349,
+   "fimNarracao": 347,
    "frases": [
     {
      "legenda": "O que funcionou no último mês?",
      "inicio": 10,
-     "fim": 65
+     "fim": 58
     },
     {
      "legenda": "O Reel do temporal, com a resposta da prefeitura, chegou a 105 mil views.",
-     "inicio": 75,
-     "fim": 202
+     "inicio": 58,
+     "fim": 193
     },
     {
      "legenda": "Utilidade na hora crítica, orgulho da cidade e gente de verdade, com nome e rosto.",
-     "inicio": 212,
-     "fim": 349
+     "inicio": 193,
+     "fim": 347
     }
    ],
    "legendas": [
@@ -809,232 +809,232 @@
     {
      "text": " funcionou",
      "startMs": 670,
-     "endMs": 1230,
-     "timestampMs": 950,
+     "endMs": 1150,
+     "timestampMs": 910,
      "confidence": null
     },
     {
      "text": " no",
-     "startMs": 1230,
-     "endMs": 1390,
-     "timestampMs": 1310,
+     "startMs": 1150,
+     "endMs": 1230,
+     "timestampMs": 1190,
      "confidence": null
     },
     {
      "text": " último",
-     "startMs": 1390,
-     "endMs": 1710,
-     "timestampMs": 1550,
+     "startMs": 1230,
+     "endMs": 1550,
+     "timestampMs": 1390,
      "confidence": null
     },
     {
      "text": " mês?",
-     "startMs": 1710,
-     "endMs": 2170,
-     "timestampMs": 1940,
+     "startMs": 1550,
+     "endMs": 1950,
+     "timestampMs": 1750,
      "confidence": null
     },
     {
      "text": " O",
-     "startMs": 2510,
-     "endMs": 2590,
-     "timestampMs": 2550,
+     "startMs": 1950,
+     "endMs": 2110,
+     "timestampMs": 2030,
      "confidence": null
     },
     {
      "text": " Reel",
-     "startMs": 2590,
-     "endMs": 2830,
-     "timestampMs": 2710,
+     "startMs": 2110,
+     "endMs": 2510,
+     "timestampMs": 2310,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 2830,
-     "endMs": 2990,
-     "timestampMs": 2910,
+     "startMs": 2510,
+     "endMs": 2670,
+     "timestampMs": 2590,
      "confidence": null
     },
     {
      "text": " temporal,",
-     "startMs": 2990,
-     "endMs": 3470,
+     "startMs": 2670,
+     "endMs": 3150,
+     "timestampMs": 2910,
+     "confidence": null
+    },
+    {
+     "text": " com",
+     "startMs": 3150,
+     "endMs": 3310,
      "timestampMs": 3230,
      "confidence": null
     },
     {
-     "text": " com",
-     "startMs": 3470,
-     "endMs": 3630,
-     "timestampMs": 3550,
-     "confidence": null
-    },
-    {
      "text": " a",
-     "startMs": 3630,
-     "endMs": 3710,
-     "timestampMs": 3670,
+     "startMs": 3310,
+     "endMs": 3390,
+     "timestampMs": 3350,
      "confidence": null
     },
     {
      "text": " resposta",
-     "startMs": 3710,
-     "endMs": 4110,
-     "timestampMs": 3910,
+     "startMs": 3390,
+     "endMs": 3710,
+     "timestampMs": 3550,
      "confidence": null
     },
     {
      "text": " da",
-     "startMs": 4110,
-     "endMs": 4190,
-     "timestampMs": 4150,
+     "startMs": 3710,
+     "endMs": 3870,
+     "timestampMs": 3790,
      "confidence": null
     },
     {
      "text": " prefeitura,",
-     "startMs": 4190,
-     "endMs": 4910,
-     "timestampMs": 4550,
+     "startMs": 3870,
+     "endMs": 4510,
+     "timestampMs": 4190,
      "confidence": null
     },
     {
      "text": " chegou",
-     "startMs": 4910,
-     "endMs": 5230,
-     "timestampMs": 5070,
+     "startMs": 4510,
+     "endMs": 4830,
+     "timestampMs": 4670,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 5230,
-     "endMs": 5390,
-     "timestampMs": 5310,
+     "startMs": 4830,
+     "endMs": 4990,
+     "timestampMs": 4910,
      "confidence": null
     },
     {
      "text": " 105",
-     "startMs": 5390,
-     "endMs": 6030,
-     "timestampMs": 5710,
+     "startMs": 4990,
+     "endMs": 5550,
+     "timestampMs": 5270,
      "confidence": null
     },
     {
      "text": " mil",
-     "startMs": 6030,
-     "endMs": 6190,
-     "timestampMs": 6110,
+     "startMs": 5550,
+     "endMs": 5790,
+     "timestampMs": 5670,
      "confidence": null
     },
     {
      "text": " views.",
-     "startMs": 6190,
-     "endMs": 6740,
-     "timestampMs": 6465,
+     "startMs": 5790,
+     "endMs": 6430,
+     "timestampMs": 6110,
      "confidence": null
     },
     {
      "text": " Utilidade",
-     "startMs": 7160,
-     "endMs": 7720,
-     "timestampMs": 7440,
+     "startMs": 6430,
+     "endMs": 7070,
+     "timestampMs": 6750,
      "confidence": null
     },
     {
      "text": " na",
-     "startMs": 7720,
-     "endMs": 7880,
-     "timestampMs": 7800,
+     "startMs": 7070,
+     "endMs": 7230,
+     "timestampMs": 7150,
      "confidence": null
     },
     {
      "text": " hora",
-     "startMs": 7880,
-     "endMs": 8120,
-     "timestampMs": 8000,
+     "startMs": 7230,
+     "endMs": 7550,
+     "timestampMs": 7390,
      "confidence": null
     },
     {
      "text": " crítica,",
-     "startMs": 8120,
-     "endMs": 8520,
-     "timestampMs": 8320,
+     "startMs": 7550,
+     "endMs": 8110,
+     "timestampMs": 7830,
      "confidence": null
     },
     {
      "text": " orgulho",
-     "startMs": 8520,
-     "endMs": 9000,
-     "timestampMs": 8760,
+     "startMs": 8110,
+     "endMs": 8590,
+     "timestampMs": 8350,
      "confidence": null
     },
     {
      "text": " da",
-     "startMs": 9000,
-     "endMs": 9160,
-     "timestampMs": 9080,
+     "startMs": 8590,
+     "endMs": 8750,
+     "timestampMs": 8670,
      "confidence": null
     },
     {
      "text": " cidade",
-     "startMs": 9160,
-     "endMs": 9480,
-     "timestampMs": 9320,
+     "startMs": 8750,
+     "endMs": 9150,
+     "timestampMs": 8950,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 9480,
-     "endMs": 9640,
-     "timestampMs": 9560,
+     "startMs": 9150,
+     "endMs": 9310,
+     "timestampMs": 9230,
      "confidence": null
     },
     {
      "text": " gente",
-     "startMs": 9640,
-     "endMs": 10040,
-     "timestampMs": 9840,
+     "startMs": 9310,
+     "endMs": 9710,
+     "timestampMs": 9510,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 10040,
-     "endMs": 10120,
-     "timestampMs": 10080,
+     "startMs": 9710,
+     "endMs": 9790,
+     "timestampMs": 9750,
      "confidence": null
     },
     {
      "text": " verdade,",
-     "startMs": 10120,
-     "endMs": 10600,
-     "timestampMs": 10360,
+     "startMs": 9790,
+     "endMs": 10430,
+     "timestampMs": 10110,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 10600,
-     "endMs": 10840,
-     "timestampMs": 10720,
+     "startMs": 10430,
+     "endMs": 10590,
+     "timestampMs": 10510,
      "confidence": null
     },
     {
      "text": " nome",
-     "startMs": 10840,
-     "endMs": 11080,
-     "timestampMs": 10960,
+     "startMs": 10590,
+     "endMs": 10910,
+     "timestampMs": 10750,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 11080,
-     "endMs": 11240,
-     "timestampMs": 11160,
+     "startMs": 10910,
+     "endMs": 11070,
+     "timestampMs": 10990,
      "confidence": null
     },
     {
      "text": " rosto.",
-     "startMs": 11240,
-     "endMs": 11635,
-     "timestampMs": 11437,
+     "startMs": 11070,
+     "endMs": 11560,
+     "timestampMs": 11315,
      "confidence": null
     }
    ]
@@ -1042,44 +1042,44 @@
   {
    "id": "pilares",
    "compassos": 7,
-   "fimNarracao": 349,
+   "fimNarracao": 328,
    "frases": [
     {
      "legenda": "Daí saem os três pilares do plano.",
      "inicio": 10,
-     "fim": 70
+     "fim": 75
     },
     {
      "legenda": "Utilidade no momento crítico. Orgulho de Timóteo. Cuidado com gente.",
-     "inicio": 80,
-     "fim": 236
+     "inicio": 75,
+     "fim": 224
     },
     {
      "legenda": "O gesto vem antes do discurso, e o morador é o protagonista.",
-     "inicio": 246,
-     "fim": 349
+     "inicio": 224,
+     "fim": 328
     }
    ],
    "legendas": [
     {
      "text": " Daí",
      "startMs": 350,
-     "endMs": 670,
-     "timestampMs": 510,
+     "endMs": 750,
+     "timestampMs": 550,
      "confidence": null
     },
     {
      "text": " saem",
-     "startMs": 670,
-     "endMs": 990,
-     "timestampMs": 830,
+     "startMs": 750,
+     "endMs": 1070,
+     "timestampMs": 910,
      "confidence": null
     },
     {
      "text": " os",
-     "startMs": 990,
+     "startMs": 1070,
      "endMs": 1150,
-     "timestampMs": 1070,
+     "timestampMs": 1110,
      "confidence": null
     },
     {
@@ -1106,162 +1106,162 @@
     {
      "text": " plano.",
      "startMs": 1870,
-     "endMs": 2330,
-     "timestampMs": 2100,
+     "endMs": 2510,
+     "timestampMs": 2190,
      "confidence": null
     },
     {
      "text": " Utilidade",
-     "startMs": 2750,
-     "endMs": 3470,
-     "timestampMs": 3110,
+     "startMs": 2510,
+     "endMs": 3230,
+     "timestampMs": 2870,
      "confidence": null
     },
     {
      "text": " no",
-     "startMs": 3470,
-     "endMs": 3710,
-     "timestampMs": 3590,
+     "startMs": 3230,
+     "endMs": 3390,
+     "timestampMs": 3310,
      "confidence": null
     },
     {
      "text": " momento",
-     "startMs": 3710,
-     "endMs": 4110,
-     "timestampMs": 3910,
+     "startMs": 3390,
+     "endMs": 3710,
+     "timestampMs": 3550,
      "confidence": null
     },
     {
      "text": " crítico.",
-     "startMs": 4110,
-     "endMs": 4830,
-     "timestampMs": 4470,
+     "startMs": 3710,
+     "endMs": 4350,
+     "timestampMs": 4030,
      "confidence": null
     },
     {
      "text": " Orgulho",
-     "startMs": 4830,
-     "endMs": 5310,
-     "timestampMs": 5070,
+     "startMs": 4350,
+     "endMs": 4830,
+     "timestampMs": 4590,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 5310,
-     "endMs": 5550,
-     "timestampMs": 5430,
+     "startMs": 4830,
+     "endMs": 4990,
+     "timestampMs": 4910,
      "confidence": null
     },
     {
      "text": " Timóteo.",
-     "startMs": 5550,
-     "endMs": 6450,
-     "timestampMs": 6000,
+     "startMs": 4990,
+     "endMs": 5790,
+     "timestampMs": 5390,
      "confidence": null
     },
     {
      "text": " Cuidado",
-     "startMs": 6510,
-     "endMs": 6990,
-     "timestampMs": 6750,
+     "startMs": 5790,
+     "endMs": 6350,
+     "timestampMs": 6070,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 6990,
-     "endMs": 7310,
-     "timestampMs": 7150,
+     "startMs": 6350,
+     "endMs": 6590,
+     "timestampMs": 6470,
      "confidence": null
     },
     {
      "text": " gente.",
-     "startMs": 7310,
-     "endMs": 7850,
-     "timestampMs": 7580,
+     "startMs": 6590,
+     "endMs": 7470,
+     "timestampMs": 7030,
      "confidence": null
     },
     {
      "text": " O",
-     "startMs": 8190,
-     "endMs": 8350,
-     "timestampMs": 8270,
+     "startMs": 7470,
+     "endMs": 7630,
+     "timestampMs": 7550,
      "confidence": null
     },
     {
      "text": " gesto",
-     "startMs": 8350,
-     "endMs": 8670,
-     "timestampMs": 8510,
+     "startMs": 7630,
+     "endMs": 8110,
+     "timestampMs": 7870,
      "confidence": null
     },
     {
      "text": " vem",
-     "startMs": 8670,
-     "endMs": 8990,
-     "timestampMs": 8830,
+     "startMs": 8110,
+     "endMs": 8430,
+     "timestampMs": 8270,
      "confidence": null
     },
     {
      "text": " antes",
-     "startMs": 8990,
-     "endMs": 9230,
-     "timestampMs": 9110,
+     "startMs": 8430,
+     "endMs": 8670,
+     "timestampMs": 8550,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 9230,
-     "endMs": 9390,
-     "timestampMs": 9310,
+     "startMs": 8670,
+     "endMs": 8750,
+     "timestampMs": 8710,
      "confidence": null
     },
     {
      "text": " discurso,",
-     "startMs": 9390,
-     "endMs": 9870,
-     "timestampMs": 9630,
+     "startMs": 8750,
+     "endMs": 9310,
+     "timestampMs": 9030,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 9870,
-     "endMs": 10030,
-     "timestampMs": 9950,
+     "startMs": 9310,
+     "endMs": 9470,
+     "timestampMs": 9390,
      "confidence": null
     },
     {
      "text": " o",
+     "startMs": 9470,
+     "endMs": 9630,
+     "timestampMs": 9550,
+     "confidence": null
+    },
+    {
+     "text": " morador",
+     "startMs": 9630,
+     "endMs": 10030,
+     "timestampMs": 9830,
+     "confidence": null
+    },
+    {
+     "text": " é",
      "startMs": 10030,
      "endMs": 10190,
      "timestampMs": 10110,
      "confidence": null
     },
     {
-     "text": " morador",
-     "startMs": 10190,
-     "endMs": 10590,
-     "timestampMs": 10390,
-     "confidence": null
-    },
-    {
-     "text": " é",
-     "startMs": 10590,
-     "endMs": 10750,
-     "timestampMs": 10670,
-     "confidence": null
-    },
-    {
      "text": " o",
-     "startMs": 10750,
-     "endMs": 10830,
-     "timestampMs": 10790,
+     "startMs": 10190,
+     "endMs": 10270,
+     "timestampMs": 10230,
      "confidence": null
     },
     {
      "text": " protagonista.",
-     "startMs": 10830,
-     "endMs": 11620,
-     "timestampMs": 11225,
+     "startMs": 10270,
+     "endMs": 10920,
+     "timestampMs": 10595,
      "confidence": null
     }
    ]
@@ -1278,12 +1278,12 @@
     },
     {
      "legenda": "Cada um com uma função e um dia.",
-     "inicio": 88,
-     "fim": 141
+     "inicio": 78,
+     "fim": 140
     },
     {
      "legenda": "O algoritmo reconhece série, não post avulso.",
-     "inicio": 151,
+     "inicio": 140,
      "fim": 226
     }
    ],
@@ -1298,141 +1298,141 @@
     {
      "text": " estratégia",
      "startMs": 510,
-     "endMs": 1070,
-     "timestampMs": 790,
+     "endMs": 990,
+     "timestampMs": 750,
      "confidence": null
     },
     {
      "text": " central",
-     "startMs": 1070,
-     "endMs": 1470,
-     "timestampMs": 1270,
+     "startMs": 990,
+     "endMs": 1310,
+     "timestampMs": 1150,
      "confidence": null
     },
     {
      "text": " são",
-     "startMs": 1470,
-     "endMs": 1710,
-     "timestampMs": 1590,
+     "startMs": 1310,
+     "endMs": 1470,
+     "timestampMs": 1390,
      "confidence": null
     },
     {
      "text": " quadros",
-     "startMs": 1710,
-     "endMs": 2110,
-     "timestampMs": 1910,
+     "startMs": 1470,
+     "endMs": 1870,
+     "timestampMs": 1670,
      "confidence": null
     },
     {
      "text": " fixos.",
-     "startMs": 2110,
-     "endMs": 2610,
-     "timestampMs": 2360,
+     "startMs": 1870,
+     "endMs": 2590,
+     "timestampMs": 2230,
      "confidence": null
     },
     {
      "text": " Cada",
-     "startMs": 2950,
-     "endMs": 3190,
-     "timestampMs": 3070,
+     "startMs": 2590,
+     "endMs": 2830,
+     "timestampMs": 2710,
      "confidence": null
     },
     {
      "text": " um",
-     "startMs": 3190,
-     "endMs": 3350,
-     "timestampMs": 3270,
+     "startMs": 2830,
+     "endMs": 3070,
+     "timestampMs": 2950,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 3350,
-     "endMs": 3590,
-     "timestampMs": 3470,
+     "startMs": 3070,
+     "endMs": 3230,
+     "timestampMs": 3150,
      "confidence": null
     },
     {
      "text": " uma",
-     "startMs": 3590,
-     "endMs": 3750,
-     "timestampMs": 3670,
+     "startMs": 3230,
+     "endMs": 3470,
+     "timestampMs": 3350,
      "confidence": null
     },
     {
      "text": " função",
-     "startMs": 3750,
-     "endMs": 3990,
-     "timestampMs": 3870,
+     "startMs": 3470,
+     "endMs": 3790,
+     "timestampMs": 3630,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 3990,
-     "endMs": 4150,
-     "timestampMs": 4070,
+     "startMs": 3790,
+     "endMs": 4030,
+     "timestampMs": 3910,
      "confidence": null
     },
     {
      "text": " um",
-     "startMs": 4150,
-     "endMs": 4310,
-     "timestampMs": 4230,
+     "startMs": 4030,
+     "endMs": 4190,
+     "timestampMs": 4110,
      "confidence": null
     },
     {
      "text": " dia.",
-     "startMs": 4310,
-     "endMs": 4693,
-     "timestampMs": 4501,
+     "startMs": 4190,
+     "endMs": 4670,
+     "timestampMs": 4430,
      "confidence": null
     },
     {
      "text": " O",
-     "startMs": 5033,
-     "endMs": 5193,
-     "timestampMs": 5113,
+     "startMs": 4670,
+     "endMs": 4910,
+     "timestampMs": 4790,
      "confidence": null
     },
     {
      "text": " algoritmo",
-     "startMs": 5193,
-     "endMs": 5673,
-     "timestampMs": 5433,
+     "startMs": 4910,
+     "endMs": 5390,
+     "timestampMs": 5150,
      "confidence": null
     },
     {
      "text": " reconhece",
-     "startMs": 5673,
-     "endMs": 6153,
-     "timestampMs": 5913,
+     "startMs": 5390,
+     "endMs": 6030,
+     "timestampMs": 5710,
      "confidence": null
     },
     {
      "text": " série,",
-     "startMs": 6153,
-     "endMs": 6473,
-     "timestampMs": 6313,
+     "startMs": 6030,
+     "endMs": 6430,
+     "timestampMs": 6230,
      "confidence": null
     },
     {
      "text": " não",
-     "startMs": 6553,
-     "endMs": 6713,
-     "timestampMs": 6633,
+     "startMs": 6430,
+     "endMs": 6590,
+     "timestampMs": 6510,
      "confidence": null
     },
     {
      "text": " post",
-     "startMs": 6713,
-     "endMs": 7033,
-     "timestampMs": 6873,
+     "startMs": 6590,
+     "endMs": 6939,
+     "timestampMs": 6765,
      "confidence": null
     },
     {
      "text": " avulso.",
-     "startMs": 7033,
-     "endMs": 7522,
-     "timestampMs": 7277,
+     "startMs": 6939,
+     "endMs": 7550,
+     "timestampMs": 7245,
      "confidence": null
     }
    ]
@@ -1440,512 +1440,512 @@
   {
    "id": "semana",
    "compassos": 14,
-   "fimNarracao": 689,
+   "fimNarracao": 770,
    "frases": [
     {
      "legenda": "Segunda, Radar do Capitão: o que todas as secretarias estão fazendo.",
      "inicio": 10,
-     "fim": 125
+     "fim": 128
     },
     {
      "legenda": "Terça, A Saúde Tem Nome: um paciente, uma UBS, um nome.",
-     "inicio": 135,
-     "fim": 227
+     "inicio": 128,
+     "fim": 273
     },
     {
      "legenda": "Quarta, Prefeito Cast ou Prefeito no Bairro, alternando a cada quinzena.",
-     "inicio": 238,
-     "fim": 354
+     "inicio": 275,
+     "fim": 407
     },
     {
      "legenda": "Quinta, Vale a Pena Ver de Novo, o TBT das obras.",
-     "inicio": 364,
-     "fim": 452
+     "inicio": 409,
+     "fim": 520
     },
     {
      "legenda": "Sexta, E o Povo Aprova, com os comentários dos moradores.",
-     "inicio": 462,
-     "fim": 552
+     "inicio": 524,
+     "fim": 628
     },
     {
      "legenda": "Sábado é lo-fi: o Capitão pessoa.",
-     "inicio": 562,
-     "fim": 616
+     "inicio": 630,
+     "fim": 709
     },
     {
      "legenda": "E domingo, o Radar Resumo da semana.",
-     "inicio": 626,
-     "fim": 689
+     "inicio": 709,
+     "fim": 770
     }
    ],
    "legendas": [
     {
      "text": " Segunda,",
      "startMs": 350,
-     "endMs": 750,
-     "timestampMs": 550,
+     "endMs": 910,
+     "timestampMs": 630,
      "confidence": null
     },
     {
      "text": " Radar",
-     "startMs": 750,
-     "endMs": 1150,
-     "timestampMs": 950,
+     "startMs": 910,
+     "endMs": 1310,
+     "timestampMs": 1110,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 1150,
-     "endMs": 1310,
-     "timestampMs": 1230,
+     "startMs": 1310,
+     "endMs": 1390,
+     "timestampMs": 1350,
      "confidence": null
     },
     {
      "text": " Capitão:",
-     "startMs": 1310,
-     "endMs": 1870,
-     "timestampMs": 1590,
+     "startMs": 1390,
+     "endMs": 1950,
+     "timestampMs": 1670,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 1870,
-     "endMs": 2030,
-     "timestampMs": 1950,
+     "startMs": 1950,
+     "endMs": 2110,
+     "timestampMs": 2030,
      "confidence": null
     },
     {
      "text": " que",
-     "startMs": 2030,
-     "endMs": 2190,
-     "timestampMs": 2110,
+     "startMs": 2110,
+     "endMs": 2270,
+     "timestampMs": 2190,
      "confidence": null
     },
     {
      "text": " todas",
-     "startMs": 2190,
-     "endMs": 2350,
-     "timestampMs": 2270,
+     "startMs": 2270,
+     "endMs": 2510,
+     "timestampMs": 2390,
      "confidence": null
     },
     {
      "text": " as",
-     "startMs": 2350,
-     "endMs": 2510,
-     "timestampMs": 2430,
+     "startMs": 2510,
+     "endMs": 2590,
+     "timestampMs": 2550,
      "confidence": null
     },
     {
      "text": " secretarias",
-     "startMs": 2510,
-     "endMs": 3390,
+     "startMs": 2590,
+     "endMs": 3310,
      "timestampMs": 2950,
      "confidence": null
     },
     {
      "text": " estão",
-     "startMs": 3390,
-     "endMs": 3710,
-     "timestampMs": 3550,
+     "startMs": 3310,
+     "endMs": 3550,
+     "timestampMs": 3430,
      "confidence": null
     },
     {
      "text": " fazendo.",
-     "startMs": 3710,
-     "endMs": 4170,
-     "timestampMs": 3940,
+     "startMs": 3550,
+     "endMs": 4270,
+     "timestampMs": 3910,
      "confidence": null
     },
     {
      "text": " Terça,",
-     "startMs": 4510,
-     "endMs": 4990,
-     "timestampMs": 4750,
+     "startMs": 4270,
+     "endMs": 4830,
+     "timestampMs": 4550,
      "confidence": null
     },
     {
      "text": " A",
-     "startMs": 4990,
+     "startMs": 4830,
      "endMs": 4990,
-     "timestampMs": 4990,
+     "timestampMs": 4910,
      "confidence": null
     },
     {
      "text": " Saúde",
      "startMs": 4990,
-     "endMs": 5310,
-     "timestampMs": 5150,
+     "endMs": 5390,
+     "timestampMs": 5190,
      "confidence": null
     },
     {
      "text": " Tem",
-     "startMs": 5310,
+     "startMs": 5390,
      "endMs": 5630,
-     "timestampMs": 5470,
+     "timestampMs": 5510,
      "confidence": null
     },
     {
      "text": " Nome:",
      "startMs": 5630,
-     "endMs": 5950,
-     "timestampMs": 5790,
+     "endMs": 6110,
+     "timestampMs": 5870,
      "confidence": null
     },
     {
      "text": " um",
-     "startMs": 5950,
-     "endMs": 6110,
-     "timestampMs": 6030,
+     "startMs": 6110,
+     "endMs": 6270,
+     "timestampMs": 6190,
      "confidence": null
     },
     {
      "text": " paciente,",
-     "startMs": 6110,
-     "endMs": 6430,
-     "timestampMs": 6270,
+     "startMs": 6270,
+     "endMs": 6910,
+     "timestampMs": 6590,
      "confidence": null
     },
     {
      "text": " uma",
-     "startMs": 6510,
-     "endMs": 6750,
-     "timestampMs": 6630,
+     "startMs": 6910,
+     "endMs": 7150,
+     "timestampMs": 7030,
      "confidence": null
     },
     {
      "text": " UBS,",
-     "startMs": 6750,
-     "endMs": 7230,
-     "timestampMs": 6990,
+     "startMs": 7150,
+     "endMs": 7950,
+     "timestampMs": 7550,
      "confidence": null
     },
     {
      "text": " um",
-     "startMs": 7230,
-     "endMs": 7390,
-     "timestampMs": 7310,
+     "startMs": 7950,
+     "endMs": 8190,
+     "timestampMs": 8070,
      "confidence": null
     },
     {
      "text": " nome.",
-     "startMs": 7390,
-     "endMs": 7581,
-     "timestampMs": 7485,
+     "startMs": 8190,
+     "endMs": 9090,
+     "timestampMs": 8640,
      "confidence": null
     },
     {
      "text": " Quarta,",
-     "startMs": 7921,
-     "endMs": 8321,
-     "timestampMs": 8121,
+     "startMs": 9150,
+     "endMs": 9790,
+     "timestampMs": 9470,
      "confidence": null
     },
     {
      "text": " Prefeito",
-     "startMs": 8321,
-     "endMs": 8721,
-     "timestampMs": 8521,
+     "startMs": 9790,
+     "endMs": 10270,
+     "timestampMs": 10030,
      "confidence": null
     },
     {
      "text": " Cast",
-     "startMs": 8721,
-     "endMs": 9201,
-     "timestampMs": 8961,
+     "startMs": 10270,
+     "endMs": 10750,
+     "timestampMs": 10510,
      "confidence": null
     },
     {
      "text": " ou",
-     "startMs": 9201,
-     "endMs": 9441,
-     "timestampMs": 9321,
+     "startMs": 10750,
+     "endMs": 10910,
+     "timestampMs": 10830,
      "confidence": null
     },
     {
      "text": " Prefeito",
-     "startMs": 9441,
-     "endMs": 9841,
-     "timestampMs": 9641,
+     "startMs": 10910,
+     "endMs": 11310,
+     "timestampMs": 11110,
      "confidence": null
     },
     {
      "text": " no",
-     "startMs": 9841,
-     "endMs": 9921,
-     "timestampMs": 9881,
+     "startMs": 11310,
+     "endMs": 11390,
+     "timestampMs": 11350,
      "confidence": null
     },
     {
      "text": " Bairro,",
-     "startMs": 9921,
-     "endMs": 10401,
-     "timestampMs": 10161,
+     "startMs": 11390,
+     "endMs": 11870,
+     "timestampMs": 11630,
      "confidence": null
     },
     {
      "text": " alternando",
-     "startMs": 10401,
-     "endMs": 10961,
-     "timestampMs": 10681,
+     "startMs": 11870,
+     "endMs": 12350,
+     "timestampMs": 12110,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 10961,
-     "endMs": 11041,
-     "timestampMs": 11001,
+     "startMs": 12350,
+     "endMs": 12430,
+     "timestampMs": 12390,
      "confidence": null
     },
     {
      "text": " cada",
-     "startMs": 11041,
-     "endMs": 11281,
-     "timestampMs": 11161,
+     "startMs": 12430,
+     "endMs": 12670,
+     "timestampMs": 12550,
      "confidence": null
     },
     {
      "text": " quinzena.",
-     "startMs": 11281,
-     "endMs": 11801,
-     "timestampMs": 11541,
+     "startMs": 12670,
+     "endMs": 13570,
+     "timestampMs": 13120,
      "confidence": null
     },
     {
      "text": " Quinta,",
-     "startMs": 12221,
-     "endMs": 12621,
-     "timestampMs": 12421,
+     "startMs": 13630,
+     "endMs": 14270,
+     "timestampMs": 13950,
      "confidence": null
     },
     {
      "text": " Vale",
-     "startMs": 12621,
-     "endMs": 12861,
-     "timestampMs": 12741,
+     "startMs": 14270,
+     "endMs": 14510,
+     "timestampMs": 14390,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 12861,
-     "endMs": 12941,
-     "timestampMs": 12901,
+     "startMs": 14510,
+     "endMs": 14590,
+     "timestampMs": 14550,
      "confidence": null
     },
     {
      "text": " Pena",
-     "startMs": 12941,
-     "endMs": 13181,
-     "timestampMs": 13061,
+     "startMs": 14590,
+     "endMs": 14830,
+     "timestampMs": 14710,
      "confidence": null
     },
     {
      "text": " Ver",
-     "startMs": 13181,
-     "endMs": 13421,
-     "timestampMs": 13301,
+     "startMs": 14830,
+     "endMs": 15070,
+     "timestampMs": 14950,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 13421,
-     "endMs": 13501,
-     "timestampMs": 13461,
+     "startMs": 15070,
+     "endMs": 15150,
+     "timestampMs": 15110,
      "confidence": null
     },
     {
      "text": " Novo,",
-     "startMs": 13501,
-     "endMs": 13741,
-     "timestampMs": 13621,
+     "startMs": 15150,
+     "endMs": 15550,
+     "timestampMs": 15350,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 13741,
-     "endMs": 13901,
-     "timestampMs": 13821,
+     "startMs": 15550,
+     "endMs": 15710,
+     "timestampMs": 15630,
      "confidence": null
     },
     {
      "text": " TBT",
-     "startMs": 13901,
-     "endMs": 14461,
-     "timestampMs": 14181,
+     "startMs": 15710,
+     "endMs": 16190,
+     "timestampMs": 15950,
      "confidence": null
     },
     {
      "text": " das",
-     "startMs": 14461,
-     "endMs": 14621,
-     "timestampMs": 14541,
+     "startMs": 16190,
+     "endMs": 16430,
+     "timestampMs": 16310,
      "confidence": null
     },
     {
      "text": " obras.",
-     "startMs": 14621,
-     "endMs": 15051,
-     "timestampMs": 14836,
+     "startMs": 16430,
+     "endMs": 17330,
+     "timestampMs": 16880,
      "confidence": null
     },
     {
      "text": " Sexta,",
-     "startMs": 15391,
-     "endMs": 15791,
-     "timestampMs": 15591,
+     "startMs": 17470,
+     "endMs": 18030,
+     "timestampMs": 17750,
      "confidence": null
     },
     {
      "text": " E",
-     "startMs": 15791,
-     "endMs": 15871,
-     "timestampMs": 15831,
+     "startMs": 18030,
+     "endMs": 18190,
+     "timestampMs": 18110,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 15871,
-     "endMs": 15951,
-     "timestampMs": 15911,
+     "startMs": 18190,
+     "endMs": 18270,
+     "timestampMs": 18230,
      "confidence": null
     },
     {
      "text": " Povo",
-     "startMs": 15951,
-     "endMs": 16191,
-     "timestampMs": 16071,
+     "startMs": 18270,
+     "endMs": 18670,
+     "timestampMs": 18470,
      "confidence": null
     },
     {
      "text": " Aprova,",
-     "startMs": 16191,
-     "endMs": 16671,
-     "timestampMs": 16431,
+     "startMs": 18670,
+     "endMs": 19150,
+     "timestampMs": 18910,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 16671,
-     "endMs": 16831,
-     "timestampMs": 16751,
+     "startMs": 19150,
+     "endMs": 19390,
+     "timestampMs": 19270,
      "confidence": null
     },
     {
      "text": " os",
-     "startMs": 16831,
-     "endMs": 16991,
-     "timestampMs": 16911,
+     "startMs": 19390,
+     "endMs": 19470,
+     "timestampMs": 19430,
      "confidence": null
     },
     {
      "text": " comentários",
-     "startMs": 16991,
-     "endMs": 17471,
-     "timestampMs": 17231,
+     "startMs": 19470,
+     "endMs": 19870,
+     "timestampMs": 19670,
      "confidence": null
     },
     {
      "text": " dos",
-     "startMs": 17471,
-     "endMs": 17711,
-     "timestampMs": 17591,
+     "startMs": 19870,
+     "endMs": 20030,
+     "timestampMs": 19950,
      "confidence": null
     },
     {
      "text": " moradores.",
-     "startMs": 17711,
-     "endMs": 18401,
-     "timestampMs": 18056,
+     "startMs": 20030,
+     "endMs": 20930,
+     "timestampMs": 20480,
      "confidence": null
     },
     {
      "text": " Sábado",
-     "startMs": 18741,
-     "endMs": 19061,
-     "timestampMs": 18901,
+     "startMs": 20990,
+     "endMs": 21550,
+     "timestampMs": 21270,
      "confidence": null
     },
     {
      "text": " é",
-     "startMs": 19061,
-     "endMs": 19141,
-     "timestampMs": 19101,
+     "startMs": 21550,
+     "endMs": 21710,
+     "timestampMs": 21630,
      "confidence": null
     },
     {
      "text": " lo-fi:",
-     "startMs": 19141,
-     "endMs": 19621,
-     "timestampMs": 19381,
+     "startMs": 21710,
+     "endMs": 22430,
+     "timestampMs": 22070,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 19621,
-     "endMs": 19701,
-     "timestampMs": 19661,
+     "startMs": 22430,
+     "endMs": 22510,
+     "timestampMs": 22470,
      "confidence": null
     },
     {
      "text": " Capitão",
-     "startMs": 19701,
-     "endMs": 20101,
-     "timestampMs": 19901,
+     "startMs": 22510,
+     "endMs": 22990,
+     "timestampMs": 22750,
      "confidence": null
     },
     {
      "text": " pessoa.",
-     "startMs": 20101,
-     "endMs": 20525,
-     "timestampMs": 20313,
+     "startMs": 22990,
+     "endMs": 23630,
+     "timestampMs": 23310,
      "confidence": null
     },
     {
      "text": " E",
-     "startMs": 20865,
-     "endMs": 21025,
-     "timestampMs": 20945,
+     "startMs": 23630,
+     "endMs": 23790,
+     "timestampMs": 23710,
      "confidence": null
     },
     {
      "text": " domingo,",
-     "startMs": 21025,
-     "endMs": 21425,
-     "timestampMs": 21225,
+     "startMs": 23790,
+     "endMs": 24270,
+     "timestampMs": 24030,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 21425,
-     "endMs": 21585,
-     "timestampMs": 21505,
+     "startMs": 24270,
+     "endMs": 24350,
+     "timestampMs": 24310,
      "confidence": null
     },
     {
      "text": " Radar",
-     "startMs": 21585,
-     "endMs": 22065,
-     "timestampMs": 21825,
+     "startMs": 24350,
+     "endMs": 24830,
+     "timestampMs": 24590,
      "confidence": null
     },
     {
      "text": " Resumo",
-     "startMs": 22065,
-     "endMs": 22465,
-     "timestampMs": 22265,
+     "startMs": 24830,
+     "endMs": 25230,
+     "timestampMs": 25030,
      "confidence": null
     },
     {
      "text": " da",
-     "startMs": 22465,
-     "endMs": 22545,
-     "timestampMs": 22505,
+     "startMs": 25230,
+     "endMs": 25310,
+     "timestampMs": 25270,
      "confidence": null
     },
     {
      "text": " semana.",
-     "startMs": 22545,
-     "endMs": 22962,
-     "timestampMs": 22754,
+     "startMs": 25310,
+     "endMs": 25680,
+     "timestampMs": 25495,
      "confidence": null
     }
    ]
@@ -1953,22 +1953,22 @@
   {
    "id": "janela",
    "compassos": 7,
-   "fimNarracao": 341,
+   "fimNarracao": 337,
    "frases": [
     {
      "legenda": "Os quadros saem às 10h, no pico de audiência de segunda a sexta.",
      "inicio": 10,
-     "fim": 128
+     "fim": 133
     },
     {
      "legenda": "O segundo pico é às 18h, a hora dos carrosséis extras.",
-     "inicio": 138,
-     "fim": 242
+     "inicio": 133,
+     "fim": 253
     },
     {
      "legenda": "No fim de semana, o alcance cai para cerca da metade.",
      "inicio": 253,
-     "fim": 341
+     "fim": 337
     }
    ],
    "legendas": [
@@ -1982,239 +1982,239 @@
     {
      "text": " quadros",
      "startMs": 510,
-     "endMs": 910,
-     "timestampMs": 710,
+     "endMs": 830,
+     "timestampMs": 670,
      "confidence": null
     },
     {
      "text": " saem",
-     "startMs": 910,
-     "endMs": 1230,
-     "timestampMs": 1070,
+     "startMs": 830,
+     "endMs": 1070,
+     "timestampMs": 950,
      "confidence": null
     },
     {
      "text": " às",
-     "startMs": 1230,
-     "endMs": 1390,
-     "timestampMs": 1310,
+     "startMs": 1070,
+     "endMs": 1230,
+     "timestampMs": 1150,
      "confidence": null
     },
     {
      "text": " 10h,",
-     "startMs": 1390,
-     "endMs": 2110,
-     "timestampMs": 1750,
+     "startMs": 1230,
+     "endMs": 1950,
+     "timestampMs": 1590,
      "confidence": null
     },
     {
      "text": " no",
-     "startMs": 2110,
-     "endMs": 2270,
-     "timestampMs": 2190,
+     "startMs": 1950,
+     "endMs": 2110,
+     "timestampMs": 2030,
      "confidence": null
     },
     {
      "text": " pico",
-     "startMs": 2270,
-     "endMs": 2590,
+     "startMs": 2110,
+     "endMs": 2350,
+     "timestampMs": 2230,
+     "confidence": null
+    },
+    {
+     "text": " de",
+     "startMs": 2350,
+     "endMs": 2510,
      "timestampMs": 2430,
      "confidence": null
     },
     {
-     "text": " de",
-     "startMs": 2590,
-     "endMs": 2750,
-     "timestampMs": 2670,
+     "text": " audiência",
+     "startMs": 2510,
+     "endMs": 2910,
+     "timestampMs": 2710,
      "confidence": null
     },
     {
-     "text": " audiência",
-     "startMs": 2750,
-     "endMs": 3230,
+     "text": " de",
+     "startMs": 2910,
+     "endMs": 3070,
      "timestampMs": 2990,
      "confidence": null
     },
     {
-     "text": " de",
-     "startMs": 3230,
-     "endMs": 3390,
-     "timestampMs": 3310,
-     "confidence": null
-    },
-    {
      "text": " segunda",
-     "startMs": 3390,
-     "endMs": 3790,
-     "timestampMs": 3590,
+     "startMs": 3070,
+     "endMs": 3470,
+     "timestampMs": 3270,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 3790,
-     "endMs": 3870,
-     "timestampMs": 3830,
+     "startMs": 3470,
+     "endMs": 3550,
+     "timestampMs": 3510,
      "confidence": null
     },
     {
      "text": " sexta.",
-     "startMs": 3870,
-     "endMs": 4260,
-     "timestampMs": 4065,
+     "startMs": 3550,
+     "endMs": 4430,
+     "timestampMs": 3990,
      "confidence": null
     },
     {
      "text": " O",
-     "startMs": 4600,
-     "endMs": 4760,
-     "timestampMs": 4680,
+     "startMs": 4430,
+     "endMs": 4590,
+     "timestampMs": 4510,
      "confidence": null
     },
     {
      "text": " segundo",
-     "startMs": 4760,
-     "endMs": 5080,
-     "timestampMs": 4920,
+     "startMs": 4590,
+     "endMs": 4990,
+     "timestampMs": 4790,
      "confidence": null
     },
     {
      "text": " pico",
-     "startMs": 5080,
-     "endMs": 5400,
-     "timestampMs": 5240,
+     "startMs": 4990,
+     "endMs": 5310,
+     "timestampMs": 5150,
      "confidence": null
     },
     {
      "text": " é",
-     "startMs": 5400,
-     "endMs": 5480,
-     "timestampMs": 5440,
+     "startMs": 5310,
+     "endMs": 5390,
+     "timestampMs": 5350,
      "confidence": null
     },
     {
      "text": " às",
-     "startMs": 5480,
-     "endMs": 5640,
-     "timestampMs": 5560,
+     "startMs": 5390,
+     "endMs": 5550,
+     "timestampMs": 5470,
      "confidence": null
     },
     {
      "text": " 18h,",
-     "startMs": 5640,
-     "endMs": 6520,
-     "timestampMs": 6080,
+     "startMs": 5550,
+     "endMs": 6430,
+     "timestampMs": 5990,
      "confidence": null
     },
     {
      "text": " a",
-     "startMs": 6520,
-     "endMs": 6680,
-     "timestampMs": 6600,
+     "startMs": 6430,
+     "endMs": 6510,
+     "timestampMs": 6470,
      "confidence": null
     },
     {
      "text": " hora",
-     "startMs": 6680,
-     "endMs": 6840,
-     "timestampMs": 6760,
+     "startMs": 6510,
+     "endMs": 6750,
+     "timestampMs": 6630,
      "confidence": null
     },
     {
      "text": " dos",
-     "startMs": 6840,
-     "endMs": 7000,
-     "timestampMs": 6920,
+     "startMs": 6750,
+     "endMs": 6910,
+     "timestampMs": 6830,
      "confidence": null
     },
     {
      "text": " carrosséis",
-     "startMs": 7000,
-     "endMs": 7720,
-     "timestampMs": 7360,
+     "startMs": 6910,
+     "endMs": 7710,
+     "timestampMs": 7310,
      "confidence": null
     },
     {
      "text": " extras.",
-     "startMs": 7720,
-     "endMs": 8080,
-     "timestampMs": 7900,
+     "startMs": 7710,
+     "endMs": 8430,
+     "timestampMs": 8070,
      "confidence": null
     },
     {
      "text": " No",
-     "startMs": 8420,
-     "endMs": 8660,
-     "timestampMs": 8540,
+     "startMs": 8430,
+     "endMs": 8670,
+     "timestampMs": 8550,
      "confidence": null
     },
     {
      "text": " fim",
-     "startMs": 8660,
-     "endMs": 8820,
-     "timestampMs": 8740,
+     "startMs": 8670,
+     "endMs": 8910,
+     "timestampMs": 8790,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 8820,
-     "endMs": 8980,
-     "timestampMs": 8900,
+     "startMs": 8910,
+     "endMs": 9070,
+     "timestampMs": 8990,
      "confidence": null
     },
     {
      "text": " semana,",
-     "startMs": 8980,
-     "endMs": 9300,
-     "timestampMs": 9140,
+     "startMs": 9070,
+     "endMs": 9390,
+     "timestampMs": 9230,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 9300,
-     "endMs": 9540,
-     "timestampMs": 9420,
+     "startMs": 9390,
+     "endMs": 9630,
+     "timestampMs": 9510,
      "confidence": null
     },
     {
      "text": " alcance",
-     "startMs": 9540,
-     "endMs": 10020,
-     "timestampMs": 9780,
+     "startMs": 9630,
+     "endMs": 10030,
+     "timestampMs": 9830,
      "confidence": null
     },
     {
      "text": " cai",
-     "startMs": 10020,
-     "endMs": 10260,
-     "timestampMs": 10140,
+     "startMs": 10030,
+     "endMs": 10270,
+     "timestampMs": 10150,
      "confidence": null
     },
     {
      "text": " para",
-     "startMs": 10260,
-     "endMs": 10420,
-     "timestampMs": 10340,
+     "startMs": 10270,
+     "endMs": 10430,
+     "timestampMs": 10350,
      "confidence": null
     },
     {
      "text": " cerca",
-     "startMs": 10420,
-     "endMs": 10740,
-     "timestampMs": 10580,
+     "startMs": 10430,
+     "endMs": 10670,
+     "timestampMs": 10550,
      "confidence": null
     },
     {
      "text": " da",
-     "startMs": 10740,
-     "endMs": 10820,
-     "timestampMs": 10780,
+     "startMs": 10670,
+     "endMs": 10830,
+     "timestampMs": 10750,
      "confidence": null
     },
     {
      "text": " metade.",
-     "startMs": 10820,
-     "endMs": 11360,
-     "timestampMs": 11090,
+     "startMs": 10830,
+     "endMs": 11240,
+     "timestampMs": 11035,
      "confidence": null
     }
    ]
@@ -2222,287 +2222,287 @@
   {
    "id": "calendario",
    "compassos": 9,
-   "fimNarracao": 434,
+   "fimNarracao": 436,
    "frases": [
     {
      "legenda": "São 10 semanas, cada uma com um eixo temático.",
      "inicio": 10,
-     "fim": 89
+     "fim": 104
     },
     {
      "legenda": "Saúde, obras, educação, gestão e cuidado com gente se revezam.",
-     "inicio": 99,
-     "fim": 210
+     "inicio": 104,
+     "fim": 244
     },
     {
      "legenda": "Os Números Mostram o Avanço sai em 04/11 e 02/12.",
-     "inicio": 220,
-     "fim": 342
+     "inicio": 246,
+     "fim": 361
     },
     {
      "legenda": "E o ano fecha com o Balanço 2026.",
-     "inicio": 353,
-     "fim": 434
+     "inicio": 361,
+     "fim": 436
     }
    ],
    "legendas": [
     {
      "text": " São",
      "startMs": 350,
-     "endMs": 590,
-     "timestampMs": 470,
+     "endMs": 670,
+     "timestampMs": 510,
      "confidence": null
     },
     {
      "text": " 10",
-     "startMs": 590,
-     "endMs": 830,
-     "timestampMs": 710,
+     "startMs": 670,
+     "endMs": 990,
+     "timestampMs": 830,
      "confidence": null
     },
     {
      "text": " semanas,",
-     "startMs": 830,
-     "endMs": 1230,
-     "timestampMs": 1030,
+     "startMs": 990,
+     "endMs": 1470,
+     "timestampMs": 1230,
      "confidence": null
     },
     {
      "text": " cada",
-     "startMs": 1230,
-     "endMs": 1470,
-     "timestampMs": 1350,
+     "startMs": 1470,
+     "endMs": 1710,
+     "timestampMs": 1590,
      "confidence": null
     },
     {
      "text": " uma",
-     "startMs": 1470,
-     "endMs": 1630,
-     "timestampMs": 1550,
+     "startMs": 1710,
+     "endMs": 1950,
+     "timestampMs": 1830,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 1630,
-     "endMs": 1790,
-     "timestampMs": 1710,
+     "startMs": 1950,
+     "endMs": 2110,
+     "timestampMs": 2030,
      "confidence": null
     },
     {
      "text": " um",
-     "startMs": 1790,
-     "endMs": 1950,
-     "timestampMs": 1870,
+     "startMs": 2110,
+     "endMs": 2270,
+     "timestampMs": 2190,
      "confidence": null
     },
     {
      "text": " eixo",
-     "startMs": 1950,
-     "endMs": 2350,
-     "timestampMs": 2150,
+     "startMs": 2270,
+     "endMs": 2670,
+     "timestampMs": 2470,
      "confidence": null
     },
     {
      "text": " temático.",
-     "startMs": 2350,
-     "endMs": 2970,
-     "timestampMs": 2660,
+     "startMs": 2670,
+     "endMs": 3470,
+     "timestampMs": 3070,
      "confidence": null
     },
     {
      "text": " Saúde,",
-     "startMs": 3310,
-     "endMs": 3870,
-     "timestampMs": 3590,
+     "startMs": 3470,
+     "endMs": 4190,
+     "timestampMs": 3830,
      "confidence": null
     },
     {
      "text": " obras,",
-     "startMs": 3870,
-     "endMs": 4350,
-     "timestampMs": 4110,
+     "startMs": 4190,
+     "endMs": 4750,
+     "timestampMs": 4470,
      "confidence": null
     },
     {
      "text": " educação,",
-     "startMs": 4350,
-     "endMs": 4910,
-     "timestampMs": 4630,
+     "startMs": 4750,
+     "endMs": 5550,
+     "timestampMs": 5150,
      "confidence": null
     },
     {
      "text": " gestão",
-     "startMs": 4910,
-     "endMs": 5230,
-     "timestampMs": 5070,
+     "startMs": 5550,
+     "endMs": 6030,
+     "timestampMs": 5790,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 5230,
-     "endMs": 5390,
-     "timestampMs": 5310,
+     "startMs": 6030,
+     "endMs": 6190,
+     "timestampMs": 6110,
      "confidence": null
     },
     {
      "text": " cuidado",
-     "startMs": 5390,
-     "endMs": 5790,
-     "timestampMs": 5590,
+     "startMs": 6190,
+     "endMs": 6590,
+     "timestampMs": 6390,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 5790,
-     "endMs": 6030,
-     "timestampMs": 5910,
+     "startMs": 6590,
+     "endMs": 6830,
+     "timestampMs": 6710,
      "confidence": null
     },
     {
      "text": " gente",
-     "startMs": 6030,
-     "endMs": 6270,
-     "timestampMs": 6150,
+     "startMs": 6830,
+     "endMs": 7070,
+     "timestampMs": 6950,
      "confidence": null
     },
     {
      "text": " se",
-     "startMs": 6270,
-     "endMs": 6430,
-     "timestampMs": 6350,
+     "startMs": 7070,
+     "endMs": 7230,
+     "timestampMs": 7150,
      "confidence": null
     },
     {
      "text": " revezam.",
-     "startMs": 6430,
-     "endMs": 6998,
-     "timestampMs": 6714,
+     "startMs": 7230,
+     "endMs": 8130,
+     "timestampMs": 7680,
      "confidence": null
     },
     {
      "text": " Os",
-     "startMs": 7418,
-     "endMs": 7578,
-     "timestampMs": 7498,
+     "startMs": 8190,
+     "endMs": 8350,
+     "timestampMs": 8270,
      "confidence": null
     },
     {
      "text": " Números",
-     "startMs": 7578,
-     "endMs": 7898,
-     "timestampMs": 7738,
+     "startMs": 8350,
+     "endMs": 8750,
+     "timestampMs": 8550,
      "confidence": null
     },
     {
      "text": " Mostram",
-     "startMs": 7898,
-     "endMs": 8298,
-     "timestampMs": 8098,
+     "startMs": 8750,
+     "endMs": 9150,
+     "timestampMs": 8950,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 8298,
-     "endMs": 8458,
-     "timestampMs": 8378,
+     "startMs": 9150,
+     "endMs": 9230,
+     "timestampMs": 9190,
      "confidence": null
     },
     {
      "text": " Avanço",
-     "startMs": 8458,
-     "endMs": 8858,
-     "timestampMs": 8658,
+     "startMs": 9230,
+     "endMs": 9630,
+     "timestampMs": 9430,
      "confidence": null
     },
     {
      "text": " sai",
-     "startMs": 8858,
-     "endMs": 9258,
-     "timestampMs": 9058,
+     "startMs": 9630,
+     "endMs": 9990,
+     "timestampMs": 9810,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 9258,
-     "endMs": 9418,
-     "timestampMs": 9338,
+     "startMs": 9990,
+     "endMs": 10230,
+     "timestampMs": 10110,
      "confidence": null
     },
     {
      "text": " 04/11",
-     "startMs": 9418,
-     "endMs": 10298,
-     "timestampMs": 9858,
+     "startMs": 10230,
+     "endMs": 10830,
+     "timestampMs": 10530,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 10298,
-     "endMs": 10458,
-     "timestampMs": 10378,
+     "startMs": 10830,
+     "endMs": 10990,
+     "timestampMs": 10910,
      "confidence": null
     },
     {
      "text": " 02/12.",
-     "startMs": 10458,
-     "endMs": 11412,
-     "timestampMs": 10935,
+     "startMs": 10990,
+     "endMs": 12030,
+     "timestampMs": 11510,
      "confidence": null
     },
     {
      "text": " E",
-     "startMs": 11752,
-     "endMs": 11912,
-     "timestampMs": 11832,
+     "startMs": 12030,
+     "endMs": 12190,
+     "timestampMs": 12110,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 11912,
-     "endMs": 11992,
-     "timestampMs": 11952,
+     "startMs": 12190,
+     "endMs": 12270,
+     "timestampMs": 12230,
      "confidence": null
     },
     {
      "text": " ano",
-     "startMs": 11992,
-     "endMs": 12152,
-     "timestampMs": 12072,
+     "startMs": 12270,
+     "endMs": 12510,
+     "timestampMs": 12390,
      "confidence": null
     },
     {
      "text": " fecha",
-     "startMs": 12152,
-     "endMs": 12552,
-     "timestampMs": 12352,
+     "startMs": 12510,
+     "endMs": 12910,
+     "timestampMs": 12710,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 12552,
-     "endMs": 12712,
-     "timestampMs": 12632,
+     "startMs": 12910,
+     "endMs": 13070,
+     "timestampMs": 12990,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 12712,
-     "endMs": 12792,
-     "timestampMs": 12752,
+     "startMs": 13070,
+     "endMs": 13150,
+     "timestampMs": 13110,
      "confidence": null
     },
     {
      "text": " Balanço",
-     "startMs": 12792,
-     "endMs": 13272,
-     "timestampMs": 13032,
+     "startMs": 13150,
+     "endMs": 13630,
+     "timestampMs": 13390,
      "confidence": null
     },
     {
      "text": " 2026.",
-     "startMs": 13272,
-     "endMs": 14172,
-     "timestampMs": 13722,
+     "startMs": 13630,
+     "endMs": 14520,
+     "timestampMs": 14075,
      "confidence": null
     }
    ]
@@ -2510,226 +2510,226 @@
   {
    "id": "metas",
    "compassos": 8,
-   "fimNarracao": 402,
+   "fimNarracao": 395,
    "frases": [
     {
      "legenda": "As metas: 26.400 seguidores em 30/11.",
      "inicio": 10,
-     "fim": 135
+     "fim": 130
     },
     {
      "legenda": "27 mil em 31/12.",
-     "inicio": 145,
-     "fim": 216
+     "inicio": 130,
+     "fim": 202
     },
     {
      "legenda": "E os indicadores que vamos acompanhar: views por Reel, seguidores por semana, horário e dia fixo de cada quadro.",
-     "inicio": 226,
-     "fim": 402
+     "inicio": 202,
+     "fim": 395
     }
    ],
    "legendas": [
     {
      "text": " As",
-     "startMs": 430,
+     "startMs": 350,
      "endMs": 590,
-     "timestampMs": 510,
+     "timestampMs": 470,
      "confidence": null
     },
     {
      "text": " metas:",
      "startMs": 590,
-     "endMs": 1150,
-     "timestampMs": 870,
+     "endMs": 1230,
+     "timestampMs": 910,
      "confidence": null
     },
     {
      "text": " 26.400",
-     "startMs": 1150,
-     "endMs": 2670,
-     "timestampMs": 1910,
+     "startMs": 1230,
+     "endMs": 2130,
+     "timestampMs": 1680,
      "confidence": null
     },
     {
      "text": " seguidores",
-     "startMs": 2670,
-     "endMs": 3310,
-     "timestampMs": 2990,
+     "startMs": 2590,
+     "endMs": 3070,
+     "timestampMs": 2830,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 3310,
-     "endMs": 3550,
-     "timestampMs": 3430,
+     "startMs": 3070,
+     "endMs": 3230,
+     "timestampMs": 3150,
      "confidence": null
     },
     {
      "text": " 30/11.",
-     "startMs": 3550,
-     "endMs": 4484,
-     "timestampMs": 4017,
+     "startMs": 3230,
+     "endMs": 4321,
+     "timestampMs": 3775,
      "confidence": null
     },
     {
      "text": " 27",
-     "startMs": 4904,
-     "endMs": 5464,
-     "timestampMs": 5184,
+     "startMs": 4321,
+     "endMs": 4685,
+     "timestampMs": 4503,
      "confidence": null
     },
     {
      "text": " mil",
-     "startMs": 5464,
-     "endMs": 5864,
-     "timestampMs": 5664,
+     "startMs": 4685,
+     "endMs": 5230,
+     "timestampMs": 4957,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 5864,
-     "endMs": 6024,
-     "timestampMs": 5944,
+     "startMs": 5230,
+     "endMs": 5470,
+     "timestampMs": 5350,
      "confidence": null
     },
     {
      "text": " 31/12.",
-     "startMs": 6024,
-     "endMs": 7203,
-     "timestampMs": 6614,
+     "startMs": 5470,
+     "endMs": 6750,
+     "timestampMs": 6110,
      "confidence": null
     },
     {
      "text": " E",
-     "startMs": 7543,
-     "endMs": 7703,
-     "timestampMs": 7623,
+     "startMs": 6750,
+     "endMs": 6910,
+     "timestampMs": 6830,
      "confidence": null
     },
     {
      "text": " os",
-     "startMs": 7703,
-     "endMs": 7863,
-     "timestampMs": 7783,
+     "startMs": 6910,
+     "endMs": 7070,
+     "timestampMs": 6990,
      "confidence": null
     },
     {
      "text": " indicadores",
-     "startMs": 7863,
-     "endMs": 8343,
-     "timestampMs": 8103,
+     "startMs": 7070,
+     "endMs": 7630,
+     "timestampMs": 7350,
      "confidence": null
     },
     {
      "text": " que",
-     "startMs": 8343,
-     "endMs": 8503,
-     "timestampMs": 8423,
+     "startMs": 7630,
+     "endMs": 7790,
+     "timestampMs": 7710,
      "confidence": null
     },
     {
      "text": " vamos",
-     "startMs": 8503,
-     "endMs": 8743,
-     "timestampMs": 8623,
+     "startMs": 7790,
+     "endMs": 8030,
+     "timestampMs": 7910,
      "confidence": null
     },
     {
      "text": " acompanhar:",
-     "startMs": 8743,
-     "endMs": 9383,
-     "timestampMs": 9063,
+     "startMs": 8030,
+     "endMs": 8830,
+     "timestampMs": 8430,
      "confidence": null
     },
     {
      "text": " views",
-     "startMs": 9383,
-     "endMs": 9783,
-     "timestampMs": 9583,
+     "startMs": 8830,
+     "endMs": 9230,
+     "timestampMs": 9030,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 9783,
-     "endMs": 9943,
-     "timestampMs": 9863,
+     "startMs": 9230,
+     "endMs": 9500,
+     "timestampMs": 9365,
      "confidence": null
     },
     {
      "text": " Reel,",
-     "startMs": 9943,
-     "endMs": 10343,
-     "timestampMs": 10143,
+     "startMs": 9500,
+     "endMs": 9950,
+     "timestampMs": 9725,
      "confidence": null
     },
     {
      "text": " seguidores",
-     "startMs": 10343,
-     "endMs": 10903,
-     "timestampMs": 10623,
+     "startMs": 9950,
+     "endMs": 10510,
+     "timestampMs": 10230,
      "confidence": null
     },
     {
      "text": " por",
-     "startMs": 10903,
-     "endMs": 11063,
-     "timestampMs": 10983,
+     "startMs": 10510,
+     "endMs": 10670,
+     "timestampMs": 10590,
      "confidence": null
     },
     {
      "text": " semana,",
-     "startMs": 11063,
-     "endMs": 11463,
-     "timestampMs": 11263,
+     "startMs": 10670,
+     "endMs": 11310,
+     "timestampMs": 10990,
      "confidence": null
     },
     {
      "text": " horário",
-     "startMs": 11463,
-     "endMs": 11863,
-     "timestampMs": 11663,
+     "startMs": 11310,
+     "endMs": 11710,
+     "timestampMs": 11510,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 11863,
-     "endMs": 12023,
-     "timestampMs": 11943,
+     "startMs": 11710,
+     "endMs": 11870,
+     "timestampMs": 11790,
      "confidence": null
     },
     {
      "text": " dia",
-     "startMs": 12023,
-     "endMs": 12263,
-     "timestampMs": 12143,
+     "startMs": 11870,
+     "endMs": 12110,
+     "timestampMs": 11990,
      "confidence": null
     },
     {
      "text": " fixo",
-     "startMs": 12263,
-     "endMs": 12663,
-     "timestampMs": 12463,
+     "startMs": 12110,
+     "endMs": 12430,
+     "timestampMs": 12270,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 12663,
-     "endMs": 12743,
-     "timestampMs": 12703,
+     "startMs": 12430,
+     "endMs": 12590,
+     "timestampMs": 12510,
      "confidence": null
     },
     {
      "text": " cada",
-     "startMs": 12743,
-     "endMs": 12983,
-     "timestampMs": 12863,
+     "startMs": 12590,
+     "endMs": 12750,
+     "timestampMs": 12670,
      "confidence": null
     },
     {
      "text": " quadro.",
-     "startMs": 12983,
-     "endMs": 13393,
-     "timestampMs": 13188,
+     "startMs": 12750,
+     "endMs": 13180,
+     "timestampMs": 12965,
      "confidence": null
     }
    ]
@@ -2737,27 +2737,27 @@
   {
    "id": "crise",
    "compassos": 9,
-   "fimNarracao": 451,
+   "fimNarracao": 472,
    "frases": [
     {
      "legenda": "E se vier uma crise, o protocolo já está pronto.",
      "inicio": 10,
-     "fim": 90
+     "fim": 94
     },
     {
      "legenda": "Comunicado em até 2 horas, com uma única fonte oficial.",
-     "inicio": 100,
-     "fim": 193
+     "inicio": 94,
+     "fim": 202
     },
     {
      "legenda": "Utilidade primeiro, atualização em horário fixo, e em 72 horas os quadros voltam.",
-     "inicio": 204,
-     "fim": 355
+     "inicio": 202,
+     "fim": 370
     },
     {
      "legenda": "Regra de ouro: nunca mentir, ajustar o enquadramento.",
-     "inicio": 365,
-     "fim": 451
+     "inicio": 370,
+     "fim": 472
     }
    ],
    "legendas": [
@@ -2771,36 +2771,36 @@
     {
      "text": " se",
      "startMs": 510,
-     "endMs": 590,
-     "timestampMs": 550,
+     "endMs": 670,
+     "timestampMs": 590,
      "confidence": null
     },
     {
      "text": " vier",
-     "startMs": 590,
-     "endMs": 910,
-     "timestampMs": 750,
+     "startMs": 670,
+     "endMs": 990,
+     "timestampMs": 830,
      "confidence": null
     },
     {
      "text": " uma",
-     "startMs": 910,
-     "endMs": 1070,
-     "timestampMs": 990,
+     "startMs": 990,
+     "endMs": 1150,
+     "timestampMs": 1070,
      "confidence": null
     },
     {
      "text": " crise,",
-     "startMs": 1070,
-     "endMs": 1470,
-     "timestampMs": 1270,
+     "startMs": 1150,
+     "endMs": 1550,
+     "timestampMs": 1350,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 1470,
+     "startMs": 1550,
      "endMs": 1630,
-     "timestampMs": 1550,
+     "timestampMs": 1590,
      "confidence": null
     },
     {
@@ -2827,225 +2827,225 @@
     {
      "text": " pronto.",
      "startMs": 2590,
-     "endMs": 3001,
-     "timestampMs": 2795,
+     "endMs": 3150,
+     "timestampMs": 2870,
      "confidence": null
     },
     {
      "text": " Comunicado",
-     "startMs": 3341,
-     "endMs": 3981,
-     "timestampMs": 3661,
+     "startMs": 3150,
+     "endMs": 3790,
+     "timestampMs": 3470,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 3981,
-     "endMs": 4141,
-     "timestampMs": 4061,
+     "startMs": 3790,
+     "endMs": 3950,
+     "timestampMs": 3870,
      "confidence": null
     },
     {
      "text": " até",
-     "startMs": 4141,
-     "endMs": 4381,
-     "timestampMs": 4261,
+     "startMs": 3950,
+     "endMs": 4190,
+     "timestampMs": 4070,
      "confidence": null
     },
     {
      "text": " 2",
-     "startMs": 4381,
-     "endMs": 4621,
-     "timestampMs": 4501,
+     "startMs": 4190,
+     "endMs": 4430,
+     "timestampMs": 4310,
      "confidence": null
     },
     {
      "text": " horas,",
-     "startMs": 4621,
-     "endMs": 4941,
-     "timestampMs": 4781,
+     "startMs": 4430,
+     "endMs": 4830,
+     "timestampMs": 4630,
      "confidence": null
     },
     {
      "text": " com",
-     "startMs": 4941,
-     "endMs": 5181,
-     "timestampMs": 5061,
+     "startMs": 4830,
+     "endMs": 5070,
+     "timestampMs": 4950,
      "confidence": null
     },
     {
      "text": " uma",
-     "startMs": 5181,
-     "endMs": 5341,
-     "timestampMs": 5261,
+     "startMs": 5070,
+     "endMs": 5310,
+     "timestampMs": 5190,
      "confidence": null
     },
     {
      "text": " única",
-     "startMs": 5341,
-     "endMs": 5581,
-     "timestampMs": 5461,
+     "startMs": 5310,
+     "endMs": 5630,
+     "timestampMs": 5470,
      "confidence": null
     },
     {
      "text": " fonte",
-     "startMs": 5581,
-     "endMs": 5981,
-     "timestampMs": 5781,
+     "startMs": 5630,
+     "endMs": 5950,
+     "timestampMs": 5790,
      "confidence": null
     },
     {
      "text": " oficial.",
-     "startMs": 5981,
-     "endMs": 6447,
-     "timestampMs": 6214,
+     "startMs": 5950,
+     "endMs": 6750,
+     "timestampMs": 6350,
      "confidence": null
     },
     {
      "text": " Utilidade",
-     "startMs": 6867,
-     "endMs": 7507,
-     "timestampMs": 7187,
+     "startMs": 6750,
+     "endMs": 7470,
+     "timestampMs": 7110,
      "confidence": null
     },
     {
      "text": " primeiro,",
-     "startMs": 7507,
-     "endMs": 7907,
-     "timestampMs": 7707,
+     "startMs": 7470,
+     "endMs": 8110,
+     "timestampMs": 7790,
      "confidence": null
     },
     {
      "text": " atualização",
-     "startMs": 7907,
-     "endMs": 8547,
-     "timestampMs": 8227,
+     "startMs": 8110,
+     "endMs": 8750,
+     "timestampMs": 8430,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 8547,
-     "endMs": 8707,
-     "timestampMs": 8627,
+     "startMs": 8750,
+     "endMs": 8910,
+     "timestampMs": 8830,
      "confidence": null
     },
     {
      "text": " horário",
-     "startMs": 8707,
-     "endMs": 9027,
-     "timestampMs": 8867,
+     "startMs": 8910,
+     "endMs": 9310,
+     "timestampMs": 9110,
      "confidence": null
     },
     {
      "text": " fixo,",
-     "startMs": 9027,
-     "endMs": 9507,
-     "timestampMs": 9267,
+     "startMs": 9310,
+     "endMs": 9790,
+     "timestampMs": 9550,
      "confidence": null
     },
     {
      "text": " e",
-     "startMs": 9507,
-     "endMs": 9667,
-     "timestampMs": 9587,
+     "startMs": 9790,
+     "endMs": 10030,
+     "timestampMs": 9910,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 9667,
-     "endMs": 9827,
-     "timestampMs": 9747,
+     "startMs": 10030,
+     "endMs": 10190,
+     "timestampMs": 10110,
      "confidence": null
     },
     {
      "text": " 72",
-     "startMs": 9827,
-     "endMs": 10547,
-     "timestampMs": 10187,
+     "startMs": 10190,
+     "endMs": 10750,
+     "timestampMs": 10470,
      "confidence": null
     },
     {
      "text": " horas",
-     "startMs": 10547,
-     "endMs": 10867,
-     "timestampMs": 10707,
+     "startMs": 10750,
+     "endMs": 11070,
+     "timestampMs": 10910,
      "confidence": null
     },
     {
      "text": " os",
-     "startMs": 10867,
-     "endMs": 11027,
-     "timestampMs": 10947,
+     "startMs": 11070,
+     "endMs": 11230,
+     "timestampMs": 11150,
      "confidence": null
     },
     {
      "text": " quadros",
-     "startMs": 11027,
-     "endMs": 11427,
-     "timestampMs": 11227,
+     "startMs": 11230,
+     "endMs": 11710,
+     "timestampMs": 11470,
      "confidence": null
     },
     {
      "text": " voltam.",
-     "startMs": 11427,
-     "endMs": 11839,
-     "timestampMs": 11633,
+     "startMs": 11710,
+     "endMs": 12350,
+     "timestampMs": 12030,
      "confidence": null
     },
     {
      "text": " Regra",
-     "startMs": 12259,
-     "endMs": 12579,
-     "timestampMs": 12419,
+     "startMs": 12350,
+     "endMs": 12830,
+     "timestampMs": 12590,
      "confidence": null
     },
     {
      "text": " de",
-     "startMs": 12579,
-     "endMs": 12659,
-     "timestampMs": 12619,
+     "startMs": 12830,
+     "endMs": 12910,
+     "timestampMs": 12870,
      "confidence": null
     },
     {
      "text": " ouro:",
-     "startMs": 12659,
-     "endMs": 12979,
-     "timestampMs": 12819,
+     "startMs": 12910,
+     "endMs": 13470,
+     "timestampMs": 13190,
      "confidence": null
     },
     {
      "text": " nunca",
-     "startMs": 12979,
-     "endMs": 13299,
-     "timestampMs": 13139,
+     "startMs": 13470,
+     "endMs": 13790,
+     "timestampMs": 13630,
      "confidence": null
     },
     {
      "text": " mentir,",
-     "startMs": 13299,
-     "endMs": 13779,
-     "timestampMs": 13539,
+     "startMs": 13790,
+     "endMs": 14430,
+     "timestampMs": 14110,
      "confidence": null
     },
     {
      "text": " ajustar",
-     "startMs": 13779,
-     "endMs": 14259,
-     "timestampMs": 14019,
+     "startMs": 14430,
+     "endMs": 14910,
+     "timestampMs": 14670,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 14259,
-     "endMs": 14419,
-     "timestampMs": 14339,
+     "startMs": 14910,
+     "endMs": 15070,
+     "timestampMs": 14990,
      "confidence": null
     },
     {
      "text": " enquadramento.",
-     "startMs": 14419,
-     "endMs": 15029,
-     "timestampMs": 14724,
+     "startMs": 15070,
+     "endMs": 15740,
+     "timestampMs": 15405,
      "confidence": null
     }
    ]
@@ -3053,17 +3053,17 @@
   {
    "id": "encerramento",
    "compassos": 4,
-   "fimNarracao": 174,
+   "fimNarracao": 154,
    "frases": [
     {
      "legenda": "O plano entra no ar em 26/10.",
      "inicio": 27,
-     "fim": 105
+     "fim": 97
     },
     {
      "legenda": "Capitão Vítor, o prefeito do povo.",
-     "inicio": 116,
-     "fim": 174
+     "inicio": 97,
+     "fim": 154
     }
    ],
    "legendas": [
@@ -3084,78 +3084,78 @@
     {
      "text": " entra",
      "startMs": 1300,
-     "endMs": 1620,
-     "timestampMs": 1460,
+     "endMs": 1540,
+     "timestampMs": 1420,
      "confidence": null
     },
     {
      "text": " no",
-     "startMs": 1620,
-     "endMs": 1780,
-     "timestampMs": 1700,
+     "startMs": 1540,
+     "endMs": 1700,
+     "timestampMs": 1620,
      "confidence": null
     },
     {
      "text": " ar",
-     "startMs": 1780,
-     "endMs": 2126,
-     "timestampMs": 1953,
+     "startMs": 1700,
+     "endMs": 1860,
+     "timestampMs": 1780,
      "confidence": null
     },
     {
      "text": " em",
-     "startMs": 2126,
-     "endMs": 2473,
-     "timestampMs": 2300,
+     "startMs": 1860,
+     "endMs": 2020,
+     "timestampMs": 1940,
      "confidence": null
     },
     {
      "text": " 26/10.",
-     "startMs": 2473,
-     "endMs": 3512,
-     "timestampMs": 2993,
+     "startMs": 2020,
+     "endMs": 3220,
+     "timestampMs": 2620,
      "confidence": null
     },
     {
      "text": " Capitão",
-     "startMs": 3932,
-     "endMs": 4332,
-     "timestampMs": 4132,
+     "startMs": 3220,
+     "endMs": 3700,
+     "timestampMs": 3460,
      "confidence": null
     },
     {
      "text": " Vítor,",
-     "startMs": 4332,
-     "endMs": 4732,
-     "timestampMs": 4532,
+     "startMs": 3700,
+     "endMs": 4180,
+     "timestampMs": 3940,
      "confidence": null
     },
     {
      "text": " o",
-     "startMs": 4732,
-     "endMs": 4892,
-     "timestampMs": 4812,
+     "startMs": 4180,
+     "endMs": 4260,
+     "timestampMs": 4220,
      "confidence": null
     },
     {
      "text": " prefeito",
-     "startMs": 4892,
-     "endMs": 5292,
-     "timestampMs": 5092,
+     "startMs": 4260,
+     "endMs": 4660,
+     "timestampMs": 4460,
      "confidence": null
     },
     {
      "text": " do",
-     "startMs": 5292,
-     "endMs": 5372,
-     "timestampMs": 5332,
+     "startMs": 4660,
+     "endMs": 4740,
+     "timestampMs": 4700,
      "confidence": null
     },
     {
      "text": " povo.",
-     "startMs": 5372,
-     "endMs": 5802,
-     "timestampMs": 5587,
+     "startMs": 4740,
+     "endMs": 5137,
+     "timestampMs": 4938,
      "confidence": null
     }
    ]

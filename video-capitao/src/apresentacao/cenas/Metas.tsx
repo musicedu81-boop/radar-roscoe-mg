@@ -18,6 +18,9 @@ const q = (f: number) => f + inicioLocal(INDICE);
 const p = (palavra: string, ocorrencia = 0) =>
   momentoDaPalavra(INDICE, palavra, ocorrencia);
 
+// O painel só encolhe depois que o selo do desafio entrou (os dois movimentos não se atropelam)
+const ENCOLHE = Math.max(p("indicadores") - 20, p("31/12") + 36);
+
 const M = {
   titulo: 0,
   linha: 10,
@@ -38,9 +41,9 @@ const M = {
   },
   // O painel encolhe na virada para os indicadores; a etiqueta e as vagas só entram depois
   // que ele terminou de subir, para não cobrir o gráfico
-  encolhe: p("indicadores") - 20,
-  etiqueta: p("indicadores") + 10,
-  vagas: p("indicadores") + 16,
+  encolhe: ENCOLHE,
+  etiqueta: Math.max(p("indicadores") + 10, ENCOLHE + 30),
+  vagas: Math.max(p("indicadores") + 16, ENCOLHE + 36),
   kpis: [
     p("views") - 6,
     p("seguidores", 1) - 6,
