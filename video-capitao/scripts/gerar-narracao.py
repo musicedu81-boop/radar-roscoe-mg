@@ -20,6 +20,7 @@ Uso: python3 scripts/gerar-narracao.py <dir_modelos_tts> <dir_modelos_asr>
 
 import base64
 import difflib
+import hashlib
 import importlib.util
 import json
 import math
@@ -45,6 +46,7 @@ PAUSA_PONTO = 0.45
 CAUDA_MIN = 1.2  # respiro depois da última frase antes do próximo corte
 CAUDA_ENCAIXE = 0.9  # respiro mínimo quando a voz do Gemini é acelerada para caber na cena
 ANDAMENTO_MAX = 1.25  # acima disso a fala fica corrida demais: gera de novo
+CACHE_TTS = "out/cache-tts"  # áudio recebido do Gemini, por texto (fora do git)
 
 # Energia da trilha por cena: letra por compasso (ver gerar-trilha-motion.py)
 ENERGIA = {
@@ -143,6 +145,37 @@ def falar_gemini(texto, voz):
     pcm = np.frombuffer(base64.b64decode(parte["data"]), dtype="<i2")
     return pcm.astype(np.float32) / 32768.0, int(taxa.group(1)) if taxa else 24000
 
+def falar_gemini_cache(texto, voz, novo=False):
+    """falar_gemini com cache em out/cache-tts: rodar de novo não gasta cota com o mesmo texto.
+    `novo` descarta o cache (a leitura anterior foi recusada na conferência)."""
+    assinatura = json.dumps([voz["modelo"], voz["vozGemini"], voz["direcao"], texto], ensure_ascii=False)
+    arq = os.path.join(CACHE_TTS, hashlib.sha1(assinatura.encode("utf-8")).hexdigest()[:16] + ".npz")
+    if os.path.exists(arq) and not novo:
+        d = np.load(arq)
+        return d["x"], int(d["sr"])
+    x, sr = falar_gemini(texto, voz)
+    os.makedirs(CACHE_TTS, exist_ok=True)
+    np.savez(arq, x=x, sr=sr)
+    return x, sr
+
+
+def dividir_por_cena(x, sr, legendas, ouvir):
+    """Corta a narração inteira (um só pedido ao Gemini) em uma fala por cena: alinha o que o
+    Parakeet ouviu ao texto de todas as cenas e corta no ponto mais silencioso entre a última
+    palavra de uma cena e a primeira da seguinte."""
+    dur = len(x) / sr
+    tempos = alinhar(" ".join(legendas), ouvir(x, sr, dur), 0.0, dur)
+    janela = int(0.02 * sr)
+    cortes, k = [0], 0
+    for leg in legendas[:-1]:
+        k += len(leg.split())
+        a, b = int(tempos[k - 1][1][1] * sr), int(tempos[k][1][0] * sr)
+        a, b = min(a, b), max(a, b) + janela
+        energia = [np.mean(x[i : i + janela] ** 2) for i in range(a, max(a + 1, b - janela), janela // 2)]
+        cortes.append(a + int(np.argmin(energia)) * (janela // 2) + janela // 2)
+    cortes.append(len(x))
+    return [x[i:j] for i, j in zip(cortes, cortes[1:])]
+
 def aparar(x, sr):
     """Tira o silêncio do começo e do fim (janelas de 10 ms abaixo de -42 dBFS)."""
     j = int(0.01 * sr)
@@ -184,25 +217,42 @@ def acelerar(x, sr, fator):
     return np.frombuffer(r.stdout, dtype=np.float32).copy()
 
 
+def chave(w):
+    """Palavra sem acento, pontuação e caixa, para comparar o que foi ouvido com o roteiro."""
+    w = unicodedata.normalize("NFD", w.lower())
+    return re.sub(r"[^a-z0-9]", "", "".join(c for c in w if unicodedata.category(c) != "Mn"))
+
+
 def confere(palavras_asr, texto, direcao):
     """A voz leu só o texto pedido? O Parakeet escreve números e datas do jeito dele ("26 de
     outubro" para "26/10"), então a conferência mira nos erros reais do TTS: instrução de estilo
-    lida em voz alta, começo ou fim faltando e fala inflada (trecho repetido)."""
-    def chave(w):
-        w = unicodedata.normalize("NFD", w.lower())
-        return re.sub(r"[^a-z0-9]", "", "".join(c for c in w if unicodedata.category(c) != "Mn"))
+    lida em voz alta, começo ou fim faltando e fala inflada (trecho repetido). Começo e fim são
+    conferidos pela primeira e pela última palavra significativa, com tolerância de grafia."""
     alvo = [k for k in map(chave, texto.split()) if k]
     ouvido = [k for k in (chave(w["text"]) for w in palavras_asr) if k]
+    significativas = [k for k in alvo if len(k) >= 4 and not k.isdigit()] or alvo
     instrucao = {k for k in map(chave, direcao.split()) if len(k) > 5} - set(alvo)
     lida = sorted(instrucao & set(ouvido))
+
+    def presente(palavra, trecho):
+        # Aceita grafia próxima e palavra colada a outra ("post avulso" ouvido como "postiavulso")
+        return any(palavra in w or difflib.SequenceMatcher(a=palavra, b=w).ratio() >= 0.75 for w in trecho)
+
     ok = (
         bool(ouvido)
-        and ouvido[0] == alvo[0]
-        and ouvido[-1] == alvo[-1]
+        and presente(significativas[0], ouvido[:4])
+        and presente(significativas[-1], ouvido[-4:])
         and len(ouvido) <= 1.6 * len(alvo)
         and len(lida) < 2
     )
-    return ok, f"{len(ouvido)}/{len(alvo)} palavras" + (f", leu a instrução: {lida}" if lida else "")
+    ouvido_txt = " ".join(w["text"] for w in palavras_asr)
+    resumo = f"{len(ouvido)}/{len(alvo)} palavras"
+    if lida:
+        resumo += f", leu a instrução: {lida}"
+    if not ok:
+        resumo += f', ouviu "{ouvido_txt[:60]} … {ouvido_txt[-60:]}"'
+    return ok, resumo
+
 
 def nivelar(x):
     """RMS da fala em -19 dBFS, pico limitado a -1 dBFS."""
@@ -288,7 +338,17 @@ def main(dir_tts, dir_asr):
     saida = {"voz": voz["nome"], "fps": FPS, "cenas": []}
     mapa = []
 
-    for cena in roteiro["cenas"]:
+    if gemini:
+        # A narração inteira num só pedido (a cota do Gemini é curta e a fala fica contínua);
+        # depois ela é cortada em uma fala por cena
+        lote, sr_lote = falar_gemini_cache(
+            "\n\n".join(" ".join(fr["fala"] for fr in c["frases"]) for c in roteiro["cenas"]), voz)
+        lote = aparar(lote, sr_lote)
+        trechos = dividir_por_cena(
+            lote, sr_lote, [" ".join(fr["legenda"] for fr in c["frases"]) for c in roteiro["cenas"]], ouvir)
+        print(f"Narração inteira: {len(lote) / sr_lote:.1f}s, cortada em {len(trechos)} cenas", flush=True)
+
+    for indice, cena in enumerate(roteiro["cenas"]):
         entrada = cena.get("entradaSegundos", ENTRADA_PADRAO)
         pedacos, frases, legendas = [], [], []
         t = entrada
@@ -300,7 +360,12 @@ def main(dir_tts, dir_asr):
             # Espaço da fala dentro da cena travada (minCompassos), com um respiro antes do corte
             cabe = cena["minCompassos"] * COMPASSO_S - CAUDA_ENCAIXE - entrada
             for tentativa in range(5):
-                x, sr = falar_gemini(" ".join(fr["fala"] for fr in cena["frases"]), voz)
+                # 1ª: o trecho da narração inteira; depois, um pedido só desta cena
+                if tentativa == 0:
+                    x, sr = trechos[indice], sr_lote
+                else:
+                    texto_fala = " ".join(fr["fala"] for fr in cena["frases"])
+                    x, sr = falar_gemini_cache(texto_fala, voz, novo=tentativa > 1)
                 x = aparar(x, sr)
                 fator = max(voz.get("andamento", 1.0), len(x) / sr / cabe)
                 if fator > ANDAMENTO_MAX:
