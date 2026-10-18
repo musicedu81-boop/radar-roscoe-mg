@@ -1,3 +1,4 @@
 node_modules
+out/check
 out/*.png
 out/*.jpg

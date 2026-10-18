@@ -6,5 +6,6 @@ export const C = {
   claro: '#A855D8',
   lavanda: '#D4A0FF',
   creme: '#FDF8FF',
+  noite: '#0D0215',
 };
 export const FONT = 'Montserrat, Helvetica, Arial, sans-serif';
