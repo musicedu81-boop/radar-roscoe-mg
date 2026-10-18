@@ -347,7 +347,9 @@ def main(dir_tts, dir_asr):
                     ponto = fr["fala"].rstrip()[-1] in ".?:!"
                     t += voz.get("pausaPonto", PAUSA_PONTO) if ponto else voz.get("pausaVirgula", PAUSA_VIRGULA)
 
-        compassos = max(cena["minCompassos"], math.ceil((t + CAUDA_MIN) / COMPASSO_S))
+        # O respiro é o mesmo usado no encaixe da voz do Gemini, senão a cena cresce um compasso
+        cauda = CAUDA_ENCAIXE if gemini else CAUDA_MIN
+        compassos = max(cena["minCompassos"], math.ceil((t + cauda) / COMPASSO_S))
         audio = np.zeros(int(t * sr) + int(0.2 * sr), dtype=np.float32)
         for ini, x in pedacos:
             i = int(ini * sr)
