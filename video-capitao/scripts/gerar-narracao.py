@@ -42,6 +42,8 @@ ENTRADA_PADRAO = 0.35  # a voz começa logo depois do corte
 PAUSA_VIRGULA = 0.3
 PAUSA_PONTO = 0.45
 CAUDA_MIN = 1.2  # respiro depois da última frase antes do próximo corte
+CAUDA_ENCAIXE = 0.9  # respiro mínimo quando a voz do Gemini é acelerada para caber na cena
+ANDAMENTO_MAX = 1.25  # acima disso a fala fica corrida demais: gera de novo
 
 # Energia da trilha por cena: letra por compasso (ver gerar-trilha-motion.py)
 ENERGIA = {
@@ -96,7 +98,7 @@ def falar_gemini(texto, voz):
     if chave:
         cabecalhos["x-goog-api-key"] = chave
     corpo = {
-        "contents": [{"parts": [{"text": f"{voz['direcao']}\n\n## TRANSCRIÇÃO\n{texto}"}]}],
+        "contents": [{"parts": [{"text": f'{voz["direcao"]}: "{texto}"'}]}],
         "generationConfig": {
             "responseModalities": ["AUDIO"],
             "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voz["vozGemini"]}}},
@@ -109,9 +111,12 @@ def falar_gemini(texto, voz):
             headers=cabecalhos,
         )
         try:
-            with urllib.request.urlopen(pedido, timeout=300) as r:
+            with urllib.request.urlopen(pedido, timeout=120) as r:
                 dados = json.load(r)
             break
+        except TimeoutError:
+            print("  Gemini demorou demais; tentando de novo", flush=True)
+            continue
         except urllib.error.HTTPError as e:
             erro = e.read().decode("utf-8", "replace")
             if e.code == 404 and tentativa < 7:
@@ -159,6 +164,27 @@ def locutor(x, sr):
     y = np.frombuffer(r.stdout, dtype=np.float32)
     return y[: len(x)] if len(y) >= len(x) else np.pad(y, (0, len(x) - len(y)))
 
+
+def acelerar(x, sr, fator):
+    """Acelera a fala por `fator` mantendo o tom e o timbre (rubberband)."""
+    if abs(fator - 1) < 0.005:
+        return x
+    r = subprocess.run(
+        ["ffmpeg", "-v", "error", "-f", "f32le", "-ar", str(sr), "-ac", "1", "-i", "-",
+         "-af", f"rubberband=tempo={fator:.4f}:transients=mixed:formant=preserved",
+         "-f", "f32le", "-"],
+        input=x.astype(np.float32).tobytes(), capture_output=True, check=True,
+    )
+    return np.frombuffer(r.stdout, dtype=np.float32).copy()
+
+
+def confere(palavras_asr, texto):
+    """A voz leu o texto pedido? Compara o que o Parakeet ouviu com as palavras da legenda.
+    Pega instrução lida em voz alta, frase pulada ou repetida."""
+    a = [normalizar(w) for w in texto.split()]
+    b = [normalizar(w["text"]) for w in palavras_asr]
+    semelhanca = difflib.SequenceMatcher(a=a, b=b, autojunk=False).ratio()
+    return semelhanca >= 0.8 and len(b) <= 1.2 * len(a), semelhanca
 
 def nivelar(x):
     """RMS da fala em -19 dBFS, pico limitado a -1 dBFS."""
@@ -252,10 +278,27 @@ def main(dir_tts, dir_asr):
         if gemini:
             # A cena inteira numa chamada: a fala corre como num comercial, e o início e o fim de
             # cada frase saem dos tempos das palavras
-            x, sr = falar_gemini(" ".join(fr["fala"] for fr in cena["frases"]), voz)
-            x = preparar(x, sr, voz)
-            dur = len(x) / sr
-            alinhadas = alinhar(" ".join(fr["legenda"] for fr in cena["frases"]), ouvir(x, sr, dur), 0.0, dur)
+            texto_legenda = " ".join(fr["legenda"] for fr in cena["frases"])
+            # Espaço da fala dentro da cena travada (minCompassos), com um respiro antes do corte
+            cabe = cena["minCompassos"] * COMPASSO_S - CAUDA_ENCAIXE - entrada
+            for tentativa in range(5):
+                x, sr = falar_gemini(" ".join(fr["fala"] for fr in cena["frases"]), voz)
+                x = aparar(x, sr)
+                fator = max(voz.get("andamento", 1.0), len(x) / sr / cabe)
+                if fator > ANDAMENTO_MAX:
+                    print(f"  {cena['id']}: fala longa demais ({len(x) / sr:.1f}s), gerando de novo", flush=True)
+                    continue
+                x = preparar(acelerar(x, sr, fator), sr, voz)
+                dur = len(x) / sr
+                palavras = ouvir(x, sr, dur)
+                ok, semelhanca = confere(palavras, texto_legenda)
+                if ok:
+                    break
+                print(f"  {cena['id']}: a voz saiu do texto (semelhança {semelhanca:.2f}), gerando de novo", flush=True)
+            else:
+                sys.exit(f"Gemini não leu o texto da cena {cena['id']} depois de 5 tentativas.")
+            print(f"  {cena['id']}: andamento {fator:.2f}x, semelhança {semelhanca:.2f}", flush=True)
+            alinhadas = alinhar(texto_legenda, palavras, 0.0, dur)
             for fr in cena["frases"]:
                 n = len(fr["legenda"].split())
                 trecho, alinhadas = alinhadas[:n], alinhadas[n:]
@@ -300,7 +343,7 @@ def main(dir_tts, dir_asr):
             "legendas": legendas,
         })
         mapa.append(ENERGIA[cena["id"]](compassos))
-        print(f"{cena['id']:<13} fala {t - entrada:5.1f}s  ->  {compassos} compassos ({compassos * COMPASSO_S:.0f}s)")
+        print(f"{cena['id']:<13} fala {t - entrada:5.1f}s  ->  {compassos} compassos ({compassos * COMPASSO_S:.0f}s)", flush=True)
 
     saida["mapaTrilha"] = " ".join(mapa)
     json.dump(saida, open("src/apresentacao/narracao.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

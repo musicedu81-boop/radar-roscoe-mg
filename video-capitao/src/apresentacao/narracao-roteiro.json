@@ -1,7 +1,11 @@
 {
   "voz": {
-    "motor": "kokoro", "modelo": "kokoro-multi-lang-v1_0", "falante": 43, "nome": "Alex (pt-BR)",
-    "velocidade": 1.15, "pausaVirgula": 0.22, "pausaPonto": 0.34, "tratamento": "locutor"
+    "motor": "gemini",
+    "modelo": "gemini-3.8-flash-tts",
+    "vozGemini": "Puck",
+    "nome": "Puck (Gemini TTS, pt-BR)",
+    "andamento": 1.06,
+    "direcao": "Leia em português do Brasil como locutor de comercial de TV, com voz masculina quente, animada e confiante, sorriso na voz e ritmo ágil"
   },
   "cenas": [
     {
