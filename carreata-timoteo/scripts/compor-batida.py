@@ -1,4 +1,5 @@
-# Batida de funk carioca, 150 BPM, 5 compassos = 8s. Cada semicolcheia = 0,1s = 3 frames a 30fps.
+# Batida de funk carioca, 150 BPM, 6 compassos + eco = 10s. Cada semicolcheia = 0,1s = 3 frames a 30fps.
+# Roteiro: entrada com apito, groove, quebra no 4º compasso, sirene e virada no 5º, drop aos 8s e golpe final aos 9,6s.
 # Gera out/batida-bruta.wav e src/batida.json (os mesmos eventos animam o vídeo).
 # Uso: python3 scripts/compor-batida.py
 import json
@@ -9,12 +10,14 @@ import numpy as np
 SR = 48000
 BPM = 150
 PASSO = 60 / BPM / 4  # 0,1s
-COMPASSOS = 5
-N_PASSOS = 16 * COMPASSOS
+COMPASSOS = 6
+FINAL = 16 * COMPASSOS  # golpe final depois do compasso do drop (9,6s)
+N_PASSOS = FINAL + 4  # 0,4s de eco: 10s no total
 DUR = N_PASSOS * PASSO
 N = int(SR * DUR)
 rng = np.random.default_rng(22)
-FINAL = 16 * 4 + 12  # golpe final no último tempo (7,6s); depois só o eco
+DROP = 16 * 5  # 8,0s
+QUEBRA = 3  # 4º compasso (4,8s a 6,4s): só grave longo, palma e berimbau
 
 # ---------- Padrões (passos de 0 a 15 em cada compasso) ----------
 KICK = [0, 3, 6, 8, 11, 14]          # tresillo duplo: tum..tum..tum.tum..tum..tum.
@@ -30,17 +33,20 @@ def absolutos(padrao, compassos, ate=FINAL):
     return [c * 16 + p for c in compassos for p in padrao if c * 16 + p <= ate]
 
 
+GROOVE = [c for c in range(COMPASSOS) if c != QUEBRA]
 eventos = {
-    'kick': absolutos(KICK, range(5)),
-    'palma': absolutos(PALMA, range(5)),
-    'tamborAlto': absolutos(TOM_ALTO, range(5)),
-    'tamborBaixo': absolutos(TOM_BAIXO, range(5)),
-    'chimbal': [p for p in range(N_PASSOS) if p <= FINAL],
-    'berimbau': absolutos(BERIMBAU, range(1, 5)),
-    'crash': [0, 64, FINAL],
-    'virada': list(range(16 * 3 + 12, 16 * 4)),  # caixa em semicolcheias no fim do 4º compasso
+    'kick': absolutos(KICK, GROOVE) + absolutos([0, 8], [QUEBRA]),
+    'palma': absolutos(PALMA, range(COMPASSOS)),
+    'tamborAlto': absolutos(TOM_ALTO, GROOVE),
+    'tamborBaixo': absolutos(TOM_BAIXO, GROOVE),
+    'chimbal': [p for p in range(N_PASSOS) if p < FINAL],
+    'berimbau': absolutos(BERIMBAU, range(1, COMPASSOS)),
+    'crash': [0, 16 * (QUEBRA + 1), DROP, FINAL],
+    'virada': list(range(DROP - 4, DROP)),  # caixa em semicolcheias antes do drop
     'apito': [0, 1, 2, 3],
-    'sirene': [16 * 3 + 8],
+    'sirene': [DROP - 8],
+    'quebra': [16 * QUEBRA, 16 * (QUEBRA + 1)],
+    'drop': DROP,
     'final': FINAL,
 }
 eventos['kick'] = sorted(set(eventos['kick'] + [FINAL]))
@@ -85,14 +91,14 @@ def filtro(x, lo=None, hi=None):
 
 
 # ---------- Instrumentos ----------
-def bumbo_808(nota, dur):
+def bumbo_808(nota, dur, decai=0.3):
     n = int(dur * SR)
     t = t_(n)
     f_fim = mtof(nota)
     freq = f_fim + (165 - f_fim) * np.exp(-t / 0.032)
     fase = 2 * np.pi * np.cumsum(freq) / SR
     corpo = np.sin(fase) + 0.3 * np.sin(2 * fase) * np.exp(-t / 0.06)  # 2º harmônico: o bumbo aparece no celular
-    env = (1 - np.exp(-t / 0.0008)) * np.exp(-t / 0.3)
+    env = (1 - np.exp(-t / 0.0008)) * np.exp(-t / decai)
     clique = filtro(rng.standard_normal(n) * np.exp(-t / 0.0025), lo=1500) * 0.35
     x = np.tanh(2.2 * corpo * env) / np.tanh(2.2) + clique
     fade = np.clip((dur - t) / 0.006, 0, 1)  # o próximo bumbo corta o anterior
@@ -177,7 +183,8 @@ for i, p in enumerate(kicks):
     prox = kicks[i + 1] if i + 1 < len(kicks) else N_PASSOS + 6
     dur = (prox - p) * PASSO if p != FINAL else 1.2
     nota = GRAVE.get(p % 16, 38)
-    add(bumbo_808(nota, dur), tp(p), ganho=0.5 if p != FINAL else 0.62)
+    na_quebra = p // 16 == QUEBRA
+    add(bumbo_808(nota, dur, 0.6 if na_quebra else 0.3), tp(p), ganho=0.62 if p == FINAL else 0.56 if na_quebra else 0.5)
 for p in eventos['palma']:
     add(palma(), tp(p), ganho=1.7, pan=0.05, eco=0.35)
 for p in eventos['tamborAlto']:
@@ -185,8 +192,12 @@ for p in eventos['tamborAlto']:
 for p in eventos['tamborBaixo']:
     add(tambor(200, 140, 0.15), tp(p), ganho=0.66, pan=0.3, eco=0.2)
 for p in eventos['chimbal']:
-    if p >= 16 * 3 + 12 and p < 16 * 4:
+    if eventos['virada'][0] <= p < DROP:
         continue  # espaço para a virada
+    if p // 16 == QUEBRA:
+        if p % 2 == 0:
+            add(chimbal(False, 0.4), tp(p), ganho=0.6, pan=0.35)  # quebra: só colcheias, mais leves
+        continue
     aberto = p % 16 == 7
     vel = 0.55 if p % 2 == 0 else 0.32
     add(chimbal(aberto, vel), tp(p), ganho=0.6, pan=0.35)
@@ -196,14 +207,14 @@ for k, p in enumerate(eventos['virada']):
     add(palma(), tp(p), ganho=0.7 + 0.15 * k, pan=-0.2 + 0.1 * k, eco=0.25)
     add(tambor(260 + 20 * k, 190 + 15 * k, 0.1), tp(p), ganho=0.45, pan=0.25 - 0.1 * k)
 for p in eventos['crash']:
-    add(prato(), tp(p), ganho=0.4 if p != FINAL else 0.5, pan=0.15, eco=0.4)
+    add(prato(), tp(p), ganho=0.5 if p == FINAL else 0.4 if p == DROP or p == 0 else 0.28, pan=0.15, eco=0.4)
 # Apito de abertura: pi-ri-ri-piiii
 for ini, dur in [(0.0, 0.07), (0.1, 0.07), (0.2, 0.07), (0.3, 0.32)]:
     add(apito(dur), ini, ganho=0.2, pan=0.2, eco=0.35)
 # Apito no golpe final
 add(apito(0.38), tp(FINAL) + 0.02, ganho=0.18, pan=0.2, eco=0.45)
-# Sirene subindo antes do drop do 5º compasso
-add(sirene(tp(16 * 4) - tp(eventos['sirene'][0])), tp(eventos['sirene'][0]), ganho=0.16, pan=-0.1, eco=0.3)
+# Sirene subindo antes do drop
+add(sirene(tp(DROP) - tp(eventos['sirene'][0])), tp(eventos['sirene'][0]), ganho=0.16, pan=-0.1, eco=0.3)
 
 
 # ---------- Eco (sala pequena) e master ----------

@@ -6,7 +6,7 @@ import batida from './batida.json';
 export const useRitmo = () => {
   const {fps} = useVideoConfig();
   return useMemo(() => {
-    const q = batida.passoSegundos * fps; // frames por semicolcheia (3 a 30fps)
+    const q = Math.round(batida.passoSegundos * fps * 1e6) / 1e6; // frames por semicolcheia (3 a 30fps)
     const em = (passos: number[]) => passos.map((p) => p * q);
     const tempos = Array.from({length: batida.passos / 4}, (_, i) => i * 4 * q);
     return {
@@ -19,7 +19,8 @@ export const useRitmo = () => {
       crash: em(batida.crash),
       virada: em(batida.virada),
       sirene: batida.sirene[0] * q,
-      drop: 64 * q,
+      quebra: em(batida.quebra),
+      drop: batida.drop * q,
       final: batida.final * q,
       tempos,
     };

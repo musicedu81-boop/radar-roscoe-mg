@@ -5,7 +5,7 @@ import {shine} from '@remotion/effects/shine';
 import {AbsoluteFill, Easing, Img, Sequence, Solid, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import CAMADAS from './camadas.json';
 import {C, CORES_CONTORNO, CORES_NUMERO} from './cores';
-import {FiltrosGlitch, Glitch, RuidoDigital} from './Glitch';
+import {Glitch, RuidoDigital} from './Glitch';
 import {Aneis, ArcosSom, EspectroRadial, Osciloscopio} from './Ondas';
 import {Paredao} from './Paredao';
 import {amasso, pulso, salto, ultimo, useRitmo} from './ritmo';
@@ -214,7 +214,7 @@ const Confete: React.FC<{f: number; explosoes: number[]}> = ({f, explosoes}) => 
 
 export const Carreata: React.FC = () => {
   const f = useCurrentFrame();
-  const {fps, width, height} = useVideoConfig();
+  const {fps, width, height, durationInFrames} = useVideoConfig();
   const R = useRitmo();
   const k = width / FW;
 
@@ -229,6 +229,9 @@ export const Carreata: React.FC = () => {
   const tempoP = pulso(f, R.tempos, 5);
   const tempoIdx = Math.max(0, Math.floor(f / (4 * R.q)));
   const naVirada = f >= R.virada[0] && f < R.drop;
+  const [quebraIni, quebraFim] = R.quebra;
+  const naQuebra = (t: number) => t >= quebraIni && t < quebraFim;
+  const quebra = interpolate(f, [quebraIni - 6, quebraIni, quebraFim - 6, quebraFim], [0, 1, 1, 0], clamp);
   const tremor = naVirada ? Math.sin(f * 2.7) * 3 : 0;
 
   // ---- entradas ----
@@ -243,15 +246,18 @@ export const Carreata: React.FC = () => {
   const assinaturaOp = interpolate(f, [44, 56], [0, 1], clamp);
 
   // ---- dança ----
-  const passos = R.tempos.filter((t) => t >= 24);
-  const saltosE = passos.filter((t) => (t / (4 * R.q)) % 2 === 0);
-  const saltosD = passos.filter((t) => (t / (4 * R.q)) % 2 === 1 && t >= 36);
+  const passos = R.tempos.filter((t) => t >= 24 && !naQuebra(t));
+  const tempoDe = (t: number) => Math.round(t / (4 * R.q));
+  const saltosE = passos.filter((t) => tempoDe(t) % 2 === 0);
+  const saltosD = passos.filter((t) => tempoDe(t) % 2 === 1 && t >= 36);
+  const saltosQuebra = R.kick.filter(naQuebra);
   const finalP = f >= R.final ? Math.sin((Math.min(f - R.final, 10) / 10) * Math.PI) : 0;
-  const pulaE = salto(f, saltosE, 9, 16) + finalP * 26;
-  const pulaD = salto(f, saltosD, 9, 16) + finalP * 26;
-  const amE = amasso(f, saltosE, 9);
-  const amD = amasso(f, saltosD, 9);
-  const balanco = (fase: number) => Math.sin((f / (8 * R.q)) * Math.PI + fase) * 3;
+  const pulaJuntos = salto(f, saltosQuebra, 16, 34) + finalP * 26;
+  const pulaE = salto(f, saltosE, 9, 16) + pulaJuntos;
+  const pulaD = salto(f, saltosD, 9, 16) + pulaJuntos;
+  const amE = Math.max(amasso(f, saltosE, 9), amasso(f, saltosQuebra, 16));
+  const amD = Math.max(amasso(f, saltosD, 9), amasso(f, saltosQuebra, 16));
+  const balanco = (fase: number) => Math.sin((f / (8 * R.q)) * Math.PI + fase) * (3 + 3 * quebra);
 
   // Cores que trocam a cada tempo (contorno: azul/amarelo/verde; número: azul/branco/amarelo)
   const corContorno = (desloca: number) => CORES_CONTORNO[(tempoIdx + desloca) % 3];
@@ -268,17 +274,19 @@ export const Carreata: React.FC = () => {
   const aneisTorre = R.kick.filter((e) => f - e >= 0 && f - e < 16).map((e) => (f - e) / 16);
   const ultimoKick = ultimo(f, R.kick);
   const suspensao = 2.5 * kick + (f >= R.final ? 6 * finalP : 0);
-  const camera = 1 + 0.012 * kick + 0.03 * crash + interpolate(f, [0, 240], [0, 0.025]);
+  const camera = 1 + 0.012 * kick + 0.03 * crash + interpolate(f, [0, durationInFrames], [0, 0.03]);
   const chacoalha = 4 * crash;
 
   const sireneOn = f >= R.sirene && f < R.drop;
   const strobo = sireneOn ? (Math.floor(f / 3) % 2 === 0 ? 1 : 0.2) : 1;
 
-  // ---- glitch: entrada, segunda palma de cada compasso, virada, drop e golpe final ----
+  // ---- glitch: entrada, segunda palma de cada compasso, virada, volta da quebra, drop e golpe final ----
+  const golpesGlitch = R.palma.filter((e) => Math.round(e / R.q) % 16 === 12 && (e < R.virada[0] || e > R.drop));
   const glitch = (() => {
     let g = 0;
     if (f < 5) g = 1 - f / 5;
-    for (const e of [3 * 12, 7 * 12, 11 * 12]) if (f >= e && f < e + 2) g = Math.max(g, 0.55);
+    for (const e of golpesGlitch) if (f >= e && f < e + 2) g = Math.max(g, 0.55);
+    if (f >= quebraFim && f < quebraFim + 4) g = Math.max(g, 0.7 * (1 - (f - quebraFim) / 4));
     if (naVirada) g = Math.max(g, f % 2 === 0 ? 0.3 + 0.5 * ((f - R.virada[0]) / (R.drop - R.virada[0])) : 0.12);
     if (f >= R.drop && f < R.drop + 7) g = Math.max(g, 1 - (f - R.drop) / 7);
     if (f >= R.final && f < R.final + 6) g = Math.max(g, 1 - (f - R.final) / 6);
@@ -299,8 +307,8 @@ export const Carreata: React.FC = () => {
       >
         <Img src={src('fundo')} style={{position: 'absolute', left: 0, top: 0, width: FW, height: FH}} />
 
-        <Feixe x={140} angulo={18 + 22 * Math.sin(f / 24)} opacidade={0.22 * strobo} cor="#FFF6B0" />
-        <Feixe x={760} angulo={-18 - 22 * Math.sin(f / 24 + 1.2)} opacidade={0.22 * strobo} cor="#FFF6B0" />
+        <Feixe x={140} angulo={18 + 22 * Math.sin(f / 24)} opacidade={0.22 * strobo * (1 - 0.6 * quebra)} cor="#FFF6B0" />
+        <Feixe x={760} angulo={-18 - 22 * Math.sin(f / 24 + 1.2)} opacidade={0.22 * strobo * (1 - 0.6 * quebra)} cor="#FFF6B0" />
         <Feixe x={450} angulo={14 * Math.sin(f / 16)} opacidade={0.12 + 0.18 * kick} cor="#E8FFD0" />
 
         <Raios giro={Math.sin(f / 30) * 6} p={kick} />
@@ -313,8 +321,8 @@ export const Carreata: React.FC = () => {
         <Aneis cx={92} cy={930} aneis={aneisTorre} rx={150} ry={240} cor={C.neon} />
         <Aneis cx={828} cy={930} aneis={aneisTorre} rx={150} ry={240} cor={C.neon} />
 
-        <Bandeira lado="esq" f={f} angulo={agita(0, 8)} fase={0} abertura={bandeiraAbre} forca={0.6 + kick} />
-        <Bandeira lado="dir" f={f} angulo={agita(Math.PI, 8)} fase={1.7} abertura={bandeiraAbre} forca={0.6 + kick} />
+        <Bandeira lado="esq" f={f} angulo={agita(0, 8 + 6 * quebra)} fase={0} abertura={bandeiraAbre} forca={0.6 + kick + 0.5 * quebra} />
+        <Bandeira lado="dir" f={f} angulo={agita(Math.PI, 8 + 6 * quebra)} fase={1.7} abertura={bandeiraAbre} forca={0.6 + kick + 0.5 * quebra} />
 
         <Personagem
           lado="esq"
@@ -385,9 +393,8 @@ export const Carreata: React.FC = () => {
 
   return (
     <AbsoluteFill style={{background: C.verdeEscuro, overflow: 'hidden'}}>
-      <FiltrosGlitch />
       <AbsoluteFill style={{translate: glitch > 0.4 ? `${(random(`jx${f}`) - 0.5) * 18 * glitch}px ${(random(`jy${f}`) - 0.5) * 8 * glitch}px` : '0px 0px'}}>
-        <Glitch f={f} g={glitch} altura={height}>
+        <Glitch f={f} g={glitch} largura={width} altura={height}>
           {palco}
         </Glitch>
       </AbsoluteFill>

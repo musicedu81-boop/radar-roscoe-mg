@@ -1,42 +1,40 @@
 import {AbsoluteFill, random} from 'remotion';
 import {C} from './cores';
 
-// Fantasmas de cor do glitch: só azul e verde (nada de vermelho)
-const tinta = (r: number, g: number, b: number) =>
-  `${r * 0.3} ${r * 0.59} ${r * 0.11} 0 0  ${g * 0.3} ${g * 0.59} ${g * 0.11} 0 0  ${b * 0.3} ${b * 0.59} ${b * 0.11} 0 0  0 0 0 1 0`;
+// Fantasma de cor do glitch: só azul e verde (nada de vermelho). No modo screen, escalar a cor por a equivale a opacidade a.
+const tinta = (r: number, g: number, b: number, a: number) =>
+  `${a * r * 0.3} ${a * r * 0.59} ${a * r * 0.11} 0 0  ${a * g * 0.3} ${a * g * 0.59} ${a * g * 0.11} 0 0  ${a * b * 0.3} ${a * b * 0.59} ${a * b * 0.11} 0 0  0 0 0 1 0`;
 
-export const FiltrosGlitch: React.FC = () => (
-  <svg style={{position: 'absolute', width: 0, height: 0}}>
-    <defs>
-      <filter id="tintaAzul" colorInterpolationFilters="sRGB">
-        <feColorMatrix type="matrix" values={tinta(0.14, 0.38, 0.94)} />
-      </filter>
-      <filter id="tintaVerde" colorInterpolationFilters="sRGB">
-        <feColorMatrix type="matrix" values={tinta(0.1, 0.79, 0.31)} />
-      </filter>
-    </defs>
-  </svg>
-);
-
-// Fatia a cena em faixas deslocadas e soma fantasmas coloridos deslocados
-export const Glitch: React.FC<{f: number; g: number; altura: number; children: React.ReactNode}> = ({f, g, altura, children}) => {
+// Glitch em um único passe de filtro SVG: faixas horizontais deslocadas e fantasmas azul e verde por cima.
+// Antes eram 9 cópias da cena inteira por frame; o filtro trabalha sobre a imagem já pronta.
+export const Glitch: React.FC<{f: number; g: number; largura: number; altura: number; children: React.ReactNode}> = ({f, g, largura, altura, children}) => {
   if (g <= 0.02) return <>{children}</>;
   const n = 7;
   const cortes = [0, ...Array.from({length: n - 1}, (_, i) => random(`corte${f}-${i}`) * altura).sort((a, b) => a - b), altura];
+  const id = `glitch-${f}`;
   return (
     <>
-      {cortes.slice(0, -1).map((topo, i) => {
-        const base = cortes[i + 1];
-        const forte = random(`forte${f}-${i}`) < 0.5;
-        const dx = (random(`dx${f}-${i}`) - 0.5) * 2 * (forte ? 70 : 18) * g;
-        return (
-          <AbsoluteFill key={i} style={{clipPath: `inset(${topo}px 0 ${altura - base}px 0)`, translate: `${dx}px 0px`}}>
-            {children}
-          </AbsoluteFill>
-        );
-      })}
-      <AbsoluteFill style={{mixBlendMode: 'screen', opacity: 0.28 * g, translate: `${-16 * g}px 0px`, filter: 'url(#tintaAzul)'}}>{children}</AbsoluteFill>
-      <AbsoluteFill style={{mixBlendMode: 'screen', opacity: 0.2 * g, translate: `${14 * g}px ${4 * g}px`, filter: 'url(#tintaVerde)'}}>{children}</AbsoluteFill>
+      <svg style={{position: 'absolute', width: 0, height: 0}}>
+        <filter id={id} x={0} y={0} width={largura} height={altura} filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          {cortes.slice(0, -1).map((topo, i) => {
+            const forte = random(`forte${f}-${i}`) < 0.5;
+            const dx = (random(`dx${f}-${i}`) - 0.5) * 2 * (forte ? 70 : 18) * g;
+            return <feOffset key={i} in="SourceGraphic" dx={dx} dy={0} x={0} y={topo} width={largura} height={cortes[i + 1] - topo} result={`faixa${i}`} />;
+          })}
+          <feMerge result="fatias">
+            {cortes.slice(0, -1).map((_, i) => (
+              <feMergeNode key={i} in={`faixa${i}`} />
+            ))}
+          </feMerge>
+          <feColorMatrix in="fatias" type="matrix" values={tinta(0.14, 0.38, 0.94, 0.28 * g)} />
+          <feOffset dx={-16 * g} dy={0} result="azul" />
+          <feColorMatrix in="fatias" type="matrix" values={tinta(0.1, 0.79, 0.31, 0.2 * g)} />
+          <feOffset dx={14 * g} dy={4 * g} result="verde" />
+          <feBlend in="azul" in2="fatias" mode="screen" result="comAzul" />
+          <feBlend in="verde" in2="comAzul" mode="screen" />
+        </filter>
+      </svg>
+      <AbsoluteFill style={{filter: `url(#${id})`}}>{children}</AbsoluteFill>
     </>
   );
 };
