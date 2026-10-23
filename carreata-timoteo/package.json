@@ -1,0 +1,22 @@
+{
+  "name": "carreata-timoteo",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "camadas": "python3 scripts/separar-camadas.py",
+    "batida": "bash scripts/masterizar.sh",
+    "render": "remotion render Carreata out/carreata-timoteo.mp4 --codec=h264 --crf=18 --concurrency=4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "@remotion/effects": "4.0.536",
+    "@remotion/media": "4.0.536",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}
