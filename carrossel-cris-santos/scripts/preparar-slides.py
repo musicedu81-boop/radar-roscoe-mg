@@ -17,12 +17,17 @@ POUSO_1 = 200  # 8ª batida: a logo vai para o canto, o carrossel 3D gira, para 
 GRADE = 50  # o último slide encolhe na grade 3x3, a grade segura e a logo volta ao centro duas batidas depois
 FIM_ASSINATURA = 90  # a assinatura fica 3s no centro antes do fim
 EXTENSOES = ('.png', '.jpg', '.jpeg', '.webp')
-CICLO = ['giro', 'foco', 'giro', 'pontos']  # trocas com causa; a borboleta atravessa uma vez, no meio
+CICLO = ['giro', 'pontos', 'giro', 'foco']  # trocas com causa, alternando
 
 
 def trocas(n):
-    meio = (n - 1) // 2
-    return ['borboleta' if k == meio and n >= 4 else CICLO[k % len(CICLO)] for k in range(max(n - 1, 0))]
+    """Tipo de cada troca. A borboleta atravessa uma vez, no lugar do giro mais perto do meio (o de depois, no empate)."""
+    t = [CICLO[k % len(CICLO)] for k in range(max(n - 1, 0))]
+    giros = [k for k, x in enumerate(t) if x == 'giro']
+    if n >= 4 and giros:
+        meio = (len(t) - 1) / 2
+        t[min(giros, key=lambda k: (abs(k - meio), -k))] = 'borboleta'
+    return t
 
 
 def main():

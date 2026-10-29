@@ -1,12 +1,78 @@
 {
- "slides": [],
+ "slides": [
+  {
+   "arquivo": "slides/01.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 4
+  },
+  {
+   "arquivo": "slides/02.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 7
+  },
+  {
+   "arquivo": "slides/03.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 6
+  },
+  {
+   "arquivo": "slides/04.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 6
+  },
+  {
+   "arquivo": "slides/05.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 7
+  },
+  {
+   "arquivo": "slides/06.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 7
+  },
+  {
+   "arquivo": "slides/07.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 6
+  },
+  {
+   "arquivo": "slides/08.png",
+   "largura": 1080,
+   "altura": 1350,
+   "tempos": 5
+  }
+ ],
  "linha": {
   "fps": 30,
   "tempo": 25,
-  "pousos": [],
-  "trocas": [],
-  "saidaUltimo": 200,
-  "pousoAssinatura": 250,
-  "duracao": 340
+  "pousos": [
+   200,
+   300,
+   475,
+   625,
+   775,
+   950,
+   1125,
+   1275
+  ],
+  "trocas": [
+   "giro",
+   "pontos",
+   "giro",
+   "foco",
+   "borboleta",
+   "pontos",
+   "giro"
+  ],
+  "saidaUltimo": 1400,
+  "pousoAssinatura": 1450,
+  "duracao": 1540
  }
 }

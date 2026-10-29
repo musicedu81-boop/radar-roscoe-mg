@@ -36,11 +36,28 @@ Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (li
 - **Narração:** TTS do Gemini (Google AI Studio) com a chave em `GEMINI_API_KEY`, salva nas configurações do ambiente e nunca no código. O texto e a direção de voz ficam em `roteiro/narracao.json` (voz padrão `Sulafat`, acolhedora). `scripts/narrar.py` gera um WAV por fala em `public/narracao/` e grava as durações em `src/narracao.json`: a voz é o relógio das cenas. `--amostras Sulafat,Vindemiatrix,Achernar` grava a mesma frase em vozes diferentes para escolher.
 - **Trilha:** `scripts/compor-trilha.py` compõe o fundo em Ré maior, 72 BPM, com os timbres da vinheta (`scripts/instrumentos.py`): pad de cordas, caixinha de música, harpa, sinos nas trocas de cena e a cadência Lá para Ré no pouso da borboleta na assinatura. Recebe `--duracao`, `--cortes` e `--assinatura` em segundos.
 
-## Como montar o motion
+## Carrossel desta versão
 
-1. Coloque os slides do carrossel em `public/slides/`, com nomes na ordem do post (`01.png`, `02.png`...).
+O post do Instagram não abre deste ambiente (o Instagram bloqueia leitura automática), então o carrossel foi feito na identidade da Cris com dados da Sociedade Brasileira de Reumatologia (`src/slides/SlidesCris.tsx`, 1080x1350):
+
+1. Capa com o retrato metade rosto, metade borboleta da vinheta: "LÚPUS, o que você precisa saber"
+2. O que é o lúpus: doença autoimune e crônica
+3. Onde ele pode aparecer: pele, articulações, rins, pulmões e coração, sangue, sistema nervoso
+4. Quem ele atinge mais: 1 em cada 1.700 mulheres no Brasil, principalmente entre 20 e 45 anos
+5. Sinais de alerta e a orientação de procurar um reumatologista
+6. Por que a borboleta: a mancha nas maçãs do rosto e no nariz
+7. Bom saber: não é contagioso, tem diagnóstico e tratamento
+8. Informação também é cuidado
+
+Trocas: giro, pontos de luz, giro, foco, borboleta (abre o slide da borboleta), pontos de luz, giro.
+
+## Como trocar pelos slides do post original
+
+1. Apague os PNG de `public/slides/` e coloque os prints do carrossel, com nomes na ordem do post (`01.png`, `02.png`...).
 2. `python3 scripts/preparar-slides.py`: lê os slides, calcula a linha do tempo (72 BPM, 25 frames por batida, 4 batidas por slide) e compõe a trilha com um sino em cada troca e a resolução no pouso da logo. Para dar mais tempo a um slide com muito texto, mude `tempos` dele em `src/slides.json` e rode de novo.
 3. `npm run render`.
+
+Para refazer os PNG deste carrossel: `npx remotion still SlideCris public/slides/01.png --props='{"indice": 0}'` (índices de 0 a 7).
 
 Versão atual: sem narração, só trilha (pedido do cliente). O roteiro de narração com o Gemini continua pronto para uma versão narrada.
 
