@@ -22,10 +22,23 @@ Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som 
 
 Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (licença Pixabay, uso comercial livre; ver `public/sfx/CREDITS.md`). `public/trilha-vinheta.wav` é a trilha original da vinheta.
 
+## Narração e trilha
+
+- **Narração:** TTS do Gemini (Google AI Studio) com a chave em `GEMINI_API_KEY`, salva nas configurações do ambiente e nunca no código. O texto e a direção de voz ficam em `roteiro/narracao.json` (voz padrão `Sulafat`, acolhedora). `scripts/narrar.py` gera um WAV por fala em `public/narracao/` e grava as durações em `src/narracao.json`: a voz é o relógio das cenas. `--amostras Sulafat,Vindemiatrix,Achernar` grava a mesma frase em vozes diferentes para escolher.
+- **Trilha:** `scripts/compor-trilha.py` compõe o fundo em Ré maior, 72 BPM, com os timbres da vinheta (`scripts/instrumentos.py`): pad de cordas, caixinha de música, harpa, sinos nas trocas de cena e a cadência Lá para Ré no pouso da borboleta na assinatura. Recebe `--duracao`, `--cortes` e `--assinatura` em segundos.
+
+## O que falta
+
+1. Os slides do carrossel, em ordem, em `public/slides/`.
+2. A chave `GEMINI_API_KEY` no ambiente.
+3. Com os dois: roteiro da narração a partir dos slides, cenas, mixagem com a trilha abaixando sob a voz e render.
+
 ## Comandos
 
 ```bash
 npm i
 npm run studio              # pré-visualização
 npm run render:assinatura   # out/assinatura-cris-santos.mp4
+python3 scripts/narrar.py   # narração (precisa de GEMINI_API_KEY)
+python3 scripts/compor-trilha.py --duracao 30 --cortes 4.5,10.2 --assinatura 27
 ```

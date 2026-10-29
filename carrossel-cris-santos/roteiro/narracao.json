@@ -1,0 +1,8 @@
+{
+  "modelo": "gemini-2.5-flash-preview-tts",
+  "voz": "Sulafat",
+  "direcao": "Leia em português do Brasil, com voz feminina acolhedora, calma e firme, como quem conversa de perto com quem vive com lúpus",
+  "falas": [
+    {"id": "assinatura", "texto": "Cris Santos e Lúpus. A realidade de quem vive."}
+  ]
+}
