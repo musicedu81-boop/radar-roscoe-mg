@@ -1,6 +1,6 @@
 # Motion do carrossel Cris Santos & Lúpus
 
-Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som e área segura para vídeo vertical das skills do HyperFrames.
+Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som e área segura para vídeo vertical das skills do HyperFrames. Efeitos escolhidos da skill `effects` do cliente e refeitos na paleta da marca: `carousel-spin` (carrossel 3D), `dot-reveal` (slide que se forma de pontos de luz) e `place-in-grid` (grade 3x3 no fim), além de foco e profundidade de campo.
 
 ## Identidade (a mesma da vinheta)
 
@@ -19,8 +19,12 @@ Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som 
 | `MarcaAbertura` | `src/Logo.tsx` | abertura do motion: a assinatura começa em voo, segura para leitura e encolhe até o topo, onde fica como selo durante as cenas |
 | `Abertura` | `src/Abertura.tsx` | prévia da abertura (4,5s) com o brilho do voo e o impacto da vinheta no pouso |
 | `Assinatura` | `src/Assinatura.tsx` | fim de vídeo de 4,5s com a marca sonora da vinheta (impacto e sinos) |
-| `Carrossel` | `src/Carrossel.tsx` | o motion: abertura com a logo, slides no compasso da trilha e fecho com a logo voltando ao centro |
-| `Cartao` | `src/Cartao.tsx` | cada slide inteiro, sem corte, dentro da faixa segura; entra pelo deslize do carrossel (os dois slides lado a lado, borrão horizontal no meio da troca) ou pela pilha (o de cima levanta e o de trás avança) |
+| `Carrossel` | `src/Carrossel.tsx` | o motion: abertura com a logo que vai para o canto, carrossel 3D girando, slides no compasso da trilha, grade 3x3 no fim e a logo voltando ao centro |
+| `Cartao` | `src/Cartao.tsx` | cada slide inteiro, sem corte, dentro da faixa segura, com quatro trocas: giro do carrossel em 3D, troca de foco, pontos de luz e travessia da borboleta |
+| `Anel3D` | `src/efeitos/Anel3D.tsx` | abertura com todos os slides num anel 3D que gira, desacelera e para no primeiro (inspirado no `carousel-spin`) |
+| `Revoada` | `src/efeitos/Borboletas3D.tsx` | borboletas 3D ao fundo com profundidade de campo; o foco puxa para elas no meio das trocas de foco |
+| `Travessia` | `src/efeitos/Travessia.tsx` | a borboleta que atravessa o quadro e abre o slide seguinte atrás dela |
+| `Grade` | `src/efeitos/Grade.tsx` | o último slide encolhe na grade com os outros (inspirado no `place-in-grid`); a grade recua desfocada e a logo volta |
 | `Pontos` | `src/Pontos.tsx` | indicador do carrossel como no Instagram, a pílula anda a cada troca |
 
 ## Som

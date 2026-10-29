@@ -151,8 +151,8 @@ export const Selo: React.FC<{fs?: number; opacidade?: number}> = ({fs = 30, opac
 };
 
 // Abertura do motion: a assinatura já começa em voo (o frame 0 nunca fica vazio), segura para leitura
-// e depois encolhe até o topo, onde fica como selo durante as cenas (o resultado é levado para a cena seguinte).
-export const MARCA = {atraso: 8, saida: 105, duracaoSaida: 18, centroY: 880, seloY: 238, seloEscala: 0.5};
+// e depois encolhe até o canto de cima, onde fica como selo durante as cenas (o resultado é levado para a cena seguinte).
+export const MARCA = {atraso: 8, saida: 105, duracaoSaida: 18, centroY: 880, seloX: 280, seloY: 205, seloEscala: 0.48};
 
 // retorno: frame em que o selo volta ao centro como assinatura completa (fecho do vídeo)
 export const MarcaAbertura: React.FC<{retorno?: number}> = ({retorno}) => {
@@ -169,7 +169,7 @@ export const MarcaAbertura: React.FC<{retorno?: number}> = ({retorno}) => {
       style={{
         transformOrigin: `540px ${M.centroY}px`,
         scale: `${1 + (M.seloEscala - 1) * s}`,
-        translate: `0px ${(M.seloY - M.centroY) * s}px`,
+        translate: `${(M.seloX - 540) * s}px ${(M.seloY - M.centroY) * s}px`,
         filter: borrao > 0.05 ? `blur(${borrao}px)` : undefined,
       }}
     >

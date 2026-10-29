@@ -18,7 +18,7 @@ export const SomAbertura: React.FC = () => {
     <>
       <Audio src={staticFile('sfx/sparkle.mp3')} volume={0.35} />
       <Sequence from={inicio} layout="none">
-        <Audio src={staticFile('trilha-vinheta.wav')} trimBefore={Math.round(TRECHO_TRILHA * fps)} volume={0.8} />
+        <Audio src={staticFile('trilha-vinheta.wav')} trimBefore={Math.round(TRECHO_TRILHA * fps)} volume={0.7} />
       </Sequence>
     </>
   );

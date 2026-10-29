@@ -13,9 +13,16 @@ import cv2
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FPS = 30
 TEMPO = 25  # 72 BPM
-POUSO_1 = 125  # o primeiro slide pousa na 5ª batida, enquanto a logo vira selo
+POUSO_1 = 200  # 8ª batida: a logo vai para o canto, o carrossel 3D gira, para e o primeiro slide vem para a leitura
+GRADE = 50  # o último slide encolhe na grade 3x3, a grade segura e a logo volta ao centro duas batidas depois
 FIM_ASSINATURA = 90  # a assinatura fica 3s no centro antes do fim
 EXTENSOES = ('.png', '.jpg', '.jpeg', '.webp')
+CICLO = ['giro', 'foco', 'giro', 'pontos']  # trocas com causa; a borboleta atravessa uma vez, no meio
+
+
+def trocas(n):
+    meio = (n - 1) // 2
+    return ['borboleta' if k == meio and n >= 4 else CICLO[k % len(CICLO)] for k in range(max(n - 1, 0))]
 
 
 def main():
@@ -44,9 +51,9 @@ def main():
         pousos.append(t)
         t += s['tempos'] * TEMPO
     saida_ultimo = t
-    pouso_assinatura = saida_ultimo + TEMPO
+    pouso_assinatura = saida_ultimo + GRADE
     duracao = pouso_assinatura + FIM_ASSINATURA
-    linha = {'fps': FPS, 'tempo': TEMPO, 'pousos': pousos, 'saidaUltimo': saida_ultimo, 'pousoAssinatura': pouso_assinatura, 'duracao': duracao}
+    linha = {'fps': FPS, 'tempo': TEMPO, 'pousos': pousos, 'trocas': trocas(len(slides)), 'saidaUltimo': saida_ultimo, 'pousoAssinatura': pouso_assinatura, 'duracao': duracao}
     json.dump({'slides': slides, 'linha': linha}, open(caminho_json, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'{len(slides)} slides, {duracao / FPS:.2f}s, assinatura em {pouso_assinatura / FPS:.2f}s')
 
