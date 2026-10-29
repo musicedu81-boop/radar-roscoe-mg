@@ -12,7 +12,7 @@ export const CAIXA = {cx: 540, cy: 812, largura: 840, altura: 1016};
 // pontos: o slide novo se forma de pontos de luz (dot-reveal da skill de efeitos)
 // borboleta: a borboleta atravessa o quadro e abre o slide novo atrás dela
 export type Troca = 'giro' | 'foco' | 'pontos' | 'borboleta';
-export const DURACAO_TROCA: Record<Troca, number> = {giro: 16, foco: 14, pontos: 18, borboleta: 22};
+export const DURACAO_TROCA: Record<Troca, number> = {giro: 16, foco: 22, pontos: 18, borboleta: 22};
 
 // Anel do carrossel 3D: raio e ângulo entre dois slides vizinhos
 export const ANEL = {raio: 950, passo: 52};
@@ -45,7 +45,7 @@ const entrar = (p: Pose, tipo: Troca | 'anel', f: number, pouso: number, w: numb
     p.brilho *= 0.55 + 0.45 * t;
     p.borrao += 5 * Math.sin(Math.PI * t);
   } else if (tipo === 'foco') {
-    const t = prog(f, pouso, 10, chegada);
+    const t = prog(f, pouso, 14, chegada);
     p.borrao += 16 * (1 - t);
     p.opacidade *= t;
     p.escala *= 1.05 - 0.05 * t;
@@ -78,7 +78,7 @@ const sair = (p: Pose, tipo: Troca | 'grade', f: number, saida: number, grade?: 
     p.brilho *= 1 - 0.45 * t;
     p.borrao += 5 * Math.sin(Math.PI * t);
   } else if (tipo === 'foco') {
-    const t = interpolate(f, [saida - 14, saida - 4], [0, 1], {...clamp, easing: acelera});
+    const t = interpolate(f, [saida - 22, saida - 8], [0, 1], {...clamp, easing: acelera});
     p.borrao += 16 * t;
     p.opacidade *= 1 - t;
     p.escala *= 1 - 0.04 * t;

@@ -5,12 +5,13 @@ import {Cartao, CAIXA, DURACAO_TROCA, type Troca} from './Cartao';
 import {Anel3D} from './efeitos/Anel3D';
 import {Revoada} from './efeitos/Borboletas3D';
 import {Grade, destinoNaGrade, slidesDaGrade} from './efeitos/Grade';
+import {Nevoa, Veu} from './efeitos/Nevoa';
 import {Travessia} from './efeitos/Travessia';
 import {Fundo} from './Fundo';
-import {LINHA, SLIDES} from './linha';
+import {CREDITO, LINHA, SLIDES} from './linha';
 import {MARCA, MarcaAbertura} from './Logo';
 import {Pontos} from './Pontos';
-import {clamp} from './tokens';
+import {C, FONTE, clamp} from './tokens';
 
 const TROCAS = LINHA.trocas as Troca[];
 // O carrossel 3D entra quando a logo começa a subir para o canto e para de girar uma batida antes do primeiro pouso
@@ -38,13 +39,14 @@ export const Carrossel: React.FC = () => {
   const n = SLIDES.length;
   const grade = slidesDaGrade(SLIDES);
 
-  // Foco do fundo: a câmera puxa o foco para a revoada no meio das trocas de foco e volta para o slide
-  let focoFundo = 0;
+  // Trocas de foco: o slide se perde na névoa, a câmera puxa o foco para a revoada e o próximo slide sai da névoa
+  let neblina = 0;
   TROCAS.forEach((tipo, k) => {
     if (tipo !== 'foco') return;
-    const t = interpolate(f, [pousos[k + 1] - 14, pousos[k + 1]], [0, 1], clamp);
-    focoFundo = Math.max(focoFundo, 0.8 * Math.sin(Math.PI * t));
+    const t = interpolate(f, [pousos[k + 1] - DURACAO_TROCA.foco, pousos[k + 1]], [0, 1], clamp);
+    neblina = Math.max(neblina, Math.sin(Math.PI * t));
   });
+  const focoFundo = 0.8 * neblina;
 
   // Indicador: anda junto com cada troca
   let posicao = 0;
@@ -57,6 +59,7 @@ export const Carrossel: React.FC = () => {
     <AbsoluteFill>
       <Fundo orbita />
       <Revoada foco={focoFundo} />
+      <Nevoa densidade={0.4 + 0.6 * neblina} />
 
       {/* A grade fica por baixo: o último slide encolhe por cima dela até a sua casa */}
       <Grade slides={SLIDES} f={f} saidaUltimo={saidaUltimo} recuo={RECUO_GRADE} />
@@ -87,8 +90,14 @@ export const Carrossel: React.FC = () => {
         })}
       </div>
 
+      <Veu intensidade={neblina} />
       {TROCAS.map((tipo, k) => (tipo === 'borboleta' ? <Travessia key={k} f={f} pouso={pousos[k + 1]} /> : null))}
       <Pontos n={n} posicao={posicao} opacidade={pontosOpacidade} y={CAIXA.cy + CAIXA.altura / 2 + 46} />
+      {CREDITO ? (
+        <div style={{position: 'absolute', left: 0, right: 0, top: CAIXA.cy + CAIXA.altura / 2 + 84, textAlign: 'center', fontFamily: FONTE, fontWeight: 500, fontSize: 28, letterSpacing: '0.04em', color: C.lavanda, opacity: 0.85 * pontosOpacidade}}>
+          {CREDITO}
+        </div>
+      ) : null}
       <MarcaAbertura retorno={pousoAssinatura} />
 
       {/* Som: trilha, marca sonora da abertura e efeitos só onde a imagem pede (poucos e exatos) */}

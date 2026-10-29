@@ -5,3 +5,5 @@ export type Slide = {arquivo: string; largura: number; altura: number; tempos: n
 export type Linha = {fps: number; tempo: number; pousos: number[]; trocas: string[]; saidaUltimo: number; pousoAssinatura: number; duracao: number};
 export const SLIDES: Slide[] = dados.slides;
 export const LINHA: Linha = dados.linha;
+// Crédito do conteúdo dos slides, quando o carrossel é de outro perfil
+export const CREDITO: string = (dados as {credito?: string}).credito ?? '';

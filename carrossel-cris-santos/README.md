@@ -38,18 +38,13 @@ Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (li
 
 ## Carrossel desta versão
 
-O post do Instagram não abre deste ambiente (o Instagram bloqueia leitura automática), então o carrossel foi feito na identidade da Cris com dados da Sociedade Brasileira de Reumatologia (`src/slides/SlidesCris.tsx`, 1080x1350):
+"Sabe o que é névoa lúpica?", carrossel de 11 slides do perfil @mulherescomlupus, enviado pelo cliente em prints do Instagram. `public/slides/01.png` a `11.png` são o post recortado da tela (sem a interface e sem o contador "1/11"), em 1080x1440. O crédito "Conteúdo: @mulherescomlupus" aparece embaixo dos pontos durante os slides (`credito` em `src/slides.json`; `--credito ""` apaga).
 
-1. Capa com o retrato metade rosto, metade borboleta da vinheta: "LÚPUS, o que você precisa saber"
-2. O que é o lúpus: doença autoimune e crônica
-3. Onde ele pode aparecer: pele, articulações, rins, pulmões e coração, sangue, sistema nervoso
-4. Quem ele atinge mais: 1 em cada 1.700 mulheres no Brasil, principalmente entre 20 e 45 anos
-5. Sinais de alerta e a orientação de procurar um reumatologista
-6. Por que a borboleta: a mancha nas maçãs do rosto e no nariz
-7. Bom saber: não é contagioso, tem diagnóstico e tratamento
-8. Informação também é cuidado
+O tema pede névoa: a troca principal é a de foco, em que o slide se perde num véu de névoa lavanda e o próximo sai dela entrando em foco. Ordem das trocas (`--ciclo foco,giro,foco,pontos`): foco, giro, foco, pontos de luz, foco, borboleta, foco, pontos de luz, foco, giro. Bancos de névoa passam devagar atrás dos slides o vídeo todo.
 
-Trocas: giro, pontos de luz, giro, foco, borboleta (abre o slide da borboleta), pontos de luz, giro.
+Tempo de cada slide pela leitura (0,5 s mais 0,3 s por palavra, no compasso de 72 BPM): 4, 9, 9, 4, 8, 9, 9, 10, 8, 7 e 12 batidas. Vídeo de 85,5 s.
+
+O carrossel informativo feito antes, na identidade da Cris (8 slides com dados da Sociedade Brasileira de Reumatologia), continua em `src/slides/SlidesCris.tsx` e pode ser gerado de novo com `npx remotion still SlideCris public/slides/01.png --props='{"indice": 0}'` (índices de 0 a 7).
 
 ## Como trocar pelos slides do post original
 

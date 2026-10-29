@@ -20,9 +20,9 @@ EXTENSOES = ('.png', '.jpg', '.jpeg', '.webp')
 CICLO = ['giro', 'pontos', 'giro', 'foco']  # trocas com causa, alternando
 
 
-def trocas(n):
+def trocas(n, ciclo=CICLO):
     """Tipo de cada troca. A borboleta atravessa uma vez, no lugar do giro mais perto do meio (o de depois, no empate)."""
-    t = [CICLO[k % len(CICLO)] for k in range(max(n - 1, 0))]
+    t = [ciclo[k % len(ciclo)] for k in range(max(n - 1, 0))]
     giros = [k for k, x in enumerate(t) if x == 'giro']
     if n >= 4 and giros:
         meio = (len(t) - 1) / 2
@@ -34,12 +34,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--tempos', type=int, default=4, help='batidas por slide novo (4 = 3,3s)')
     ap.add_argument('--sem-trilha', action='store_true')
+    ap.add_argument('--ciclo', help='ordem das trocas, separadas por vírgula (fica salva para as próximas vezes)')
+    ap.add_argument('--credito', help='crédito do conteúdo dos slides, mostrado embaixo dos pontos ("" apaga)')
     a = ap.parse_args()
 
     caminho_json = os.path.join(RAIZ, 'src/slides.json')
-    anterior = {}
+    anterior, antes = {}, {}
     if os.path.exists(caminho_json):
-        anterior = {s['arquivo']: s for s in json.load(open(caminho_json, encoding='utf-8'))['slides']}
+        antes = json.load(open(caminho_json, encoding='utf-8'))
+        anterior = {s['arquivo']: s for s in antes['slides']}
+    ciclo = a.ciclo.split(',') if a.ciclo else antes.get('linha', {}).get('ciclo', CICLO)
+    credito = a.credito if a.credito is not None else antes.get('credito', '')
 
     pasta = os.path.join(RAIZ, 'public/slides')
     nomes = sorted(n for n in os.listdir(pasta) if n.lower().endswith(EXTENSOES)) if os.path.isdir(pasta) else []
@@ -58,8 +63,8 @@ def main():
     saida_ultimo = t
     pouso_assinatura = saida_ultimo + GRADE
     duracao = pouso_assinatura + FIM_ASSINATURA
-    linha = {'fps': FPS, 'tempo': TEMPO, 'pousos': pousos, 'trocas': trocas(len(slides)), 'saidaUltimo': saida_ultimo, 'pousoAssinatura': pouso_assinatura, 'duracao': duracao}
-    json.dump({'slides': slides, 'linha': linha}, open(caminho_json, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    linha = {'fps': FPS, 'tempo': TEMPO, 'pousos': pousos, 'ciclo': ciclo, 'trocas': trocas(len(slides), ciclo), 'saidaUltimo': saida_ultimo, 'pousoAssinatura': pouso_assinatura, 'duracao': duracao}
+    json.dump({'slides': slides, 'credito': credito, 'linha': linha}, open(caminho_json, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'{len(slides)} slides, {duracao / FPS:.2f}s, assinatura em {pouso_assinatura / FPS:.2f}s')
 
     if not a.sem_trilha:
