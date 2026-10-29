@@ -1,0 +1,15 @@
+{
+ "cenas": [
+  {"id": "gancho", "tempos": 5, "entrada": "nevoa", "camera": "orbita"},
+  {"id": "definicao", "tempos": 10, "entrada": "cruzamento", "camera": "zoom"},
+  {"id": "quando", "tempos": 8, "entrada": "giro", "camera": "orbita"},
+  {"id": "fatores", "tempos": 5, "entrada": "nevoa", "camera": "orbita"},
+  {"id": "fadiga", "tempos": 8, "entrada": "cruzamento", "camera": "zoom"},
+  {"id": "medicamentos", "tempos": 7, "entrada": "giro", "camera": "orbita"},
+  {"id": "estresse", "tempos": 8, "entrada": "borboleta", "camera": "zoom"},
+  {"id": "sono", "tempos": 8, "entrada": "nevoa", "camera": "orbita"},
+  {"id": "ansiedade", "tempos": 7, "entrada": "pontos", "camera": "zoom"},
+  {"id": "reconhecer", "tempos": 7, "entrada": "giro", "camera": "orbita"},
+  {"id": "fecho", "tempos": 10, "entrada": "nevoa", "camera": "zoom"}
+ ]
+}

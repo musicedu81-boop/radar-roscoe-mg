@@ -36,21 +36,39 @@ Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (li
 - **Narração:** TTS do Gemini (Google AI Studio) com a chave em `GEMINI_API_KEY`, salva nas configurações do ambiente e nunca no código. O texto e a direção de voz ficam em `roteiro/narracao.json` (voz padrão `Sulafat`, acolhedora). `scripts/narrar.py` gera um WAV por fala em `public/narracao/` e grava as durações em `src/narracao.json`: a voz é o relógio das cenas. `--amostras Sulafat,Vindemiatrix,Achernar` grava a mesma frase em vozes diferentes para escolher.
 - **Trilha:** `scripts/compor-trilha.py` compõe o fundo em Ré maior, 72 BPM, com os timbres da vinheta (`scripts/instrumentos.py`): pad de cordas, caixinha de música, harpa, sinos nas trocas de cena e a cadência Lá para Ré no pouso da borboleta na assinatura. Recebe `--duracao`, `--cortes` e `--assinatura` em segundos.
 
-## Carrossel desta versão
+## Motion "Névoa lúpica" (versão principal)
 
-"Sabe o que é névoa lúpica?", carrossel de 11 slides do perfil @mulherescomlupus, enviado pelo cliente em prints do Instagram. `public/slides/01.png` a `11.png` são o post recortado da tela (sem a interface e sem o contador "1/11"), em 1080x1440. O crédito "Conteúdo: @mulherescomlupus" aparece embaixo dos pontos durante os slides (`credito` em `src/slides.json`; `--credito ""` apaga).
+Composição `NevoaLupica` (`src/NevoaLupica.tsx`), 77 s. Usa só as mensagens do carrossel sobre névoa lúpica que o cliente mandou, reescritas em frases curtas e animadas na identidade da Cris. Nenhum visual do post original entra no vídeo.
 
-O tema pede névoa: a troca principal é a de foco, em que o slide se perde num véu de névoa lavanda e o próximo sai dela entrando em foco. Ordem das trocas (`--ciclo foco,giro,foco,pontos`): foco, giro, foco, pontos de luz, foco, borboleta, foco, pontos de luz, foco, giro. Bancos de névoa passam devagar atrás dos slides o vídeo todo.
+| Cena | Mensagem | Animação |
+| --- | --- | --- |
+| Gancho | Sabe o que é névoa lúpica? | NÉVOA em 3D saindo da névoa, LÚPICA? letra a letra, órbita |
+| Definição | confusão mental, concentração, memória, raciocínio | crossover: NÉVOA viaja e vira o título; sintomas em pílulas; zoom lento |
+| Quando | crises (flares), sistema imunológico, inflamação | orbe da inflamação com partículas em órbita; entra girando em 3D |
+| Fatores | outros fatores que contribuem | anel 3D com FADIGA, MEDICAMENTOS, ESTRESSE, SONO e ANSIEDADE girando e parando |
+| Fadiga | fadiga extrema, dificuldade de pensar | crossover: FADIGA sai do anel e vira o título; bateria em medalhão 3D |
+| Medicamentos | corticosteroides em altas doses | cápsula; entra girando; órbita |
+| Estresse | agrava os sintomas | raio; a borboleta atravessa e abre a cena |
+| Sono | falta de sono piora a névoa | lua; entra pela névoa; órbita |
+| Ansiedade | depressão e ansiedade contribuem | nuvem; a cena se forma de pontos de luz |
+| Reconhecer | manejar a névoa, qualidade de vida | os cinco ícones se juntam num arco; órbita |
+| Fecho | você não precisa enfrentar o lúpus sozinha | a névoa se dissipa, as borboletas entram em foco e sobem |
 
-Tempo de cada slide pela leitura (0,5 s mais 0,3 s por palavra, no compasso de 72 BPM): 4, 9, 9, 4, 8, 9, 9, 10, 8, 7 e 12 batidas. Vídeo de 85,5 s.
+Todo texto entra palavra por palavra saindo do desfoque, com os destaques em lavanda. As palavras-título são extrudadas em 3D (`src/cenas/Palavra3D.tsx`). Cada cena tem câmera própria: zoom lento ou órbita. Bancos de névoa passam atrás de tudo; nas trocas de névoa, um véu cobre o quadro e o foco puxa para as borboletas ao fundo.
 
-O carrossel informativo feito antes, na identidade da Cris (8 slides com dados da Sociedade Brasileira de Reumatologia), continua em `src/slides/SlidesCris.tsx` e pode ser gerado de novo com `npx remotion still SlideCris public/slides/01.png --props='{"indice": 0}'` (índices de 0 a 7).
+- Textos: `src/cenas/Cenas.tsx` (trechos entre asteriscos ficam em lavanda)
+- Tempo, tipo de entrada e câmera de cada cena: `src/cenas/roteiro.json` (batidas de 72 BPM)
+- `npm run cenas` recalcula a linha do tempo e compõe a trilha (`public/trilha-nevoa.wav`); `npm run render` gera `out/nevoa-lupica-cris-santos.mp4`
 
-## Como trocar pelos slides do post original
+## Versão com slides (composição `Carrossel`)
+
+A primeira versão mostra slides inteiros. Hoje `public/slides/` tem o carrossel informativo feito na identidade da Cris, com dados da Sociedade Brasileira de Reumatologia (`src/slides/SlidesCris.tsx`). Render: `npm run render:slides`.
+
+## Como trocar os slides da versão com slides
 
 1. Apague os PNG de `public/slides/` e coloque os prints do carrossel, com nomes na ordem do post (`01.png`, `02.png`...).
 2. `python3 scripts/preparar-slides.py`: lê os slides, calcula a linha do tempo (72 BPM, 25 frames por batida, 4 batidas por slide) e compõe a trilha com um sino em cada troca e a resolução no pouso da logo. Para dar mais tempo a um slide com muito texto, mude `tempos` dele em `src/slides.json` e rode de novo.
-3. `npm run render`.
+3. `npm run render:slides`.
 
 Para refazer os PNG deste carrossel: `npx remotion still SlideCris public/slides/01.png --props='{"indice": 0}'` (índices de 0 a 7).
 
@@ -61,6 +79,8 @@ Versão atual: sem narração, só trilha (pedido do cliente). O roteiro de narr
 ```bash
 npm i
 npm run studio              # pré-visualização
+npm run cenas               # linha do tempo e trilha do motion Névoa lúpica
+npm run render              # out/nevoa-lupica-cris-santos.mp4
 npm run render:assinatura   # out/assinatura-cris-santos.mp4
 npx remotion render Abertura out/abertura-cris-santos.mp4 --codec=h264 --crf=17
 python3 scripts/narrar.py   # narração (precisa de GEMINI_API_KEY)

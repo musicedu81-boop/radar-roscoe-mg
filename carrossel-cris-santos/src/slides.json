@@ -3,107 +3,83 @@
   {
    "arquivo": "slides/01.png",
    "largura": 1080,
-   "altura": 1440,
+   "altura": 1350,
    "tempos": 4
   },
   {
    "arquivo": "slides/02.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 9
+   "altura": 1350,
+   "tempos": 7
   },
   {
    "arquivo": "slides/03.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 9
+   "altura": 1350,
+   "tempos": 6
   },
   {
    "arquivo": "slides/04.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 4
+   "altura": 1350,
+   "tempos": 6
   },
   {
    "arquivo": "slides/05.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 8
+   "altura": 1350,
+   "tempos": 7
   },
   {
    "arquivo": "slides/06.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 9
+   "altura": 1350,
+   "tempos": 7
   },
   {
    "arquivo": "slides/07.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 9
+   "altura": 1350,
+   "tempos": 6
   },
   {
    "arquivo": "slides/08.png",
    "largura": 1080,
-   "altura": 1440,
-   "tempos": 10
-  },
-  {
-   "arquivo": "slides/09.png",
-   "largura": 1080,
-   "altura": 1440,
-   "tempos": 8
-  },
-  {
-   "arquivo": "slides/10.png",
-   "largura": 1080,
-   "altura": 1440,
-   "tempos": 7
-  },
-  {
-   "arquivo": "slides/11.png",
-   "largura": 1080,
-   "altura": 1440,
-   "tempos": 12
+   "altura": 1350,
+   "tempos": 5
   }
  ],
- "credito": "Conteúdo: @mulherescomlupus",
+ "credito": "",
  "linha": {
   "fps": 30,
   "tempo": 25,
   "pousos": [
    200,
    300,
-   525,
-   750,
-   850,
-   1050,
-   1275,
-   1500,
-   1750,
-   1950,
-   2125
+   475,
+   625,
+   775,
+   950,
+   1125,
+   1275
   ],
   "ciclo": [
-   "foco",
    "giro",
-   "foco",
-   "pontos"
+   "pontos",
+   "giro",
+   "foco"
   ],
   "trocas": [
-   "foco",
+   "giro",
+   "pontos",
    "giro",
    "foco",
-   "pontos",
-   "foco",
    "borboleta",
-   "foco",
    "pontos",
-   "foco",
    "giro"
   ],
-  "saidaUltimo": 2425,
-  "pousoAssinatura": 2475,
-  "duracao": 2565
+  "saidaUltimo": 1400,
+  "pousoAssinatura": 1450,
+  "duracao": 1540
  }
 }

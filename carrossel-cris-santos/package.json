@@ -4,7 +4,9 @@
   "scripts": {
     "studio": "remotion studio",
     "trilha": "bash scripts/masterizar-trilha.sh",
-    "render": "remotion render Carrossel out/carrossel-cris-santos.mp4 --codec=h264 --crf=17 --concurrency=4 --timeout=120000",
+    "render": "remotion render NevoaLupica out/nevoa-lupica-cris-santos.mp4 --codec=h264 --crf=17 --concurrency=4 --timeout=120000",
+    "render:slides": "remotion render Carrossel out/carrossel-cris-santos.mp4 --codec=h264 --crf=17 --concurrency=4 --timeout=120000",
+    "cenas": "python3 scripts/preparar-cenas.py",
     "render:assinatura": "remotion render Assinatura out/assinatura-cris-santos.mp4 --codec=h264 --crf=17 --concurrency=4"
   },
   "dependencies": {
