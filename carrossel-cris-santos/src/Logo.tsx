@@ -1,6 +1,6 @@
 import {fitText} from '@remotion/layout-utils';
 import {useEffect, useState} from 'react';
-import {continueRender, delayRender, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Sequence, continueRender, delayRender, interpolate, useCurrentFrame} from 'remotion';
 import {Borboleta, bater} from './Borboleta';
 import {fontesCarregadas} from './fonte';
 import {C, FAMILIA, FONTE, NOME, SLOGAN, chegada, clamp, textoMarca, vaiVem} from './tokens';
@@ -44,8 +44,9 @@ const posBorboleta = (f: number, fs: number) => {
   return {pct, dx, dy, tamanho, p, pouso};
 };
 
-// Assinatura animada: a borboleta escreve o nome, risca a linha, pousa no S e o slogan entra
-export const AssinaturaAnimada: React.FC<{largura?: number; centroY: number}> = ({largura = 900, centroY}) => {
+// Assinatura animada: a borboleta escreve o nome, risca a linha, pousa no S e o slogan entra.
+// complementos: opacidade da linha e do slogan (a abertura os tira antes de levar o nome para o topo).
+export const AssinaturaAnimada: React.FC<{largura?: number; centroY: number; complementos?: number}> = ({largura = 900, centroY, complementos = 1}) => {
   const f = useCurrentFrame();
   const fs = useTamanhoNome(largura);
   if (fs === null) return null;
@@ -106,6 +107,7 @@ export const AssinaturaAnimada: React.FC<{largura?: number; centroY: number}> = 
             height: 2,
             background: `linear-gradient(90deg, transparent, ${C.lavanda}, ${C.creme})`,
             boxShadow: `0 0 12px ${C.claro}`,
+            opacity: complementos,
           }}
         />
         {rastro}
@@ -123,8 +125,8 @@ export const AssinaturaAnimada: React.FC<{largura?: number; centroY: number}> = 
           letterSpacing: `${espaco}em`,
           color: C.lavanda,
           whiteSpace: 'pre',
-          opacity: sl,
-          filter: `blur(${8 * (1 - sl)}px)`,
+          opacity: sl * complementos,
+          filter: `blur(${8 * (1 - sl * complementos)}px)`,
         }}
       >
         {SLOGAN}
@@ -145,5 +147,31 @@ export const Selo: React.FC<{fs?: number; opacidade?: number}> = ({fs = 30, opac
         <div style={textoMarca(fs)}>{NOME}</div>
       </div>
     </div>
+  );
+};
+
+// Abertura do motion: a assinatura já começa em voo (o frame 0 nunca fica vazio), segura para leitura
+// e depois encolhe até o topo, onde fica como selo durante as cenas (o resultado é levado para a cena seguinte).
+export const MARCA = {atraso: 8, saida: 105, duracaoSaida: 18, centroY: 880, seloY: 238, seloEscala: 0.5};
+
+export const MarcaAbertura: React.FC = () => {
+  const f = useCurrentFrame();
+  const M = MARCA;
+  const s = interpolate(f, [M.saida, M.saida + M.duracaoSaida], [0, 1], {...clamp, easing: vaiVem});
+  const borrao = 6 * Math.sin(Math.PI * s);
+  const complementos = interpolate(f, [M.saida, M.saida + 6], [1, 0], clamp);
+  return (
+    <AbsoluteFill
+      style={{
+        transformOrigin: `540px ${M.centroY}px`,
+        scale: `${1 + (M.seloEscala - 1) * s}`,
+        translate: `0px ${(M.seloY - M.centroY) * s}px`,
+        filter: borrao > 0.05 ? `blur(${borrao}px)` : undefined,
+      }}
+    >
+      <Sequence from={-M.atraso} layout="none">
+        <AssinaturaAnimada centroY={M.centroY} complementos={complementos} />
+      </Sequence>
+    </AbsoluteFill>
   );
 };

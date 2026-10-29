@@ -16,6 +16,8 @@ Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som 
 | `AssinaturaAnimada` | `src/Logo.tsx` | a borboleta escreve o nome, risca a linha, pousa no S e o slogan entra |
 | `Selo` | `src/Logo.tsx` | logo compacta para o canto das cenas |
 | `Fundo` | `src/Fundo.tsx` | roxo profundo com foco de luz e poeira lavanda subindo devagar |
+| `MarcaAbertura` | `src/Logo.tsx` | abertura do motion: a assinatura começa em voo, segura para leitura e encolhe até o topo, onde fica como selo durante as cenas |
+| `Abertura` | `src/Abertura.tsx` | prévia da abertura (4,5s) com o brilho do voo e o impacto da vinheta no pouso |
 | `Assinatura` | `src/Assinatura.tsx` | fim de vídeo de 4,5s com a marca sonora da vinheta (impacto e sinos) |
 
 ## Som
@@ -39,6 +41,7 @@ Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (li
 npm i
 npm run studio              # pré-visualização
 npm run render:assinatura   # out/assinatura-cris-santos.mp4
+npx remotion render Abertura out/abertura-cris-santos.mp4 --codec=h264 --crf=17
 python3 scripts/narrar.py   # narração (precisa de GEMINI_API_KEY)
 python3 scripts/compor-trilha.py --duracao 30 --cortes 4.5,10.2 --assinatura 27
 ```
