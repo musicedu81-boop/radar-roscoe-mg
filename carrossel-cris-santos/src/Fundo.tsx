@@ -20,9 +20,20 @@ const Poeira: React.FC<{quantidade: number}> = ({quantidade}) => {
 };
 
 // Fundo da marca, igual ao da vinheta: foco roxo no alto, bordas na cor da noite
-export const Fundo: React.FC<{poeira?: number}> = ({poeira = 40}) => (
+// Luz lavanda girando devagar atrás de tudo (órbita lenta do palco, cerca de 4 graus por segundo)
+const Orbita: React.FC = () => {
+  const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const ang = ((f / fps) * 4 * Math.PI) / 180;
+  const x = 50 + 22 * Math.cos(ang);
+  const y = 42 + 14 * Math.sin(ang);
+  return <AbsoluteFill style={{background: `radial-gradient(45% 30% at ${x}% ${y}%, ${C.claro}33 0%, transparent 70%)`, mixBlendMode: 'screen'}} />;
+};
+
+export const Fundo: React.FC<{poeira?: number; orbita?: boolean}> = ({poeira = 40, orbita = false}) => (
   <AbsoluteFill style={{background: `radial-gradient(120% 80% at 50% 35%, ${C.principal} 0%, ${C.profundo} 45%, ${C.noite} 100%)`, overflow: 'hidden'}}>
     <AbsoluteFill style={{background: `linear-gradient(160deg, ${C.lavanda}22 0%, transparent 40%)`}} />
+    {orbita ? <Orbita /> : null}
     <Poeira quantidade={poeira} />
   </AbsoluteFill>
 );

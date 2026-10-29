@@ -154,12 +154,16 @@ export const Selo: React.FC<{fs?: number; opacidade?: number}> = ({fs = 30, opac
 // e depois encolhe até o topo, onde fica como selo durante as cenas (o resultado é levado para a cena seguinte).
 export const MARCA = {atraso: 8, saida: 105, duracaoSaida: 18, centroY: 880, seloY: 238, seloEscala: 0.5};
 
-export const MarcaAbertura: React.FC = () => {
+// retorno: frame em que o selo volta ao centro como assinatura completa (fecho do vídeo)
+export const MarcaAbertura: React.FC<{retorno?: number}> = ({retorno}) => {
   const f = useCurrentFrame();
   const M = MARCA;
-  const s = interpolate(f, [M.saida, M.saida + M.duracaoSaida], [0, 1], {...clamp, easing: vaiVem});
-  const borrao = 6 * Math.sin(Math.PI * s);
-  const complementos = interpolate(f, [M.saida, M.saida + 6], [1, 0], clamp);
+  const ida = interpolate(f, [M.saida, M.saida + M.duracaoSaida], [0, 1], {...clamp, easing: vaiVem});
+  const volta = retorno === undefined ? 0 : interpolate(f, [retorno - M.duracaoSaida, retorno], [0, 1], {...clamp, easing: vaiVem});
+  const s = ida * (1 - volta);
+  const borrao = 6 * (volta > 0 ? Math.sin(Math.PI * volta) : Math.sin(Math.PI * ida));
+  // linha e slogan saem antes da subida e voltam com borrão depois do retorno
+  const complementos = retorno !== undefined && f >= retorno ? interpolate(f, [retorno, retorno + 8], [0, 1], clamp) : interpolate(f, [M.saida, M.saida + 6], [1, 0], clamp);
   return (
     <AbsoluteFill
       style={{

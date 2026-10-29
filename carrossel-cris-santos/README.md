@@ -19,6 +19,9 @@ Vertical 1080x1920, 30fps, em Remotion 4.0.536, com as regras de movimento, som 
 | `MarcaAbertura` | `src/Logo.tsx` | abertura do motion: a assinatura começa em voo, segura para leitura e encolhe até o topo, onde fica como selo durante as cenas |
 | `Abertura` | `src/Abertura.tsx` | prévia da abertura (4,5s) com o brilho do voo e o impacto da vinheta no pouso |
 | `Assinatura` | `src/Assinatura.tsx` | fim de vídeo de 4,5s com a marca sonora da vinheta (impacto e sinos) |
+| `Carrossel` | `src/Carrossel.tsx` | o motion: abertura com a logo, slides no compasso da trilha e fecho com a logo voltando ao centro |
+| `Cartao` | `src/Cartao.tsx` | cada slide inteiro, sem corte, dentro da faixa segura; entra pelo deslize do carrossel (os dois slides lado a lado, borrão horizontal no meio da troca) ou pela pilha (o de cima levanta e o de trás avança) |
+| `Pontos` | `src/Pontos.tsx` | indicador do carrossel como no Instagram, a pílula anda a cada troca |
 
 ## Som
 
@@ -29,11 +32,13 @@ Efeitos em `public/sfx` vêm da biblioteca da skill media-use do HyperFrames (li
 - **Narração:** TTS do Gemini (Google AI Studio) com a chave em `GEMINI_API_KEY`, salva nas configurações do ambiente e nunca no código. O texto e a direção de voz ficam em `roteiro/narracao.json` (voz padrão `Sulafat`, acolhedora). `scripts/narrar.py` gera um WAV por fala em `public/narracao/` e grava as durações em `src/narracao.json`: a voz é o relógio das cenas. `--amostras Sulafat,Vindemiatrix,Achernar` grava a mesma frase em vozes diferentes para escolher.
 - **Trilha:** `scripts/compor-trilha.py` compõe o fundo em Ré maior, 72 BPM, com os timbres da vinheta (`scripts/instrumentos.py`): pad de cordas, caixinha de música, harpa, sinos nas trocas de cena e a cadência Lá para Ré no pouso da borboleta na assinatura. Recebe `--duracao`, `--cortes` e `--assinatura` em segundos.
 
-## O que falta
+## Como montar o motion
 
-1. Os slides do carrossel, em ordem, em `public/slides/`.
-2. A chave `GEMINI_API_KEY` no ambiente.
-3. Com os dois: roteiro da narração a partir dos slides, cenas, mixagem com a trilha abaixando sob a voz e render.
+1. Coloque os slides do carrossel em `public/slides/`, com nomes na ordem do post (`01.png`, `02.png`...).
+2. `python3 scripts/preparar-slides.py`: lê os slides, calcula a linha do tempo (72 BPM, 25 frames por batida, 4 batidas por slide) e compõe a trilha com um sino em cada troca e a resolução no pouso da logo. Para dar mais tempo a um slide com muito texto, mude `tempos` dele em `src/slides.json` e rode de novo.
+3. `npm run render`.
+
+Versão atual: sem narração, só trilha (pedido do cliente). O roteiro de narração com o Gemini continua pronto para uma versão narrada.
 
 ## Comandos
 
