@@ -28,7 +28,7 @@ import soundfile as sf
 from allosaurus.app import read_recognizer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VOGAIS_O = {"a", "o", "ɔ", "ə", "ɒ", "ʌ", "u"}
+VOGAIS_O = {"a", "o", "ɔ", "ə", "ɒ", "ʌ", "u", "w"}  # "w": o reconhecedor às vezes marca o ó arredondado assim
 _modelo = None
 
 

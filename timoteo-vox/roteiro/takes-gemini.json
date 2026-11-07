@@ -1,7 +1,9 @@
 {
   "abertura-3": {"grafia": "Timótêo", "take": 0, "nota": "tomada da opção 2 aprovada pelo Edu"},
-  "final-1": {"grafia": "Timótêo", "take": 1, "nota": "tomada nova aprovada pelo conferidor"},
-  "emancipacao-3": {"arquivo": "roteiro/emendas/emancipacao-3.wav", "nota": "palavra trocada pela de mapa-1 (Timóteo fica)"},
+  "mapa-1": {"arquivo": "roteiro/emendas/mapa-1.wav", "nota": "palavra trocada pela de porque-4 (Timóteo tinha)"},
+  "origem-3": {"arquivo": "roteiro/emendas/origem-3.wav", "nota": "palavra trocada pela da opção 2 aprovada"},
+  "emancipacao-3": {"arquivo": "roteiro/emendas/emancipacao-3.wav", "nota": "palavra trocada pela de porque-4 (Timóteo tinha)"},
   "plebiscito-3": {"arquivo": "roteiro/emendas/plebiscito-3.wav", "nota": "palavra trocada pela de vila-5 (seguiu sendo Timóteo)"},
-  "nomes-1": {"arquivo": "roteiro/emendas/nomes-1.wav", "nota": "palavra trocada pela de origem-4 (Ribeirão de Timóteo)"}
+  "nomes-1": {"arquivo": "roteiro/emendas/nomes-1.wav", "nota": "palavra trocada pela de origem-4 (Ribeirão de Timóteo)"},
+  "final-1": {"grafia": "Timótêo", "take": 1, "nota": "tomada nova aprovada pelo conferidor"}
 }
