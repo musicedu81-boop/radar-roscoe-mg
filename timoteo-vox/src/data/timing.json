@@ -1,0 +1,3162 @@
+{
+ "fps": 30,
+ "voz": "pm_alex",
+ "velocidade": 0.94,
+ "totalFrames": 9319,
+ "cenas": [
+  {
+   "id": "abertura",
+   "inicio": 0.0,
+   "dur": 21.867,
+   "frames": 656,
+   "falas": [
+    {
+     "id": "abertura-1",
+     "cap": "Pergunte a alguém do Vale do Aço onde fica a Acesita.",
+     "t": 0.9,
+     "dur": 3.349,
+     "words": [
+      {
+       "w": "Pergunte",
+       "t": 0.9
+      },
+      {
+       "w": "a",
+       "t": 1.439
+      },
+      {
+       "w": "alguém",
+       "t": 1.586
+      },
+      {
+       "w": "do",
+       "t": 2.013
+      },
+      {
+       "w": "Vale",
+       "t": 2.215
+      },
+      {
+       "w": "do",
+       "t": 2.53
+      },
+      {
+       "w": "Aço",
+       "t": 2.732
+      },
+      {
+       "w": "onde",
+       "t": 2.991
+      },
+      {
+       "w": "fica",
+       "t": 3.305
+      },
+      {
+       "w": "a",
+       "t": 3.62
+      },
+      {
+       "w": "Acesita.",
+       "t": 3.766
+      }
+     ]
+    },
+    {
+     "id": "abertura-2",
+     "cap": "A pessoa vai apontar para um bairro.",
+     "t": 4.569,
+     "dur": 2.133,
+     "words": [
+      {
+       "w": "A",
+       "t": 4.569
+      },
+      {
+       "w": "pessoa",
+       "t": 4.707
+      },
+      {
+       "w": "vai",
+       "t": 5.11
+      },
+      {
+       "w": "apontar",
+       "t": 5.354
+      },
+      {
+       "w": "para",
+       "t": 5.811
+      },
+      {
+       "w": "um",
+       "t": 6.108
+      },
+      {
+       "w": "bairro.",
+       "t": 6.299
+      }
+     ]
+    },
+    {
+     "id": "abertura-3",
+     "cap": "Agora, pergunte onde fica Timóteo.",
+     "t": 7.023,
+     "dur": 2.517,
+     "words": [
+      {
+       "w": "Agora,",
+       "t": 7.023
+      },
+      {
+       "w": "pergunte",
+       "t": 7.485
+      },
+      {
+       "w": "onde",
+       "t": 8.156
+      },
+      {
+       "w": "fica",
+       "t": 8.547
+      },
+      {
+       "w": "Timóteo.",
+       "t": 8.939
+      }
+     ]
+    },
+    {
+     "id": "abertura-4",
+     "cap": "Ela vai apontar para outro lugar.",
+     "t": 9.86,
+     "dur": 2.219,
+     "words": [
+      {
+       "w": "Ela",
+       "t": 9.86
+      },
+      {
+       "w": "vai",
+       "t": 10.139
+      },
+      {
+       "w": "apontar",
+       "t": 10.418
+      },
+      {
+       "w": "para",
+       "t": 10.939
+      },
+      {
+       "w": "outro",
+       "t": 11.278
+      },
+      {
+       "w": "lugar.",
+       "t": 11.679
+      }
+     ]
+    },
+    {
+     "id": "abertura-5",
+     "cap": "Parecem duas cidades. Mas é uma só.",
+     "t": 12.399,
+     "dur": 2.581,
+     "words": [
+      {
+       "w": "Parecem",
+       "t": 12.399
+      },
+      {
+       "w": "duas",
+       "t": 12.98
+      },
+      {
+       "w": "cidades.",
+       "t": 13.359
+      },
+      {
+       "w": "Mas",
+       "t": 13.94
+      },
+      {
+       "w": "é",
+       "t": 14.251
+      },
+      {
+       "w": "uma",
+       "t": 14.426
+      },
+      {
+       "w": "só.",
+       "t": 14.737
+      }
+     ]
+    },
+    {
+     "id": "abertura-6",
+     "cap": "E a explicação passa por aço, por floresta, e por um único ano: 1944.",
+     "t": 15.3,
+     "dur": 5.909,
+     "words": [
+      {
+       "w": "E",
+       "t": 15.3
+      },
+      {
+       "w": "a",
+       "t": 15.507
+      },
+      {
+       "w": "explicação",
+       "t": 15.713
+      },
+      {
+       "w": "passa",
+       "t": 16.634
+      },
+      {
+       "w": "por",
+       "t": 17.159
+      },
+      {
+       "w": "aço,",
+       "t": 17.524
+      },
+      {
+       "w": "por",
+       "t": 17.889
+      },
+      {
+       "w": "floresta,",
+       "t": 18.255
+      },
+      {
+       "w": "e",
+       "t": 19.017
+      },
+      {
+       "w": "por",
+       "t": 19.224
+      },
+      {
+       "w": "um",
+       "t": 19.589
+      },
+      {
+       "w": "único",
+       "t": 19.875
+      },
+      {
+       "w": "ano:",
+       "t": 20.399
+      },
+      {
+       "w": "1944.",
+       "t": 20.765
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "titulo",
+   "inicio": 21.867,
+   "dur": 4.2,
+   "frames": 126,
+   "falas": []
+  },
+  {
+   "id": "mapa",
+   "inicio": 26.067,
+   "dur": 25.3,
+   "frames": 759,
+   "falas": [
+    {
+     "id": "mapa-1",
+     "cap": "Timóteo fica no leste de Minas Gerais, a cerca de 200 km de Belo Horizonte.",
+     "t": 0.45,
+     "dur": 5.824,
+     "words": [
+      {
+       "w": "Timóteo",
+       "t": 0.45
+      },
+      {
+       "w": "fica",
+       "t": 1.053
+      },
+      {
+       "w": "no",
+       "t": 1.446
+      },
+      {
+       "w": "leste",
+       "t": 1.699
+      },
+      {
+       "w": "de",
+       "t": 2.162
+      },
+      {
+       "w": "Minas",
+       "t": 2.415
+      },
+      {
+       "w": "Gerais,",
+       "t": 2.878
+      },
+      {
+       "w": "a",
+       "t": 3.411
+      },
+      {
+       "w": "cerca",
+       "t": 3.594
+      },
+      {
+       "w": "de",
+       "t": 4.057
+      },
+      {
+       "w": "200",
+       "t": 4.309
+      },
+      {
+       "w": "km",
+       "t": 4.632
+      },
+      {
+       "w": "de",
+       "t": 4.885
+      },
+      {
+       "w": "Belo",
+       "t": 5.137
+      },
+      {
+       "w": "Horizonte.",
+       "t": 5.53
+      }
+     ]
+    },
+    {
+     "id": "mapa-2",
+     "cap": "São 144 km². E 81.579 habitantes, segundo o Censo de 2022.",
+     "t": 6.594,
+     "dur": 9.323,
+     "words": [
+      {
+       "w": "São",
+       "t": 6.594
+      },
+      {
+       "w": "144",
+       "t": 7.29
+      },
+      {
+       "w": "km².",
+       "t": 7.986
+      },
+      {
+       "w": "E",
+       "t": 8.683
+      },
+      {
+       "w": "81.579",
+       "t": 9.076
+      },
+      {
+       "w": "habitantes,",
+       "t": 10.075
+      },
+      {
+       "w": "segundo",
+       "t": 11.83
+      },
+      {
+       "w": "o",
+       "t": 13.132
+      },
+      {
+       "w": "Censo",
+       "t": 13.525
+      },
+      {
+       "w": "de",
+       "t": 14.524
+      },
+      {
+       "w": "2022.",
+       "t": 15.069
+      }
+     ]
+    },
+    {
+     "id": "mapa-3",
+     "cap": "É uma das quatro cidades do núcleo da Região Metropolitana do Vale do Aço, ao lado de Ipatinga, Coronel Fabriciano e Santana do Paraíso.",
+     "t": 16.237,
+     "dur": 8.405,
+     "words": [
+      {
+       "w": "É",
+       "t": 16.237
+      },
+      {
+       "w": "uma",
+       "t": 16.384
+      },
+      {
+       "w": "das",
+       "t": 16.645
+      },
+      {
+       "w": "quatro",
+       "t": 16.905
+      },
+      {
+       "w": "cidades",
+       "t": 17.336
+      },
+      {
+       "w": "do",
+       "t": 17.823
+      },
+      {
+       "w": "núcleo",
+       "t": 18.027
+      },
+      {
+       "w": "da",
+       "t": 18.457
+      },
+      {
+       "w": "Região",
+       "t": 18.661
+      },
+      {
+       "w": "Metropolitana",
+       "t": 19.092
+      },
+      {
+       "w": "do",
+       "t": 19.919
+      },
+      {
+       "w": "Vale",
+       "t": 20.122
+      },
+      {
+       "w": "do",
+       "t": 20.44
+      },
+      {
+       "w": "Aço,",
+       "t": 20.644
+      },
+      {
+       "w": "ao",
+       "t": 20.904
+      },
+      {
+       "w": "lado",
+       "t": 21.108
+      },
+      {
+       "w": "de",
+       "t": 21.425
+      },
+      {
+       "w": "Ipatinga,",
+       "t": 21.629
+      },
+      {
+       "w": "Coronel",
+       "t": 22.173
+      },
+      {
+       "w": "Fabriciano",
+       "t": 22.66
+      },
+      {
+       "w": "e",
+       "t": 23.317
+      },
+      {
+       "w": "Santana",
+       "t": 23.464
+      },
+      {
+       "w": "do",
+       "t": 23.951
+      },
+      {
+       "w": "Paraíso.",
+       "t": 24.155
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "origem",
+   "inicio": 51.367,
+   "dur": 31.567,
+   "frames": 947,
+   "falas": [
+    {
+     "id": "origem-1",
+     "cap": "A história começa antes da indústria.",
+     "t": 0.45,
+     "dur": 2.432,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.45
+      },
+      {
+       "w": "história",
+       "t": 0.606
+      },
+      {
+       "w": "começa",
+       "t": 1.181
+      },
+      {
+       "w": "antes",
+       "t": 1.636
+      },
+      {
+       "w": "da",
+       "t": 2.031
+      },
+      {
+       "w": "indústria.",
+       "t": 2.247
+      }
+     ]
+    },
+    {
+     "id": "origem-2",
+     "cap": "Em 1831, Francisco de Paula e Silva, o Chico Santa Maria, chega à região para plantar e criar gado. O lugar se chamava Alegre.",
+     "t": 3.202,
+     "dur": 9.131,
+     "words": [
+      {
+       "w": "Em",
+       "t": 3.202
+      },
+      {
+       "w": "1831,",
+       "t": 3.443
+      },
+      {
+       "w": "Francisco",
+       "t": 3.818
+      },
+      {
+       "w": "de",
+       "t": 4.527
+      },
+      {
+       "w": "Paula",
+       "t": 4.768
+      },
+      {
+       "w": "e",
+       "t": 5.21
+      },
+      {
+       "w": "Silva,",
+       "t": 5.384
+      },
+      {
+       "w": "o",
+       "t": 5.826
+      },
+      {
+       "w": "Chico",
+       "t": 6.0
+      },
+      {
+       "w": "Santa",
+       "t": 6.442
+      },
+      {
+       "w": "Maria,",
+       "t": 6.884
+      },
+      {
+       "w": "chega",
+       "t": 7.326
+      },
+      {
+       "w": "à",
+       "t": 7.767
+      },
+      {
+       "w": "região",
+       "t": 7.941
+      },
+      {
+       "w": "para",
+       "t": 8.45
+      },
+      {
+       "w": "plantar",
+       "t": 8.825
+      },
+      {
+       "w": "e",
+       "t": 9.401
+      },
+      {
+       "w": "criar",
+       "t": 9.575
+      },
+      {
+       "w": "gado.",
+       "t": 10.017
+      },
+      {
+       "w": "O",
+       "t": 10.391
+      },
+      {
+       "w": "lugar",
+       "t": 10.565
+      },
+      {
+       "w": "se",
+       "t": 11.007
+      },
+      {
+       "w": "chamava",
+       "t": 11.248
+      },
+      {
+       "w": "Alegre.",
+       "t": 11.824
+      }
+     ]
+    },
+    {
+     "id": "origem-3",
+     "cap": "O nome Timóteo, segundo a versão mais contada, vem de um tropeiro que abriu uma venda às margens de um ribeirão.",
+     "t": 12.653,
+     "dur": 6.699,
+     "words": [
+      {
+       "w": "O",
+       "t": 12.653
+      },
+      {
+       "w": "nome",
+       "t": 12.795
+      },
+      {
+       "w": "Timóteo,",
+       "t": 13.101
+      },
+      {
+       "w": "segundo",
+       "t": 13.571
+      },
+      {
+       "w": "a",
+       "t": 14.041
+      },
+      {
+       "w": "versão",
+       "t": 14.183
+      },
+      {
+       "w": "mais",
+       "t": 14.598
+      },
+      {
+       "w": "contada,",
+       "t": 14.904
+      },
+      {
+       "w": "vem",
+       "t": 15.374
+      },
+      {
+       "w": "de",
+       "t": 15.625
+      },
+      {
+       "w": "um",
+       "t": 15.822
+      },
+      {
+       "w": "tropeiro",
+       "t": 16.019
+      },
+      {
+       "w": "que",
+       "t": 16.543
+      },
+      {
+       "w": "abriu",
+       "t": 16.795
+      },
+      {
+       "w": "uma",
+       "t": 17.155
+      },
+      {
+       "w": "venda",
+       "t": 17.407
+      },
+      {
+       "w": "às",
+       "t": 17.767
+      },
+      {
+       "w": "margens",
+       "t": 17.964
+      },
+      {
+       "w": "de",
+       "t": 18.434
+      },
+      {
+       "w": "um",
+       "t": 18.63
+      },
+      {
+       "w": "ribeirão.",
+       "t": 18.827
+      }
+     ]
+    },
+    {
+     "id": "origem-4",
+     "cap": "A venda virou ponto de referência. O ribeirão virou Ribeirão de Timóteo. E o nome ficou.",
+     "t": 19.671,
+     "dur": 5.461,
+     "words": [
+      {
+       "w": "A",
+       "t": 19.671
+      },
+      {
+       "w": "venda",
+       "t": 19.82
+      },
+      {
+       "w": "virou",
+       "t": 20.197
+      },
+      {
+       "w": "ponto",
+       "t": 20.574
+      },
+      {
+       "w": "de",
+       "t": 20.951
+      },
+      {
+       "w": "referência.",
+       "t": 21.156
+      },
+      {
+       "w": "O",
+       "t": 21.819
+      },
+      {
+       "w": "ribeirão",
+       "t": 21.968
+      },
+      {
+       "w": "virou",
+       "t": 22.516
+      },
+      {
+       "w": "Ribeirão",
+       "t": 22.893
+      },
+      {
+       "w": "de",
+       "t": 23.441
+      },
+      {
+       "w": "Timóteo.",
+       "t": 23.647
+      },
+      {
+       "w": "E",
+       "t": 24.138
+      },
+      {
+       "w": "o",
+       "t": 24.287
+      },
+      {
+       "w": "nome",
+       "t": 24.435
+      },
+      {
+       "w": "ficou.",
+       "t": 24.755
+      }
+     ]
+    },
+    {
+     "id": "origem-5",
+     "cap": "Em 1938, o povoado vira distrito. Já com o nome de Timóteo.",
+     "t": 25.453,
+     "dur": 5.461,
+     "words": [
+      {
+       "w": "Em",
+       "t": 25.453
+      },
+      {
+       "w": "1938,",
+       "t": 25.759
+      },
+      {
+       "w": "o",
+       "t": 26.236
+      },
+      {
+       "w": "povoado",
+       "t": 26.457
+      },
+      {
+       "w": "vira",
+       "t": 27.188
+      },
+      {
+       "w": "distrito.",
+       "t": 27.665
+      },
+      {
+       "w": "Já",
+       "t": 28.481
+      },
+      {
+       "w": "com",
+       "t": 28.788
+      },
+      {
+       "w": "o",
+       "t": 29.179
+      },
+      {
+       "w": "nome",
+       "t": 29.4
+      },
+      {
+       "w": "de",
+       "t": 29.877
+      },
+      {
+       "w": "Timóteo.",
+       "t": 30.183
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "porque",
+   "inicio": 82.933,
+   "dur": 29.8,
+   "frames": 894,
+   "falas": [
+    {
+     "id": "porque-1",
+     "cap": "Agora, a virada.",
+     "t": 0.45,
+     "dur": 1.387,
+     "words": [
+      {
+       "w": "Agora,",
+       "t": 0.45
+      },
+      {
+       "w": "a",
+       "t": 0.995
+      },
+      {
+       "w": "virada.",
+       "t": 1.209
+      }
+     ]
+    },
+    {
+     "id": "porque-2",
+     "cap": "Nos anos 1940, empresários procuravam o lugar ideal para uma siderúrgica. Entre eles, o norte-americano Percival Farquhar.",
+     "t": 2.157,
+     "dur": 8.0,
+     "words": [
+      {
+       "w": "Nos",
+       "t": 2.157
+      },
+      {
+       "w": "anos",
+       "t": 2.444
+      },
+      {
+       "w": "1940,",
+       "t": 2.794
+      },
+      {
+       "w": "empresários",
+       "t": 3.143
+      },
+      {
+       "w": "procuravam",
+       "t": 3.929
+      },
+      {
+       "w": "o",
+       "t": 4.653
+      },
+      {
+       "w": "lugar",
+       "t": 4.815
+      },
+      {
+       "w": "ideal",
+       "t": 5.227
+      },
+      {
+       "w": "para",
+       "t": 5.639
+      },
+      {
+       "w": "uma",
+       "t": 5.989
+      },
+      {
+       "w": "siderúrgica.",
+       "t": 6.276
+      },
+      {
+       "w": "Entre",
+       "t": 7.062
+      },
+      {
+       "w": "eles,",
+       "t": 7.474
+      },
+      {
+       "w": "o",
+       "t": 7.823
+      },
+      {
+       "w": "norte-americano",
+       "t": 7.985
+      },
+      {
+       "w": "Percival",
+       "t": 8.959
+      },
+      {
+       "w": "Farquhar.",
+       "t": 9.558
+      }
+     ]
+    },
+    {
+     "id": "porque-3",
+     "cap": "Itabira, onde estava o minério, tinha relevo acidentado demais.",
+     "t": 10.477,
+     "dur": 3.989,
+     "words": [
+      {
+       "w": "Itabira,",
+       "t": 10.477
+      },
+      {
+       "w": "onde",
+       "t": 10.994
+      },
+      {
+       "w": "estava",
+       "t": 11.33
+      },
+      {
+       "w": "o",
+       "t": 11.787
+      },
+      {
+       "w": "minério,",
+       "t": 11.943
+      },
+      {
+       "w": "tinha",
+       "t": 12.46
+      },
+      {
+       "w": "relevo",
+       "t": 12.856
+      },
+      {
+       "w": "acidentado",
+       "t": 13.313
+      },
+      {
+       "w": "demais.",
+       "t": 14.01
+      }
+     ]
+    },
+    {
+     "id": "porque-4",
+     "cap": "Timóteo tinha três coisas. A ferrovia Vitória a Minas. A água do rio Piracicaba. E mata em abundância para virar carvão.",
+     "t": 14.786,
+     "dur": 7.467,
+     "words": [
+      {
+       "w": "Timóteo",
+       "t": 14.786
+      },
+      {
+       "w": "tinha",
+       "t": 15.281
+      },
+      {
+       "w": "três",
+       "t": 15.662
+      },
+      {
+       "w": "coisas.",
+       "t": 15.984
+      },
+      {
+       "w": "A",
+       "t": 16.422
+      },
+      {
+       "w": "ferrovia",
+       "t": 16.572
+      },
+      {
+       "w": "Vitória",
+       "t": 17.125
+      },
+      {
+       "w": "a",
+       "t": 17.621
+      },
+      {
+       "w": "Minas.",
+       "t": 17.77
+      },
+      {
+       "w": "A",
+       "t": 18.151
+      },
+      {
+       "w": "água",
+       "t": 18.3
+      },
+      {
+       "w": "do",
+       "t": 18.623
+      },
+      {
+       "w": "rio",
+       "t": 18.83
+      },
+      {
+       "w": "Piracicaba.",
+       "t": 19.095
+      },
+      {
+       "w": "E",
+       "t": 19.764
+      },
+      {
+       "w": "mata",
+       "t": 19.914
+      },
+      {
+       "w": "em",
+       "t": 20.236
+      },
+      {
+       "w": "abundância",
+       "t": 20.444
+      },
+      {
+       "w": "para",
+       "t": 21.112
+      },
+      {
+       "w": "virar",
+       "t": 21.435
+      },
+      {
+       "w": "carvão.",
+       "t": 21.815
+      }
+     ]
+    },
+    {
+     "id": "porque-5",
+     "cap": "Em 31 de outubro de 1944, nasce a Acesita. Aços Especiais Itabira.",
+     "t": 22.573,
+     "dur": 6.571,
+     "words": [
+      {
+       "w": "Em",
+       "t": 22.573
+      },
+      {
+       "w": "31",
+       "t": 22.905
+      },
+      {
+       "w": "de",
+       "t": 23.237
+      },
+      {
+       "w": "outubro",
+       "t": 23.57
+      },
+      {
+       "w": "de",
+       "t": 24.363
+      },
+      {
+       "w": "1944,",
+       "t": 24.696
+      },
+      {
+       "w": "nasce",
+       "t": 25.212
+      },
+      {
+       "w": "a",
+       "t": 25.821
+      },
+      {
+       "w": "Acesita.",
+       "t": 26.061
+      },
+      {
+       "w": "Aços",
+       "t": 26.855
+      },
+      {
+       "w": "Especiais",
+       "t": 27.372
+      },
+      {
+       "w": "Itabira.",
+       "t": 28.35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vila",
+   "inicio": 112.733,
+   "dur": 41.067,
+   "frames": 1232,
+   "falas": [
+    {
+     "id": "vila-1",
+     "cap": "Quando a usina foi planejada, o povoado tinha cerca de 200 moradores. A vila operária prevista era para 2 mil.",
+     "t": 0.45,
+     "dur": 7.211,
+     "words": [
+      {
+       "w": "Quando",
+       "t": 0.45
+      },
+      {
+       "w": "a",
+       "t": 0.907
+      },
+      {
+       "w": "usina",
+       "t": 1.063
+      },
+      {
+       "w": "foi",
+       "t": 1.459
+      },
+      {
+       "w": "planejada,",
+       "t": 1.736
+      },
+      {
+       "w": "o",
+       "t": 2.373
+      },
+      {
+       "w": "povoado",
+       "t": 2.529
+      },
+      {
+       "w": "tinha",
+       "t": 3.046
+      },
+      {
+       "w": "cerca",
+       "t": 3.442
+      },
+      {
+       "w": "de",
+       "t": 3.839
+      },
+      {
+       "w": "200",
+       "t": 4.055
+      },
+      {
+       "w": "moradores.",
+       "t": 4.332
+      },
+      {
+       "w": "A",
+       "t": 4.969
+      },
+      {
+       "w": "vila",
+       "t": 5.125
+      },
+      {
+       "w": "operária",
+       "t": 5.461
+      },
+      {
+       "w": "prevista",
+       "t": 6.038
+      },
+      {
+       "w": "era",
+       "t": 6.615
+      },
+      {
+       "w": "para",
+       "t": 6.892
+      },
+      {
+       "w": "2",
+       "t": 7.228
+      },
+      {
+       "w": "mil.",
+       "t": 7.384
+      }
+     ]
+    },
+    {
+     "id": "vila-2",
+     "cap": "A empresa não ergueu só a fábrica. Ergueu a cidade em volta dela. Casas, escolas, clubes e um hospital.",
+     "t": 7.981,
+     "dur": 6.528,
+     "words": [
+      {
+       "w": "A",
+       "t": 7.981
+      },
+      {
+       "w": "empresa",
+       "t": 8.135
+      },
+      {
+       "w": "não",
+       "t": 8.643
+      },
+      {
+       "w": "ergueu",
+       "t": 8.915
+      },
+      {
+       "w": "só",
+       "t": 9.365
+      },
+      {
+       "w": "a",
+       "t": 9.578
+      },
+      {
+       "w": "fábrica.",
+       "t": 9.731
+      },
+      {
+       "w": "Ergueu",
+       "t": 10.24
+      },
+      {
+       "w": "a",
+       "t": 10.689
+      },
+      {
+       "w": "cidade",
+       "t": 10.843
+      },
+      {
+       "w": "em",
+       "t": 11.292
+      },
+      {
+       "w": "volta",
+       "t": 11.505
+      },
+      {
+       "w": "dela.",
+       "t": 11.895
+      },
+      {
+       "w": "Casas,",
+       "t": 12.227
+      },
+      {
+       "w": "escolas,",
+       "t": 12.617
+      },
+      {
+       "w": "clubes",
+       "t": 13.125
+      },
+      {
+       "w": "e",
+       "t": 13.575
+      },
+      {
+       "w": "um",
+       "t": 13.728
+      },
+      {
+       "w": "hospital.",
+       "t": 13.941
+      }
+     ]
+    },
+    {
+     "id": "vila-3",
+     "cap": "E os bairros copiavam a hierarquia da usina. O Funcionários, mais perto da fábrica, era para médicos, engenheiros e chefes. Mais longe, as casas dos operários.",
+     "t": 14.829,
+     "dur": 9.877,
+     "words": [
+      {
+       "w": "E",
+       "t": 14.829
+      },
+      {
+       "w": "os",
+       "t": 14.981
+      },
+      {
+       "w": "bairros",
+       "t": 15.192
+      },
+      {
+       "w": "copiavam",
+       "t": 15.696
+      },
+      {
+       "w": "a",
+       "t": 16.258
+      },
+      {
+       "w": "hierarquia",
+       "t": 16.411
+      },
+      {
+       "w": "da",
+       "t": 17.09
+      },
+      {
+       "w": "usina.",
+       "t": 17.301
+      },
+      {
+       "w": "O",
+       "t": 17.688
+      },
+      {
+       "w": "Funcionários,",
+       "t": 17.84
+      },
+      {
+       "w": "mais",
+       "t": 18.637
+      },
+      {
+       "w": "perto",
+       "t": 18.965
+      },
+      {
+       "w": "da",
+       "t": 19.352
+      },
+      {
+       "w": "fábrica,",
+       "t": 19.563
+      },
+      {
+       "w": "era",
+       "t": 20.066
+      },
+      {
+       "w": "para",
+       "t": 20.336
+      },
+      {
+       "w": "médicos,",
+       "t": 20.664
+      },
+      {
+       "w": "engenheiros",
+       "t": 21.168
+      },
+      {
+       "w": "e",
+       "t": 21.906
+      },
+      {
+       "w": "chefes.",
+       "t": 22.058
+      },
+      {
+       "w": "Mais",
+       "t": 22.504
+      },
+      {
+       "w": "longe,",
+       "t": 22.832
+      },
+      {
+       "w": "as",
+       "t": 23.218
+      },
+      {
+       "w": "casas",
+       "t": 23.429
+      },
+      {
+       "w": "dos",
+       "t": 23.816
+      },
+      {
+       "w": "operários.",
+       "t": 24.085
+      }
+     ]
+    },
+    {
+     "id": "vila-4",
+     "cap": "Em 1958, já eram 2.734 casas da empresa.",
+     "t": 25.026,
+     "dur": 6.4,
+     "words": [
+      {
+       "w": "Em",
+       "t": 25.026
+      },
+      {
+       "w": "1958,",
+       "t": 25.564
+      },
+      {
+       "w": "já",
+       "t": 26.402
+      },
+      {
+       "w": "eram",
+       "t": 26.94
+      },
+      {
+       "w": "2.734",
+       "t": 27.777
+      },
+      {
+       "w": "casas",
+       "t": 28.615
+      },
+      {
+       "w": "da",
+       "t": 29.602
+      },
+      {
+       "w": "empresa.",
+       "t": 30.14
+      }
+     ]
+    },
+    {
+     "id": "vila-5",
+     "cap": "Assim nasceram dois núcleos. De um lado, a vila da empresa, que todos chamavam de Acesita. Do outro, o povoado antigo, que seguiu sendo Timóteo.",
+     "t": 31.746,
+     "dur": 8.683,
+     "words": [
+      {
+       "w": "Assim",
+       "t": 31.746
+      },
+      {
+       "w": "nasceram",
+       "t": 32.121
+      },
+      {
+       "w": "dois",
+       "t": 32.665
+      },
+      {
+       "w": "núcleos.",
+       "t": 32.983
+      },
+      {
+       "w": "De",
+       "t": 33.471
+      },
+      {
+       "w": "um",
+       "t": 33.675
+      },
+      {
+       "w": "lado,",
+       "t": 33.88
+      },
+      {
+       "w": "a",
+       "t": 34.198
+      },
+      {
+       "w": "vila",
+       "t": 34.345
+      },
+      {
+       "w": "da",
+       "t": 34.663
+      },
+      {
+       "w": "empresa,",
+       "t": 34.867
+      },
+      {
+       "w": "que",
+       "t": 35.355
+      },
+      {
+       "w": "todos",
+       "t": 35.616
+      },
+      {
+       "w": "chamavam",
+       "t": 35.991
+      },
+      {
+       "w": "de",
+       "t": 36.536
+      },
+      {
+       "w": "Acesita.",
+       "t": 36.74
+      },
+      {
+       "w": "Do",
+       "t": 37.228
+      },
+      {
+       "w": "outro,",
+       "t": 37.432
+      },
+      {
+       "w": "o",
+       "t": 37.807
+      },
+      {
+       "w": "povoado",
+       "t": 37.954
+      },
+      {
+       "w": "antigo,",
+       "t": 38.442
+      },
+      {
+       "w": "que",
+       "t": 38.874
+      },
+      {
+       "w": "seguiu",
+       "t": 39.135
+      },
+      {
+       "w": "sendo",
+       "t": 39.566
+      },
+      {
+       "w": "Timóteo.",
+       "t": 39.941
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "emancipacao",
+   "inicio": 153.8,
+   "dur": 26.067,
+   "frames": 782,
+   "falas": [
+    {
+     "id": "emancipacao-1",
+     "cap": "Em 1948, o distrito passou a pertencer a Coronel Fabriciano. E Fabriciano não queria abrir mão da arrecadação da usina.",
+     "t": 0.45,
+     "dur": 9.216,
+     "words": [
+      {
+       "w": "Em",
+       "t": 0.45
+      },
+      {
+       "w": "1948,",
+       "t": 0.707
+      },
+      {
+       "w": "o",
+       "t": 1.107
+      },
+      {
+       "w": "distrito",
+       "t": 1.293
+      },
+      {
+       "w": "passou",
+       "t": 1.979
+      },
+      {
+       "w": "a",
+       "t": 2.522
+      },
+      {
+       "w": "pertencer",
+       "t": 2.708
+      },
+      {
+       "w": "a",
+       "t": 3.465
+      },
+      {
+       "w": "Coronel",
+       "t": 3.651
+      },
+      {
+       "w": "Fabriciano.",
+       "t": 4.265
+      },
+      {
+       "w": "E",
+       "t": 5.094
+      },
+      {
+       "w": "Fabriciano",
+       "t": 5.279
+      },
+      {
+       "w": "não",
+       "t": 6.108
+      },
+      {
+       "w": "queria",
+       "t": 6.437
+      },
+      {
+       "w": "abrir",
+       "t": 6.98
+      },
+      {
+       "w": "mão",
+       "t": 7.451
+      },
+      {
+       "w": "da",
+       "t": 7.78
+      },
+      {
+       "w": "arrecadação",
+       "t": 8.037
+      },
+      {
+       "w": "da",
+       "t": 8.937
+      },
+      {
+       "w": "usina.",
+       "t": 9.194
+      }
+     ]
+    },
+    {
+     "id": "emancipacao-2",
+     "cap": "A emancipação foi aprovada pela Assembleia em 1962. Vetada pelo governador. E só saiu depois que uma aliança política se desfez.",
+     "t": 9.986,
+     "dur": 9.493,
+     "words": [
+      {
+       "w": "A",
+       "t": 9.986
+      },
+      {
+       "w": "emancipação",
+       "t": 10.164
+      },
+      {
+       "w": "foi",
+       "t": 11.027
+      },
+      {
+       "w": "aprovada",
+       "t": 11.342
+      },
+      {
+       "w": "pela",
+       "t": 12.0
+      },
+      {
+       "w": "Assembleia",
+       "t": 12.383
+      },
+      {
+       "w": "em",
+       "t": 13.178
+      },
+      {
+       "w": "1962.",
+       "t": 13.424
+      },
+      {
+       "w": "Vetada",
+       "t": 13.808
+      },
+      {
+       "w": "pelo",
+       "t": 14.329
+      },
+      {
+       "w": "governador.",
+       "t": 14.712
+      },
+      {
+       "w": "E",
+       "t": 15.507
+      },
+      {
+       "w": "só",
+       "t": 15.685
+      },
+      {
+       "w": "saiu",
+       "t": 15.931
+      },
+      {
+       "w": "depois",
+       "t": 16.315
+      },
+      {
+       "w": "que",
+       "t": 16.835
+      },
+      {
+       "w": "uma",
+       "t": 17.151
+      },
+      {
+       "w": "aliança",
+       "t": 17.466
+      },
+      {
+       "w": "política",
+       "t": 18.055
+      },
+      {
+       "w": "se",
+       "t": 18.712
+      },
+      {
+       "w": "desfez.",
+       "t": 18.959
+      }
+     ]
+    },
+    {
+     "id": "emancipacao-3",
+     "cap": "Em 29 de abril de 1964, Timóteo se torna município.",
+     "t": 19.799,
+     "dur": 5.611,
+     "words": [
+      {
+       "w": "Em",
+       "t": 19.799
+      },
+      {
+       "w": "29",
+       "t": 20.16
+      },
+      {
+       "w": "de",
+       "t": 20.52
+      },
+      {
+       "w": "abril",
+       "t": 20.881
+      },
+      {
+       "w": "de",
+       "t": 21.542
+      },
+      {
+       "w": "1964,",
+       "t": 21.903
+      },
+      {
+       "w": "Timóteo",
+       "t": 22.464
+      },
+      {
+       "w": "se",
+       "t": 23.326
+      },
+      {
+       "w": "torna",
+       "t": 23.686
+      },
+      {
+       "w": "município.",
+       "t": 24.348
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plebiscito",
+   "inicio": 179.867,
+   "dur": 21.733,
+   "frames": 652,
+   "falas": [
+    {
+     "id": "plebiscito-1",
+     "cap": "A marca era tão forte que, entre 1979 e 1981, um plebiscito propôs trocar o nome da cidade para Acesita.",
+     "t": 0.45,
+     "dur": 9.451,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.45
+      },
+      {
+       "w": "marca",
+       "t": 0.666
+      },
+      {
+       "w": "era",
+       "t": 1.213
+      },
+      {
+       "w": "tão",
+       "t": 1.594
+      },
+      {
+       "w": "forte",
+       "t": 1.975
+      },
+      {
+       "w": "que,",
+       "t": 2.523
+      },
+      {
+       "w": "entre",
+       "t": 2.904
+      },
+      {
+       "w": "1979",
+       "t": 3.451
+      },
+      {
+       "w": "e",
+       "t": 3.915
+      },
+      {
+       "w": "1981,",
+       "t": 4.131
+      },
+      {
+       "w": "um",
+       "t": 4.595
+      },
+      {
+       "w": "plebiscito",
+       "t": 4.893
+      },
+      {
+       "w": "propôs",
+       "t": 5.855
+      },
+      {
+       "w": "trocar",
+       "t": 6.485
+      },
+      {
+       "w": "o",
+       "t": 7.115
+      },
+      {
+       "w": "nome",
+       "t": 7.331
+      },
+      {
+       "w": "da",
+       "t": 7.795
+      },
+      {
+       "w": "cidade",
+       "t": 8.093
+      },
+      {
+       "w": "para",
+       "t": 8.723
+      },
+      {
+       "w": "Acesita.",
+       "t": 9.188
+      }
+     ]
+    },
+    {
+     "id": "plebiscito-2",
+     "cap": "12.861 votos a favor. 4.908 contra.",
+     "t": 10.221,
+     "dur": 5.632,
+     "words": [
+      {
+       "w": "12.861",
+       "t": 10.221
+      },
+      {
+       "w": "votos",
+       "t": 11.265
+      },
+      {
+       "w": "a",
+       "t": 12.309
+      },
+      {
+       "w": "favor.",
+       "t": 12.721
+      },
+      {
+       "w": "4.908",
+       "t": 13.765
+      },
+      {
+       "w": "contra.",
+       "t": 14.651
+      }
+     ]
+    },
+    {
+     "id": "plebiscito-3",
+     "cap": "Mas a Assembleia Legislativa barrou a mudança. A cidade continuou Timóteo.",
+     "t": 16.173,
+     "dur": 4.907,
+     "words": [
+      {
+       "w": "Mas",
+       "t": 16.173
+      },
+      {
+       "w": "a",
+       "t": 16.457
+      },
+      {
+       "w": "Assembleia",
+       "t": 16.617
+      },
+      {
+       "w": "Legislativa",
+       "t": 17.332
+      },
+      {
+       "w": "barrou",
+       "t": 18.109
+      },
+      {
+       "w": "a",
+       "t": 18.577
+      },
+      {
+       "w": "mudança.",
+       "t": 18.737
+      },
+      {
+       "w": "A",
+       "t": 19.267
+      },
+      {
+       "w": "cidade",
+       "t": 19.428
+      },
+      {
+       "w": "continuou",
+       "t": 19.896
+      },
+      {
+       "w": "Timóteo.",
+       "t": 20.55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nomes",
+   "inicio": 201.6,
+   "dur": 22.3,
+   "frames": 669,
+   "falas": [
+    {
+     "id": "nomes-1",
+     "cap": "A Acesita foi privatizada em 1992. Em 2007, virou ArcelorMittal Timóteo. Em 2011, Aperam South America.",
+     "t": 0.45,
+     "dur": 9.621,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.45
+      },
+      {
+       "w": "Acesita",
+       "t": 0.68
+      },
+      {
+       "w": "foi",
+       "t": 1.442
+      },
+      {
+       "w": "privatizada",
+       "t": 1.85
+      },
+      {
+       "w": "em",
+       "t": 2.966
+      },
+      {
+       "w": "1992.",
+       "t": 3.285
+      },
+      {
+       "w": "Em",
+       "t": 3.781
+      },
+      {
+       "w": "2007,",
+       "t": 4.1
+      },
+      {
+       "w": "virou",
+       "t": 4.596
+      },
+      {
+       "w": "ArcelorMittal",
+       "t": 5.181
+      },
+      {
+       "w": "Timóteo.",
+       "t": 6.474
+      },
+      {
+       "w": "Em",
+       "t": 7.236
+      },
+      {
+       "w": "2011,",
+       "t": 7.555
+      },
+      {
+       "w": "Aperam",
+       "t": 8.051
+      },
+      {
+       "w": "South",
+       "t": 8.725
+      },
+      {
+       "w": "America.",
+       "t": 9.309
+      }
+     ]
+    },
+    {
+     "id": "nomes-2",
+     "cap": "Hoje, é a maior produtora de aço inoxidável e elétrico da América do Sul.",
+     "t": 10.391,
+     "dur": 4.544,
+     "words": [
+      {
+       "w": "Hoje,",
+       "t": 10.391
+      },
+      {
+       "w": "é",
+       "t": 10.707
+      },
+      {
+       "w": "a",
+       "t": 10.854
+      },
+      {
+       "w": "maior",
+       "t": 11.001
+      },
+      {
+       "w": "produtora",
+       "t": 11.374
+      },
+      {
+       "w": "de",
+       "t": 11.973
+      },
+      {
+       "w": "aço",
+       "t": 12.177
+      },
+      {
+       "w": "inoxidável",
+       "t": 12.437
+      },
+      {
+       "w": "e",
+       "t": 13.093
+      },
+      {
+       "w": "elétrico",
+       "t": 13.239
+      },
+      {
+       "w": "da",
+       "t": 13.782
+      },
+      {
+       "w": "América",
+       "t": 13.986
+      },
+      {
+       "w": "do",
+       "t": 14.472
+      },
+      {
+       "w": "Sul.",
+       "t": 14.675
+      }
+     ]
+    },
+    {
+     "id": "nomes-3",
+     "cap": "Mas, para boa parte da cidade, o Centro-Norte ainda é Acesita. E quem chega de fora ainda se confunde.",
+     "t": 15.255,
+     "dur": 6.379,
+     "words": [
+      {
+       "w": "Mas,",
+       "t": 15.255
+      },
+      {
+       "w": "para",
+       "t": 15.523
+      },
+      {
+       "w": "boa",
+       "t": 15.85
+      },
+      {
+       "w": "parte",
+       "t": 16.118
+      },
+      {
+       "w": "da",
+       "t": 16.503
+      },
+      {
+       "w": "cidade,",
+       "t": 16.713
+      },
+      {
+       "w": "o",
+       "t": 17.156
+      },
+      {
+       "w": "Centro-Norte",
+       "t": 17.307
+      },
+      {
+       "w": "ainda",
+       "t": 18.042
+      },
+      {
+       "w": "é",
+       "t": 18.427
+      },
+      {
+       "w": "Acesita.",
+       "t": 18.578
+      },
+      {
+       "w": "E",
+       "t": 19.08
+      },
+      {
+       "w": "quem",
+       "t": 19.231
+      },
+      {
+       "w": "chega",
+       "t": 19.558
+      },
+      {
+       "w": "de",
+       "t": 19.943
+      },
+      {
+       "w": "fora",
+       "t": 20.153
+      },
+      {
+       "w": "ainda",
+       "t": 20.479
+      },
+      {
+       "w": "se",
+       "t": 20.864
+      },
+      {
+       "w": "confunde.",
+       "t": 21.074
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parque",
+   "inicio": 223.9,
+   "dur": 27.567,
+   "frames": 827,
+   "falas": [
+    {
+     "id": "parque-1",
+     "cap": "Só que 1944 deixou uma segunda herança.",
+     "t": 0.45,
+     "dur": 4.203,
+     "words": [
+      {
+       "w": "Só",
+       "t": 0.45
+      },
+      {
+       "w": "que",
+       "t": 0.8
+      },
+      {
+       "w": "1944",
+       "t": 1.248
+      },
+      {
+       "w": "deixou",
+       "t": 1.793
+      },
+      {
+       "w": "uma",
+       "t": 2.532
+      },
+      {
+       "w": "segunda",
+       "t": 2.979
+      },
+      {
+       "w": "herança.",
+       "t": 3.816
+      }
+     ]
+    },
+    {
+     "id": "parque-2",
+     "cap": "A expansão das siderúrgicas derrubava a mata para fazer carvão. Para proteger o que restava, nasceu, no mesmo ano, o Parque Estadual do Rio Doce.",
+     "t": 4.973,
+     "dur": 8.341,
+     "words": [
+      {
+       "w": "A",
+       "t": 4.973
+      },
+      {
+       "w": "expansão",
+       "t": 5.112
+      },
+      {
+       "w": "das",
+       "t": 5.625
+      },
+      {
+       "w": "siderúrgicas",
+       "t": 5.871
+      },
+      {
+       "w": "derrubava",
+       "t": 6.598
+      },
+      {
+       "w": "a",
+       "t": 7.165
+      },
+      {
+       "w": "mata",
+       "t": 7.304
+      },
+      {
+       "w": "para",
+       "t": 7.604
+      },
+      {
+       "w": "fazer",
+       "t": 7.903
+      },
+      {
+       "w": "carvão.",
+       "t": 8.256
+      },
+      {
+       "w": "Para",
+       "t": 8.662
+      },
+      {
+       "w": "proteger",
+       "t": 8.962
+      },
+      {
+       "w": "o",
+       "t": 9.475
+      },
+      {
+       "w": "que",
+       "t": 9.614
+      },
+      {
+       "w": "restava,",
+       "t": 9.86
+      },
+      {
+       "w": "nasceu,",
+       "t": 10.32
+      },
+      {
+       "w": "no",
+       "t": 10.726
+      },
+      {
+       "w": "mesmo",
+       "t": 10.919
+      },
+      {
+       "w": "ano,",
+       "t": 11.272
+      },
+      {
+       "w": "o",
+       "t": 11.518
+      },
+      {
+       "w": "Parque",
+       "t": 11.657
+      },
+      {
+       "w": "Estadual",
+       "t": 12.063
+      },
+      {
+       "w": "do",
+       "t": 12.576
+      },
+      {
+       "w": "Rio",
+       "t": 12.769
+      },
+      {
+       "w": "Doce.",
+       "t": 13.015
+      }
+     ]
+    },
+    {
+     "id": "parque-3",
+     "cap": "Foi a primeira unidade de conservação de Minas Gerais.",
+     "t": 13.634,
+     "dur": 3.755,
+     "words": [
+      {
+       "w": "Foi",
+       "t": 13.634
+      },
+      {
+       "w": "a",
+       "t": 13.925
+      },
+      {
+       "w": "primeira",
+       "t": 14.089
+      },
+      {
+       "w": "unidade",
+       "t": 14.696
+      },
+      {
+       "w": "de",
+       "t": 15.24
+      },
+      {
+       "w": "conservação",
+       "t": 15.467
+      },
+      {
+       "w": "de",
+       "t": 16.264
+      },
+      {
+       "w": "Minas",
+       "t": 16.491
+      },
+      {
+       "w": "Gerais.",
+       "t": 16.908
+      }
+     ]
+    },
+    {
+     "id": "parque-4",
+     "cap": "São quase 36 mil hectares, cerca de 40 lagoas, e a maior área contínua de Mata Atlântica do estado. Ali vivem a onça-pintada e o muriqui.",
+     "t": 17.709,
+     "dur": 9.195,
+     "words": [
+      {
+       "w": "São",
+       "t": 17.709
+      },
+      {
+       "w": "quase",
+       "t": 17.994
+      },
+      {
+       "w": "36",
+       "t": 18.402
+      },
+      {
+       "w": "mil",
+       "t": 18.625
+      },
+      {
+       "w": "hectares,",
+       "t": 18.909
+      },
+      {
+       "w": "cerca",
+       "t": 19.503
+      },
+      {
+       "w": "de",
+       "t": 19.912
+      },
+      {
+       "w": "40",
+       "t": 20.135
+      },
+      {
+       "w": "lagoas,",
+       "t": 20.357
+      },
+      {
+       "w": "e",
+       "t": 20.828
+      },
+      {
+       "w": "a",
+       "t": 20.988
+      },
+      {
+       "w": "maior",
+       "t": 21.149
+      },
+      {
+       "w": "área",
+       "t": 21.558
+      },
+      {
+       "w": "contínua",
+       "t": 21.904
+      },
+      {
+       "w": "de",
+       "t": 22.498
+      },
+      {
+       "w": "Mata",
+       "t": 22.721
+      },
+      {
+       "w": "Atlântica",
+       "t": 23.067
+      },
+      {
+       "w": "do",
+       "t": 23.723
+      },
+      {
+       "w": "estado.",
+       "t": 23.946
+      },
+      {
+       "w": "Ali",
+       "t": 24.416
+      },
+      {
+       "w": "vivem",
+       "t": 24.701
+      },
+      {
+       "w": "a",
+       "t": 25.109
+      },
+      {
+       "w": "onça-pintada",
+       "t": 25.27
+      },
+      {
+       "w": "e",
+       "t": 26.05
+      },
+      {
+       "w": "o",
+       "t": 26.211
+      },
+      {
+       "w": "muriqui.",
+       "t": 26.372
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "espremida",
+   "inicio": 251.467,
+   "dur": 22.533,
+   "frames": 676,
+   "falas": [
+    {
+     "id": "espremida-1",
+     "cap": "Mais de um terço do território de Timóteo fica dentro do parque.",
+     "t": 0.45,
+     "dur": 3.947,
+     "words": [
+      {
+       "w": "Mais",
+       "t": 0.45
+      },
+      {
+       "w": "de",
+       "t": 0.76
+      },
+      {
+       "w": "um",
+       "t": 0.96
+      },
+      {
+       "w": "terço",
+       "t": 1.16
+      },
+      {
+       "w": "do",
+       "t": 1.525
+      },
+      {
+       "w": "território",
+       "t": 1.725
+      },
+      {
+       "w": "de",
+       "t": 2.368
+      },
+      {
+       "w": "Timóteo",
+       "t": 2.567
+      },
+      {
+       "w": "fica",
+       "t": 3.044
+      },
+      {
+       "w": "dentro",
+       "t": 3.355
+      },
+      {
+       "w": "do",
+       "t": 3.776
+      },
+      {
+       "w": "parque.",
+       "t": 3.975
+      }
+     ]
+    },
+    {
+     "id": "espremida-2",
+     "cap": "Ao norte, o rio. A oeste, as serras, com o Pico do Ana Moura a 864 metros.",
+     "t": 4.717,
+     "dur": 6.08,
+     "words": [
+      {
+       "w": "Ao",
+       "t": 4.717
+      },
+      {
+       "w": "norte,",
+       "t": 4.99
+      },
+      {
+       "w": "o",
+       "t": 5.49
+      },
+      {
+       "w": "rio.",
+       "t": 5.687
+      },
+      {
+       "w": "A",
+       "t": 6.036
+      },
+      {
+       "w": "oeste,",
+       "t": 6.233
+      },
+      {
+       "w": "as",
+       "t": 6.734
+      },
+      {
+       "w": "serras,",
+       "t": 7.006
+      },
+      {
+       "w": "com",
+       "t": 7.583
+      },
+      {
+       "w": "o",
+       "t": 7.931
+      },
+      {
+       "w": "Pico",
+       "t": 8.128
+      },
+      {
+       "w": "do",
+       "t": 8.553
+      },
+      {
+       "w": "Ana",
+       "t": 8.826
+      },
+      {
+       "w": "Moura",
+       "t": 9.175
+      },
+      {
+       "w": "a",
+       "t": 9.675
+      },
+      {
+       "w": "864",
+       "t": 9.872
+      },
+      {
+       "w": "metros.",
+       "t": 10.221
+      }
+     ]
+    },
+    {
+     "id": "espremida-3",
+     "cap": "Resultado: pouco espaço para crescer. Entre 2010 e 2022, a população aumentou menos de 0,5%.",
+     "t": 11.117,
+     "dur": 7.829,
+     "words": [
+      {
+       "w": "Resultado:",
+       "t": 11.117
+      },
+      {
+       "w": "pouco",
+       "t": 11.981
+      },
+      {
+       "w": "espaço",
+       "t": 12.52
+      },
+      {
+       "w": "para",
+       "t": 13.14
+      },
+      {
+       "w": "crescer.",
+       "t": 13.596
+      },
+      {
+       "w": "Entre",
+       "t": 14.298
+      },
+      {
+       "w": "2010",
+       "t": 14.836
+      },
+      {
+       "w": "e",
+       "t": 15.293
+      },
+      {
+       "w": "2022,",
+       "t": 15.505
+      },
+      {
+       "w": "a",
+       "t": 15.961
+      },
+      {
+       "w": "população",
+       "t": 16.173
+      },
+      {
+       "w": "aumentou",
+       "t": 17.038
+      },
+      {
+       "w": "menos",
+       "t": 17.821
+      },
+      {
+       "w": "de",
+       "t": 18.359
+      },
+      {
+       "w": "0,5%.",
+       "t": 18.653
+      }
+     ]
+    },
+    {
+     "id": "espremida-4",
+     "cap": "A cidade não se espalha. Ela se adensa.",
+     "t": 19.266,
+     "dur": 2.603,
+     "words": [
+      {
+       "w": "A",
+       "t": 19.266
+      },
+      {
+       "w": "cidade",
+       "t": 19.424
+      },
+      {
+       "w": "não",
+       "t": 19.886
+      },
+      {
+       "w": "se",
+       "t": 20.166
+      },
+      {
+       "w": "espalha.",
+       "t": 20.385
+      },
+      {
+       "w": "Ela",
+       "t": 20.908
+      },
+      {
+       "w": "se",
+       "t": 21.188
+      },
+      {
+       "w": "adensa.",
+       "t": 21.407
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "numeros",
+   "inicio": 274.0,
+   "dur": 11.033,
+   "frames": 331,
+   "falas": [
+    {
+     "id": "numeros-1",
+     "cap": "E, mesmo assim, os números impressionam.",
+     "t": 0.45,
+     "dur": 2.496,
+     "words": [
+      {
+       "w": "E,",
+       "t": 0.45
+      },
+      {
+       "w": "mesmo",
+       "t": 0.606
+      },
+      {
+       "w": "assim,",
+       "t": 1.002
+      },
+      {
+       "w": "os",
+       "t": 1.398
+      },
+      {
+       "w": "números",
+       "t": 1.614
+      },
+      {
+       "w": "impressionam.",
+       "t": 2.13
+      }
+     ]
+    },
+    {
+     "id": "numeros-2",
+     "cap": "O PIB por habitante passa de R$ 56 mil. E o Índice de Desenvolvimento Humano é considerado alto.",
+     "t": 3.266,
+     "dur": 7.104,
+     "words": [
+      {
+       "w": "O",
+       "t": 3.266
+      },
+      {
+       "w": "PIB",
+       "t": 3.442
+      },
+      {
+       "w": "por",
+       "t": 3.754
+      },
+      {
+       "w": "habitante",
+       "t": 4.066
+      },
+      {
+       "w": "passa",
+       "t": 4.784
+      },
+      {
+       "w": "de",
+       "t": 5.232
+      },
+      {
+       "w": "R$",
+       "t": 5.476
+      },
+      {
+       "w": "56",
+       "t": 5.652
+      },
+      {
+       "w": "mil.",
+       "t": 5.896
+      },
+      {
+       "w": "E",
+       "t": 6.208
+      },
+      {
+       "w": "o",
+       "t": 6.384
+      },
+      {
+       "w": "Índice",
+       "t": 6.56
+      },
+      {
+       "w": "de",
+       "t": 7.076
+      },
+      {
+       "w": "Desenvolvimento",
+       "t": 7.32
+      },
+      {
+       "w": "Humano",
+       "t": 8.445
+      },
+      {
+       "w": "é",
+       "t": 8.96
+      },
+      {
+       "w": "considerado",
+       "t": 9.136
+      },
+      {
+       "w": "alto.",
+       "t": 9.99
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final",
+   "inicio": 285.033,
+   "dur": 19.1,
+   "frames": 573,
+   "falas": [
+    {
+     "id": "final-1",
+     "cap": "No fim, Timóteo é isso.",
+     "t": 0.45,
+     "dur": 1.664,
+     "words": [
+      {
+       "w": "No",
+       "t": 0.45
+      },
+      {
+       "w": "fim,",
+       "t": 0.69
+      },
+      {
+       "w": "Timóteo",
+       "t": 0.996
+      },
+      {
+       "w": "é",
+       "t": 1.568
+      },
+      {
+       "w": "isso.",
+       "t": 1.741
+      }
+     ]
+    },
+    {
+     "id": "final-2",
+     "cap": "Uma cidade que cresceu em volta de um alto-forno, e ao lado de uma floresta protegida. Nascidos no mesmo ano. Dividindo o mesmo chão.",
+     "t": 2.434,
+     "dur": 8.0,
+     "words": [
+      {
+       "w": "Uma",
+       "t": 2.434
+      },
+      {
+       "w": "cidade",
+       "t": 2.691
+      },
+      {
+       "w": "que",
+       "t": 3.115
+      },
+      {
+       "w": "cresceu",
+       "t": 3.371
+      },
+      {
+       "w": "em",
+       "t": 3.851
+      },
+      {
+       "w": "volta",
+       "t": 4.052
+      },
+      {
+       "w": "de",
+       "t": 4.42
+      },
+      {
+       "w": "um",
+       "t": 4.621
+      },
+      {
+       "w": "alto-forno,",
+       "t": 4.822
+      },
+      {
+       "w": "e",
+       "t": 5.413
+      },
+      {
+       "w": "ao",
+       "t": 5.558
+      },
+      {
+       "w": "lado",
+       "t": 5.759
+      },
+      {
+       "w": "de",
+       "t": 6.071
+      },
+      {
+       "w": "uma",
+       "t": 6.272
+      },
+      {
+       "w": "floresta",
+       "t": 6.529
+      },
+      {
+       "w": "protegida.",
+       "t": 7.064
+      },
+      {
+       "w": "Nascidos",
+       "t": 7.656
+      },
+      {
+       "w": "no",
+       "t": 8.191
+      },
+      {
+       "w": "mesmo",
+       "t": 8.392
+      },
+      {
+       "w": "ano.",
+       "t": 8.76
+      },
+      {
+       "w": "Dividindo",
+       "t": 9.017
+      },
+      {
+       "w": "o",
+       "t": 9.608
+      },
+      {
+       "w": "mesmo",
+       "t": 9.753
+      },
+      {
+       "w": "chão.",
+       "t": 10.122
+      }
+     ]
+    },
+    {
+     "id": "final-3",
+     "cap": "Acesita ou Timóteo?",
+     "t": 10.754,
+     "dur": 1.685,
+     "words": [
+      {
+       "w": "Acesita",
+       "t": 10.754
+      },
+      {
+       "w": "ou",
+       "t": 11.451
+      },
+      {
+       "w": "Timóteo?",
+       "t": 11.743
+      }
+     ]
+    },
+    {
+     "id": "final-4",
+     "cap": "A resposta certa é: as duas. Aço e Mata Atlântica. 62 anos de uma cidade só.",
+     "t": 12.759,
+     "dur": 5.696,
+     "words": [
+      {
+       "w": "A",
+       "t": 12.759
+      },
+      {
+       "w": "resposta",
+       "t": 12.938
+      },
+      {
+       "w": "certa",
+       "t": 13.6
+      },
+      {
+       "w": "é:",
+       "t": 14.055
+      },
+      {
+       "w": "as",
+       "t": 14.235
+      },
+      {
+       "w": "duas.",
+       "t": 14.483
+      },
+      {
+       "w": "Aço",
+       "t": 14.869
+      },
+      {
+       "w": "e",
+       "t": 15.186
+      },
+      {
+       "w": "Mata",
+       "t": 15.366
+      },
+      {
+       "w": "Atlântica.",
+       "t": 15.752
+      },
+      {
+       "w": "62",
+       "t": 16.483
+      },
+      {
+       "w": "anos",
+       "t": 16.731
+      },
+      {
+       "w": "de",
+       "t": 17.117
+      },
+      {
+       "w": "uma",
+       "t": 17.365
+      },
+      {
+       "w": "cidade",
+       "t": 17.683
+      },
+      {
+       "w": "só.",
+       "t": 18.207
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "creditos",
+   "inicio": 304.133,
+   "dur": 6.5,
+   "frames": 195,
+   "falas": []
+  }
+ ]
+}

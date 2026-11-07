@@ -1,0 +1,116 @@
+{
+  "titulo": "Timóteo: uma cidade, dois nomes",
+  "voz": "pm_alex",
+  "velocidade": 0.94,
+  "cenas": [
+    {
+      "id": "abertura",
+      "falas": [
+        { "say": "Pergunte a alguém do Vale do Aço onde fica a Acesita.", "cap": "Pergunte a alguém do Vale do Aço onde fica a Acesita." },
+        { "say": "A pessoa vai apontar para um bairro.", "cap": "A pessoa vai apontar para um bairro." },
+        { "say": "Agora, pergunte onde fica Timóteo.", "cap": "Agora, pergunte onde fica Timóteo." },
+        { "say": "Ela vai apontar para outro lugar.", "cap": "Ela vai apontar para outro lugar." },
+        { "say": "Parecem duas cidades. Mas é uma só.", "cap": "Parecem duas cidades. Mas é uma só." },
+        { "say": "E a explicação passa por aço, por floresta, e por um único ano: mil novecentos e quarenta e quatro.", "cap": "E a explicação passa por aço, por floresta, e por um único ano: 1944." }
+      ]
+    },
+    { "id": "titulo", "fixo": 4.2, "falas": [] },
+    {
+      "id": "mapa",
+      "falas": [
+        { "say": "Timóteo fica no leste de Minas Gerais, a cerca de duzentos quilômetros de Belo Horizonte.", "cap": "Timóteo fica no leste de Minas Gerais, a cerca de 200 km de Belo Horizonte." },
+        { "say": "São cento e quarenta e quatro quilômetros quadrados. E oitenta e um mil, quinhentos e setenta e nove habitantes, segundo o Censo de dois mil e vinte e dois.", "cap": "São 144 km². E 81.579 habitantes, segundo o Censo de 2022." },
+        { "say": "É uma das quatro cidades do núcleo da Região Metropolitana do Vale do Aço, ao lado de Ipatinga, Coronel Fabriciano e Santana do Paraíso.", "cap": "É uma das quatro cidades do núcleo da Região Metropolitana do Vale do Aço, ao lado de Ipatinga, Coronel Fabriciano e Santana do Paraíso." }
+      ]
+    },
+    {
+      "id": "origem",
+      "falas": [
+        { "say": "A história começa antes da indústria.", "cap": "A história começa antes da indústria." },
+        { "say": "Em mil oitocentos e trinta e um, Francisco de Paula e Silva, o Chico Santa Maria, chega à região para plantar e criar gado. O lugar se chamava Alegre.", "cap": "Em 1831, Francisco de Paula e Silva, o Chico Santa Maria, chega à região para plantar e criar gado. O lugar se chamava Alegre." },
+        { "say": "O nome Timóteo, segundo a versão mais contada, vem de um tropeiro que abriu uma venda às margens de um ribeirão.", "cap": "O nome Timóteo, segundo a versão mais contada, vem de um tropeiro que abriu uma venda às margens de um ribeirão." },
+        { "say": "A venda virou ponto de referência. O ribeirão virou Ribeirão de Timóteo. E o nome ficou.", "cap": "A venda virou ponto de referência. O ribeirão virou Ribeirão de Timóteo. E o nome ficou." },
+        { "say": "Em mil novecentos e trinta e oito, o povoado vira distrito. Já com o nome de Timóteo.", "cap": "Em 1938, o povoado vira distrito. Já com o nome de Timóteo." }
+      ]
+    },
+    {
+      "id": "porque",
+      "falas": [
+        { "say": "Agora, a virada.", "cap": "Agora, a virada." },
+        { "say": "Nos anos quarenta, empresários procuravam o lugar ideal para uma siderúrgica. Entre eles, o norte-americano Pércival Fárcuar.", "cap": "Nos anos 1940, empresários procuravam o lugar ideal para uma siderúrgica. Entre eles, o norte-americano Percival Farquhar." },
+        { "say": "Itabira, onde estava o minério, tinha relevo acidentado demais.", "cap": "Itabira, onde estava o minério, tinha relevo acidentado demais." },
+        { "say": "Timóteo tinha três coisas. A ferrovia Vitória a Minas. A água do rio Piracicaba. E mata em abundância para virar carvão.", "cap": "Timóteo tinha três coisas. A ferrovia Vitória a Minas. A água do rio Piracicaba. E mata em abundância para virar carvão." },
+        { "say": "Em trinta e um de outubro de mil novecentos e quarenta e quatro, nasce a Acesita. Aços Especiais Itabira.", "cap": "Em 31 de outubro de 1944, nasce a Acesita. Aços Especiais Itabira." }
+      ]
+    },
+    {
+      "id": "vila",
+      "falas": [
+        { "say": "Quando a usina foi planejada, o povoado tinha cerca de duzentos moradores. A vila operária prevista era para dois mil.", "cap": "Quando a usina foi planejada, o povoado tinha cerca de 200 moradores. A vila operária prevista era para 2 mil." },
+        { "say": "A empresa não ergueu só a fábrica. Ergueu a cidade em volta dela. Casas, escolas, clubes e um hospital.", "cap": "A empresa não ergueu só a fábrica. Ergueu a cidade em volta dela. Casas, escolas, clubes e um hospital." },
+        { "say": "E os bairros copiavam a hierarquia da usina. O Funcionários, mais perto da fábrica, era para médicos, engenheiros e chefes. Mais longe, as casas dos operários.", "cap": "E os bairros copiavam a hierarquia da usina. O Funcionários, mais perto da fábrica, era para médicos, engenheiros e chefes. Mais longe, as casas dos operários." },
+        { "say": "Em mil novecentos e cinquenta e oito, já eram dois mil, setecentas e trinta e quatro casas da empresa.", "cap": "Em 1958, já eram 2.734 casas da empresa." },
+        { "say": "Assim nasceram dois núcleos. De um lado, a vila da empresa, que todos chamavam de Acesita. Do outro, o povoado antigo, que seguiu sendo Timóteo.", "cap": "Assim nasceram dois núcleos. De um lado, a vila da empresa, que todos chamavam de Acesita. Do outro, o povoado antigo, que seguiu sendo Timóteo." }
+      ]
+    },
+    {
+      "id": "emancipacao",
+      "falas": [
+        { "say": "Em mil novecentos e quarenta e oito, o distrito passou a pertencer a Coronel Fabriciano. E Fabriciano não queria abrir mão da arrecadação da usina.", "cap": "Em 1948, o distrito passou a pertencer a Coronel Fabriciano. E Fabriciano não queria abrir mão da arrecadação da usina." },
+        { "say": "A emancipação foi aprovada pela Assembleia em mil novecentos e sessenta e dois. Vetada pelo governador. E só saiu depois que uma aliança política se desfez.", "cap": "A emancipação foi aprovada pela Assembleia em 1962. Vetada pelo governador. E só saiu depois que uma aliança política se desfez." },
+        { "say": "Em vinte e nove de abril de mil novecentos e sessenta e quatro, Timóteo se torna município.", "cap": "Em 29 de abril de 1964, Timóteo se torna município." }
+      ]
+    },
+    {
+      "id": "plebiscito",
+      "falas": [
+        { "say": "A marca era tão forte que, entre mil novecentos e setenta e nove e mil novecentos e oitenta e um, um plebiscito propôs trocar o nome da cidade para Acesita.", "cap": "A marca era tão forte que, entre 1979 e 1981, um plebiscito propôs trocar o nome da cidade para Acesita." },
+        { "say": "Doze mil, oitocentos e sessenta e um votos a favor. Quatro mil, novecentos e oito contra.", "cap": "12.861 votos a favor. 4.908 contra." },
+        { "say": "Mas a Assembleia Legislativa barrou a mudança. A cidade continuou Timóteo.", "cap": "Mas a Assembleia Legislativa barrou a mudança. A cidade continuou Timóteo." }
+      ]
+    },
+    {
+      "id": "nomes",
+      "falas": [
+        { "say": "A Acesita foi privatizada em mil novecentos e noventa e dois. Em dois mil e sete, virou Arcelor Mittal Timóteo. Em dois mil e onze, Áperam Sauth América.", "cap": "A Acesita foi privatizada em 1992. Em 2007, virou ArcelorMittal Timóteo. Em 2011, Aperam South America." },
+        { "say": "Hoje, é a maior produtora de aço inoxidável e elétrico da América do Sul.", "cap": "Hoje, é a maior produtora de aço inoxidável e elétrico da América do Sul." },
+        { "say": "Mas, para boa parte da cidade, o Centro-Norte ainda é Acesita. E quem chega de fora ainda se confunde.", "cap": "Mas, para boa parte da cidade, o Centro-Norte ainda é Acesita. E quem chega de fora ainda se confunde." }
+      ]
+    },
+    {
+      "id": "parque",
+      "falas": [
+        { "say": "Só que mil novecentos e quarenta e quatro deixou uma segunda herança.", "cap": "Só que 1944 deixou uma segunda herança." },
+        { "say": "A expansão das siderúrgicas derrubava a mata para fazer carvão. Para proteger o que restava, nasceu, no mesmo ano, o Parque Estadual do Rio Doce.", "cap": "A expansão das siderúrgicas derrubava a mata para fazer carvão. Para proteger o que restava, nasceu, no mesmo ano, o Parque Estadual do Rio Doce." },
+        { "say": "Foi a primeira unidade de conservação de Minas Gerais.", "cap": "Foi a primeira unidade de conservação de Minas Gerais." },
+        { "say": "São quase trinta e seis mil hectares, cerca de quarenta lagoas, e a maior área contínua de Mata Atlântica do estado. Ali vivem a onça-pintada e o muriqui.", "cap": "São quase 36 mil hectares, cerca de 40 lagoas, e a maior área contínua de Mata Atlântica do estado. Ali vivem a onça-pintada e o muriqui." }
+      ]
+    },
+    {
+      "id": "espremida",
+      "falas": [
+        { "say": "Mais de um terço do território de Timóteo fica dentro do parque.", "cap": "Mais de um terço do território de Timóteo fica dentro do parque." },
+        { "say": "Ao norte, o rio. A oeste, as serras, com o Pico do Ana Moura a oitocentos e sessenta e quatro metros.", "cap": "Ao norte, o rio. A oeste, as serras, com o Pico do Ana Moura a 864 metros." },
+        { "say": "Resultado: pouco espaço para crescer. Entre dois mil e dez e dois mil e vinte e dois, a população aumentou menos de meio por cento.", "cap": "Resultado: pouco espaço para crescer. Entre 2010 e 2022, a população aumentou menos de 0,5%." },
+        { "say": "A cidade não se espalha. Ela se adensa.", "cap": "A cidade não se espalha. Ela se adensa." }
+      ]
+    },
+    {
+      "id": "numeros",
+      "falas": [
+        { "say": "E, mesmo assim, os números impressionam.", "cap": "E, mesmo assim, os números impressionam." },
+        { "say": "O pib por habitante passa de cinquenta e seis mil reais. E o Índice de Desenvolvimento Humano é considerado alto.", "cap": "O PIB por habitante passa de R$ 56 mil. E o Índice de Desenvolvimento Humano é considerado alto." }
+      ]
+    },
+    {
+      "id": "final",
+      "falas": [
+        { "say": "No fim, Timóteo é isso.", "cap": "No fim, Timóteo é isso." },
+        { "say": "Uma cidade que cresceu em volta de um alto-forno, e ao lado de uma floresta protegida. Nascidos no mesmo ano. Dividindo o mesmo chão.", "cap": "Uma cidade que cresceu em volta de um alto-forno, e ao lado de uma floresta protegida. Nascidos no mesmo ano. Dividindo o mesmo chão." },
+        { "say": "Acesita, ou Timóteo?", "cap": "Acesita ou Timóteo?" },
+        { "say": "A resposta certa é: as duas. Aço e Mata Atlântica. Sessenta e dois anos de uma cidade só.", "cap": "A resposta certa é: as duas. Aço e Mata Atlântica. 62 anos de uma cidade só." }
+      ]
+    },
+    { "id": "creditos", "fixo": 6.5, "falas": [] }
+  ]
+}
