@@ -16,6 +16,7 @@ Variáveis:
   GRAFIA        como escrever "Timóteo" para o TTS acertar TI-MÓ-TÊO (padrão: Timóteo).
                 O Gemini não aceita fonemas; a grafia é escolhida de ouvido.
   LOTE=cena     uma chamada por cena (padrão, economiza cota) ou LOTE=fala, uma por frase
+  GRUPO=n       junta n cenas por chamada (cenas já em cache são reaproveitadas)
   AMOSTRA=n     gera só as n primeiras falas, para testar voz e ritmo
 
 Atenção: um modelo Gemini "ouvindo" o áudio não serve para checar a pronúncia: ele
@@ -43,6 +44,7 @@ VOZ = os.environ.get("GEMINI_VOZ", "Charon")
 CHAVE = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 GRAFIA = os.environ.get("GRAFIA", "Timóteo")
 LOTE = os.environ.get("LOTE", "cena")
+GRUPO = int(os.environ.get("GRUPO", 1))
 AMOSTRA = int(os.environ.get("AMOSTRA", 0))
 
 FPS = 30
@@ -111,8 +113,7 @@ def post(url, corpo, tentativas=8):
 
 def sintetiza(texto: str) -> np.ndarray:
     """Uma fala -> áudio mono float32 a 24 kHz. Resultado fica em cache local."""
-    chave_cache = hashlib.sha256(f"{MODELO}|{VOZ}|{ESTILO}|{texto}".encode()).hexdigest()[:24]
-    arq = os.path.join(CACHE, chave_cache + ".wav")
+    arq = chave_cache(texto)
     if not os.path.exists(arq):
         moderno = MODELO.startswith("gemini-3.8-")
         conteudo = {"type": "text", "text": texto if moderno else f"Read the following text with this delivery: {ESTILO}\n\n{texto}"}
@@ -224,32 +225,67 @@ def palavras(cap, audio, ini):
 
 
 def divide(audio, textos):
-    """Corta o áudio de uma cena inteira nas pausas que melhor batem com o fim de cada fala.
-    Fronteira esperada = proporção de caracteres; vence a pausa próxima e longa."""
+    """Corta o áudio (várias falas numa chamada) nas pausas que melhor reproduzem o
+    tamanho esperado de cada fala (proporcional aos caracteres). Programação dinâmica:
+    minimiza o desvio relativo de cada pedaço, com bônus para pausas longas."""
     seg = trechos_falados(audio, pausa_min=0.12)
+    if len(seg) < len(textos):
+        return None
     pausas = [(seg[i][1], seg[i + 1][0]) for i in range(len(seg) - 1)]
-    ini, fim = (seg[0][0], seg[-1][1]) if seg else (0.0, len(audio) / SR)
+    ini, fim = seg[0][0], seg[-1][1]
     pesos = [len(t) for t in textos]
-    tot, acc, cortes, usado = sum(pesos), 0, [], -1
-    for k in range(len(textos) - 1):
-        acc += pesos[k]
-        alvo = ini + (fim - ini) * acc / tot
-        cands = [(abs((a + b) / 2 - alvo) - 0.8 * (b - a), j) for j, (a, b) in enumerate(pausas) if j > usado]
-        if not cands:
-            return None
-        _, j = min(cands)
-        usado = j
-        cortes.append((pausas[j][0] + pausas[j][1]) / 2)
+    W = sum(pesos)
+    esp = [(fim - ini) * w / W for w in pesos]
+    n, P = len(textos), len(pausas)
+    meio = [(x + y) / 2 for x, y in pausas]
+    bonus = [0.35 * min(y - x, 0.8) for x, y in pausas]
+    INF = float("inf")
+
+    def custo(k, a, b):
+        return ((b - a) - esp[k]) ** 2 / esp[k] ** 2
+
+    if n == 1:
+        return [apara(audio)]
+    # dp[k][j]: melhor custo com o corte k (0-based) na pausa j
+    dp = [[INF] * P for _ in range(n - 1)]
+    de = [[-1] * P for _ in range(n - 1)]
+    for j in range(P):
+        dp[0][j] = custo(0, ini, meio[j]) - bonus[j]
+    for k in range(1, n - 1):
+        for j in range(k, P):
+            melhor, arg = INF, -1
+            for i in range(k - 1, j):
+                if dp[k - 1][i] < INF:
+                    c = dp[k - 1][i] + custo(k, meio[i], meio[j])
+                    if c < melhor:
+                        melhor, arg = c, i
+            if arg >= 0:
+                dp[k][j], de[k][j] = melhor - bonus[j], arg
+    total, ultimo = INF, -1
+    for j in range(n - 2, P):
+        if dp[n - 2][j] < INF:
+            c = dp[n - 2][j] + custo(n - 1, meio[j], fim)
+            if c < total:
+                total, ultimo = c, j
+    if ultimo < 0:
+        return None
+    cortes = [ultimo]
+    for k in range(n - 2, 0, -1):
+        cortes.append(de[k][cortes[-1]])
+    cortes = [meio[j] for j in reversed(cortes)]
     bordas = [0.0] + cortes + [len(audio) / SR]
-    pedacos = [apara(audio[int(bordas[i] * SR): int(bordas[i + 1] * SR)]) for i in range(len(textos))]
-    # sanidade: cada pedaço perto do tamanho esperado
+    pedacos = [apara(audio[int(bordas[i] * SR): int(bordas[i + 1] * SR)]) for i in range(n)]
     durs = [len(x) / SR for x in pedacos]
     soma = sum(durs)
     for d, w in zip(durs, pesos):
-        esp = soma * w / tot
-        if not (0.5 * esp <= d <= 1.8 * esp):
+        e = soma * w / W
+        if not (0.55 * e <= d <= 1.7 * e):
             return None
     return pedacos
+
+
+def chave_cache(texto: str) -> str:
+    return os.path.join(CACHE, hashlib.sha256(f"{MODELO}|{VOZ}|{ESTILO}|{texto}".encode()).hexdigest()[:24] + ".wav")
 
 
 def prepara(say: str) -> str:
@@ -290,6 +326,37 @@ if AMOSTRA:
     print(destino)
     sys.exit(0)
 
+def gera_todas(cenas_rot):
+    """Áudios de todas as cenas. Reaproveita o cache por cena e junta as pendentes em grupos."""
+    prontos, pendentes = {}, []
+    for c in cenas_rot:
+        if c.get("fixo"):
+            continue
+        textos = [prepara(f["say"]) for f in c["falas"]]
+        if LOTE != "cena" or len(textos) == 1 or os.path.exists(chave_cache("\n\n".join(textos))):
+            prontos[c["id"]] = falas_da_cena(c["falas"])
+        else:
+            pendentes.append(c)
+    for g in range(0, len(pendentes), max(1, GRUPO)):
+        grupo = pendentes[g: g + max(1, GRUPO)]
+        if len(grupo) == 1:
+            prontos[grupo[0]["id"]] = falas_da_cena(grupo[0]["falas"])
+            continue
+        textos = [prepara(f["say"]) for c in grupo for f in c["falas"]]
+        pedacos = divide(sintetiza("\n\n".join(textos)), textos)
+        if not pedacos:
+            print(f"   divisão falhou no grupo {[c['id'] for c in grupo]}; gerando cena a cena")
+            for c in grupo:
+                prontos[c["id"]] = falas_da_cena(c["falas"])
+            continue
+        i = 0
+        for c in grupo:
+            prontos[c["id"]] = pedacos[i: i + len(c["falas"])]
+            i += len(c["falas"])
+    return prontos
+
+
+AUDIOS = gera_todas(roteiro["cenas"])
 trilha, cenas, t = [], [], 0.0
 for ci, cena in enumerate(roteiro["cenas"]):
     ini_cena, falas_out = t, []
@@ -300,7 +367,7 @@ for ci, cena in enumerate(roteiro["cenas"]):
         pre = PRE_ABERTURA if ci == 0 else PRE_CENA
         trilha.append(silencio(pre))
         t += pre
-        audios = falas_da_cena(cena["falas"])
+        audios = AUDIOS[cena["id"]]
         for fi, (fala, audio) in enumerate(zip(cena["falas"], audios)):
             dur = len(audio) / SR
             rel = round(t - ini_cena, 3)
