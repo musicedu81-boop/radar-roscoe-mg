@@ -28,7 +28,10 @@ A versão longa 16:9 (75 MB) é entregue fora do repositório. Para gerar de nov
 
 ## Pronúncia
 
-Timóteo se fala **TI-MÓ-TÊO**. O phonemizer (espeak) gera `tʃimˈɔtʃjʊ` ("timótchiu"); `scripts/locucao.py` substitui por `tʃimˈɔteʊ` em todas as falas, inclusive na forma ligada antes de vogal, e falha se sobrar alguma ocorrência errada.
+Timóteo se fala **TI-MÓ-TÊO**.
+
+- Voz Kokoro (`scripts/locucao.py`): o phonemizer (espeak) gera `tʃimˈɔtʃjʊ` ("timótchiu"); o script substitui por `tʃimˈɔteʊ` em todas as falas, inclusive na forma ligada antes de vogal, e falha se sobrar alguma ocorrência errada.
+- Voz Google (`scripts/locucao_gemini.py`, usada na versão longa 9:16): o Gemini não aceita fonemas, então o texto falado usa a grafia `Timótêo` (`GRAFIA=Timótêo`), escolhida de ouvido entre seis variações. A legenda continua "Timóteo".
 
 ## Pipeline
 
@@ -40,10 +43,10 @@ Timóteo se fala **TI-MÓ-TÊO**. O phonemizer (espeak) gera `tʃimˈɔtʃjʊ` (
    npx hyperframes tts "teste" -v pm_alex -l pt-br   # baixa o modelo no cache
    python3 scripts/locucao.py                       # gera public/voz/narracao.mp3 + src/data/timing.json
    ```
-   Voz alternativa (Google AI Studio, Gemini TTS `gemini-3.8-flash-tts`), ritmo mais ágil e checagem automática da pronúncia de Timóteo:
+   Voz do Google AI Studio (Gemini TTS `gemini-3.8-flash-tts`, voz Charon), ritmo ágil, várias cenas por pedido (o plano gratuito permite 10 pedidos/dia e 3/min):
    ```bash
-   AMOSTRA=3 VERIFICAR=1 python3 scripts/locucao_gemini.py   # teste com 3 falas em out/
-   VERIFICAR=1 python3 scripts/locucao_gemini.py             # gera narracao.mp3 + timing.json
+   AMOSTRA=3 GRAFIA=Timótêo python3 scripts/locucao_gemini.py                 # teste com 3 falas em out/
+   GEMINI_VOZ=Charon GRAFIA=Timótêo GRUPO=3 python3 scripts/locucao_gemini.py # narracao.mp3 + timing.json
    ```
    Chave em `GEMINI_API_KEY` ou como segredo de rede do ambiente para `generativelanguage.googleapis.com` (cabeçalho `x-goog-api-key`).
 4. **Mapas**: malha municipal do IBGE (via geodata-br) projetada para SVG em `scripts/geo.py`. Rios Piracicaba e Doce traçados pelas divisas municipais. Parque e lagoas em representação aproximada.

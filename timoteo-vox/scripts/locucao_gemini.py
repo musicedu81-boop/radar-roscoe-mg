@@ -17,6 +17,10 @@ Variáveis:
                 O Gemini não aceita fonemas; a grafia é escolhida de ouvido.
   LOTE=cena     uma chamada por cena (padrão, economiza cota) ou LOTE=fala, uma por frase
   GRUPO=n       junta n cenas por chamada (cenas já em cache são reaproveitadas)
+  ALINHAR=1     experimental: corta pelas palavras (transcreve cada trecho entre pausas).
+                Em blocos longos o transcritor junta trechos e desloca as falas; o padrão
+                (corte pelo tamanho esperado) foi mais confiável.
+  FALA_A_FALA=cena1,cena2   gera essas cenas frase a frase (para corrigir um corte errado)
   AMOSTRA=n     gera só as n primeiras falas, para testar voz e ritmo
 
 Atenção: um modelo Gemini "ouvindo" o áudio não serve para checar a pronúncia: ele
@@ -45,6 +49,9 @@ CHAVE = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 GRAFIA = os.environ.get("GRAFIA", "Timóteo")
 LOTE = os.environ.get("LOTE", "cena")
 GRUPO = int(os.environ.get("GRUPO", 1))
+ALINHAR = os.environ.get("ALINHAR", "0") == "1"
+FALA_A_FALA = set(filter(None, os.environ.get("FALA_A_FALA", "").split(",")))
+OUVINTE = os.environ.get("GEMINI_OUVINTE", "gemini-3.5-flash")
 AMOSTRA = int(os.environ.get("AMOSTRA", 0))
 
 FPS = 30
@@ -224,7 +231,92 @@ def palavras(cap, audio, ini):
     return out
 
 
-def divide(audio, textos):
+def _norm(txt):
+    return re.sub(r"[^a-z0-9à-ú ]", " ", txt.lower()).split()
+
+
+def alinha_por_transcricao(audio, caps):
+    """Transcreve cada trecho entre pausas (uma chamada, trechos separados por bipes) e
+    escolhe as fronteiras onde o texto ouvido acaba como cada fala acaba."""
+    seg = trechos_falados(audio, pausa_min=0.12)
+    if len(seg) < len(caps):
+        return None
+    arq = os.path.join(CACHE, hashlib.sha256(audio.tobytes()).hexdigest()[:24] + ".alinha.json")
+    if os.path.exists(arq):
+        trechos = json.load(open(arq, encoding="utf-8"))
+    else:
+        t = np.arange(int(0.22 * SR)) / SR
+        bip = (0.3 * np.sin(2 * np.pi * np.where(t < 0.11, 1200, 800) * t)).astype(np.float32)
+        z = np.zeros(int(0.15 * SR), np.float32)
+        partes = []
+        for x, y in seg:
+            partes += [audio[int(x * SR): int(y * SR)], z, bip, z]
+        buf = io.BytesIO()
+        sf.write(buf, np.concatenate(partes), SR, format="WAV", subtype="PCM_16")
+        pergunta = (f"O áudio tem {len(seg)} trechos de fala em português, cada um seguido de um bipe. "
+                    f"Transcreva cada trecho literalmente, na ordem. Responda só com uma lista JSON de exatamente "
+                    f"{len(seg)} strings, uma por trecho.")
+        resp = post(f"{API}/models/{OUVINTE}:generateContent", {
+            "contents": [{"role": "user", "parts": [
+                {"inline_data": {"mime_type": "audio/wav", "data": base64.b64encode(buf.getvalue()).decode()}},
+                {"text": pergunta}]}],
+            "generationConfig": {"temperature": 0, "responseMimeType": "application/json"},
+        })
+        txt = "".join(p.get("text", "") for c in resp.get("candidates", []) for p in c.get("content", {}).get("parts", []))
+        try:
+            trechos = json.loads(txt)
+        except json.JSONDecodeError:
+            return None
+        if not isinstance(trechos, list) or len(trechos) != len(seg):
+            print(f"   transcrição devolveu {len(trechos) if isinstance(trechos, list) else '?'} trechos de {len(seg)}")
+            return None
+        os.makedirs(CACHE, exist_ok=True)
+        json.dump(trechos, open(arq, "w", encoding="utf-8"), ensure_ascii=False)
+    palavras_t = [_norm(x) for x in trechos]
+    palavras_c = [_norm(c) for c in caps]
+    acum_t = np.cumsum([len(w) for w in palavras_t])
+    acum_c = np.cumsum([len(w) for w in palavras_c])
+    n, m_ = len(caps), len(seg)
+    tot_t, tot_c = acum_t[-1] or 1, acum_c[-1] or 1
+
+    def custo(k, i):  # fala k termina no trecho i
+        c = abs(acum_t[i] / tot_t - acum_c[k] / tot_c) * 10
+        ult_t = palavras_t[i][-1:] if palavras_t[i] else []
+        ult_c = palavras_c[k][-1:] if palavras_c[k] else []
+        if ult_t and ult_c and ult_t == ult_c:
+            c -= 1.0
+        return c
+
+    INF = float("inf")
+    dp = [[INF] * m_ for _ in range(n)]
+    de = [[-1] * m_ for _ in range(n)]
+    for i in range(m_ - n + 1):
+        dp[0][i] = custo(0, i)
+    for k in range(1, n):
+        for i in range(k, m_ - (n - 1 - k)):
+            melhor, arg = INF, -1
+            for j in range(k - 1, i):
+                if dp[k - 1][j] < melhor:
+                    melhor, arg = dp[k - 1][j], j
+            if arg >= 0:
+                dp[k][i], de[k][i] = melhor + custo(k, i), arg
+    if dp[n - 1][m_ - 1] == INF:
+        return None
+    fins = [m_ - 1]
+    for k in range(n - 1, 0, -1):
+        fins.append(de[k][fins[-1]])
+    fins = list(reversed(fins))
+    cortes = [(seg[i][1] + seg[i + 1][0]) / 2 for i in fins[:-1]]
+    bordas = [0.0] + cortes + [len(audio) / SR]
+    return [apara(audio[int(bordas[i] * SR): int(bordas[i + 1] * SR)]) for i in range(n)]
+
+
+def divide(audio, textos, caps=None):
+    if ALINHAR and caps:
+        r = alinha_por_transcricao(audio, caps)
+        if r:
+            return r
+        print("   alinhamento por transcrição falhou; usando tamanho esperado")
     """Corta o áudio (várias falas numa chamada) nas pausas que melhor reproduzem o
     tamanho esperado de cada fala (proporcional aos caracteres). Programação dinâmica:
     minimiza o desvio relativo de cada pedaço, com bônus para pausas longas."""
@@ -297,7 +389,7 @@ def falas_da_cena(falas):
     textos = [prepara(f["say"]) for f in falas]
     if LOTE == "cena" and len(textos) > 1:
         bloco = sintetiza("\n\n".join(textos))
-        pedacos = divide(bloco, textos)
+        pedacos = divide(bloco, textos, [f["cap"] for f in falas])
         if pedacos:
             return pedacos
         print("   divisão por pausas falhou nesta cena; gerando frase a frase")
@@ -333,7 +425,9 @@ def gera_todas(cenas_rot):
         if c.get("fixo"):
             continue
         textos = [prepara(f["say"]) for f in c["falas"]]
-        if LOTE != "cena" or len(textos) == 1 or os.path.exists(chave_cache("\n\n".join(textos))):
+        if c["id"] in FALA_A_FALA:
+            prontos[c["id"]] = [apara(sintetiza(x)) for x in textos]
+        elif LOTE != "cena" or len(textos) == 1 or os.path.exists(chave_cache("\n\n".join(textos))):
             prontos[c["id"]] = falas_da_cena(c["falas"])
         else:
             pendentes.append(c)
@@ -343,7 +437,7 @@ def gera_todas(cenas_rot):
             prontos[grupo[0]["id"]] = falas_da_cena(grupo[0]["falas"])
             continue
         textos = [prepara(f["say"]) for c in grupo for f in c["falas"]]
-        pedacos = divide(sintetiza("\n\n".join(textos)), textos)
+        pedacos = divide(sintetiza("\n\n".join(textos)), textos, [f["cap"] for c in grupo for f in c["falas"]])
         if not pedacos:
             print(f"   divisão falhou no grupo {[c['id'] for c in grupo]}; gerando cena a cena")
             for c in grupo:
