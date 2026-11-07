@@ -906,7 +906,8 @@ export const PS2: React.FC<PainelProps> = ({ b, off }) => {
       <Amassado />
       <Foto src="fotos/rio.jpg" x={40} y={160} w={1000} h={540} at={0} rot={-2} de="cima" seed="s2a" pb={0.7} pos="50% 60%" dur={200} />
       <Fita texto="ao norte: o rio Piracicaba" x={80} y={640} at={t.w(1, "rio.") - 2} rot={-3} size={48} />
-      <Foto src="fotos/pico.jpg" x={40} y={820} w={1000} h={540} at={t.w(1, "oeste") - 6} rot={2} de="baixo" seed="s2b" pb={0.7} dur={160} />
+      <Foto src="fotos/pico_anamoura.jpg" x={40} y={820} w={1000} h={540} at={t.w(1, "oeste") - 6} rot={2} de="baixo" seed="s2b" pb={0.6} zoom={[1.0, 1.04]} dur={160} />
+      <CirculoPincel x={695} y={1040} w={380} h={250} at={t.w(1, "Pico")} seed="s2c" largura={16} />
       <Fita texto="a oeste: as serras" x={560} y={790} at={t.w(1, "serras")} rot={3} size={46} />
       <Rotulo texto="PICO DO ANA MOURA · 864 M" at={t.w(1, "Pico")} x={50} y={1290} rot={-2} size={64} />
       <Sfx at={t.w(1, "oeste") - 6} name="whoosh-short" vol={0.35} />
