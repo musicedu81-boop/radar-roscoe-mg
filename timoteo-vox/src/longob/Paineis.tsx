@@ -364,7 +364,7 @@ export const PP3: React.FC<PainelProps> = ({ b, off }) => {
         <Escuro j={["Itabira", "Minério de ferro", "Serras", "Relevo"]} />
         <Rotulo texto="ITABIRA" at={t.a(2)} x={110} y={420} rot={-4} size={170} />
         <Fita texto="onde estava o minério" x={150} y={660} at={t.w(2, "minério")} rot={2} size={50} />
-        <CarimboV at={t.w(2, "acidentado")} texto="ACIDENTADO DEMAIS" x={540} y={1000} size={96} rot={-10} />
+        <CarimboV at={t.w(2, "acidentado")} texto="ACIDENTADO DEMAIS" x={540} y={1000} size={62} rot={-10} />
       </Shake>
       <Sfx at={t.a(2)} name="pop" vol={0.4} />
       <Sfx at={t.w(2, "acidentado")} name="impact-bass-2" vol={0.55} />
@@ -627,7 +627,7 @@ export const PE3: React.FC<PainelProps> = ({ b, off }) => {
 export const PPl: React.FC<PainelProps> = ({ b, off }) => {
   const f = useCurrentFrame();
   const t = mk(b, off);
-  const tC = t.w(0, "plebiscito") - 6;
+  const tC = t.a(0) + 8;
   const tV = t.a(1);
   const tB = t.w(2, "barrou");
   const total = 12861 + 4908;
@@ -866,7 +866,7 @@ export const PS3: React.FC<PainelProps> = ({ b, off }) => {
       <Amassado />
       <Fita texto="resultado: pouco espaço para crescer" x={540} y={160} at={t.a(2)} rot={-2} size={40} centro />
       {CENSOS.map((c, i) => {
-        const at = tE - 20 + i * 5;
+        const at = Math.min(tE - 20, t.a(2) + 6) + i * 5;
         const p = ip(f, [at, at + 14], [0, 1], EASE_IO);
         const h = (c.v / 90000) * 820 * p;
         const ult = i >= 4;
