@@ -6,5 +6,6 @@ dist
 # Ignore the output video from Git but not videos you import into src/.
 out
 
-# versão longa (75 MB) entregue fora do git
+# vídeos longos (acima do limite do GitHub) entregues fora do git
 entrega/timoteo-vox-longo-16x9.mp4
+entrega/timoteo-longo-9x16.mp4
