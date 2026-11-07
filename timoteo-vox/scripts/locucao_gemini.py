@@ -22,7 +22,8 @@ Variáveis:
                 (corte pelo tamanho esperado) foi mais confiável.
   FALA_A_FALA=cena1,cena2   gera essas cenas frase a frase (para corrigir um corte errado)
   TAKES=arquivo.json  falas refeitas sozinhas, com grafia e tomada próprias:
-                {"final-1": {"grafia": "Timótêo", "take": 2}}. Usado para trocar só as
+                {"final-1": {"grafia": "Timótêo", "take": 2}} ou {"x-1": {"arquivo": "roteiro/emendas/x-1.wav"}}.
+                Usado para trocar só as
                 frases em que o Gemini errou a pronúncia (ver scripts/confere_pronuncia.py).
   AMOSTRA=n     gera só as n primeiras falas, para testar voz e ritmo
 
@@ -204,13 +205,65 @@ def peso(w):
     return len(re.sub(r"[^\wÀ-ú0-9]", "", w)) + 1.6
 
 
-def palavras(cap, audio, ini):
+def _expande(tok):
+    """Palavras que um token da legenda vira na fala (números por extenso, km², %)."""
+    try:
+        from num2words import num2words
+    except ImportError:
+        num2words = None
+    base = re.sub(r"[^\w²%,.]", "", tok)
+    nucleo = base.rstrip(".,")
+    pal = []
+    if nucleo.endswith("%"):
+        nucleo, suf = nucleo[:-1], ["por", "cento"]
+    else:
+        suf = []
+    if nucleo.lower() == "km²":
+        return ["quilômetros", "quadrados"]
+    if num2words and re.fullmatch(r"\d{1,3}(\.\d{3})+|\d+(,\d+)?", nucleo):
+        valor = float(nucleo.replace(".", "").replace(",", "."))
+        valor = int(valor) if valor.is_integer() else valor
+        pal = re.sub(r"[^\wÀ-ú ]", " ", num2words(valor, lang="pt_BR")).split()
+    return (pal or [tok]) + suf
+
+
+def pesos_falados(cap, say):
+    """Peso de cada palavra da legenda pelo que é FALADO: "2.734" pesa como "dois mil
+    setecentos e trinta e quatro". Expande números da legenda e alinha com o texto falado."""
+    import difflib
+    ct, st = cap.split(), say.split()
+    n = lambda w: re.sub(r"[^\wÀ-ú]", "", w.lower())
+    exp, dono = [], []
+    for i, w in enumerate(ct):
+        for e in _expande(w):
+            exp.append(n(e))
+            dono.append(i)
+    sm = difflib.SequenceMatcher(None, exp, [n(w) for w in st], autojunk=False)
+    pesos = [0.0] * len(ct)
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        if op == "equal":
+            for k in range(i2 - i1):
+                pesos[dono[i1 + k]] += peso(st[j1 + k])
+        elif op == "replace":
+            falado = sum(peso(w) for w in st[j1:j2])
+            donos = dono[i1:i2]
+            for d in donos:
+                pesos[d] += falado / len(donos)
+        elif op == "insert":
+            alvo = dono[i1 - 1] if i1 > 0 else 0
+            pesos[alvo] += sum(peso(w) for w in st[j1:j2])
+    return [p if p > 0 else 0.6 for p in pesos]
+
+
+def palavras(cap, audio, ini, say=None):
     """Tempo de cada palavra da legenda. Se as pausas do áudio batem com a pontuação,
-    cada pedaço de frase é encaixado no seu trecho falado; senão, rateio proporcional."""
+    cada pedaço de frase é encaixado no seu trecho falado; senão, rateio proporcional.
+    Os pesos vêm do texto falado (números por extenso), não da legenda."""
     toks = cap.split()
+    pw = pesos_falados(cap, say) if say else [peso(w) for w in toks]
     pedacos, cur = [], []
-    for w in toks:
-        cur.append(w)
+    for k, w in enumerate(toks):
+        cur.append(k)
         if re.search(r"[,.;:?!]$", w):
             pedacos.append(cur)
             cur = []
@@ -220,19 +273,19 @@ def palavras(cap, audio, ini):
     out = []
     if len(seg) == len(pedacos) and len(seg) > 1:
         for (a, b), ped in zip(seg, pedacos):
-            tot = sum(peso(w) for w in ped)
+            tot = sum(pw[k] for k in ped)
             acc = a
-            for w in ped:
-                out.append({"w": w, "t": round(ini + acc, 3)})
-                acc += (b - a) * peso(w) / tot
+            for k in ped:
+                out.append({"w": toks[k], "t": round(ini + acc, 3)})
+                acc += (b - a) * pw[k] / tot
         return out
     a = seg[0][0] if seg else 0.0
     b = seg[-1][1] if seg else len(audio) / SR
-    tot = sum(peso(w) for w in toks)
+    tot = sum(pw)
     acc = a
-    for w in toks:
+    for k, w in enumerate(toks):
         out.append({"w": w, "t": round(ini + acc, 3)})
-        acc += (b - a) * peso(w) / tot
+        acc += (b - a) * pw[k] / tot
     return out
 
 
@@ -465,8 +518,14 @@ if os.path.exists(_takes_path):
             fid = f"{c['id']}-{fi + 1}"
             if fid in TAKES:
                 tk = TAKES[fid]
-                AUDIOS[c["id"]][fi] = apara(sintetiza(f["say"].replace("Timóteo", tk.get("grafia", GRAFIA)), tk.get("take", 0)))
-                print(f"   {fid}: tomada {tk.get('take', 0)} ({tk.get('grafia', GRAFIA)})")
+                if "arquivo" in tk:  # fala montada à mão (emenda), já aprovada
+                    x, taxa = sf.read(os.path.join(ROOT, tk["arquivo"]), dtype="float32")
+                    assert taxa == SR, taxa
+                    AUDIOS[c["id"]][fi] = x
+                    print(f"   {fid}: {tk['arquivo']}")
+                else:
+                    AUDIOS[c["id"]][fi] = apara(sintetiza(f["say"].replace("Timóteo", tk.get("grafia", GRAFIA)), tk.get("take", 0)))
+                    print(f"   {fid}: tomada {tk.get('take', 0)} ({tk.get('grafia', GRAFIA)})")
 trilha, cenas, t = [], [], 0.0
 for ci, cena in enumerate(roteiro["cenas"]):
     ini_cena, falas_out = t, []
@@ -482,7 +541,7 @@ for ci, cena in enumerate(roteiro["cenas"]):
             dur = len(audio) / SR
             rel = round(t - ini_cena, 3)
             falas_out.append({"id": f"{cena['id']}-{fi + 1}", "cap": fala["cap"], "t": rel,
-                              "dur": round(dur, 3), "words": palavras(fala["cap"], audio, rel)})
+                              "dur": round(dur, 3), "words": palavras(fala["cap"], audio, rel, fala["say"])})
             trilha.append(audio)
             t += dur
             if fi < len(cena["falas"]) - 1:

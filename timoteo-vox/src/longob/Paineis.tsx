@@ -181,22 +181,22 @@ export const PM2: React.FC<PainelProps> = ({ b, off, len }) => {
     <AbsoluteFill>
       <MapaTerreno escala={0.9} cx={c[0]} cy={c[1]} tilt={30} zoom={[1.0, 1.1]} dur={len} />
       <AbsoluteFill style={{ background: "linear-gradient(180deg, #151515 0%, rgba(21,21,21,0.8) 9%, rgba(21,21,21,0) 22%)" }} />
-      <Selo x={800} y={420} d={330} at={t.w(1, "cento") - 2} rot={7}>
+      <Selo x={800} y={420} d={330} at={t.w(1, "144") - 2} rot={7}>
         <div style={{ textAlign: "center", lineHeight: 0.9 }}>
           <Serif size={130}>144</Serif>
           <div style={{ fontFamily: FS.cond, fontSize: 56, color: K.tinta }}>KM²</div>
         </div>
       </Selo>
-      <Entra at={t.w(1, "oitenta") - 2} style={{ left: 60, top: 1080 }} y={30}>
+      <Entra at={t.w(1, "81.579") - 32} style={{ left: 60, top: 1080 }} y={30}>
         <div style={{ background: K.tinta, padding: "8px 30px 0", rotate: "-2deg", boxShadow: "0 12px 24px rgba(0,0,0,0.5)" }}>
           <Serif size={170} cor={K.lima}>
-            <Counter to={81579} at={t.w(1, "oitenta") - 2} dur={40} />
+            <Counter to={81579} at={t.w(1, "81.579") - 30} dur={30} />
           </Serif>
         </div>
       </Entra>
       <Fita texto="habitantes · Censo 2022" x={220} y={1330} at={t.w(1, "Censo")} rot={2} size={44} />
-      <Sfx at={t.w(1, "cento") - 2} name="pop" vol={0.4} />
-      <Sfx at={t.w(1, "oitenta") - 2} name="riser" vol={0.22} dur={40} />
+      <Sfx at={t.w(1, "144") - 2} name="pop" vol={0.4} />
+      <Sfx at={t.w(1, "81.579") - 32} name="riser" vol={0.22} dur={34} />
     </AbsoluteFill>
   );
 };
@@ -444,19 +444,19 @@ export const PV1: React.FC<PainelProps> = ({ b, off }) => {
     <AbsoluteFill>
       <Escuro j={["Povoado", "Vila operária", "Usina", "1944"]} />
       <Fita texto="quando a usina foi planejada" x={540} y={200} at={t.a(0)} rot={-2} size={46} centro />
-      <Selo x={300} y={560} d={380} at={t.w(0, "200") - 4} rot={-6} cor="#F2EFE8">
+      <Selo x={300} y={560} d={380} at={t.w(0, "200") - 20} rot={-6} cor="#F2EFE8">
         <div style={{ textAlign: "center" }}>
           <Serif size={120}>
-            ~<Counter to={200} at={t.w(0, "200") - 4} dur={18} />
+            ~<Counter to={200} at={t.w(0, "200") - 18} dur={18} />
           </Serif>
           <div style={{ fontFamily: FS.maquina, fontSize: 32, color: K.tinta }}>moradores</div>
         </div>
       </Selo>
       <Seta de={[470, 650]} ate={[620, 830]} curva={-60} at={t.w(0, "vila")} cor="#F2EFE8" seed="v1s" largura={22} />
-      <Selo x={720} y={1060} d={500} at={t.w(0, "mil.") - 8} rot={6}>
+      <Selo x={720} y={1060} d={500} at={t.w(0, "mil.") - 32} rot={6}>
         <div style={{ textAlign: "center" }}>
           <Serif size={150}>
-            <Counter to={2000} at={t.w(0, "mil.") - 8} dur={24} />
+            <Counter to={2000} at={t.w(0, "mil.") - 30} dur={24} />
           </Serif>
           <div style={{ fontFamily: FS.maquina, fontSize: 34, color: K.tinta }}>vila prevista</div>
         </div>
@@ -552,26 +552,28 @@ const CasasDesenhadas: React.FC<{ at: number; dur: number; x: number; y: number;
 
 export const PV4: React.FC<PainelProps> = ({ b, off }) => {
   const t = mk(b, off);
-  const tN = t.w(3, "2.734") - 4;
+  // o contador chega em 2.734 quando a voz começa a dizer "dois mil setecentos e trinta e quatro"
+  const tN = t.w(3, "2.734");
+  const tC = tN - 30;
   return (
     <AbsoluteFill>
       <Amassado />
       <Selo x={190} y={250} d={250} at={t.a(3)} rot={-8}>
         <Serif size={92}>1958</Serif>
       </Selo>
-      <Entra at={tN} style={{ left: 330, top: 150 }} y={30}>
+      <Entra at={tC - 2} style={{ left: 330, top: 150 }} y={30}>
         <div style={{ background: K.tinta, padding: "6px 30px 0", rotate: "-2deg", boxShadow: "0 12px 24px rgba(0,0,0,0.45)" }}>
           <Serif size={190} cor={K.lima}>
-            <Counter to={2734} at={tN} dur={36} />
+            <Counter to={2734} at={tC} dur={tN - tC} />
           </Serif>
         </div>
       </Entra>
       <Fita texto="casas da empresa" x={420} y={400} at={t.w(3, "casas")} rot={2} size={52} />
       <CasasDesenhadas at={t.a(3) + 10} dur={58} x={70} y={570} cols={11} rows={10} gap={85} s={57} />
-      <Fita texto="cada desenho ≈ 25 casas" x={540} y={1445} at={tN + 30} rot={-2} size={34} centro />
+      <Fita texto="cada desenho ≈ 25 casas" x={540} y={1445} at={tN + 24} rot={-2} size={34} centro />
       <Sfx at={t.a(3)} name="pop" vol={0.4} />
-      <Sfx at={tN} name="riser" vol={0.25} dur={40} />
-      <Sfx at={tN + 8} name="typing" vol={0.18} dur={30} />
+      <Sfx at={tC - 2} name="riser" vol={0.25} dur={34} />
+      <Sfx at={t.w(3, "casas")} name="typing" vol={0.18} dur={30} />
     </AbsoluteFill>
   );
 };
@@ -674,11 +676,12 @@ export const PPl: React.FC<PainelProps> = ({ b, off }) => {
   const f = useCurrentFrame();
   const t = mk(b, off);
   const tC = t.a(0) + 8;
-  const tV = t.a(1);
+  const tV = t.w(1, "12.861"); // contadores chegam ao total quando a voz começa a dizer o número
+  const t49 = t.w(1, "4.908");
   const tB = t.w(2, "barrou");
   const total = 12861 + 4908;
-  const pSim = ip(f, [tV, tV + 24], [0, 12861 / total], EASE_IO);
-  const pNao = ip(f, [t.w(1, "4.908"), t.w(1, "4.908") + 22], [0, 4908 / total], EASE_IO);
+  const pSim = ip(f, [tV - 24, tV], [0, 12861 / total], EASE_IO);
+  const pNao = ip(f, [t49 - 22, t49], [0, 4908 / total], EASE_IO);
   return (
     <AbsoluteFill>
       <Shake at={[tB]} amp={16}>
@@ -692,20 +695,20 @@ export const PPl: React.FC<PainelProps> = ({ b, off }) => {
             </div>
           </div>
         </Foto>
-        {f >= tV - 2 ? (
+        {f >= tV - 26 ? (
           <div style={{ position: "absolute", left: 90, top: 980, width: 900 }}>
             <div style={{ fontFamily: FS.cond, fontSize: 56, color: "#fff", letterSpacing: 2 }}>A FAVOR</div>
             <div style={{ height: 92, background: "rgba(255,255,255,0.08)", position: "relative" }}>
               <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${pSim * 100}%`, background: K.lima }} />
               <div style={{ position: "absolute", left: 20, top: 10, fontFamily: FS.cond, fontSize: 64, color: K.tinta }}>
-                <Counter to={12861} at={tV} dur={24} />
+                <Counter to={12861} at={tV - 24} dur={24} />
               </div>
             </div>
             <div style={{ fontFamily: FS.cond, fontSize: 56, color: "#fff", letterSpacing: 2, marginTop: 26 }}>CONTRA</div>
             <div style={{ height: 92, background: "rgba(255,255,255,0.08)", position: "relative" }}>
               <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${pNao * 100}%`, background: "#fff" }} />
               <div style={{ position: "absolute", left: 20, top: 10, fontFamily: FS.cond, fontSize: 64, color: K.tinta }}>
-                <Counter to={4908} at={t.w(1, "4.908")} dur={22} />
+                <Counter to={4908} at={t49 - 22} dur={22} />
               </div>
             </div>
           </div>
@@ -714,7 +717,7 @@ export const PPl: React.FC<PainelProps> = ({ b, off }) => {
         <Rotulo texto="CONTINUOU TIMÓTEO" at={t.w(2, "Timóteo.")} x={130} y={1380} rot={-2} size={78} />
       </Shake>
       <Sfx at={tC} name="whoosh-short" vol={0.35} />
-      <Sfx at={tV} name="riser" vol={0.25} dur={40} />
+      <Sfx at={tV - 26} name="riser" vol={0.25} dur={30} />
       <Sfx at={tB} name="impact-bass-1" vol={0.7} />
       <Sfx at={t.w(2, "Timóteo.")} name="pop" vol={0.45} />
     </AbsoluteFill>
