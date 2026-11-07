@@ -79,11 +79,24 @@ def limpa(msg: str) -> str:
     return msg.replace(CHAVE, "[oculto]") if CHAVE else msg
 
 
-def post(url, corpo, tentativas=5):
+_ultimo = [0.0]
+INTERVALO = float(os.environ.get("GEMINI_INTERVALO", 21))  # plano gratuito: 3 pedidos/min
+
+
+def post(url, corpo, tentativas=8):
     for i in range(tentativas):
+        espera = _ultimo[0] + INTERVALO - time.time()
+        if "/interactions" in url and espera > 0:
+            time.sleep(espera)
         r = requests.post(url, headers=cabecalhos(), json=corpo, timeout=180)
+        if "/interactions" in url:
+            _ultimo[0] = time.time()
         if r.status_code in (429, 500, 502, 503, 504) and i < tentativas - 1:
-            time.sleep(2 ** (i + 1))
+            pedido = re.search(r"retry in ([\d.]+)\s*s", r.text)
+            if r.status_code == 429 and re.search(r"per day|PerDay|daily", r.text):
+                raise SystemExit("Cota diária do Gemini esgotada. O cache guarda o que já foi gerado; rode de novo depois.\n"
+                                 + limpa(r.text[:300]))
+            time.sleep((float(pedido.group(1)) + 2) if pedido else min(60, 2 ** (i + 2)))
             continue
         if r.status_code in (401, 403):
             raise SystemExit(
