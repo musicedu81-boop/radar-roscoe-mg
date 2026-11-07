@@ -4,8 +4,11 @@ e monta a faixa mestre + o mapa de tempos usado pela animação.
 Pré-requisito: rodar uma vez `npx hyperframes tts "teste" -v pm_alex` para baixar o modelo
 no cache do HyperFrames (~/.cache/hyperframes/tts) e `pip install kokoro-onnx soundfile`.
 
-Uso: python3 scripts/locucao.py
+Uso: python3 scripts/locucao.py [roteiro.json] [timing.json] [nome_audio]
+  padrão (versão longa):  roteiro/roteiro.json  src/data/timing.json  narracao
+  Short:                  roteiro/roteiro-short.json src/data/timing-short.json narracao-short
 """
+import sys
 import json
 import os
 import re
@@ -20,12 +23,15 @@ MODEL = os.path.join(CACHE, "models", "kokoro-v1.0.onnx")
 VOICES = os.path.join(CACHE, "voices", "voices-v1.0.bin")
 
 FPS = 30
-GAP_FALA = 0.32      # pausa entre frases da mesma cena
-PRE_CENA = 0.45      # respiro antes da primeira frase da cena
-POS_CENA = 0.65      # respiro depois da última frase
-PRE_ABERTURA = 0.9
+GAP_FALA = float(os.environ.get("GAP_FALA", 0.32))     # pausa entre frases da mesma cena
+PRE_CENA = float(os.environ.get("PRE_CENA", 0.45))     # respiro antes da primeira frase da cena
+POS_CENA = float(os.environ.get("POS_CENA", 0.65))     # respiro depois da última frase
+PRE_ABERTURA = float(os.environ.get("PRE_ABERTURA", 0.9))
 
-roteiro = json.load(open(os.path.join(ROOT, "roteiro", "roteiro.json"), encoding="utf-8"))
+ARG_ROTEIRO = sys.argv[1] if len(sys.argv) > 1 else "roteiro/roteiro.json"
+ARG_TIMING = sys.argv[2] if len(sys.argv) > 2 else "src/data/timing.json"
+ARG_AUDIO = sys.argv[3] if len(sys.argv) > 3 else "narracao"
+roteiro = json.load(open(os.path.join(ROOT, ARG_ROTEIRO), encoding="utf-8"))
 voz = roteiro["voz"]
 vel = roteiro["velocidade"]
 kokoro = Kokoro(MODEL, VOICES)
@@ -101,11 +107,11 @@ master = np.concatenate(trilha)
 pico = float(np.max(np.abs(master))) or 1.0
 master = master / pico * 10 ** (-1 / 20)
 os.makedirs(os.path.join(ROOT, "public", "voz"), exist_ok=True)
-wav = os.path.join(ROOT, "public", "voz", "narracao.wav")
+wav = os.path.join(ROOT, "public", "voz", ARG_AUDIO + ".wav")
 sf.write(wav, master, sr_out, subtype="PCM_16")
 os.system(f"ffmpeg -v error -y -i \"{wav}\" -c:a libmp3lame -b:a 192k \"{wav[:-4]}.mp3\" && rm \"{wav}\"")
 total_frames = sum(c["frames"] for c in cenas)
 json.dump({"fps": FPS, "voz": voz, "velocidade": vel, "totalFrames": total_frames, "cenas": cenas},
-          open(os.path.join(ROOT, "src", "data", "timing.json"), "w", encoding="utf-8"),
+          open(os.path.join(ROOT, ARG_TIMING), "w", encoding="utf-8"),
           ensure_ascii=False, indent=1)
 print(f"TOTAL {total_frames / FPS:.1f}s ({total_frames} frames)")

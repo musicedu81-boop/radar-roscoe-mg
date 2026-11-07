@@ -2,7 +2,7 @@
 import json, os, re, subprocess
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
-FAM = {"Archivo": [500, 700, 800, 900], "Source Serif 4": [400, 600, 700], "IBM Plex Mono": [400, 500, 700], "Caveat": [600, 700]}
+FAM = {"Archivo": [500, 700, 800, 900], "Source Serif 4": [400, 600, 700], "IBM Plex Mono": [400, 500, 700], "Caveat": [600, 700], "Special Elite": [400], "Playfair Display": [700, 900], "Anton": [400]}
 out = []
 for fam, ws in FAM.items():
     q = fam.replace(" ", "+") + ":wght@" + ";".join(map(str, ws))

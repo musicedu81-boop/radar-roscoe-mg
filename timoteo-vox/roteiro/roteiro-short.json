@@ -1,0 +1,60 @@
+{
+  "titulo": "Acesita ou Timóteo? (Short)",
+  "voz": "pm_alex",
+  "velocidade": 1.0,
+  "cenas": [
+    {
+      "id": "gancho",
+      "falas": [
+        { "say": "Em Timóteo, tem gente que diz que mora na Acesita.", "cap": "Em Timóteo, tem gente que diz que mora na Acesita." },
+        { "say": "E tem gente que diz que mora em Timóteo.", "cap": "E tem gente que diz que mora em Timóteo." },
+        { "say": "Só que é a mesma cidade.", "cap": "Só que é a mesma cidade." }
+      ]
+    },
+    {
+      "id": "ano",
+      "falas": [
+        { "say": "A explicação começa em mil novecentos e quarenta e quatro.", "cap": "A explicação começa em 1944." }
+      ]
+    },
+    {
+      "id": "motivos",
+      "falas": [
+        { "say": "Uma siderúrgica escolheu este vale por três motivos: a ferrovia, a água do rio Piracicaba, e a mata, para virar carvão.", "cap": "Uma siderúrgica escolheu este vale por três motivos: a ferrovia, a água do rio Piracicaba, e a mata, para virar carvão." }
+      ]
+    },
+    {
+      "id": "vila",
+      "falas": [
+        { "say": "Nasceu a Acesita. E, em volta dela, uma vila inteira, com casas, escolas, igreja e hospital.", "cap": "Nasceu a Acesita. E, em volta dela, uma vila inteira, com casas, escolas, igreja e hospital." }
+      ]
+    },
+    {
+      "id": "nomes",
+      "falas": [
+        { "say": "A vila ficou conhecida pelo nome da fábrica. O povoado antigo continuou Timóteo.", "cap": "A vila ficou conhecida pelo nome da fábrica. O povoado antigo continuou Timóteo." }
+      ]
+    },
+    {
+      "id": "plebiscito",
+      "falas": [
+        { "say": "A marca pegou tanto que, num plebiscito, a maioria votou para trocar o nome da cidade para Acesita. A Assembleia barrou.", "cap": "A marca pegou tanto que, num plebiscito, a maioria votou para trocar o nome da cidade para Acesita. A Assembleia barrou." }
+      ]
+    },
+    {
+      "id": "parque",
+      "falas": [
+        { "say": "Mas mil novecentos e quarenta e quatro deixou outra herança. No mesmo ano, nasceu o Parque Estadual do Rio Doce.", "cap": "Mas 1944 deixou outra herança. No mesmo ano, nasceu o Parque Estadual do Rio Doce." },
+        { "say": "Hoje, mais de um terço de Timóteo é Mata Atlântica protegida.", "cap": "Hoje, mais de um terço de Timóteo é Mata Atlântica protegida." }
+      ]
+    },
+    {
+      "id": "final",
+      "falas": [
+        { "say": "Acesita, ou Timóteo? As duas.", "cap": "Acesita ou Timóteo? As duas." },
+        { "say": "Aço e floresta, nascidos no mesmo ano.", "cap": "Aço e floresta, nascidos no mesmo ano." }
+      ]
+    },
+    { "id": "fim", "fixo": 2.6, "falas": [] }
+  ]
+}

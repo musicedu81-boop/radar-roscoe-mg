@@ -1,0 +1,731 @@
+{
+ "fps": 30,
+ "voz": "pm_alex",
+ "velocidade": 1.0,
+ "totalFrames": 1729,
+ "cenas": [
+  {
+   "id": "gancho",
+   "inicio": 0.0,
+   "dur": 8.467,
+   "frames": 254,
+   "falas": [
+    {
+     "id": "gancho-1",
+     "cap": "Em Timóteo, tem gente que diz que mora na Acesita.",
+     "t": 0.35,
+     "dur": 3.136,
+     "words": [
+      {
+       "w": "Em",
+       "t": 0.35
+      },
+      {
+       "w": "Timóteo,",
+       "t": 0.555
+      },
+      {
+       "w": "tem",
+       "t": 1.046
+      },
+      {
+       "w": "gente",
+       "t": 1.308
+      },
+      {
+       "w": "que",
+       "t": 1.684
+      },
+      {
+       "w": "diz",
+       "t": 1.947
+      },
+      {
+       "w": "que",
+       "t": 2.209
+      },
+      {
+       "w": "mora",
+       "t": 2.471
+      },
+      {
+       "w": "na",
+       "t": 2.79
+      },
+      {
+       "w": "Acesita.",
+       "t": 2.996
+      }
+     ]
+    },
+    {
+     "id": "gancho-2",
+     "cap": "E tem gente que diz que mora em Timóteo.",
+     "t": 3.706,
+     "dur": 2.56,
+     "words": [
+      {
+       "w": "E",
+       "t": 3.706
+      },
+      {
+       "w": "tem",
+       "t": 3.853
+      },
+      {
+       "w": "gente",
+       "t": 4.112
+      },
+      {
+       "w": "que",
+       "t": 4.484
+      },
+      {
+       "w": "diz",
+       "t": 4.744
+      },
+      {
+       "w": "que",
+       "t": 5.003
+      },
+      {
+       "w": "mora",
+       "t": 5.262
+      },
+      {
+       "w": "em",
+       "t": 5.578
+      },
+      {
+       "w": "Timóteo.",
+       "t": 5.781
+      }
+     ]
+    },
+    {
+     "id": "gancho-3",
+     "cap": "Só que é a mesma cidade.",
+     "t": 6.486,
+     "dur": 1.685,
+     "words": [
+      {
+       "w": "Só",
+       "t": 6.486
+      },
+      {
+       "w": "que",
+       "t": 6.706
+      },
+      {
+       "w": "é",
+       "t": 6.987
+      },
+      {
+       "w": "a",
+       "t": 7.145
+      },
+      {
+       "w": "mesma",
+       "t": 7.304
+      },
+      {
+       "w": "cidade.",
+       "t": 7.707
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ano",
+   "inicio": 8.467,
+   "dur": 4.0,
+   "frames": 120,
+   "falas": [
+    {
+     "id": "ano-1",
+     "cap": "A explicação começa em 1944.",
+     "t": 0.18,
+     "dur": 3.52,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.18
+      },
+      {
+       "w": "explicação",
+       "t": 0.475
+      },
+      {
+       "w": "começa",
+       "t": 1.792
+      },
+      {
+       "w": "em",
+       "t": 2.655
+      },
+      {
+       "w": "1944.",
+       "t": 3.064
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "motivos",
+   "inicio": 12.467,
+   "dur": 7.433,
+   "frames": 223,
+   "falas": [
+    {
+     "id": "motivos-1",
+     "cap": "Uma siderúrgica escolheu este vale por três motivos: a ferrovia, a água do rio Piracicaba, e a mata, para virar carvão.",
+     "t": 0.18,
+     "dur": 6.955,
+     "words": [
+      {
+       "w": "Uma",
+       "t": 0.18
+      },
+      {
+       "w": "siderúrgica",
+       "t": 0.431
+      },
+      {
+       "w": "escolheu",
+       "t": 1.117
+      },
+      {
+       "w": "este",
+       "t": 1.641
+      },
+      {
+       "w": "vale",
+       "t": 1.946
+      },
+      {
+       "w": "por",
+       "t": 2.251
+      },
+      {
+       "w": "três",
+       "t": 2.502
+      },
+      {
+       "w": "motivos:",
+       "t": 2.807
+      },
+      {
+       "w": "a",
+       "t": 3.276
+      },
+      {
+       "w": "ferrovia,",
+       "t": 3.418
+      },
+      {
+       "w": "a",
+       "t": 3.941
+      },
+      {
+       "w": "água",
+       "t": 4.082
+      },
+      {
+       "w": "do",
+       "t": 4.388
+      },
+      {
+       "w": "rio",
+       "t": 4.584
+      },
+      {
+       "w": "Piracicaba,",
+       "t": 4.835
+      },
+      {
+       "w": "e",
+       "t": 5.467
+      },
+      {
+       "w": "a",
+       "t": 5.609
+      },
+      {
+       "w": "mata,",
+       "t": 5.75
+      },
+      {
+       "w": "para",
+       "t": 6.055
+      },
+      {
+       "w": "virar",
+       "t": 6.361
+      },
+      {
+       "w": "carvão.",
+       "t": 6.72
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vila",
+   "inicio": 19.9,
+   "dur": 6.133,
+   "frames": 184,
+   "falas": [
+    {
+     "id": "vila-1",
+     "cap": "Nasceu a Acesita. E, em volta dela, uma vila inteira, com casas, escolas, igreja e hospital.",
+     "t": 0.18,
+     "dur": 5.653,
+     "words": [
+      {
+       "w": "Nasceu",
+       "t": 0.18
+      },
+      {
+       "w": "a",
+       "t": 0.629
+      },
+      {
+       "w": "Acesita.",
+       "t": 0.783
+      },
+      {
+       "w": "E,",
+       "t": 1.292
+      },
+      {
+       "w": "em",
+       "t": 1.445
+      },
+      {
+       "w": "volta",
+       "t": 1.658
+      },
+      {
+       "w": "dela,",
+       "t": 2.049
+      },
+      {
+       "w": "uma",
+       "t": 2.38
+      },
+      {
+       "w": "vila",
+       "t": 2.652
+      },
+      {
+       "w": "inteira,",
+       "t": 2.983
+      },
+      {
+       "w": "com",
+       "t": 3.492
+      },
+      {
+       "w": "casas,",
+       "t": 3.764
+      },
+      {
+       "w": "escolas,",
+       "t": 4.154
+      },
+      {
+       "w": "igreja",
+       "t": 4.662
+      },
+      {
+       "w": "e",
+       "t": 5.112
+      },
+      {
+       "w": "hospital.",
+       "t": 5.266
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nomes",
+   "inicio": 26.033,
+   "dur": 5.333,
+   "frames": 160,
+   "falas": [
+    {
+     "id": "nomes-1",
+     "cap": "A vila ficou conhecida pelo nome da fábrica. O povoado antigo continuou Timóteo.",
+     "t": 0.18,
+     "dur": 4.864,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.18
+      },
+      {
+       "w": "vila",
+       "t": 0.326
+      },
+      {
+       "w": "ficou",
+       "t": 0.64
+      },
+      {
+       "w": "conhecida",
+       "t": 1.009
+      },
+      {
+       "w": "pelo",
+       "t": 1.603
+      },
+      {
+       "w": "nome",
+       "t": 1.917
+      },
+      {
+       "w": "da",
+       "t": 2.231
+      },
+      {
+       "w": "fábrica.",
+       "t": 2.433
+      },
+      {
+       "w": "O",
+       "t": 2.915
+      },
+      {
+       "w": "povoado",
+       "t": 3.06
+      },
+      {
+       "w": "antigo",
+       "t": 3.542
+      },
+      {
+       "w": "continuou",
+       "t": 3.968
+      },
+      {
+       "w": "Timóteo.",
+       "t": 4.562
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plebiscito",
+   "inicio": 31.367,
+   "dur": 7.233,
+   "frames": 217,
+   "falas": [
+    {
+     "id": "plebiscito-1",
+     "cap": "A marca pegou tanto que, num plebiscito, a maioria votou para trocar o nome da cidade para Acesita. A Assembleia barrou.",
+     "t": 0.18,
+     "dur": 6.763,
+     "words": [
+      {
+       "w": "A",
+       "t": 0.18
+      },
+      {
+       "w": "marca",
+       "t": 0.316
+      },
+      {
+       "w": "pegou",
+       "t": 0.66
+      },
+      {
+       "w": "tanto",
+       "t": 1.004
+      },
+      {
+       "w": "que,",
+       "t": 1.349
+      },
+      {
+       "w": "num",
+       "t": 1.589
+      },
+      {
+       "w": "plebiscito,",
+       "t": 1.829
+      },
+      {
+       "w": "a",
+       "t": 2.434
+      },
+      {
+       "w": "maioria",
+       "t": 2.57
+      },
+      {
+       "w": "votou",
+       "t": 3.019
+      },
+      {
+       "w": "para",
+       "t": 3.363
+      },
+      {
+       "w": "trocar",
+       "t": 3.655
+      },
+      {
+       "w": "o",
+       "t": 4.052
+      },
+      {
+       "w": "nome",
+       "t": 4.188
+      },
+      {
+       "w": "da",
+       "t": 4.48
+      },
+      {
+       "w": "cidade",
+       "t": 4.668
+      },
+      {
+       "w": "para",
+       "t": 5.064
+      },
+      {
+       "w": "Acesita.",
+       "t": 5.356
+      },
+      {
+       "w": "A",
+       "t": 5.805
+      },
+      {
+       "w": "Assembleia",
+       "t": 5.941
+      },
+      {
+       "w": "barrou.",
+       "t": 6.546
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parque",
+   "inicio": 38.6,
+   "dur": 11.067,
+   "frames": 332,
+   "falas": [
+    {
+     "id": "parque-1",
+     "cap": "Mas 1944 deixou outra herança. No mesmo ano, nasceu o Parque Estadual do Rio Doce.",
+     "t": 0.18,
+     "dur": 6.443,
+     "words": [
+      {
+       "w": "Mas",
+       "t": 0.18
+      },
+      {
+       "w": "1944",
+       "t": 0.513
+      },
+      {
+       "w": "deixou",
+       "t": 0.918
+      },
+      {
+       "w": "outra",
+       "t": 1.469
+      },
+      {
+       "w": "herança.",
+       "t": 1.946
+      },
+      {
+       "w": "No",
+       "t": 2.569
+      },
+      {
+       "w": "mesmo",
+       "t": 2.829
+      },
+      {
+       "w": "ano,",
+       "t": 3.307
+      },
+      {
+       "w": "nasceu",
+       "t": 3.64
+      },
+      {
+       "w": "o",
+       "t": 4.19
+      },
+      {
+       "w": "Parque",
+       "t": 4.379
+      },
+      {
+       "w": "Estadual",
+       "t": 4.929
+      },
+      {
+       "w": "do",
+       "t": 5.624
+      },
+      {
+       "w": "Rio",
+       "t": 5.884
+      },
+      {
+       "w": "Doce.",
+       "t": 6.217
+      }
+     ]
+    },
+    {
+     "id": "parque-2",
+     "cap": "Hoje, mais de um terço de Timóteo é Mata Atlântica protegida.",
+     "t": 6.843,
+     "dur": 3.925,
+     "words": [
+      {
+       "w": "Hoje,",
+       "t": 6.843
+      },
+      {
+       "w": "mais",
+       "t": 7.173
+      },
+      {
+       "w": "de",
+       "t": 7.503
+      },
+      {
+       "w": "um",
+       "t": 7.715
+      },
+      {
+       "w": "terço",
+       "t": 7.927
+      },
+      {
+       "w": "de",
+       "t": 8.316
+      },
+      {
+       "w": "Timóteo",
+       "t": 8.529
+      },
+      {
+       "w": "é",
+       "t": 9.036
+      },
+      {
+       "w": "Mata",
+       "t": 9.189
+      },
+      {
+       "w": "Atlântica",
+       "t": 9.519
+      },
+      {
+       "w": "protegida.",
+       "t": 10.144
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final",
+   "inicio": 49.667,
+   "dur": 5.367,
+   "frames": 161,
+   "falas": [
+    {
+     "id": "final-1",
+     "cap": "Acesita ou Timóteo? As duas.",
+     "t": 0.18,
+     "dur": 2.155,
+     "words": [
+      {
+       "w": "Acesita",
+       "t": 0.18
+      },
+      {
+       "w": "ou",
+       "t": 0.798
+      },
+      {
+       "w": "Timóteo?",
+       "t": 1.056
+      },
+      {
+       "w": "As",
+       "t": 1.674
+      },
+      {
+       "w": "duas.",
+       "t": 1.932
+      }
+     ]
+    },
+    {
+     "id": "final-2",
+     "cap": "Aço e floresta, nascidos no mesmo ano.",
+     "t": 2.555,
+     "dur": 2.496,
+     "words": [
+      {
+       "w": "Aço",
+       "t": 2.555
+      },
+      {
+       "w": "e",
+       "t": 2.834
+      },
+      {
+       "w": "floresta,",
+       "t": 2.991
+      },
+      {
+       "w": "nascidos",
+       "t": 3.573
+      },
+      {
+       "w": "no",
+       "t": 4.154
+      },
+      {
+       "w": "mesmo",
+       "t": 4.372
+      },
+      {
+       "w": "ano.",
+       "t": 4.772
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fim",
+   "inicio": 55.033,
+   "dur": 2.6,
+   "frames": 78,
+   "falas": []
+  }
+ ]
+}

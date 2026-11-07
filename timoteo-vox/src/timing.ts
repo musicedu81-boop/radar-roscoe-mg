@@ -53,3 +53,35 @@ export const batidas = (id: string, fps = TIMING.fps) => {
   };
   return { at, end, word, frames: c.frames, cena: c };
 };
+
+// ---------------------------------------------------------------- Short (9:16)
+import timingShort from "./data/timing-short.json";
+
+export const TIMING_SHORT = timingShort as typeof TIMING;
+
+export const inicioCenasShort = (() => {
+  const out: Record<string, number> = {};
+  let acc = 0;
+  for (const c of TIMING_SHORT.cenas) {
+    out[c.id] = acc;
+    acc += c.frames;
+  }
+  return out;
+})();
+
+export const batidasShort = (id: string, fps = TIMING_SHORT.fps) => {
+  const c = TIMING_SHORT.cenas.find((x) => x.id === id);
+  if (!c) throw new Error("cena não encontrada: " + id);
+  const at = (i: number) => Math.round((c.falas[Math.min(i, c.falas.length - 1)]?.t ?? 0) * fps);
+  const end = (i: number) => {
+    const f = c.falas[i];
+    return f ? Math.round((f.t + f.dur) * fps) : c.frames;
+  };
+  const word = (i: number, txt: string) => {
+    const f = c.falas[i];
+    if (!f) return 0;
+    const k = f.words.findIndex((p) => p.w.toLowerCase().includes(txt.toLowerCase()));
+    return Math.round((k >= 0 ? f.words[k].t : f.t) * fps);
+  };
+  return { at, end, word, frames: c.frames, cena: c };
+};

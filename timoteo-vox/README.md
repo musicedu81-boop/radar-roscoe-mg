@@ -1,6 +1,11 @@
 # Timóteo: uma cidade, dois nomes
 
-Explainer animado no estilo Vox sobre Timóteo (MG). 5min10s, 1920×1080, 30 fps, com locução em pt-BR, legendas karaokê, trilha original e efeitos sonoros.
+Dois cortes do mesmo projeto:
+
+- **Short 9:16 (principal)** · 58s · 1080×1920 · estilo Vox colagem editorial: papel amassado, fotos reais rasgadas em P&B, recortes, setas a pincel, marca-texto limão, máquina de escrever, fundo de jornal, mapa estilo satélite com nuvens. Composição `TimoteoShort` (código em `src/short/`).
+- **Versão longa 16:9** · 5min10s · 1920×1080 · estilo Vox infográfico (papel liso, ícones, mapas IBGE). Composição `TimoteoVox`.
+
+Ambos com locução em pt-BR gerada pelo TTS do HyperFrames, legendas sincronizadas palavra a palavra, trilha original e efeitos sonoros.
 
 **Tese do vídeo:** em 1944 nasceram, no mesmo ano, a Acesita (hoje Aperam) e o Parque Estadual do Rio Doce. A usina criou uma cidade dentro da cidade, e a floresta limitou o chão onde ela pode crescer. Por isso até hoje se fala em "Acesita" e "Timóteo" como se fossem dois lugares.
 
@@ -8,11 +13,12 @@ Explainer animado no estilo Vox sobre Timóteo (MG). 5min10s, 1920×1080, 30 fps
 
 | Arquivo | O que é |
 | --- | --- |
-| `timoteo-vox.mp4` | Vídeo final com legendas, áudio normalizado (-16 LUFS) |
-| `timoteo-vox-sem-legenda.mp4` | Mesma edição, sem legendas queimadas |
-| `locucao-timoteo.mp3` | Locução isolada |
-| `roteiro-locucao.md` | Roteiro final com tempos por cena |
-| `capa.jpg` | Quadro de capa para thumbnail |
+| `timoteo-short-9x16.mp4` | Short final com legendas, áudio normalizado (-14 LUFS, padrão redes) |
+| `roteiro-short.md` | Roteiro do Short com tempos e legenda sugerida para o post |
+| `roteiro-locucao.md` | Roteiro da versão longa com tempos por cena |
+| `capa-short.jpg` | Quadro de capa do Short |
+
+A versão longa 16:9 (75 MB) é entregue fora do repositório. Para gerar de novo: `npx remotion render TimoteoVox`.
 
 ## Pipeline
 
@@ -31,9 +37,16 @@ Explainer animado no estilo Vox sobre Timóteo (MG). 5min10s, 1920×1080, 30 fps
    npm i
    python3 scripts/fontes.py          # fontes locais (render offline)
    npx remotion studio                # pré-visualização
+   npx remotion render TimoteoShort out/timoteo-short.mp4
+   npx remotion render TimoteoShortSemLegenda out/timoteo-short-sem-legenda.mp4
    npx remotion render TimoteoVox out/timoteo-vox.mp4
-   npx remotion render TimoteoVoxSemLegenda out/timoteo-vox-sem-legenda.mp4
    ```
+
+### Short: material extra
+
+- Locução: `PRE_ABERTURA=0.35 PRE_CENA=0.18 POS_CENA=0.3 GAP_FALA=0.22 python3 scripts/locucao.py roteiro/roteiro-short.json src/data/timing-short.json narracao-short`
+- Texturas (papel amassado, terreno, nuvens): `python3 scripts/short_texturas.py <mg-mun.json>`
+- Fotos: Wikimedia Commons, créditos em `public/fotos/CREDITOS.md`. Recortes com fundo removido (rembg) em `public/recortes/`.
 
 ## Estrutura
 

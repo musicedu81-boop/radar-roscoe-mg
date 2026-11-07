@@ -1,7 +1,8 @@
 import React from "react";
 import { Composition } from "remotion";
 import { Video } from "./Video";
-import { TIMING } from "./timing";
+import { ShortVideo } from "./short/ShortVideo";
+import { TIMING, TIMING_SHORT } from "./timing";
 import { FPS, H, W } from "./theme";
 
 export const RemotionRoot: React.FC = () => {
@@ -23,6 +24,24 @@ export const RemotionRoot: React.FC = () => {
         fps={FPS}
         width={W}
         height={H}
+        defaultProps={{ legendas: false }}
+      />
+      <Composition
+        id="TimoteoShort"
+        component={ShortVideo}
+        durationInFrames={TIMING_SHORT.totalFrames}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{ legendas: true }}
+      />
+      <Composition
+        id="TimoteoShortSemLegenda"
+        component={ShortVideo}
+        durationInFrames={TIMING_SHORT.totalFrames}
+        fps={FPS}
+        width={1080}
+        height={1920}
         defaultProps={{ legendas: false }}
       />
     </>
