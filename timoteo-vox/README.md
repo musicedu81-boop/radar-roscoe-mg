@@ -1,8 +1,9 @@
 # Timóteo: uma cidade, dois nomes
 
-Três cortes do mesmo projeto:
+Quatro cortes do mesmo projeto:
 
 - **Versão A · Short 9:16 fiel às referências** · 58s · layout fixo em 3 faixas (selo limão no topo, janela rasgada no meio, "acesita ou TIMÓTEO?" com pincelada e setas embaixo), polaroides com fita crepe, letra de pincel atômico, trilha pontilhada, linha do tempo amarela, mapa estilo satélite com igreja e locomotiva recortadas em pé, fotos em P&B com cor seletiva mostarda, elipse vermelha à mão, legenda branca condensada. Composição `TimoteoShortRef` (código em `src/shortref/`).
+- **Versão longa · 9:16 colagem (estilo B)** · 5min10s · roteiro completo em 40 painéis de colagem, um por fala ou grupo de falas: fotos rasgadas, mapas, selos, carimbos, retrato de Percival Farquhar. Composição `TimoteoLongoB` (código em `src/longob/`).
 - **Versão B · Short 9:16 colagem** · 58s · 1080×1920 · estilo Vox colagem editorial: papel amassado, fotos reais rasgadas em P&B, recortes, setas a pincel, marca-texto limão, máquina de escrever, fundo de jornal, mapa estilo satélite com nuvens. Composição `TimoteoShort` (código em `src/short/`).
 - **Versão longa 16:9** · 5min10s · 1920×1080 · estilo Vox infográfico (papel liso, ícones, mapas IBGE). Composição `TimoteoVox`.
 
@@ -17,11 +18,17 @@ Ambos com locução em pt-BR gerada pelo TTS do HyperFrames, legendas sincroniza
 | `timoteo-short-A-referencia.mp4` | Versão A, fiel às referências (-14 LUFS) |
 | `capa-short-A.jpg` | Capa da Versão A |
 | `timoteo-short-9x16.mp4` | Versão B, colagem (-14 LUFS) |
+| `timoteo-longo-9x16.mp4` | Versão longa no estilo B (-14 LUFS) |
+| `capa-longo.jpg` | Capa da versão longa |
 | `roteiro-short.md` | Roteiro do Short com tempos e legenda sugerida para o post |
 | `roteiro-locucao.md` | Roteiro da versão longa com tempos por cena |
 | `capa-short.jpg` | Quadro de capa do Short |
 
 A versão longa 16:9 (75 MB) é entregue fora do repositório. Para gerar de novo: `npx remotion render TimoteoVox`.
+
+## Pronúncia
+
+Timóteo se fala **TI-MÓ-TÊO**. O phonemizer (espeak) gera `tʃimˈɔtʃjʊ` ("timótchiu"); `scripts/locucao.py` substitui por `tʃimˈɔteʊ` em todas as falas, inclusive na forma ligada antes de vogal, e falha se sobrar alguma ocorrência errada.
 
 ## Pipeline
 
