@@ -55,8 +55,8 @@ export const PAb1: React.FC<PainelProps> = ({ b, off }) => {
       <Fita texto="“onde fica a Acesita?”" x={110} y={760} at={t.w(0, "onde")} rot={-4} size={50} />
       <Seta de={[960, 640]} ate={[820, 330]} curva={-80} at={t.w(1, "apontar")} seed="la1s" largura={24} />
       <Rotulo texto="UM BAIRRO" at={t.w(1, "bairro")} x={600} y={560} rot={4} size={70} />
-      <Foto src="fotos/saosebastiao_inteira.jpg" x={40} y={860} w={1000} h={620} at={t.a(2) - 4} rot={2.5} de="baixo" seed="la2" pos="52% 40%" pb={0.7} zoom={[1.0, 1.03]} dur={300} />
-      <Fita texto="“e onde fica Timóteo?”" x={380} y={1390} at={t.w(2, "onde")} rot={3} size={50} />
+      <Foto src="fotos/saosebastiao_edu.jpg" x={250} y={828} w={580} h={652} at={t.a(2) - 4} rot={2.5} de="baixo" seed="la2" pb={0.6} zoom={[1.0, 1.02]} dur={300} />
+      <Fita texto="“e onde fica Timóteo?”" x={360} y={1452} at={t.w(2, "onde")} rot={3} size={50} />
       <Rotulo texto="OUTRO LUGAR" at={t.w(3, "outro")} x={70} y={1280} rot={-3} size={70} fundo="#fff" />
       <Faixa y={735} h={210} at={t.a(4)} seed="la3">
         <Serif size={104} cor="#fff" italic>
@@ -585,9 +585,9 @@ export const PV5: React.FC<PainelProps> = ({ b, off }) => {
       <Foto src="fotos/saojose.jpg" x={40} y={200} w={1000} h={560} at={t.w(4, "lado") - 4} rot={-2} de="cima" seed="v5a" pb={0.9} dur={200} />
       <Fita texto="a vila da empresa" x={600} y={190} at={t.w(4, "vila")} rot={3} size={42} />
       <Rotulo texto="ACESITA" at={t.w(4, "Acesita.")} x={90} y={640} rot={-4} />
-      <Foto src="fotos/saosebastiao_inteira.jpg" x={40} y={840} w={1000} h={620} at={t.w(4, "outro") - 6} rot={2} de="baixo" seed="v5b" pb={0.75} pos="52% 40%" zoom={[1.0, 1.03]} dur={160} />
+      <Foto src="fotos/saosebastiao_edu.jpg" x={250} y={830} w={580} h={652} at={t.w(4, "outro") - 6} rot={2} de="baixo" seed="v5b" pb={0.6} zoom={[1.0, 1.02]} dur={160} />
       <Fita texto="o povoado antigo" x={540} y={850} at={t.w(4, "povoado")} rot={3} size={42} />
-      <Rotulo texto="TIMÓTEO" at={t.w(4, "Timóteo.")} x={520} y={1320} rot={3} fundo="#fff" />
+      <Rotulo texto="TIMÓTEO" at={t.w(4, "Timóteo.")} x={560} y={1430} rot={3} fundo="#fff" />
       <Sfx at={t.w(4, "Acesita.")} name="pop" vol={0.45} />
       <Sfx at={t.w(4, "outro") - 6} name="whoosh-short" vol={0.35} />
       <Sfx at={t.w(4, "Timóteo.")} name="pop" vol={0.45} />
