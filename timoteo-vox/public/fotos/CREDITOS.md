@@ -17,5 +17,9 @@ Capturadas do visualizador de mídia da Wikipédia (pt). Uso conforme a licença
 | pico.jpg | Pico do Ana Moura visto de Coronel Fabriciano ao entardecer.JPG | Wesley Menezes | CC BY-SA 3.0 |
 | lagoa.jpg | PE Rio Doce MG.jpg (Lagoa Dom Helvécio) | Fernando Marino (Panoramio) | CC BY-SA 3.0 |
 | orbital.jpg | STS089-710-24.jpg | NASA | Domínio público |
+| saosebastiao_inteira.jpg | Fachada da Igreja Matriz de São Sebastião, Timóteo MG.JPG | HVL | CC BY 4.0 |
+| farquhar.jpg | Percival Farquhar (coleção Nosso Século, Editora Abril, 1980) | Desconhecido | Domínio público |
+| ../recortes/onca.png | Jaguar (Panthera onca palustris) male Three Brothers River 2.jpg | Charles J. Sharp | CC BY-SA 4.0 |
+| ../recortes/muriqui.png | Northern Muriqui (Brachyteles hypoxanthus) (5539581122).jpg | Peter Schoen | CC BY 2.0 |
 
 Recortes em `public/recortes/` foram gerados a partir dessas fotos com remoção de fundo (rembg, modelo isnet-general-use). Fotos tratadas em P&B, contraste e retícula na animação.

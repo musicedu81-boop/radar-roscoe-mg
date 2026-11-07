@@ -850,10 +850,31 @@ export const PQ4: React.FC<PainelProps> = ({ b, off }) => {
       <Rotulo texto="≈ 36 MIL HECTARES" at={t.w(3, "36")} x={60} y={990} rot={-3} size={84} />
       <Rotulo texto="~40 LAGOAS" at={t.w(3, "40")} x={460} y={1100} rot={3} size={84} fundo="#fff" />
       <Fita texto="maior área contínua de Mata Atlântica de MG" x={40} y={1235} at={t.w(3, "maior")} rot={-2} size={34} />
-      <Fita texto="onça-pintada · muriqui" x={420} y={1330} at={t.w(3, "onça-pintada")} rot={2} size={42} />
       <Sfx at={t.w(3, "36")} name="pop" vol={0.4} />
       <Sfx at={t.w(3, "40")} name="pop" vol={0.4} />
-      <Sfx at={t.w(3, "onça-pintada")} name="click-soft" vol={0.4} />
+      <Bichos at={t.w(3, "Ali") - 4} onca={t.w(3, "onça-pintada") - 4} muriqui={t.w(3, "muriqui.") - 6} />
+    </AbsoluteFill>
+  );
+};
+
+/** "Ali vivem a onça-pintada e o muriqui": folha nova entra e os dois bichos chegam recortados. */
+const Bichos: React.FC<{ at: number; onca: number; muriqui: number }> = ({ at, onca, muriqui }) => {
+  const f = useCurrentFrame();
+  if (f < at - 1) return null;
+  const p = ip(f, [at, at + 9], [0, 1], EASE_IO);
+  return (
+    <AbsoluteFill style={{ translate: `${(1 - p) * 1080}px 0`, filter: p < 1 ? `blur(${(1 - p) * 20}px)` : undefined }}>
+      <Amassado />
+      <Fita texto="ali vivem" x={540} y={120} at={at + 2} rot={-2} size={48} centro />
+      <Recorte src="recortes/onca.png" x={30} y={230} w={1000} at={onca} rot={-2} de="dir" seed="onca" pb={0.15} />
+      <Rotulo texto="ONÇA-PINTADA" at={onca + 6} x={60} y={790} rot={-3} size={92} />
+      <Fita texto="maior felino das Américas" x={430} y={900} at={onca + 14} rot={2} size={34} />
+      <Recorte src="recortes/muriqui.png" x={420} y={930} w={600} at={muriqui} rot={3} de="esq" seed="muri" pb={0.15} />
+      <Rotulo texto="MURIQUI" at={muriqui + 6} x={40} y={1150} rot={-4} size={96} fundo="#fff" />
+      <Fita texto="maior primata das Américas" x={40} y={1290} at={muriqui + 14} rot={-2} size={32} />
+      <Sfx at={at} name="whoosh-short" vol={0.35} />
+      <Sfx at={onca} name="pop" vol={0.45} />
+      <Sfx at={muriqui} name="pop" vol={0.45} />
     </AbsoluteFill>
   );
 };
@@ -1056,7 +1077,7 @@ export const PCreditos: React.FC<PainelProps> = () => {
       </div>
       <Fita texto="uma cidade, dois nomes" x={540} y={760} at={6} rot={-2} size={56} centro />
       <div style={{ position: "absolute", left: 80, right: 80, top: 960, textAlign: "center", fontFamily: FS.maquina, fontSize: 26, lineHeight: 1.6, color: "#bdbdbd", opacity: ip(f, [14, 26], [0, 1]) }}>
-        Fotos: HVL, Fernando Marino, Tico-Tico, Wesley Menezes (Wikimedia Commons, CC BY / CC BY-SA)
+        Fotos: HVL, Fernando Marino, Tico-Tico, Wesley Menezes, Charles J. Sharp, Peter Schoen (Wikimedia Commons, CC BY / CC BY-SA)
         <br />
         NASA e retrato de Percival Farquhar (domínio público)
         <br />
