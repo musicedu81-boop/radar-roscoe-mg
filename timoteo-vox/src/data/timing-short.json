@@ -2,19 +2,19 @@
  "fps": 30,
  "voz": "pm_alex",
  "velocidade": 1.0,
- "totalFrames": 1729,
+ "totalFrames": 1725,
  "cenas": [
   {
    "id": "gancho",
    "inicio": 0.0,
-   "dur": 8.467,
-   "frames": 254,
+   "dur": 8.4,
+   "frames": 252,
    "falas": [
     {
      "id": "gancho-1",
      "cap": "Em Timóteo, tem gente que diz que mora na Acesita.",
      "t": 0.35,
-     "dur": 3.136,
+     "dur": 3.093,
      "words": [
       {
        "w": "Em",
@@ -22,115 +22,115 @@
       },
       {
        "w": "Timóteo,",
-       "t": 0.555
+       "t": 0.552
       },
       {
        "w": "tem",
-       "t": 1.046
+       "t": 1.036
       },
       {
        "w": "gente",
-       "t": 1.308
+       "t": 1.295
       },
       {
        "w": "que",
-       "t": 1.684
+       "t": 1.666
       },
       {
        "w": "diz",
-       "t": 1.947
+       "t": 1.925
       },
       {
        "w": "que",
-       "t": 2.209
+       "t": 2.184
       },
       {
        "w": "mora",
-       "t": 2.471
+       "t": 2.442
       },
       {
        "w": "na",
-       "t": 2.79
+       "t": 2.757
       },
       {
        "w": "Acesita.",
-       "t": 2.996
+       "t": 2.96
       }
      ]
     },
     {
      "id": "gancho-2",
      "cap": "E tem gente que diz que mora em Timóteo.",
-     "t": 3.706,
-     "dur": 2.56,
+     "t": 3.663,
+     "dur": 2.517,
      "words": [
       {
        "w": "E",
-       "t": 3.706
+       "t": 3.663
       },
       {
        "w": "tem",
-       "t": 3.853
+       "t": 3.807
       },
       {
        "w": "gente",
-       "t": 4.112
+       "t": 4.062
       },
       {
        "w": "que",
-       "t": 4.484
+       "t": 4.428
       },
       {
        "w": "diz",
-       "t": 4.744
+       "t": 4.683
       },
       {
        "w": "que",
-       "t": 5.003
+       "t": 4.938
       },
       {
        "w": "mora",
-       "t": 5.262
+       "t": 5.193
       },
       {
        "w": "em",
-       "t": 5.578
+       "t": 5.504
       },
       {
        "w": "Timóteo.",
-       "t": 5.781
+       "t": 5.703
       }
      ]
     },
     {
      "id": "gancho-3",
      "cap": "Só que é a mesma cidade.",
-     "t": 6.486,
+     "t": 6.401,
      "dur": 1.685,
      "words": [
       {
        "w": "Só",
-       "t": 6.486
+       "t": 6.401
       },
       {
        "w": "que",
-       "t": 6.706
+       "t": 6.621
       },
       {
        "w": "é",
-       "t": 6.987
+       "t": 6.902
       },
       {
        "w": "a",
-       "t": 7.145
+       "t": 7.06
       },
       {
        "w": "mesma",
-       "t": 7.304
+       "t": 7.219
       },
       {
        "w": "cidade.",
-       "t": 7.707
+       "t": 7.622
       }
      ]
     }
@@ -138,7 +138,7 @@
   },
   {
    "id": "ano",
-   "inicio": 8.467,
+   "inicio": 8.4,
    "dur": 4.0,
    "frames": 120,
    "falas": [
@@ -174,7 +174,7 @@
   },
   {
    "id": "motivos",
-   "inicio": 12.467,
+   "inicio": 12.4,
    "dur": 7.433,
    "frames": 223,
    "falas": [
@@ -274,7 +274,7 @@
   },
   {
    "id": "vila",
-   "inicio": 19.9,
+   "inicio": 19.833,
    "dur": 6.133,
    "frames": 184,
    "falas": [
@@ -354,15 +354,15 @@
   },
   {
    "id": "nomes",
-   "inicio": 26.033,
-   "dur": 5.333,
-   "frames": 160,
+   "inicio": 25.967,
+   "dur": 5.4,
+   "frames": 162,
    "falas": [
     {
      "id": "nomes-1",
      "cap": "A vila ficou conhecida pelo nome da fábrica. O povoado antigo continuou Timóteo.",
      "t": 0.18,
-     "dur": 4.864,
+     "dur": 4.928,
      "words": [
       {
        "w": "A",
@@ -370,51 +370,51 @@
       },
       {
        "w": "vila",
-       "t": 0.326
+       "t": 0.328
       },
       {
        "w": "ficou",
-       "t": 0.64
+       "t": 0.646
       },
       {
        "w": "conhecida",
-       "t": 1.009
+       "t": 1.02
       },
       {
        "w": "pelo",
-       "t": 1.603
+       "t": 1.622
       },
       {
        "w": "nome",
-       "t": 1.917
+       "t": 1.94
       },
       {
        "w": "da",
-       "t": 2.231
+       "t": 2.258
       },
       {
        "w": "fábrica.",
-       "t": 2.433
+       "t": 2.462
       },
       {
        "w": "O",
-       "t": 2.915
+       "t": 2.951
       },
       {
        "w": "povoado",
-       "t": 3.06
+       "t": 3.098
       },
       {
        "w": "antigo",
-       "t": 3.542
+       "t": 3.586
       },
       {
        "w": "continuou",
-       "t": 3.968
+       "t": 4.018
       },
       {
        "w": "Timóteo.",
-       "t": 4.562
+       "t": 4.62
       }
      ]
     }
@@ -523,8 +523,8 @@
   {
    "id": "parque",
    "inicio": 38.6,
-   "dur": 11.067,
-   "frames": 332,
+   "dur": 11.033,
+   "frames": 331,
    "falas": [
     {
      "id": "parque-1",
@@ -598,7 +598,7 @@
      "id": "parque-2",
      "cap": "Hoje, mais de um terço de Timóteo é Mata Atlântica protegida.",
      "t": 6.843,
-     "dur": 3.925,
+     "dur": 3.883,
      "words": [
       {
        "w": "Hoje,",
@@ -606,43 +606,43 @@
       },
       {
        "w": "mais",
-       "t": 7.173
+       "t": 7.169
       },
       {
        "w": "de",
-       "t": 7.503
+       "t": 7.496
       },
       {
        "w": "um",
-       "t": 7.715
+       "t": 7.706
       },
       {
        "w": "terço",
-       "t": 7.927
+       "t": 7.916
       },
       {
        "w": "de",
-       "t": 8.316
+       "t": 8.3
       },
       {
        "w": "Timóteo",
-       "t": 8.529
+       "t": 8.51
       },
       {
        "w": "é",
-       "t": 9.036
+       "t": 9.012
       },
       {
        "w": "Mata",
-       "t": 9.189
+       "t": 9.163
       },
       {
        "w": "Atlântica",
-       "t": 9.519
+       "t": 9.49
       },
       {
        "w": "protegida.",
-       "t": 10.144
+       "t": 10.108
       }
      ]
     }
@@ -650,15 +650,15 @@
   },
   {
    "id": "final",
-   "inicio": 49.667,
-   "dur": 5.367,
-   "frames": 161,
+   "inicio": 49.633,
+   "dur": 5.267,
+   "frames": 158,
    "falas": [
     {
      "id": "final-1",
      "cap": "Acesita ou Timóteo? As duas.",
      "t": 0.18,
-     "dur": 2.155,
+     "dur": 2.069,
      "words": [
       {
        "w": "Acesita",
@@ -666,55 +666,55 @@
       },
       {
        "w": "ou",
-       "t": 0.798
+       "t": 0.773
       },
       {
        "w": "Timóteo?",
-       "t": 1.056
+       "t": 1.022
       },
       {
        "w": "As",
-       "t": 1.674
+       "t": 1.615
       },
       {
        "w": "duas.",
-       "t": 1.932
+       "t": 1.863
       }
      ]
     },
     {
      "id": "final-2",
      "cap": "Aço e floresta, nascidos no mesmo ano.",
-     "t": 2.555,
+     "t": 2.469,
      "dur": 2.496,
      "words": [
       {
        "w": "Aço",
-       "t": 2.555
+       "t": 2.469
       },
       {
        "w": "e",
-       "t": 2.834
+       "t": 2.748
       },
       {
        "w": "floresta,",
-       "t": 2.991
+       "t": 2.905
       },
       {
        "w": "nascidos",
-       "t": 3.573
+       "t": 3.487
       },
       {
        "w": "no",
-       "t": 4.154
+       "t": 4.068
       },
       {
        "w": "mesmo",
-       "t": 4.372
+       "t": 4.286
       },
       {
        "w": "ano.",
-       "t": 4.772
+       "t": 4.686
       }
      ]
     }
@@ -722,7 +722,7 @@
   },
   {
    "id": "fim",
-   "inicio": 55.033,
+   "inicio": 54.9,
    "dur": 2.6,
    "frames": 78,
    "falas": []

@@ -24,7 +24,7 @@ import {
   SW,
 } from "./kit";
 
-const Rotulo: React.FC<{ texto: string; at: number; x: number; y: number; rot?: number; fundo?: string; cor?: string; size?: number }> = ({
+export const Rotulo: React.FC<{ texto: string; at: number; x: number; y: number; rot?: number; fundo?: string; cor?: string; size?: number }> = ({
   texto,
   at,
   x,
@@ -63,7 +63,7 @@ const Rotulo: React.FC<{ texto: string; at: number; x: number; y: number; rot?: 
 };
 
 /** Faixa escura rasgada atravessando a tela (como na referência). */
-const Faixa: React.FC<{ y: number; h: number; at: number; children: React.ReactNode; seed?: string; out?: number }> = ({ y, h, at, children, seed = "fx", out }) => {
+export const Faixa: React.FC<{ y: number; h: number; at: number; children: React.ReactNode; seed?: string; out?: number }> = ({ y, h, at, children, seed = "fx", out }) => {
   const f = useCurrentFrame();
   const p = ip(f, [at, at + 8], [0, 1], EASE_IO);
   const o = out !== undefined ? ip(f, [out, out + 8], [1, 0]) : 1;
@@ -149,7 +149,7 @@ export const Ano: React.FC = () => {
 
 // =========================================================== mapa (terreno estilo satélite)
 const S_TER = 200;
-const MapaTerreno: React.FC<{ escala: number; cx: number; cy: number; tilt: number; zoom?: [number, number]; dur: number; children?: React.ReactNode; parqueAt?: number }> = ({
+export const MapaTerreno: React.FC<{ escala: number; cx: number; cy: number; tilt: number; zoom?: [number, number]; dur: number; children?: React.ReactNode; parqueAt?: number; contornos?: { nome: string; at: number; cor?: string; preencher?: boolean }[]; semTimoteo?: boolean }> = ({
   escala,
   cx,
   cy,
@@ -158,6 +158,8 @@ const MapaTerreno: React.FC<{ escala: number; cx: number; cy: number; tilt: numb
   dur,
   children,
   parqueAt,
+  contornos,
+  semTimoteo,
 }) => {
   const f = useCurrentFrame();
   const W = terreno.w * escala;
@@ -190,7 +192,14 @@ const MapaTerreno: React.FC<{ escala: number; cx: number; cy: number; tilt: numb
             {parqueAt !== undefined ? (
               <path d={GEO.parqueTimoteo} fill="url(#hachuraLima)" opacity={ip(f, [parqueAt, parqueAt + 12], [0, 1])} stroke={K.lima} strokeWidth={4 / k} />
             ) : null}
-            <path d={GEO.timoteo} fill="none" stroke={K.lima} strokeWidth={7 / k} strokeLinejoin="round" />
+            {(contornos ?? []).map((c) => {
+              const d = GEO.region.find((r) => r.name === c.nome)?.d ?? "";
+              const p = ip(f, [c.at, c.at + 10], [0, 1]);
+              return (
+                <path key={c.nome} d={d} fill={c.preencher ? (c.cor ?? "#fff") : "none"} fillOpacity={c.preencher ? 0.35 * p : 0} stroke={c.cor ?? "#fff"} strokeWidth={6 / k} strokeLinejoin="round" opacity={p} />
+              );
+            })}
+            {semTimoteo ? null : <path d={GEO.timoteo} fill="none" stroke={K.lima} strokeWidth={7 / k} strokeLinejoin="round" />}
           </g>
         </svg>
         <Img

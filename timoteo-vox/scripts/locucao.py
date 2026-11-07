@@ -17,6 +17,22 @@ import numpy as np
 import soundfile as sf
 from kokoro_onnx import Kokoro
 
+# Correções de pronúncia (fonemas IPA do espeak usados pelo Kokoro).
+# Timóteo se fala TI-MÓ-TÊO: "ê" fechado no fim, nunca "timótchiu".
+# O espeak gera "tʃˌimˈɔtʃjʊ"; o correto é "tʃˌimˈɔteʊ".
+# Vale também para a forma ligada antes de vogal ("Timóteo é" -> "...tʃjw ɛ").
+PRONUNCIA = [
+    (re.compile(r"(tʃˌ?imˈɔ)tʃj[ʊw]"), r"\1teʊ"),
+]
+
+
+def fonemas(texto: str) -> str:
+    ph = kokoro.tokenizer.phonemize(texto, "pt-br")
+    for padrao, certo in PRONUNCIA:
+        ph = padrao.sub(certo, ph)
+    assert "ɔtʃj" not in ph, f"pronúncia de Timóteo não corrigida: {ph}"
+    return ph
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.expanduser("~/.cache/hyperframes/tts")
 MODEL = os.path.join(CACHE, "models", "kokoro-v1.0.onnx")
@@ -71,7 +87,8 @@ for ci, cena in enumerate(roteiro["cenas"]):
         trilha.append(silencio(pre))
         t += pre
         for fi, fala in enumerate(cena["falas"]):
-            audio, sr = kokoro.create(fala["say"], voice=voz, speed=vel, lang="pt-br")
+            ph = fonemas(fala["say"])
+            audio, sr = kokoro.create(ph, voice=voz, speed=vel, lang="pt-br", is_phonemes=True)
             assert sr == sr_out, sr
             audio = audio.astype(np.float32)
             dur = len(audio) / sr
