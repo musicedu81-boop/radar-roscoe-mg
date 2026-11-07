@@ -13,8 +13,14 @@ Uso:
 Variáveis:
   GEMINI_VOZ (Charon)  GEMINI_MODELO (gemini-3.8-flash-tts)
   GAP_FALA PRE_CENA POS_CENA PRE_ABERTURA   (pausas, em segundos)
-  VERIFICAR=1   confere a pronúncia de "Timóteo" em cada fala (Gemini ouvindo o áudio)
+  GRAFIA        como escrever "Timóteo" para o TTS acertar TI-MÓ-TÊO (padrão: Timóteo).
+                O Gemini não aceita fonemas; a grafia é escolhida de ouvido.
+  LOTE=cena     uma chamada por cena (padrão, economiza cota) ou LOTE=fala, uma por frase
   AMOSTRA=n     gera só as n primeiras falas, para testar voz e ritmo
+
+Atenção: um modelo Gemini "ouvindo" o áudio não serve para checar a pronúncia: ele
+transcreve o nome da cidade como conhece, mesmo quando a fala está certa (testado com a
+locução Kokoro de fonema forçado).
 """
 import base64
 import hashlib
@@ -35,7 +41,8 @@ API = "https://generativelanguage.googleapis.com/v1beta"
 MODELO = os.environ.get("GEMINI_MODELO", "gemini-3.8-flash-tts")
 VOZ = os.environ.get("GEMINI_VOZ", "Charon")
 CHAVE = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-VERIFICAR = os.environ.get("VERIFICAR") == "1"
+GRAFIA = os.environ.get("GRAFIA", "Timóteo")
+LOTE = os.environ.get("LOTE", "cena")
 AMOSTRA = int(os.environ.get("AMOSTRA", 0))
 
 FPS = 30
@@ -203,58 +210,49 @@ def palavras(cap, audio, ini):
     return out
 
 
-_ouvinte = None
+def divide(audio, textos):
+    """Corta o áudio de uma cena inteira nas pausas que melhor batem com o fim de cada fala.
+    Fronteira esperada = proporção de caracteres; vence a pausa próxima e longa."""
+    seg = trechos_falados(audio, pausa_min=0.12)
+    pausas = [(seg[i][1], seg[i + 1][0]) for i in range(len(seg) - 1)]
+    ini, fim = (seg[0][0], seg[-1][1]) if seg else (0.0, len(audio) / SR)
+    pesos = [len(t) for t in textos]
+    tot, acc, cortes, usado = sum(pesos), 0, [], -1
+    for k in range(len(textos) - 1):
+        acc += pesos[k]
+        alvo = ini + (fim - ini) * acc / tot
+        cands = [(abs((a + b) / 2 - alvo) - 0.8 * (b - a), j) for j, (a, b) in enumerate(pausas) if j > usado]
+        if not cands:
+            return None
+        _, j = min(cands)
+        usado = j
+        cortes.append((pausas[j][0] + pausas[j][1]) / 2)
+    bordas = [0.0] + cortes + [len(audio) / SR]
+    pedacos = [apara(audio[int(bordas[i] * SR): int(bordas[i + 1] * SR)]) for i in range(len(textos))]
+    # sanidade: cada pedaço perto do tamanho esperado
+    durs = [len(x) / SR for x in pedacos]
+    soma = sum(durs)
+    for d, w in zip(durs, pesos):
+        esp = soma * w / tot
+        if not (0.5 * esp <= d <= 1.8 * esp):
+            return None
+    return pedacos
 
 
-def ouvinte():
-    """Escolhe um modelo Gemini 'flash' de texto que aceite áudio, para checar a pronúncia."""
-    global _ouvinte
-    if _ouvinte is None:
-        r = requests.get(f"{API}/models?pageSize=200", headers=cabecalhos(), timeout=60)
-        r.raise_for_status()
-        nomes = [m["name"] for m in r.json().get("models", [])
-                 if "generateContent" in m.get("supportedGenerationMethods", [])
-                 and "flash" in m["name"] and not re.search(r"tts|image|live|audio|embed", m["name"])]
-        nomes.sort(key=lambda s: ("preview" in s or "exp" in s, "lite" in s, s), reverse=False)
-        _ouvinte = os.environ.get("GEMINI_OUVINTE") or (nomes[0] if nomes else "models/gemini-2.5-flash")
-        print(f"verificador de pronúncia: {_ouvinte}")
-    return _ouvinte
+def prepara(say: str) -> str:
+    return say.replace("Timóteo", GRAFIA)
 
 
-def pronuncia_ok(audio) -> bool:
-    buf = io.BytesIO()
-    sf.write(buf, audio, SR, format="WAV", subtype="PCM_16")
-    pergunta = (
-        "Ouça o áudio em português do Brasil. Ele contém o nome da cidade Timóteo. "
-        "Como o falante pronuncia a última sílaba desse nome? Responda só com JSON: "
-        '{"final": "teo"} se terminar em "têo" (com e audível), '
-        '{"final": "tio"} se soar "tiu"/"tio"/"tchiu".'
-    )
-    resp = post(f"{API}/{ouvinte()}:generateContent", {
-        "contents": [{"role": "user", "parts": [
-            {"inline_data": {"mime_type": "audio/wav", "data": base64.b64encode(buf.getvalue()).decode()}},
-            {"text": pergunta},
-        ]}],
-        "generationConfig": {"temperature": 0, "responseMimeType": "application/json"},
-    })
-    txt = "".join(p.get("text", "") for c in resp.get("candidates", []) for p in c.get("content", {}).get("parts", []))
-    try:
-        return json.loads(txt).get("final") == "teo"
-    except json.JSONDecodeError:
-        return "teo" in txt.lower() and "tio" not in txt.lower()
-
-
-def fala_audio(say: str):
-    """Sintetiza a fala; se citar Timóteo e a verificação estiver ligada, tenta grafias até passar."""
-    if "Timóteo" not in say or not VERIFICAR:
-        return apara(sintetiza(say)), say
-    for g in GRAFIAS:
-        texto = say.replace("Timóteo", g)
-        audio = apara(sintetiza(texto))
-        if pronuncia_ok(audio):
-            return audio, texto
-        print(f"   pronúncia reprovada com a grafia '{g}', tentando a próxima")
-    raise SystemExit(f"Nenhuma grafia passou na verificação: {say}")
+def falas_da_cena(falas):
+    """Lista de áudios (um por fala). Em LOTE=cena, uma chamada só para a cena."""
+    textos = [prepara(f["say"]) for f in falas]
+    if LOTE == "cena" and len(textos) > 1:
+        bloco = sintetiza("\n\n".join(textos))
+        pedacos = divide(bloco, textos)
+        if pedacos:
+            return pedacos
+        print("   divisão por pausas falhou nesta cena; gerando frase a frase")
+    return [apara(sintetiza(t)) for t in textos]
 
 
 ARG_ROTEIRO = sys.argv[1] if len(sys.argv) > 1 else "roteiro/roteiro.json"
@@ -270,10 +268,9 @@ def silencio(seg):
 if AMOSTRA:
     falas = [f for c in roteiro["cenas"] for f in c.get("falas", [])][:AMOSTRA]
     partes = []
-    for f in falas:
-        a, txt = fala_audio(f["say"])
+    for f, a in zip(falas, falas_da_cena(falas)):
         partes += [a, silencio(GAP_FALA)]
-        print(f"{len(a) / SR:5.2f}s  {txt}")
+        print(f"{len(a) / SR:5.2f}s  {prepara(f['say'])}")
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     destino = os.path.join(ROOT, "out", f"amostra-{VOZ}.wav")
     sf.write(destino, np.concatenate(partes), SR, subtype="PCM_16")
@@ -281,7 +278,6 @@ if AMOSTRA:
     sys.exit(0)
 
 trilha, cenas, t = [], [], 0.0
-grafias_usadas = {}
 for ci, cena in enumerate(roteiro["cenas"]):
     ini_cena, falas_out = t, []
     if cena.get("fixo"):
@@ -291,10 +287,8 @@ for ci, cena in enumerate(roteiro["cenas"]):
         pre = PRE_ABERTURA if ci == 0 else PRE_CENA
         trilha.append(silencio(pre))
         t += pre
-        for fi, fala in enumerate(cena["falas"]):
-            audio, texto = fala_audio(fala["say"])
-            if texto != fala["say"]:
-                grafias_usadas[f"{cena['id']}-{fi + 1}"] = texto
+        audios = falas_da_cena(cena["falas"])
+        for fi, (fala, audio) in enumerate(zip(cena["falas"], audios)):
             dur = len(audio) / SR
             rel = round(t - ini_cena, 3)
             falas_out.append({"id": f"{cena['id']}-{fi + 1}", "cap": fala["cap"], "t": rel,
@@ -326,9 +320,7 @@ wav = os.path.join(ROOT, "public", "voz", ARG_AUDIO + ".wav")
 sf.write(wav, master, SR, subtype="PCM_16")
 os.system(f"ffmpeg -v error -y -i \"{wav}\" -c:a libmp3lame -b:a 192k \"{wav[:-4]}.mp3\" && rm \"{wav}\"")
 total = sum(c["frames"] for c in cenas)
-json.dump({"fps": FPS, "motor": "gemini", "modelo": MODELO, "voz": VOZ, "velocidade": 1,
+json.dump({"fps": FPS, "motor": "gemini", "modelo": MODELO, "voz": VOZ, "grafia": GRAFIA, "velocidade": 1,
            "totalFrames": total, "cenas": cenas},
           open(os.path.join(ROOT, ARG_TIMING), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-if grafias_usadas:
-    print("grafias alternativas usadas:", json.dumps(grafias_usadas, ensure_ascii=False))
 print(f"TOTAL {total / FPS:.1f}s ({total} frames)")
