@@ -9,3 +9,4 @@ out
 # vídeos longos (acima do limite do GitHub) entregues fora do git
 entrega/timoteo-vox-longo-16x9.mp4
 entrega/timoteo-longo-9x16.mp4
+.cache/

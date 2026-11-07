@@ -40,6 +40,12 @@ Timóteo se fala **TI-MÓ-TÊO**. O phonemizer (espeak) gera `tʃimˈɔtʃjʊ` (
    npx hyperframes tts "teste" -v pm_alex -l pt-br   # baixa o modelo no cache
    python3 scripts/locucao.py                       # gera public/voz/narracao.mp3 + src/data/timing.json
    ```
+   Voz alternativa (Google AI Studio, Gemini TTS `gemini-3.8-flash-tts`), ritmo mais ágil e checagem automática da pronúncia de Timóteo:
+   ```bash
+   AMOSTRA=3 VERIFICAR=1 python3 scripts/locucao_gemini.py   # teste com 3 falas em out/
+   VERIFICAR=1 python3 scripts/locucao_gemini.py             # gera narracao.mp3 + timing.json
+   ```
+   Chave em `GEMINI_API_KEY` ou como segredo de rede do ambiente para `generativelanguage.googleapis.com` (cabeçalho `x-goog-api-key`).
 4. **Mapas**: malha municipal do IBGE (via geodata-br) projetada para SVG em `scripts/geo.py`. Rios Piracicaba e Doce traçados pelas divisas municipais. Parque e lagoas em representação aproximada.
 5. **Trilha e texturas**: `scripts/texturas_trilha.py` gera papel, granulação e uma trilha ambiente original (sem samples externos). SFX da biblioteca do HyperFrames media-use (licença Pixabay).
 6. **Animação (Remotion)**: cada cena lê `batidas(cena)` e dispara animações no frame exato da palavra falada.

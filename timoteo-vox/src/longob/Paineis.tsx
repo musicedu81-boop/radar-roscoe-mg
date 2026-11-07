@@ -3,7 +3,7 @@
  * Cada painel cobre uma ou mais falas; tempos sempre derivados da locução.
  */
 import React from "react";
-import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, random, staticFile, useCurrentFrame } from "remotion";
 import { GEO, P, Sfx } from "../common";
 import { camAt, Counter, ip, Shake, EASE_IO } from "../fx";
 import { batidas } from "../timing";
@@ -55,7 +55,7 @@ export const PAb1: React.FC<PainelProps> = ({ b, off }) => {
       <Fita texto="“onde fica a Acesita?”" x={110} y={760} at={t.w(0, "onde")} rot={-4} size={50} />
       <Seta de={[960, 640]} ate={[820, 330]} curva={-80} at={t.w(1, "apontar")} seed="la1s" largura={24} />
       <Rotulo texto="UM BAIRRO" at={t.w(1, "bairro")} x={600} y={560} rot={4} size={70} />
-      <Foto src="fotos/saosebastiao.jpg" x={40} y={880} w={1000} h={560} at={t.a(2) - 4} rot={2.5} de="baixo" seed="la2" pos="40% 30%" pb={0.75} dur={300} />
+      <Foto src="fotos/saosebastiao_inteira.jpg" x={40} y={860} w={1000} h={620} at={t.a(2) - 4} rot={2.5} de="baixo" seed="la2" pos="52% 40%" pb={0.7} zoom={[1.0, 1.03]} dur={300} />
       <Fita texto="“e onde fica Timóteo?”" x={380} y={1390} at={t.w(2, "onde")} rot={3} size={50} />
       <Rotulo texto="OUTRO LUGAR" at={t.w(3, "outro")} x={70} y={1280} rot={-3} size={70} fundo="#fff" />
       <Faixa y={735} h={210} at={t.a(4)} seed="la3">
@@ -510,22 +510,68 @@ export const PV3: React.FC<PainelProps> = ({ b, off }) => {
   );
 };
 
+/** Casinhas desenhadas a mão (traço de nanquim), surgindo em ondas. */
+const Casinha: React.FC<{ x: number; y: number; s: number; seed: string; telhado: string; p: number }> = ({ x, y, s, seed, telhado, p }) => {
+  const j = (k: string, a = 0.07) => (random(seed + k) - 0.5) * 2 * a * s;
+  const w = s;
+  const h = s * 0.72;
+  const corpo = `M${x + j("a")},${y + j("b")} L${x + w + j("c")},${y + j("d")} L${x + w + j("e")},${y + h + j("f")} L${x + j("g")},${y + h + j("h")} Z`;
+  const teto = `M${x - s * 0.12 + j("i")},${y + j("j")} L${x + w / 2 + j("k")},${y - s * 0.52 + j("l")} L${x + w + s * 0.12 + j("m")},${y + j("n")} Z`;
+  const porta = `M${x + w * 0.4},${y + h} L${x + w * 0.4},${y + h * 0.45} L${x + w * 0.62},${y + h * 0.45} L${x + w * 0.62},${y + h}`;
+  return (
+    <g opacity={p} transform={`translate(${x + w / 2} ${y + h}) scale(${0.4 + 0.6 * p}) rotate(${(random(seed + "r") - 0.5) * 8}) translate(${-(x + w / 2)} ${-(y + h)})`}>
+      <path d={corpo} fill="#F2EFE8" stroke="#141414" strokeWidth={3.2} strokeLinejoin="round" />
+      <path d={teto} fill={telhado} stroke="#141414" strokeWidth={3.2} strokeLinejoin="round" />
+      <path d={porta} fill="none" stroke="#141414" strokeWidth={2.6} />
+      <rect x={x + w * 0.12} y={y + h * 0.22} width={w * 0.18} height={w * 0.16} fill="none" stroke="#141414" strokeWidth={2.4} />
+    </g>
+  );
+};
+
+const CasasDesenhadas: React.FC<{ at: number; dur: number; x: number; y: number; cols: number; rows: number; gap: number; s: number }> = ({ at, dur, x, y, cols, rows, gap, s }) => {
+  const f = useCurrentFrame();
+  const n = cols * rows;
+  const mostradas = ip(f, [at, at + dur], [0, n]);
+  return (
+    <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible", pointerEvents: "none" }}>
+      {new Array(n).fill(0).map((_, i) => {
+        const r = Math.floor(i / cols);
+        const c = i % cols;
+        // ordem de surgimento: do centro para fora, em ondas
+        const ordem = Math.abs(c - (cols - 1) / 2) + r * 0.9 + random(`o${i}`) * 1.2;
+        const limite = (ordem / (cols / 2 + rows * 0.9 + 1.2)) * n;
+        const p = Math.max(0, Math.min(1, (mostradas - limite) / 6));
+        if (p <= 0) return null;
+        const dx = (r % 2) * (gap / 2);
+        const telhado = i % 9 === 0 ? K.vermelho : i % 3 === 0 ? K.lima : "#d8d3c8";
+        return <Casinha key={i} x={x + c * gap + dx + (random(`jx${i}`) - 0.5) * 6} y={y + r * gap * 0.92 + (random(`jy${i}`) - 0.5) * 6} s={s} seed={`cs${i}`} telhado={telhado} p={p} />;
+      })}
+    </svg>
+  );
+};
+
 export const PV4: React.FC<PainelProps> = ({ b, off }) => {
   const t = mk(b, off);
+  const tN = t.w(3, "2.734") - 4;
   return (
     <AbsoluteFill>
-      <Escuro j={["1958", "Casas da empresa", "Vila operária", "Acesita"]} />
-      <Selo x={540} y={420} d={300} at={t.a(3)} rot={-6}>
-        <Serif size={110}>1958</Serif>
+      <Amassado />
+      <Selo x={190} y={250} d={250} at={t.a(3)} rot={-8}>
+        <Serif size={92}>1958</Serif>
       </Selo>
-      <Entra at={t.w(3, "2.734") - 4} style={{ left: 0, right: 0, top: 680, textAlign: "center" }} y={30}>
-        <Serif size={250} cor="#F2EFE8">
-          <Counter to={2734} at={t.w(3, "2.734") - 4} dur={30} />
-        </Serif>
+      <Entra at={tN} style={{ left: 330, top: 150 }} y={30}>
+        <div style={{ background: K.tinta, padding: "6px 30px 0", rotate: "-2deg", boxShadow: "0 12px 24px rgba(0,0,0,0.45)" }}>
+          <Serif size={190} cor={K.lima}>
+            <Counter to={2734} at={tN} dur={36} />
+          </Serif>
+        </div>
       </Entra>
-      <Fita texto="casas da empresa" x={540} y={1000} at={t.w(3, "casas")} rot={-2} size={56} centro />
+      <Fita texto="casas da empresa" x={420} y={400} at={t.w(3, "casas")} rot={2} size={52} />
+      <CasasDesenhadas at={t.a(3) + 10} dur={58} x={70} y={570} cols={11} rows={10} gap={85} s={57} />
+      <Fita texto="cada desenho ≈ 25 casas" x={540} y={1445} at={tN + 30} rot={-2} size={34} centro />
       <Sfx at={t.a(3)} name="pop" vol={0.4} />
-      <Sfx at={t.w(3, "2.734") - 4} name="riser" vol={0.22} dur={36} />
+      <Sfx at={tN} name="riser" vol={0.25} dur={40} />
+      <Sfx at={tN + 8} name="typing" vol={0.18} dur={30} />
     </AbsoluteFill>
   );
 };
@@ -539,7 +585,7 @@ export const PV5: React.FC<PainelProps> = ({ b, off }) => {
       <Foto src="fotos/saojose.jpg" x={40} y={200} w={1000} h={560} at={t.w(4, "lado") - 4} rot={-2} de="cima" seed="v5a" pb={0.9} dur={200} />
       <Fita texto="a vila da empresa" x={600} y={190} at={t.w(4, "vila")} rot={3} size={42} />
       <Rotulo texto="ACESITA" at={t.w(4, "Acesita.")} x={90} y={640} rot={-4} />
-      <Foto src="fotos/saosebastiao.jpg" x={40} y={860} w={1000} h={580} at={t.w(4, "outro") - 6} rot={2} de="baixo" seed="v5b" pb={0.85} pos="40% 30%" dur={160} />
+      <Foto src="fotos/saosebastiao_inteira.jpg" x={40} y={840} w={1000} h={620} at={t.w(4, "outro") - 6} rot={2} de="baixo" seed="v5b" pb={0.75} pos="52% 40%" zoom={[1.0, 1.03]} dur={160} />
       <Fita texto="o povoado antigo" x={540} y={850} at={t.w(4, "povoado")} rot={3} size={42} />
       <Rotulo texto="TIMÓTEO" at={t.w(4, "Timóteo.")} x={520} y={1320} rot={3} fundo="#fff" />
       <Sfx at={t.w(4, "Acesita.")} name="pop" vol={0.45} />
