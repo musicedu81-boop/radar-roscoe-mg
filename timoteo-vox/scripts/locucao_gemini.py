@@ -21,6 +21,9 @@ Variáveis:
                 Em blocos longos o transcritor junta trechos e desloca as falas; o padrão
                 (corte pelo tamanho esperado) foi mais confiável.
   FALA_A_FALA=cena1,cena2   gera essas cenas frase a frase (para corrigir um corte errado)
+  TAKES=arquivo.json  falas refeitas sozinhas, com grafia e tomada próprias:
+                {"final-1": {"grafia": "Timótêo", "take": 2}}. Usado para trocar só as
+                frases em que o Gemini errou a pronúncia (ver scripts/confere_pronuncia.py).
   AMOSTRA=n     gera só as n primeiras falas, para testar voz e ritmo
 
 Atenção: um modelo Gemini "ouvindo" o áudio não serve para checar a pronúncia: ele
@@ -51,6 +54,7 @@ LOTE = os.environ.get("LOTE", "cena")
 GRUPO = int(os.environ.get("GRUPO", 1))
 ALINHAR = os.environ.get("ALINHAR", "0") == "1"
 FALA_A_FALA = set(filter(None, os.environ.get("FALA_A_FALA", "").split(",")))
+TAKES_ARQ = os.environ.get("TAKES", "roteiro/takes-gemini.json")
 OUVINTE = os.environ.get("GEMINI_OUVINTE", "gemini-3.5-flash")
 AMOSTRA = int(os.environ.get("AMOSTRA", 0))
 
@@ -118,9 +122,10 @@ def post(url, corpo, tentativas=8):
     raise RuntimeError("Gemini não respondeu")
 
 
-def sintetiza(texto: str) -> np.ndarray:
-    """Uma fala -> áudio mono float32 a 24 kHz. Resultado fica em cache local."""
-    arq = chave_cache(texto)
+def sintetiza(texto: str, take: int = 0) -> np.ndarray:
+    """Uma fala -> áudio mono float32 a 24 kHz. Resultado fica em cache local.
+    `take` > 0 força uma nova geração do mesmo texto (outra tomada)."""
+    arq = chave_cache(texto, take)
     if not os.path.exists(arq):
         moderno = MODELO.startswith("gemini-3.8-")
         conteudo = {"type": "text", "text": texto if moderno else f"Read the following text with this delivery: {ESTILO}\n\n{texto}"}
@@ -376,8 +381,9 @@ def divide(audio, textos, caps=None):
     return pedacos
 
 
-def chave_cache(texto: str) -> str:
-    return os.path.join(CACHE, hashlib.sha256(f"{MODELO}|{VOZ}|{ESTILO}|{texto}".encode()).hexdigest()[:24] + ".wav")
+def chave_cache(texto: str, take: int = 0) -> str:
+    base = f"{MODELO}|{VOZ}|{ESTILO}|{texto}" + (f"|take{take}" if take else "")
+    return os.path.join(CACHE, hashlib.sha256(base.encode()).hexdigest()[:24] + ".wav")
 
 
 def prepara(say: str) -> str:
@@ -451,6 +457,16 @@ def gera_todas(cenas_rot):
 
 
 AUDIOS = gera_todas(roteiro["cenas"])
+_takes_path = os.path.join(ROOT, TAKES_ARQ)
+if os.path.exists(_takes_path):
+    TAKES = json.load(open(_takes_path, encoding="utf-8"))
+    for c in roteiro["cenas"]:
+        for fi, f in enumerate(c.get("falas", [])):
+            fid = f"{c['id']}-{fi + 1}"
+            if fid in TAKES:
+                tk = TAKES[fid]
+                AUDIOS[c["id"]][fi] = apara(sintetiza(f["say"].replace("Timóteo", tk.get("grafia", GRAFIA)), tk.get("take", 0)))
+                print(f"   {fid}: tomada {tk.get('take', 0)} ({tk.get('grafia', GRAFIA)})")
 trilha, cenas, t = [], [], 0.0
 for ci, cena in enumerate(roteiro["cenas"]):
     ini_cena, falas_out = t, []
