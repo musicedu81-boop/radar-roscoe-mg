@@ -33,6 +33,7 @@ Masterizada em -14 LUFS / -1 dBTP (`public/trilha.wav`).
 - Tempos: `MOMENTOS` em `src/roteiro.ts`, em segundos
 - Cores: `src/tokens.ts`
 - Traço da borboleta: `src/borboleta-desenho.ts` (alimenta 2D e 3D)
+- Retrato: arte final metade rosto, metade borboleta, com fundo transparente (`scripts/rosto-arte.png`). `npm run rosto` encaixa a arte na tela do retrato (`public/rosto.png`, 1000x1750) com os olhos na mesma posição do retrato anterior, então a composição das versões 2D e 3D não muda
 
 ## Comandos
 
@@ -42,7 +43,7 @@ npm run studio      # pré-visualização
 npm run render:2d
 npm run render:3d
 npm run fontes      # regenera as fontes 3D se mudar o texto (acentos incluídos)
-npm run rosto       # trata o retrato com a paleta
+npm run rosto       # encaixa a arte do retrato no lugar do anterior
 npm run trilha      # recompõe e masteriza a trilha (python3 + ffmpeg)
 ```
 
